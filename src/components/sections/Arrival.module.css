@@ -1,0 +1,72 @@
+/* Arrival: Desktop 1440 v2 #assessment · Mobile 390 #assessment */
+
+.arrival {
+  --pad-top: 96px;
+  --pad-bottom: 96px;
+}
+
+.mapCol {
+  display: none;
+}
+
+.content {
+  min-width: 0;
+}
+
+.card {
+  margin-top: 40px;
+}
+
+@media (min-width: 960px) {
+  .arrival {
+    --pad-top: var(--section-pad);
+    --pad-bottom: var(--section-pad);
+    overflow-x: clip;
+  }
+
+  .mapCol {
+    display: block;
+    grid-column: 1 / span 5;
+    min-width: 0;
+    margin-left: calc(-1 * var(--bleed));
+  }
+
+  .map {
+    position: relative;
+    width: calc(100% + 16px);
+  }
+
+  .mapImg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .endLabel {
+    position: absolute;
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    transform: translate(calc(-100% - 16px), 16px);
+    color: var(--ink-700);
+    font-size: 13px;
+    line-height: 1.35;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .endLabel strong {
+    color: var(--navy-900);
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .content {
+    grid-column: 7 / span 6;
+  }
+
+  .card {
+    margin-top: var(--lead-to-content);
+  }
+}

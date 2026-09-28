@@ -48,6 +48,14 @@
   width: 100%;
 }
 
+@media (max-width: 639px) {
+  .btn:not(.tertiary),
+  .lg:not(.tertiary),
+  .secondary.dark {
+    padding-inline: var(--space-3);
+  }
+}
+
 /* ── Primary: teal fill, navy label (never white on teal) ─── */
 .primary {
   background: var(--teal-500);

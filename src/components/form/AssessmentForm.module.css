@@ -1,0 +1,260 @@
+/* Assessment card: Form States A–F (desktop 588px, mobile 322px) */
+
+.card {
+  scroll-margin-top: 80px;
+  padding: var(--space-5) 20px;
+  border: var(--hairline);
+  border-radius: var(--radius-card);
+  background: var(--white);
+  box-shadow: var(--shadow-raised);
+}
+
+.head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.title {
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.title:focus-visible {
+  outline-offset: 4px;
+}
+
+.progressText {
+  flex: none;
+  color: var(--text-tertiary);
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.bar {
+  margin-top: var(--space-3);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.bar span {
+  height: 4px;
+  border-radius: var(--radius-pill);
+  background: var(--line-200);
+  transition: background-color var(--dur-base) var(--ease-out);
+}
+
+.bar span[data-on] {
+  background: var(--teal-500);
+}
+
+.summary {
+  margin-top: 20px;
+}
+
+.step {
+  animation: stepIn var(--dur-base) var(--ease-out);
+}
+
+.mode {
+  margin-top: 20px;
+}
+
+.fields {
+  margin-top: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.actions {
+  margin-top: 28px;
+}
+
+/* Mobile: paired buttons stack with the primary on top. */
+.pair {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: var(--space-3);
+}
+
+.pair > * {
+  width: 100%;
+}
+
+.privacy {
+  margin-top: var(--space-4);
+  color: var(--text-tertiary);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Sending: selects and radios look read-only, not faded. */
+form[aria-busy='true'] select:disabled {
+  opacity: 1;
+  background: var(--surface-50);
+}
+
+/* ── Confirmation ──────────────────────────────────────── */
+.enter {
+  animation: stepIn var(--dur-base) var(--ease-out);
+}
+
+.doneHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px var(--space-3);
+}
+
+.doneIcon {
+  flex: none;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-pill);
+  background: var(--teal-500);
+  color: var(--navy-900);
+}
+
+.doneTitle {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: var(--fs-h3);
+  line-height: 1.2;
+  letter-spacing: var(--ls-h3);
+}
+
+.doneTitle:focus-visible {
+  outline-offset: 4px;
+}
+
+.doneLine,
+.doneNext {
+  margin-top: var(--space-3);
+  color: var(--ink-700);
+  font-size: 16px;
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+.doneNext {
+  margin-top: 20px;
+}
+
+.receipt {
+  margin-top: var(--space-5);
+  border: var(--hairline);
+  border-radius: var(--radius-control);
+  overflow: hidden;
+}
+
+.receiptTitle {
+  padding: var(--space-3) var(--space-4);
+  border-bottom: var(--hairline);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.receipt dl > div {
+  padding: var(--space-3) var(--space-4);
+  border-bottom: var(--hairline);
+}
+
+.receipt dl > div:last-child {
+  border-bottom: 0;
+}
+
+.receipt dt {
+  color: var(--text-tertiary);
+  font-size: 14px;
+}
+
+.receipt dd {
+  margin-top: 2px;
+  font-size: 15px;
+}
+
+.receipt .money {
+  font-family: var(--font-mono);
+  font-size: var(--fs-figure);
+  font-variant-numeric: tabular-nums;
+}
+
+.doneActions {
+  margin-top: var(--space-5);
+}
+
+.doneActions > * {
+  width: 100%;
+}
+
+@keyframes stepIn {
+  from {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+}
+
+/* ── Wider cards (desktop 588px) ───────────────────────── */
+@media (min-width: 640px) {
+  .card {
+    padding: var(--space-6);
+  }
+
+  .title {
+    font-size: 18px;
+  }
+
+  .summary,
+  .mode {
+    margin-top: var(--space-5);
+  }
+
+  .fields {
+    margin-top: 28px;
+    gap: var(--space-5);
+  }
+
+  .actions {
+    margin-top: var(--space-6);
+  }
+
+  .pair {
+    display: grid;
+    grid-template-columns: 140px minmax(0, 1fr);
+  }
+
+  .receiptTitle {
+    padding: 14px 20px;
+  }
+
+  .receipt dl > div {
+    display: grid;
+    grid-template-columns: 170px minmax(0, 1fr);
+    gap: var(--space-4);
+    align-items: baseline;
+    padding: 14px 20px;
+  }
+
+  .receipt dd {
+    margin: 0;
+  }
+
+  .doneNext {
+    margin-top: var(--space-5);
+  }
+
+  .doneActions {
+    margin-top: 28px;
+  }
+
+  .doneActions > * {
+    width: auto;
+  }
+}

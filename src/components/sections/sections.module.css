@@ -1,0 +1,518 @@
+/*
+ * Section internals. Paddings follow the frames: mobile gaps around the
+ * two route loops (after Why, after the manager) are 144px.
+ */
+
+.check {
+  flex: none;
+  margin-top: 0.3em;
+  color: var(--navy-900);
+}
+
+.maxTitle {
+  max-width: 14em;
+}
+
+/* ── Eligibility strip ─────────────────────────────────── */
+.strip {
+  --pad-top: 32px;
+  --pad-bottom: 32px;
+}
+
+.stripContent {
+  min-width: 0;
+}
+
+.stripLead {
+  color: var(--ink-700);
+  font-size: 14px;
+}
+
+.stripList {
+  margin-top: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.stripList li {
+  display: flex;
+  gap: 10px;
+}
+
+.stripList .check {
+  margin-top: 0.15em;
+}
+
+.stripSmall {
+  margin-top: var(--space-3);
+  color: var(--text-tertiary);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+@media (min-width: 960px) {
+  .strip {
+    --pad-top: 40px;
+    --pad-bottom: 40px;
+  }
+
+  .stripContent {
+    grid-column: 1 / span 9;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .stripList {
+    margin: 0;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--space-3) 36px;
+    font-size: 17px;
+  }
+
+  .stripList li {
+    gap: var(--space-2);
+  }
+
+  .stripSmall {
+    margin: 0;
+  }
+}
+
+/* ── Why payments stall (navy) ─────────────────────────── */
+.why {
+  --pad-top: 96px;
+  --pad-bottom: 144px;
+}
+
+.whyTitle {
+  max-width: 15em;
+}
+
+.whyList li {
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr);
+  padding: var(--space-4) 0;
+  border-top: var(--hairline-dark);
+}
+
+.whyList li:last-child {
+  border-bottom: var(--hairline-dark);
+}
+
+.whyNum {
+  color: var(--on-dark-muted);
+  font-size: 15px;
+  line-height: 1.5;
+  font-variant-numeric: tabular-nums;
+}
+
+.whyItemTitle {
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.whyItemBody {
+  margin-top: var(--space-1);
+  color: var(--on-dark-muted);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.whyClosing {
+  margin-top: 40px;
+  max-width: 22em;
+  text-wrap: pretty;
+}
+
+@media (min-width: 960px) {
+  .why {
+    --pad-top: var(--section-pad);
+    --pad-bottom: var(--section-pad);
+  }
+
+  .whyList li {
+    grid-template-columns: 72px minmax(0, 1fr);
+    padding: 18px 0;
+  }
+
+  .whyNum {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .whyItemTitle {
+    font-size: 19px;
+  }
+
+  .whyItemBody {
+    font-size: 17px;
+  }
+
+  .whyClosing {
+    margin-top: var(--space-7);
+  }
+}
+
+/* ── 01 Share ──────────────────────────────────────────── */
+.share {
+  --pad-top: 144px;
+  --pad-bottom: 96px;
+}
+
+.defList > div {
+  padding: 14px 0;
+  border-top: var(--hairline);
+}
+
+.defList > div:last-child {
+  border-bottom: var(--hairline);
+}
+
+.defList dt {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.defList dd {
+  margin-top: var(--space-1);
+  color: var(--ink-700);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+@media (min-width: 640px) {
+  .defList > div {
+    display: grid;
+    grid-template-columns: minmax(140px, 220px) minmax(0, 1fr);
+    gap: var(--space-5);
+    padding: 20px 0;
+  }
+
+  .defList dt,
+  .defList dd {
+    margin: 0;
+    font-size: var(--fs-body);
+  }
+}
+
+@media (min-width: 960px) {
+  .share {
+    --pad-top: var(--section-pad);
+    --pad-bottom: var(--section-pad);
+  }
+}
+
+/* ── 02 Assess ─────────────────────────────────────────── */
+.assess {
+  --pad-top: 96px;
+  --pad-bottom: 96px;
+}
+
+.assessGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-7);
+  align-items: start;
+}
+
+.footnote {
+  margin-top: 14px;
+  color: var(--text-tertiary);
+  font-size: 14px;
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+.checkHeading {
+  scroll-margin-top: 96px;
+}
+
+.checklist {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.checklist li {
+  display: flex;
+  gap: 10px;
+}
+
+.checklist .check {
+  margin-top: 0.2em;
+}
+
+.checkFootnote {
+  margin-top: 20px;
+  color: var(--text-tertiary);
+  font-size: 14px;
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+@media (min-width: 960px) {
+  .assess {
+    --pad-top: var(--section-pad);
+    --pad-bottom: var(--section-pad);
+  }
+
+  .checklist {
+    margin-top: var(--space-5);
+    gap: var(--space-3);
+    font-size: 17px;
+  }
+
+  .checkFootnote {
+    margin-top: var(--space-5);
+  }
+}
+
+@media (min-width: 1200px) {
+  .assessGrid {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 3fr);
+    gap: var(--space-7);
+  }
+}
+
+/* ── 03 Complete ───────────────────────────────────────── */
+.complete {
+  --pad-top: 96px;
+  --pad-bottom: 96px;
+}
+
+.specHeading {
+  margin-top: var(--space-7);
+}
+
+.specSub {
+  margin-top: 10px;
+  max-width: 36em;
+  color: var(--ink-700);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.specTable {
+  margin-top: var(--space-5);
+}
+
+@media (min-width: 960px) {
+  .complete {
+    --pad-top: var(--section-pad);
+    --pad-bottom: var(--section-pad);
+  }
+
+  .specHeading {
+    margin-top: var(--space-8);
+  }
+
+  .specSub {
+    margin-top: var(--space-3);
+    font-size: var(--fs-body);
+  }
+
+  .specTable {
+    margin-top: var(--space-6);
+  }
+}
+
+/* ── 04 Track ──────────────────────────────────────────── */
+.track {
+  --pad-top: 96px;
+  --pad-bottom: 96px;
+}
+
+.statusCard {
+  padding: 20px;
+  border: var(--hairline);
+  border-radius: var(--radius-card);
+  background: var(--white);
+}
+
+.statusHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px var(--space-4);
+  margin-bottom: var(--space-5);
+}
+
+.statusTitle {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.statusCorridor {
+  font-weight: 400;
+}
+
+@media (min-width: 960px) {
+  .track {
+    --pad-top: var(--section-pad);
+    --pad-bottom: var(--section-pad);
+  }
+
+  .statusCard {
+    padding: var(--space-5) var(--space-6) var(--space-6);
+  }
+
+  .statusHead {
+    margin-bottom: var(--space-6);
+  }
+}
+
+/* ── Your payments manager (navy) ──────────────────────── */
+.support {
+  --pad-top: 96px;
+  --pad-bottom: 144px;
+}
+
+.person {
+  margin-top: var(--space-5);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.monogram {
+  flex: none;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: var(--hairline-dark);
+  border-radius: var(--radius-card);
+  background: var(--navy-800);
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: var(--ls-wordmark);
+}
+
+.personRole {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.support .supportTitle {
+  margin-top: var(--space-5);
+}
+
+.helpsLabel {
+  margin-top: var(--space-6);
+  color: var(--on-dark-muted);
+  font-size: 14px;
+}
+
+.helps {
+  margin-top: 6px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.demoLine {
+  margin-top: var(--space-6);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  color: var(--on-dark-muted);
+  font-size: 14px;
+}
+
+.contactButtons {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contactDetail {
+  margin-left: 6px;
+  font-weight: 400;
+}
+
+@media (min-width: 640px) {
+  .contactButtons {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+}
+
+@media (min-width: 960px) {
+  .support {
+    --pad-top: var(--section-pad);
+    --pad-bottom: var(--section-pad);
+  }
+
+  .person {
+    margin-top: var(--space-6);
+    gap: var(--space-4);
+  }
+
+  .monogram {
+    width: 72px;
+    height: 72px;
+    font-size: 24px;
+    font-weight: 500;
+  }
+
+  .personRole {
+    font-size: 17px;
+  }
+
+  .support .supportTitle {
+    margin-top: var(--space-6);
+  }
+
+  .helpsLabel {
+    margin-top: 40px;
+  }
+
+  .helps {
+    margin-top: var(--space-2);
+    font-size: 17px;
+  }
+
+  .demoLine {
+    margin-top: var(--space-7);
+    gap: var(--space-3);
+  }
+
+  .contactButtons {
+    margin-top: var(--space-4);
+  }
+}
+
+/* ── FAQ ───────────────────────────────────────────────── */
+.faq {
+  --pad-top: 144px;
+  --pad-bottom: 96px;
+}
+
+.faqList {
+  margin-top: var(--space-6);
+}
+
+@media (min-width: 960px) {
+  .faq {
+    --pad-top: var(--section-pad);
+    --pad-bottom: var(--section-pad);
+  }
+
+  .faqList {
+    margin-top: var(--space-7);
+  }
+}

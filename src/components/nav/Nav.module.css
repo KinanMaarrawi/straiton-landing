@@ -1,0 +1,224 @@
+/* Navigation: DESIGN.md §10 · Component Sheet 10 · Key Moments 3 */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-nav);
+  background: var(--white);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--dur-fast) var(--ease-out);
+}
+
+.header[data-scrolled] {
+  border-bottom-color: var(--line-200);
+}
+
+.inner {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  padding: 0 12px 0 20px;
+}
+
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--touch-min);
+  color: var(--navy-900);
+  font-size: 17px;
+}
+
+.wordmark:hover {
+  text-decoration: none;
+}
+
+.links,
+.cta {
+  display: none;
+}
+
+.menuButton {
+  width: var(--touch-min);
+  height: var(--touch-min);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: var(--navy-900);
+}
+
+.menuButton:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: -2px;
+}
+
+/* Three bars that cross into an X. */
+.burger {
+  position: relative;
+  width: 20px;
+  height: 14px;
+}
+
+.burger span {
+  position: absolute;
+  left: 0;
+  width: 20px;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  transition:
+    transform var(--dur-base) var(--ease-out),
+    opacity var(--dur-fast) var(--ease-out);
+}
+
+.burger span:nth-child(1) {
+  top: 0;
+}
+
+.burger span:nth-child(2) {
+  top: 6px;
+}
+
+.burger span:nth-child(3) {
+  top: 12px;
+}
+
+.burger[data-open] span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.burger[data-open] span:nth-child(2) {
+  opacity: 0;
+}
+
+.burger[data-open] span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* ── Mobile sheet ──────────────────────────────────────── */
+
+.sheet {
+  position: fixed;
+  top: 64px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: var(--z-menu);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: var(--white);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.sheet[hidden] {
+  display: none;
+}
+
+.sheet[data-open] {
+  animation: sheetIn var(--dur-base) var(--ease-out);
+}
+
+.sheetLinks {
+  padding: var(--space-5) 20px 0;
+}
+
+.sheetLink {
+  display: flex;
+  align-items: center;
+  min-height: 64px;
+  border-bottom: var(--hairline);
+  color: var(--navy-900);
+  font-size: 24px;
+  line-height: 1.2;
+}
+
+.sheetLink:hover {
+  text-decoration: none;
+  color: var(--teal-700);
+}
+
+.sheetFoot {
+  margin-top: auto;
+  padding: 20px 20px 34px;
+}
+
+@keyframes sheetIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+/* ── Desktop ───────────────────────────────────────────── */
+
+@media (min-width: 960px) {
+  .inner {
+    height: 80px;
+    width: min(1200px, calc(100% - 80px));
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .wordmark {
+    font-size: 18px;
+  }
+
+  .links {
+    display: block;
+  }
+
+  .links ul {
+    display: flex;
+    gap: clamp(24px, 3vw, 40px);
+  }
+
+  .link {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--touch-min);
+    color: var(--ink-700);
+    font-size: 15px;
+    white-space: nowrap;
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 8px;
+    transition:
+      color var(--dur-fast) var(--ease-out),
+      text-decoration-color var(--dur-fast) var(--ease-out);
+  }
+
+  .link:hover {
+    color: var(--navy-900);
+    text-decoration: underline;
+    text-decoration-color: var(--line-200);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 8px;
+  }
+
+  /* Active: teal underline AND weight, so it isn't colour-only. */
+  .link[aria-current] {
+    color: var(--navy-900);
+    font-weight: 500;
+    text-decoration-color: var(--teal-500);
+  }
+
+  .link:focus-visible {
+    outline-offset: 4px;
+  }
+
+  .cta {
+    display: inline-grid;
+  }
+
+  .menuButton,
+  .sheet {
+    display: none;
+  }
+}

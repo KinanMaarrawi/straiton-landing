@@ -1,0 +1,165 @@
+/* Hero: Desktop 1440 v2 #top · Mobile 390 #top */
+
+.hero {
+  --pad-top: 56px;
+  --pad-bottom: 96px;
+}
+
+.text {
+  min-width: 0;
+}
+
+.eyebrowRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-3);
+}
+
+.h1 {
+  margin-top: 20px;
+  max-width: var(--measure-display);
+}
+
+.lead {
+  margin-top: var(--space-5);
+}
+
+.starter {
+  margin-top: var(--space-6);
+  max-width: 520px;
+}
+
+.actions {
+  margin-top: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 20px;
+}
+
+.primary {
+  width: 100%;
+}
+
+.actions > a:nth-child(2) {
+  align-self: flex-start;
+}
+
+.micro {
+  margin-top: -8px;
+  color: var(--text-tertiary);
+  font-size: var(--fs-small);
+  line-height: 1.5;
+}
+
+.mapCol {
+  display: none;
+}
+
+@media (min-width: 960px) {
+  .hero {
+    --pad-top: 96px;
+    --pad-bottom: 96px;
+    overflow-x: clip;
+  }
+
+  .text {
+    grid-column: 1 / span 7;
+    padding-top: var(--space-5);
+  }
+
+  .line {
+    display: block;
+    white-space: nowrap;
+  }
+
+  .eyebrowRow {
+    gap: var(--space-4);
+  }
+
+  .h1 {
+    margin-top: var(--space-6);
+    max-width: none;
+    /* 90px at 1440; scales down so "Better paperwork." stays on one line in 7 columns. */
+    font-size: min(var(--fs-display), 6.25vw);
+  }
+
+  .lead {
+    margin-top: var(--space-6);
+  }
+
+  .starter {
+    margin-top: var(--space-7);
+  }
+
+  .actions {
+    align-items: flex-start;
+  }
+
+  .primary {
+    width: auto;
+  }
+
+  .micro {
+    margin-top: 0;
+  }
+
+  .mapCol {
+    display: block;
+    grid-column: 8 / span 5;
+    min-width: 0;
+  }
+
+  /* The map bleeds into the right margin, as in the frame (606px at 1440). */
+  .map {
+    position: relative;
+    width: calc(100% + var(--bleed) + 10px);
+  }
+
+  .mapImg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .startDot {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    margin: -7px 0 0 -7px;
+    border: 2px solid var(--white);
+    border-radius: var(--radius-pill);
+    background: var(--teal-500);
+    z-index: 4;
+  }
+
+  .startLabel {
+    position: absolute;
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    margin: 8px 0 0 6px;
+    padding: 4px 6px;
+    border-radius: 3px;
+    background: var(--white);
+    color: var(--ink-700);
+    font-size: 13px;
+    line-height: 1.35;
+    white-space: nowrap;
+  }
+
+  .startLabel strong {
+    color: var(--navy-900);
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .caption {
+    margin-top: var(--space-4);
+    max-width: 300px;
+    color: var(--text-tertiary);
+    font-size: var(--fs-small);
+    line-height: 1.5;
+  }
+}

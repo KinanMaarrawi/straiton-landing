@@ -1,0 +1,135 @@
+/* Status stepper: Desktop/Mobile 04 Track */
+
+.wrap {
+  container-type: inline-size;
+}
+
+/* Narrow: vertical */
+.step {
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr);
+  column-gap: 14px;
+}
+
+.rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dot {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-pill);
+  background: var(--white);
+  border: 1.5px solid var(--ink-500);
+  color: var(--navy-900);
+}
+
+.step[data-state='done'] .dot {
+  background: var(--teal-500);
+  border-color: var(--teal-500);
+}
+
+.step[data-state='current'] .dot {
+  border: 2px solid var(--navy-900);
+}
+
+.pip {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-pill);
+  background: var(--navy-900);
+}
+
+.line {
+  flex: 1;
+  width: 0;
+  min-height: 20px;
+  margin: 4px 0;
+  border-left: 2px dotted var(--line-200);
+}
+
+.step[data-state='done'] .line {
+  border-left: 2px solid var(--teal-500);
+}
+
+.step:last-child .line {
+  display: none;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 2px 0 20px;
+}
+
+.step:last-child .text {
+  padding-bottom: 0;
+}
+
+.label {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.step[data-state='current'] .label {
+  font-weight: 600;
+}
+
+.step[data-state='upcoming'] .label {
+  font-weight: 400;
+  color: var(--ink-700);
+}
+
+.note {
+  color: var(--text-tertiary);
+  font-size: var(--fs-small);
+  line-height: 1.5;
+  max-width: 14em;
+}
+
+/* Wide: horizontal, line runs from each dot to the next */
+@container (min-width: 480px) {
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .step {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .rail {
+    flex-direction: row;
+  }
+
+  .line {
+    width: auto;
+    height: 0;
+    min-height: 0;
+    margin: 0 8px;
+    border-left: 0;
+    border-top: 2px dotted var(--line-200);
+  }
+
+  .step[data-state='done'] .line {
+    border-left: 0;
+    border-top: 2px solid var(--teal-500);
+  }
+
+  .step:last-child .line {
+    display: block;
+    visibility: hidden;
+  }
+
+  .text {
+    padding: 12px 8px 0 0;
+  }
+}

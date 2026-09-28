@@ -1,0 +1,127 @@
+/*
+ * Section layout (DESIGN.md §7 Grid + Lanes).
+ * Mobile (<960): one column. The route runs in a 48px gutter on the lane
+ * side; the other side gets the page margin. Tablet keeps that layout,
+ * centred at a readable width.
+ * Desktop (≥960): 12 columns, 1200 max. Content takes 8 columns on one
+ * side; the route travels in the other 4 plus the outer margin.
+ */
+
+.section {
+  position: relative;
+  padding-block: var(--pad-top, var(--section-pad)) var(--pad-bottom, var(--section-pad));
+}
+
+.inner {
+  max-width: calc(720px + var(--route-gutter) + var(--page-margin));
+  margin-inline: auto;
+}
+
+.left .inner {
+  padding-left: var(--route-gutter);
+  padding-right: var(--page-margin);
+}
+
+.right .inner {
+  padding-left: var(--page-margin);
+  padding-right: var(--route-gutter);
+}
+
+.content {
+  min-width: 0;
+}
+
+.surface {
+  background: var(--surface-50);
+}
+
+.dark {
+  background: var(--navy-900);
+  color: var(--on-dark);
+}
+
+@media (min-width: 960px) {
+  .inner,
+  .left .inner,
+  .right .inner {
+    --bleed: max(40px, calc((100vw - 1200px) / 2));
+    width: min(1200px, calc(100% - 80px));
+    max-width: none;
+    padding-inline: 0;
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: 24px;
+  }
+
+  /* Lane right → content on the left, and vice versa. */
+  .right .content {
+    grid-column: 1 / span 8;
+  }
+
+  .left .content {
+    grid-column: 5 / span 8;
+  }
+}
+
+/* ── Stage header: eyebrow, h2, lead ─────────────────────── */
+
+.eyebrowRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-1) var(--space-3);
+}
+
+/* Mobile shows the waypoint's place name in the eyebrow; desktop shows it on the route. */
+.place {
+  color: var(--ink-700);
+  font-size: var(--fs-eyebrow);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.dark .place {
+  color: var(--on-dark-muted);
+}
+
+.h2 {
+  margin-top: 20px;
+}
+
+.lead {
+  margin-top: 20px;
+}
+
+.afterLead {
+  margin-top: 40px;
+}
+
+@media (min-width: 960px) {
+  .place {
+    display: none;
+  }
+
+  .h2 {
+    margin-top: var(--heading-to-lead);
+  }
+
+  .lead {
+    margin-top: var(--heading-to-lead);
+  }
+
+  .afterLead {
+    margin-top: var(--lead-to-content);
+  }
+}
+
+/* One-time fade-up on first view (DESIGN.md §11). JS-only; see useRevealOnce. */
+.reveal[data-reveal='pending'] {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.reveal[data-reveal='in'] {
+  transition:
+    opacity var(--dur-slow) var(--ease-out),
+    transform var(--dur-slow) var(--ease-out);
+}
