@@ -47,8 +47,20 @@ export function Waypoint({ x, y, passed, label, variant = 'desktop' }: WaypointP
 }
 
 /** Payment marker at the head of the sailed course, with its mono label chip. */
-export function PaymentMarker({ x, y, label, labelSide = 'right' }: { x: number; y: number; label?: string; labelSide?: 'left' | 'right' }) {
-  const w = label ? Math.max(104, label.length * 7.4 + 22) : 0;
+export function PaymentMarker({
+  x,
+  y,
+  label,
+  labelSide = 'right',
+  labelWidth,
+}: {
+  x: number;
+  y: number;
+  label?: string;
+  labelSide?: 'left' | 'right';
+  labelWidth?: number;
+}) {
+  const w = label ? (labelWidth ?? Math.max(104, label.length * 7.4 + 22)) : 0;
   const rx = labelSide === 'right' ? x + 12 : x - 12 - w;
   const isMoney = Boolean(label && /\d/.test(label));
   return (

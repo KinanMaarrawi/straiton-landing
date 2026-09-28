@@ -52,7 +52,7 @@
   .btn:not(.tertiary),
   .lg:not(.tertiary),
   .secondary.dark {
-    padding-inline: var(--space-3);
+    padding-inline: var(--space-2);
   }
 }
 

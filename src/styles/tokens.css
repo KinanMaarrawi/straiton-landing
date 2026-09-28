@@ -11,6 +11,7 @@
   --ink-700: #3d5260;
   --ink-500: #5f707b;
   --line-200: #dce3e2;
+  --line-control: #84929a; /* form control boundaries: 3.2:1 on white (WCAG 1.4.11) */
   --surface-50: #f3f6f5;
   --white: #ffffff;
   --teal-500: #17b3a0;
@@ -35,6 +36,7 @@
   --text-secondary: var(--ink-700);
   --text-tertiary: var(--ink-500);
   --border: var(--line-200);
+  --border-control: var(--line-control);
   --border-hover: var(--ink-500);
   --link: var(--teal-700);
   --error: var(--red-700);

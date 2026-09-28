@@ -149,15 +149,49 @@ export function AssessmentForm() {
     }
   }
 
-  function blur(name: FieldName) {
+  /*
+   * Blur validation waits until any pointer press is released. Otherwise a
+   * new error message shifts the layout between mousedown and mouseup, and
+   * the click the user aimed (Continue, a contact option) misses its target.
+   */
+  const pointerDown = useRef(false);
+  const pendingBlur = useRef<Set<FieldName>>(new Set());
+  const valuesRef = useRef(values);
+  valuesRef.current = values;
+
+  function applyBlur(name: FieldName) {
     setTouched((t) => ({ ...t, [name]: true }));
-    const msg = validateField(name, values);
+    const msg = validateField(name, valuesRef.current);
     setErrors((p) => {
       const o = { ...p };
       if (msg) o[name] = msg;
       else delete o[name];
       return o;
     });
+  }
+
+  useEffect(() => {
+    const up = () => {
+      if (!pointerDown.current) return;
+      pointerDown.current = false;
+      // Let the click (and any submit) run first, then show deferred errors.
+      window.setTimeout(() => {
+        pendingBlur.current.forEach(applyBlur);
+        pendingBlur.current.clear();
+      }, 0);
+    };
+    window.addEventListener('pointerup', up);
+    window.addEventListener('pointercancel', up);
+    return () => {
+      window.removeEventListener('pointerup', up);
+      window.removeEventListener('pointercancel', up);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- applyBlur reads refs only
+  }, []);
+
+  function blur(name: FieldName) {
+    if (pointerDown.current) pendingBlur.current.add(name);
+    else applyBlur(name);
   }
 
   function onFile(f: File | null) {
@@ -272,7 +306,14 @@ export function AssessmentForm() {
   const onStep1 = step === 1;
 
   return (
-    <form className={s.card} id="assessment-card" noValidate onSubmit={onSubmit} aria-busy={sending || undefined} aria-labelledby={FORM_FOCUS_ID}>
+    <form
+      className={s.card}
+      id="assessment-card"
+      noValidate
+      onSubmit={onSubmit}
+      onPointerDownCapture={() => {
+        pointerDown.current = true;
+      }} aria-busy={sending || undefined} aria-labelledby={FORM_FOCUS_ID}>
       <div className={s.head}>
         <h3 id={FORM_FOCUS_ID} tabIndex={-1} className={s.title}>
           {FORM.title}

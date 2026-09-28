@@ -1,0 +1,40 @@
+/* Page-level route SVG (DESIGN.md §8) */
+
+.route {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 3;
+  pointer-events: none;
+  overflow: visible;
+}
+
+/* Charted course: navy 25%, 3px round dots every 8px. */
+.charted {
+  fill: none;
+  stroke: var(--route-charted);
+  stroke-width: 3;
+  stroke-dasharray: 0 8;
+  stroke-linecap: round;
+}
+
+/* Sailed course: teal 3.5px dots, same pattern, revealed by the mask. */
+.sailed {
+  fill: none;
+  stroke: var(--teal-500);
+  stroke-width: 3.5;
+  stroke-dasharray: 0 8;
+  stroke-linecap: round;
+}
+
+.start {
+  fill: var(--teal-500);
+  stroke: var(--white);
+  stroke-width: 2;
+}
+
+.endRing {
+  fill: var(--white);
+  stroke: var(--ink-500);
+  stroke-width: 1.5;
+}

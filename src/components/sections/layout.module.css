@@ -41,10 +41,15 @@
 }
 
 @media (min-width: 960px) {
+  /* Sections are size containers so map bleeds can use the real width (no scrollbar). */
+  .section {
+    container-type: inline-size;
+  }
+
   .inner,
   .left .inner,
   .right .inner {
-    --bleed: max(40px, calc((100vw - 1200px) / 2));
+    --bleed: max(40px, calc((100cqw - 1200px) / 2));
     width: min(1200px, calc(100% - 80px));
     max-width: none;
     padding-inline: 0;

@@ -114,7 +114,7 @@
   /* The map bleeds into the right margin, as in the frame (606px at 1440). */
   .map {
     position: relative;
-    width: calc(100% + var(--bleed) + 10px);
+    width: calc(100% + var(--bleed));
   }
 
   .mapImg {

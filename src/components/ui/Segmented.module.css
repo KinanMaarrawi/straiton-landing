@@ -12,7 +12,7 @@
   grid-template-columns: repeat(var(--count), minmax(0, 1fr));
   gap: var(--space-1);
   padding: var(--space-1);
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-control);
   border-radius: var(--radius-control);
   background: var(--white);
 }

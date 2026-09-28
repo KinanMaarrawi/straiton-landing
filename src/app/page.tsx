@@ -12,6 +12,7 @@ import { Support } from '@/components/sections/Support';
 import { Track } from '@/components/sections/Track';
 import { Why } from '@/components/sections/Why';
 import { PageStateProvider } from '@/components/state/PageState';
+import { Route } from '@/components/route/Route';
 
 /**
  * The page is the payment's route: Dubai (hero) → four waypoints → India
@@ -35,6 +36,7 @@ export default function Home() {
         <Support />
         <Faq />
         <Arrival />
+        <Route />
       </main>
       <Footer />
       <StickyCta />
