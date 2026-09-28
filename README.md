@@ -77,7 +77,29 @@ touched: Record<field, boolean>         // validate on blur + on submit
 - The dirham sign is an inline SVG (path in the Component Sheet), `role="img" aria-label="AED"`.
 - Fonts: Google Fonts (Newsreader, IBM Plex Sans, IBM Plex Mono).
 
+## Development
+```bash
+npm install
+npm run dev        # http://localhost:3000
+npm run build      # static production build (what Vercel runs)
+npm run typecheck
+```
+- `src/styles/tokens.css`: every DESIGN.md token as a CSS custom property. `globals.css` holds the reset, focus styles and type-role classes (`t-display`, `t-h2`, `t-lead`, ...).
+- `src/app/fonts.ts`: Newsreader (variable, opsz), IBM Plex Sans 400/500/600, IBM Plex Mono 400/500 via `next/font`.
+- `src/components/ui/`: base components (Button, Tag, DirhamSign, Field + TextInput/Textarea/Select, AmountInput, AmountField, Segmented, FileField, ErrorSummary, QuoteDocument, SpecTable, Accordion, DemoNotice).
+- `src/components/route/`: route glyphs (Waypoint, PaymentMarker). The page-level route comes last.
+- `/components`: a living component sheet built from the real components (noindex). Use it to review states.
+
 ## Unfinished / assumptions
 - Placeholder contact details, the regulatory copy and sample form values are illustrative by brief.
 - Tablet (768–1199) has no dedicated frame; follow DESIGN.md §7 (8 cols, 32 margins) and the lane rules.
 - Mobile route frames show only the end state; mid-scroll behaviour follows the desktop rules.
+- Build status: step 1 done (scaffold, tokens, fonts, base components). The landing page itself is a placeholder until step 2.
+- Spec table label column is 40% (DESIGN.md §10). The frames use 44%; DESIGN.md wins the conflict.
+- Quote document: only the "You send" amount is Plex Mono. Other values are Plex Sans, per the money-only rule and the frames (DESIGN.md §10 says "value in Plex Mono").
+- Tags have a small size (20px, 12px text) for the Demo tag beside field labels and footer headings, as in the frames. DESIGN.md only specifies 13px.
+- Segmented options keep the frames' 40px visual height but extend their hit area over the track padding to 48px, to meet the 44px target rule.
+- Tertiary links get a 44px hit area with negative block margins, so their visual spacing matches the frames.
+- Error summary heading pluralises: "Check 1 field…" / "Check 2 fields…". The same wording is used on Step 2.
+- Collapsible and animated content only hides when JS runs (an inline script adds `html.js`). Without JS every FAQ answer is visible.
+- The dismiss button on the contact demo notice is labelled "Dismiss" (from the Component Sheet). TODO(copy) if a different label is wanted.
