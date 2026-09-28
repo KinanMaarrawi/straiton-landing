@@ -67,7 +67,26 @@
 }
 
 .highlight {
+  position: relative;
+  isolation: isolate;
+}
+
+/* The teal-50 wash, drawn as a layer so it can sweep in on first view. */
+.highlight::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
   background: var(--teal-50);
+  transform-origin: left center;
+}
+
+.doc[data-reveal='pending'] .highlight::before {
+  transform: scaleX(0);
+}
+
+.doc[data-reveal='in'] .highlight::before {
+  transition: transform 700ms var(--ease-out) 520ms;
 }
 
 .highlight .label {

@@ -9,17 +9,17 @@ export function Share() {
   return (
     <Section id="share" run="share" lane="left" className={s.share} labelledBy="share-title">
       <div className={layout.content}>
-        <Reveal>
+        <Reveal stagger>
           <StageHeader eyebrow={SHARE.eyebrow} place={SHARE.waypoint} waypoint="01" title={SHARE.h2} titleId="share-title" lead={SHARE.lead} />
         </Reveal>
-        <dl className={`${layout.afterLead} ${s.defList}`}>
+        <Reveal as="dl" stagger className={`${layout.afterLead} ${s.defList}`}>
           {SHARE.items.map(([term, desc]) => (
             <div key={term}>
               <dt>{term}</dt>
               <dd>{desc}</dd>
             </div>
           ))}
-        </dl>
+        </Reveal>
       </div>
     </Section>
   );

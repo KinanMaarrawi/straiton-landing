@@ -2,14 +2,33 @@
 
 import type { ReactNode } from 'react';
 import { useRevealOnce } from '@/components/ui/useRevealOnce';
-import s from './layout.module.css';
 
-/** Fades its content up 12px the first time it enters view. Never repeats. */
-export function Reveal({ children, className }: { children: ReactNode; className?: string }) {
-  const { ref, state } = useRevealOnce<HTMLDivElement>(0.1);
+type RevealProps = {
+  children: ReactNode;
+  className?: string;
+  /** Render as a list or definition list so semantics are kept. */
+  as?: 'div' | 'ol' | 'ul' | 'dl';
+  /** Children cascade in one after another instead of fading as one block. */
+  stagger?: boolean | 'tight';
+  id?: string;
+};
+
+/**
+ * Plays its reveal the first time it scrolls into view (motion.css).
+ * Content that's already on screen at load, or everything without JS or
+ * under reduced motion, simply shows.
+ */
+export function Reveal({ children, className, as: Tag = 'div', stagger, id }: RevealProps) {
+  const { ref, state } = useRevealOnce<HTMLElement>(0.12);
   return (
-    <div ref={ref} data-reveal={state} className={[s.reveal, className].filter(Boolean).join(' ')}>
+    <Tag
+      ref={ref as never}
+      id={id}
+      data-reveal={state}
+      data-stagger={stagger === 'tight' ? 'tight' : stagger ? '' : undefined}
+      className={className}
+    >
       {children}
-    </div>
+    </Tag>
   );
 }

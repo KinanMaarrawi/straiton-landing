@@ -56,6 +56,11 @@
     white-space: nowrap;
   }
 
+  /* The title crossfades when the request arrives. */
+  .endTitle {
+    animation: rise var(--dur-slow) var(--ease-out);
+  }
+
   .endLabel strong {
     color: var(--navy-900);
     font-size: 14px;
@@ -68,5 +73,12 @@
 
   .card {
     margin-top: var(--lead-to-content);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
   }
 }

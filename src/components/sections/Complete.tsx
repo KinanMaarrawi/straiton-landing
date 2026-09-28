@@ -37,14 +37,16 @@ export function Complete() {
   return (
     <Section id="complete" run="complete" lane="left" surface="surface" className={s.complete} labelledBy="complete-title">
       <div className={layout.content}>
-        <Reveal>
+        <Reveal stagger>
           <StageHeader eyebrow={COMPLETE.eyebrow} place={COMPLETE.waypoint} waypoint="03" title={COMPLETE.h2} titleId="complete-title" titleClassName={s.maxTitle} lead={COMPLETE.lead} />
         </Reveal>
-        <h3 className={`t-h3 ${s.specHeading}`}>{COMPLETE.specHeading}</h3>
-        <p className={s.specSub}>{COMPLETE.specSub}</p>
-        <div className={s.specTable}>
+        <Reveal stagger>
+          <h3 className={`t-h3 ${s.specHeading}`}>{COMPLETE.specHeading}</h3>
+          <p className={s.specSub}>{COMPLETE.specSub}</p>
+        </Reveal>
+        <Reveal className={s.specTable}>
           <SpecTable rows={ROWS} columns={2} />
-        </div>
+        </Reveal>
       </div>
     </Section>
   );

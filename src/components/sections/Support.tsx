@@ -31,7 +31,7 @@ export function Support() {
   return (
     <Section id="support" run="support" lane="left" surface="dark" className={s.support} labelledBy="support-title">
       <div className={layout.content}>
-        <Reveal>
+        <Reveal stagger>
           <StageHeader
             eyebrow={SUPPORT.eyebrow}
             title={SUPPORT.h2}
@@ -48,6 +48,7 @@ export function Support() {
             }
           />
         </Reveal>
+        <Reveal stagger>
         <p className={s.helpsLabel}>{SUPPORT.helpsWithLabel}</p>
         <p className={s.helps}>{SUPPORT.helpsWith}</p>
         <div className={s.demoLine}>
@@ -67,6 +68,7 @@ export function Support() {
             <span className={s.contactDetail}>{SUPPORT.email}</span>
           </Button>
         </div>
+        </Reveal>
         <div id="contact-notice">
           <DemoNotice open={notice} onDismiss={dismiss} message={SUPPORT.notice} />
         </div>

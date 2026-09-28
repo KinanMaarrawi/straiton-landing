@@ -15,7 +15,7 @@ export function Assess() {
   return (
     <Section id="assess" run="assess" lane="right" className={s.assess} labelledBy="assess-title">
       <div className={layout.content}>
-        <Reveal>
+        <Reveal stagger>
           <StageHeader eyebrow={ASSESS.eyebrow} place={ASSESS.waypoint} waypoint="02" title={ASSESS.h2} titleId="assess-title" titleClassName={s.maxTitle} lead={ASSESS.lead} />
         </Reveal>
         <div className={`${layout.afterLead} ${s.assessGrid}`}>
@@ -25,14 +25,14 @@ export function Assess() {
           </div>
           <div id="documents">
             <h3 className={`t-h3 ${s.checkHeading}`}>{ASSESS.checklistHeading}</h3>
-            <ul className={s.checklist}>
+            <Reveal as="ul" stagger className={s.checklist}>
               {ASSESS.checklist.map((item) => (
                 <li key={item}>
                   <CheckIcon size={16} className={s.check} />
                   {item}
                 </li>
               ))}
-            </ul>
+            </Reveal>
             <p className={s.checkFootnote}>{ASSESS.checklistFootnote}</p>
           </div>
         </div>

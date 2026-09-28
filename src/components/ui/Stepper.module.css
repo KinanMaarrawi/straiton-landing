@@ -133,3 +133,53 @@
     padding: 12px 8px 0 0;
   }
 }
+
+/* ── Progress plays once when an ancestor Reveal enters view ── */
+.step:nth-child(1) { --s: 0; }
+.step:nth-child(2) { --s: 1; }
+.step:nth-child(3) { --s: 2; }
+.step:nth-child(4) { --s: 3; }
+
+:global([data-reveal='pending']) .dot,
+:global([data-reveal='pending']) .text {
+  opacity: 0;
+}
+
+:global([data-reveal='pending']) .dot {
+  transform: scale(0.4);
+}
+
+:global([data-reveal='pending']) .line {
+  transform: scaleY(0);
+}
+
+:global([data-reveal='in']) .dot {
+  transition:
+    opacity 300ms var(--ease-out),
+    transform 420ms cubic-bezier(0.3, 1.5, 0.5, 1);
+  transition-delay: calc(300ms + var(--s) * 380ms);
+}
+
+:global([data-reveal='in']) .text {
+  transition: opacity 400ms var(--ease-out);
+  transition-delay: calc(360ms + var(--s) * 380ms);
+}
+
+.line {
+  transform-origin: top center;
+}
+
+:global([data-reveal='in']) .line {
+  transition: transform 380ms var(--ease-in-out);
+  transition-delay: calc(480ms + var(--s) * 380ms);
+}
+
+@container (min-width: 480px) {
+  .line {
+    transform-origin: left center;
+  }
+
+  :global([data-reveal='pending']) .line {
+    transform: scaleX(0);
+  }
+}

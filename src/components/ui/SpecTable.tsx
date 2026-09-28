@@ -23,6 +23,7 @@ export function SpecTable({ rows, columns = 1 }: SpecTableProps) {
   return (
     <div className={styles.wrap}>
     <dl
+      data-stagger="tight"
       className={[styles.table, columns === 2 && styles.two].filter(Boolean).join(' ')}
       style={{ ['--rows' as string]: perColumn }}
     >

@@ -13,6 +13,8 @@ type AccordionProps = {
   /** Indices open on first render. Items open and close independently. */
   defaultOpen?: number[];
   headingLevel?: 2 | 3 | 4;
+  /** Items cascade in when an ancestor Reveal plays. */
+  stagger?: boolean;
 };
 
 /**
@@ -20,9 +22,9 @@ type AccordionProps = {
  * and aria-controls; the panel height animates over 240ms (instant under
  * reduced motion). Without JS every panel is shown.
  */
-export function Accordion({ items, defaultOpen = [], headingLevel = 3 }: AccordionProps) {
+export function Accordion({ items, defaultOpen = [], headingLevel = 3, stagger }: AccordionProps) {
   return (
-    <div className={styles.accordion}>
+    <div className={styles.accordion} data-stagger={stagger ? 'tight' : undefined}>
       {items.map((item, i) => (
         <AccordionItem key={item.question} {...item} headingLevel={headingLevel} initiallyOpen={defaultOpen.includes(i)} />
       ))}

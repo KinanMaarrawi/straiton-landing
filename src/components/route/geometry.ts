@@ -15,6 +15,7 @@ export type WaypointSpec = { n: string; label: string; x: number; y: number };
 
 export type RouteShape = {
   d: string;
+  segs: Seg[];
   start: Pt;
   end: Pt;
   wps: WaypointSpec[];
@@ -24,36 +25,60 @@ export type RouteShape = {
 
 const f = (n: number) => n.toFixed(1);
 
+/** A path segment, kept alongside the d string so we can sample in JS. */
+export type Seg = { c: [Pt, Pt, Pt, Pt] } | { l: [Pt, Pt] };
+
+/** Builds a path string and its segment list at the same time. */
+class PathBuilder {
+  d = '';
+  segs: Seg[] = [];
+  private at: Pt = [0, 0];
+  move(p: Pt) {
+    this.d += `M${f(p[0])} ${f(p[1])}`;
+    this.at = p;
+  }
+  curve(c1: Pt, c2: Pt, p: Pt) {
+    this.d += `C${f(c1[0])} ${f(c1[1])} ${f(c2[0])} ${f(c2[1])} ${f(p[0])} ${f(p[1])}`;
+    this.segs.push({ c: [this.at, c1, c2, p] });
+    this.at = p;
+  }
+  line(p: Pt) {
+    this.d += `L${f(p[0])} ${f(p[1])}`;
+    this.segs.push({ l: [this.at, p] });
+    this.at = p;
+  }
+}
+
 /** Catmull-Rom through pts, as cubic Béziers (frame's cr()). */
-function catmullRom(pts: Pt[], pre: Pt, post: Pt): string {
+function catmullRom(b: PathBuilder, pts: Pt[], pre: Pt, post: Pt) {
   const P = [pre, ...pts, post];
-  let d = '';
   for (let i = 1; i < P.length - 2; i++) {
     const [p0, p1, p2, p3] = [P[i - 1], P[i], P[i + 1], P[i + 2]];
-    d += `C${f(p1[0] + (p2[0] - p0[0]) / 6)} ${f(p1[1] + (p2[1] - p0[1]) / 6)} ${f(p2[0] - (p3[0] - p1[0]) / 6)} ${f(p2[1] - (p3[1] - p1[1]) / 6)} ${f(p2[0])} ${f(p2[1])}`;
+    b.curve(
+      [p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6],
+      [p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6],
+      [p2[0], p2[1]],
+    );
   }
-  return d;
 }
 
 /** Vertical-tangent curves between chain points, with full-circle holding loops (frame's chain loop). */
-function chainPath(chain: ChainItem[]): string {
-  let d = '';
+function chainPath(b: PathBuilder, chain: ChainItem[]) {
   let a = chain[0] as Pt;
   for (let i = 1; i < chain.length; i++) {
     const c = chain[i];
-    const b: Pt = 'loop' in c ? [c.x, c.y] : c;
-    const k = (b[1] - a[1]) * 0.5;
-    d += `C${f(a[0])} ${f(a[1] + k)} ${f(b[0])} ${f(b[1] - k)} ${f(b[0])} ${f(b[1])}`;
+    const t: Pt = 'loop' in c ? [c.x, c.y] : c;
+    const k = (t[1] - a[1]) * 0.5;
+    b.curve([a[0], a[1] + k], [t[0], t[1] - k], t);
     if ('loop' in c) {
       const cx = c.x + c.dir * c.r;
       for (let j = 1; j <= 64; j++) {
-        const t = -Math.PI / 2 + (j / 64) * 2 * Math.PI;
-        d += `L${f(cx + c.dir * c.r * Math.sin(t))} ${f(c.y + c.v * (t + Math.PI / 2) + c.r * Math.cos(t))}`;
+        const th = -Math.PI / 2 + (j / 64) * 2 * Math.PI;
+        b.line([cx + c.dir * c.r * Math.sin(th), c.y + c.v * (th + Math.PI / 2) + c.r * Math.cos(th)]);
       }
       a = [c.x, c.y + 2 * Math.PI * c.v];
-    } else a = b;
+    } else a = t;
   }
-  return d;
 }
 
 export type DesktopInput = {
@@ -120,12 +145,13 @@ export function desktopRoute(inp: DesktopInput): RouteShape {
 
   const hn = H.length;
   const an = A.length;
-  let d = `M${f(H[0][0])} ${f(H[0][1])}`;
-  d += catmullRom(H, [2 * H[0][0] - H[1][0], 2 * H[0][1] - H[1][1]], [H[hn - 2][0], 2 * H[hn - 1][1] - H[hn - 2][1]]);
-  d += chainPath(chain);
-  d += catmullRom(A, [A[1][0], 2 * A[0][1] - A[1][1]], [2 * A[an - 1][0] - A[an - 2][0], 2 * A[an - 1][1] - A[an - 2][1]]);
+  const b = new PathBuilder();
+  b.move(H[0]);
+  catmullRom(b, H, [2 * H[0][0] - H[1][0], 2 * H[0][1] - H[1][1]], [H[hn - 2][0], 2 * H[hn - 1][1] - H[hn - 2][1]]);
+  chainPath(b, chain);
+  catmullRom(b, A, [A[1][0], 2 * A[0][1] - A[1][1]], [2 * A[an - 1][0] - A[an - 2][0], 2 * A[an - 1][1] - A[an - 2][1]]);
 
-  return { d, start: H[0], end: A[an - 1], wps, loadCutY: inp.heroMap.bottom - 40 };
+  return { d: b.d, segs: b.segs, start: H[0], end: A[an - 1], wps, loadCutY: inp.heroMap.bottom - 40 };
 }
 
 export type MobileInput = {
@@ -181,6 +207,61 @@ export function mobileRoute(inp: MobileInput): RouteShape {
     }
   }
   chain.push(end);
-  const d = `M${f(start[0])} ${f(start[1])}` + chainPath(chain);
-  return { d, start, end, wps, loadCutY: start[1] };
+  const b = new PathBuilder();
+  b.move(start);
+  chainPath(b, chain);
+  return { d: b.d, segs: b.segs, start, end, wps, loadCutY: start[1] };
+}
+
+/**
+ * Resample the path at a fixed arc-length step, in JS. (Firefox's
+ * getPointAtLength walks the path from the start on every call, so
+ * sampling a page-long path with it takes seconds.)
+ */
+export function sampleSegments(segs: Seg[], step: number): { xs: Float32Array; ys: Float32Array; total: number } {
+  // 1. Flatten to a fine polyline with cumulative length.
+  const px: number[] = [];
+  const py: number[] = [];
+  const pl: number[] = [];
+  let len = 0;
+  const push = (x: number, y: number) => {
+    if (px.length) len += Math.hypot(x - px[px.length - 1], y - py[py.length - 1]);
+    px.push(x);
+    py.push(y);
+    pl.push(len);
+  };
+  for (const sg of segs) {
+    if ('l' in sg) {
+      if (!px.length) push(sg.l[0][0], sg.l[0][1]);
+      push(sg.l[1][0], sg.l[1][1]);
+      continue;
+    }
+    const [p0, p1, p2, p3] = sg.c;
+    if (!px.length) push(p0[0], p0[1]);
+    const chord = Math.hypot(p1[0] - p0[0], p1[1] - p0[1]) + Math.hypot(p2[0] - p1[0], p2[1] - p1[1]) + Math.hypot(p3[0] - p2[0], p3[1] - p2[1]);
+    const n = Math.max(4, Math.ceil(chord / 2));
+    for (let i = 1; i <= n; i++) {
+      const t = i / n;
+      const u = 1 - t;
+      const a = u * u * u;
+      const b = 3 * u * u * t;
+      const c = 3 * u * t * t;
+      const d = t * t * t;
+      push(a * p0[0] + b * p1[0] + c * p2[0] + d * p3[0], a * p0[1] + b * p1[1] + c * p2[1] + d * p3[1]);
+    }
+  }
+  // 2. Walk the polyline, emitting a point every `step`.
+  const n = Math.max(2, Math.floor(len / step) + 1);
+  const xs = new Float32Array(n);
+  const ys = new Float32Array(n);
+  let j = 1;
+  for (let k = 0; k < n; k++) {
+    const target = k * step;
+    while (j < pl.length - 1 && pl[j] < target) j++;
+    const span = pl[j] - pl[j - 1] || 1;
+    const t = Math.min(1, Math.max(0, (target - pl[j - 1]) / span));
+    xs[k] = px[j - 1] + (px[j] - px[j - 1]) * t;
+    ys[k] = py[j - 1] + (py[j] - py[j - 1]) * t;
+  }
+  return { xs, ys, total: len };
 }

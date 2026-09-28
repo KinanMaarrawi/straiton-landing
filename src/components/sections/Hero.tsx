@@ -14,6 +14,9 @@ import s from './Hero.module.css';
 const [DX, DY] = project('hero', [55.3, 25.27]);
 const START = { left: `${(DX / 606) * 100}%`, top: `${(DY / 680) * 100}%` };
 
+/** Entrance delay for the hero's one-time load sequence (motion.css). */
+const delay = (ms: number) => ({ ['--enter-delay' as string]: `${ms}ms` });
+
 export function Hero() {
   const { amount, setAmount, currency, setCurrency, goToAssessment } = usePageState();
 
@@ -30,15 +33,22 @@ export function Hero() {
   return (
     <Section id="top" run="hero" lane="left" className={s.hero} labelledBy="hero-title">
       <div className={s.text}>
-        <p className={s.eyebrowRow} data-pt="start">
+        <p className={`${s.eyebrowRow} enter-rise`} data-pt="start" style={delay(0)}>
           <span className="t-eyebrow">{HERO.eyebrow}</span>
           <Tag variant="pilot" />
         </p>
         <h1 id="hero-title" className={`t-display ${s.h1}`}>
-          <span className={s.line}>Same sea.</span> <span className={s.line}>Better paperwork.</span>
+          <span className={`${s.line} enter-line`} style={delay(120)}>
+            <span>Same sea.</span>
+          </span>{' '}
+          <span className={`${s.line} enter-line`} style={delay(240)}>
+            <span>Better paperwork.</span>
+          </span>
         </h1>
-        <p className={`t-lead ${s.lead}`}>{HERO.lead}</p>
-        <div className={s.starter}>
+        <p className={`t-lead ${s.lead} enter-rise`} style={delay(420)}>
+          {HERO.lead}
+        </p>
+        <div className={`${s.starter} enter-rise`} style={delay(540)}>
           <AmountField
             label={HERO.amountLabel}
             hint={HERO.hint}
@@ -62,16 +72,18 @@ export function Hero() {
         </div>
       </div>
       <div className={s.mapCol}>
-        <div className={s.map} data-map="hero" aria-hidden="true">
+        <div className={`${s.map} enter-map`} data-map="hero" aria-hidden="true" style={delay(150)}>
           {/* eslint-disable-next-line @next/next/no-img-element -- static decorative SVG */}
           <img src="/maps/hero.svg" alt="" width={606} height={680} className={s.mapImg} />
-          <span className={s.startDot} style={START} />
-          <span className={s.startLabel} style={START}>
+          <span className={`${s.startDot} enter-fade`} style={{ ...START, ...delay(700) }} />
+          <span className={`${s.startLabel} enter-rise`} style={{ ...START, ...delay(820) }}>
             <strong>{HERO.pointTitle}</strong>
             <span>{HERO.pointSub}</span>
           </span>
         </div>
-        <p className={s.caption}>{HERO.caption}</p>
+        <p className={`${s.caption} enter-fade`} style={delay(1000)}>
+          {HERO.caption}
+        </p>
       </div>
     </Section>
   );

@@ -304,11 +304,15 @@ The eyebrow `02 — Assess` (Plex Sans, teal-700), the h2, and the lead. The way
 | `--ease-in-out` | `cubic-bezier(0.6, 0, 0.2, 1)` |
 
 **Allowed**
-- The route drawing with scroll (Section 8).
+- The route drawing with scroll (Section 8). Each sailed dot grows and fades in (260ms) as the marker passes; passed waypoints ripple once and their check draws in.
 - The hero map's first route segment drawing once on load (1200ms, `ease-in-out`).
-- Section content fading up once when it first enters view: 12px translate plus opacity, `dur-slow`, never repeated.
-- Quote document rows appearing in sequence (60ms stagger) the first time it enters view.
+- **Hero entrance, once on load:** eyebrow, then each headline line rising out of a clip (900ms, 120ms apart), then lead, amount starter, map (opacity only, so the route stays aligned), start label and caption. The whole sequence finishes within ~1.2s and never blocks input.
+- **Section reveals, once per section:** eyebrow, h2 and lead cascade in (14px rise plus opacity, 560ms, 70ms stagger); lists inside a section cascade after the header (why items, share rows, checklist, eligibility items, FAQ items, spec rows at a tighter 40ms). Never repeated.
+- **Progress moments:** the Track stepper plays its progress once (dots pop, lines fill step by step); the quote's "Supplier receives" row highlight sweeps in after its rows (60ms stagger); the form's progress bar fills from the left.
+- **Cause and effect:** the nav's active underline slides between links; trailing arrows nudge 3px on hover and focus; FAQ answers fade in as their panel opens; field errors and the error summary slide in; the confirmation check pops and receipt rows cascade; the arrival label crossfades to "Arrived" and the marker pulses twice on arrival; the mobile menu's links cascade in.
 - Accordion height, form step transitions (a 16px horizontal slide plus fade), button state changes, sticky CTA slide-up.
+
+Motion was expanded on 2026-09-28 at the client's request ("less of a static webpage and more of a dynamic experience"). The principle above still holds: every addition shows progress or cause and effect, plays once, and the forbidden list below is unchanged.
 
 **Forbidden:** parallax, scroll-jacking or snap-scrolling, cursor followers, magnetic buttons, tilt-on-hover, looping background animation, counting-up numbers, typing effects, marquee logos, hover scale on cards, and anything that delays reading.
 

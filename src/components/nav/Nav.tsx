@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useRef, useState, type MouseEvent } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useRef, useState, type MouseEvent } from 'react';
 import { NAV_CTA, NAV_LINKS } from '@/content/copy';
 import { Button } from '@/components/ui/Button';
 import { usePageState } from '@/components/state/PageState';
@@ -22,6 +22,20 @@ export function Nav() {
   const [active, setActive] = useState<string | null>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const closeMenu = useCallback(() => setMenuOpen(false), [setMenuOpen]);
+  const listRef = useRef<HTMLUListElement>(null);
+  const [bar, setBar] = useState<{ x: number; w: number } | null>(null);
+
+  // One underline that slides to whichever link is active.
+  useLayoutEffect(() => {
+    const place = () => {
+      const a = listRef.current?.querySelector<HTMLElement>('a[aria-current]');
+      setBar(a ? { x: a.offsetLeft, w: a.offsetWidth } : null);
+    };
+    place();
+    window.addEventListener('resize', place);
+    document.fonts?.ready.then(place).catch(() => {});
+    return () => window.removeEventListener('resize', place);
+  }, [active]);
 
   // Hairline appears after scroll.
   useEffect(() => {
@@ -59,7 +73,7 @@ export function Nav() {
           STRAITON
         </a>
         <nav className={s.links} aria-label="Main">
-          <ul>
+          <ul ref={listRef}>
             {NAV_LINKS.map((l) => (
               <li key={l.label}>
                 <a
@@ -71,6 +85,13 @@ export function Nav() {
                 </a>
               </li>
             ))}
+            <li aria-hidden="true" className={s.barSlot}>
+              <span
+                className={s.bar}
+                data-on={bar ? '' : undefined}
+                style={bar ? { transform: `translateX(${bar.x}px)`, width: bar.w } : undefined}
+              />
+            </li>
           </ul>
         </nav>
         <Button href="#assessment" className={s.cta} onClick={onCta}>

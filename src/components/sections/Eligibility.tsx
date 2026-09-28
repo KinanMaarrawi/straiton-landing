@@ -1,5 +1,6 @@
 import { ELIGIBILITY } from '@/content/copy';
 import { CheckIcon } from '@/components/ui/icons';
+import { Reveal } from './Reveal';
 import { Section } from './Section';
 import s from './sections.module.css';
 
@@ -11,14 +12,14 @@ export function Eligibility() {
         <p id="eligibility-title" className={s.stripLead}>
           {ELIGIBILITY.leadIn}
         </p>
-        <ul className={s.stripList}>
+        <Reveal as="ul" stagger className={s.stripList}>
           {ELIGIBILITY.items.map((item) => (
             <li key={item}>
               <CheckIcon size={16} className={s.check} />
               {item}
             </li>
           ))}
-        </ul>
+        </Reveal>
         <p className={s.stripSmall}>{ELIGIBILITY.small}</p>
       </div>
     </Section>

@@ -35,7 +35,8 @@
 }
 
 .links,
-.cta {
+.inner .cta {
+  /* Scoped so it beats Button's own display rule in any stylesheet order. */
   display: none;
 }
 
@@ -138,6 +139,18 @@
   line-height: 1.2;
 }
 
+.sheet[data-open] .sheetLinks li {
+  animation: rise 420ms var(--ease-out) both;
+}
+
+.sheet[data-open] .sheetLinks li:nth-child(2) { animation-delay: 50ms; }
+.sheet[data-open] .sheetLinks li:nth-child(3) { animation-delay: 100ms; }
+.sheet[data-open] .sheetLinks li:nth-child(4) { animation-delay: 150ms; }
+
+.sheet[data-open] .sheetFoot {
+  animation: rise 420ms var(--ease-out) 200ms both;
+}
+
 .sheetLink:hover {
   text-decoration: none;
   color: var(--teal-700);
@@ -174,8 +187,38 @@
   }
 
   .links ul {
+    position: relative;
     display: flex;
     gap: clamp(24px, 3vw, 40px);
+  }
+
+  /* Sliding active underline: 2px teal, ~8px under the text. */
+  .barSlot {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .bar {
+    position: absolute;
+    left: 0;
+    top: 36px;
+    height: 2px;
+    width: 0;
+    border-radius: 1px;
+    background: var(--teal-500);
+    opacity: 0;
+    transition:
+      transform var(--dur-slow) var(--ease-out),
+      width var(--dur-slow) var(--ease-out),
+      opacity var(--dur-base) var(--ease-out);
+  }
+
+  .bar[data-on] {
+    opacity: 1;
   }
 
   .link {
@@ -202,23 +245,33 @@
     text-underline-offset: 8px;
   }
 
-  /* Active: teal underline AND weight, so it isn't colour-only. */
+  /* Active: the sliding teal bar AND weight, so it isn't colour-only. */
   .link[aria-current] {
     color: var(--navy-900);
     font-weight: 500;
-    text-decoration-color: var(--teal-500);
+  }
+
+  .link[aria-current]:hover {
+    text-decoration-color: transparent;
   }
 
   .link:focus-visible {
     outline-offset: 4px;
   }
 
-  .cta {
+  .inner .cta {
     display: inline-grid;
   }
 
   .menuButton,
   .sheet {
     display: none;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
   }
 }

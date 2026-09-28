@@ -9,10 +9,10 @@ export function Why() {
   return (
     <Section id="why" run="why" lane="right" surface="dark" className={s.why} labelledBy="why-title">
       <div className={layout.content}>
-        <Reveal>
+        <Reveal stagger>
           <StageHeader eyebrow={WHY.eyebrow} title={WHY.h2} titleId="why-title" titleClassName={s.whyTitle} lead={WHY.lead} />
         </Reveal>
-        <ol className={`${layout.afterLead} ${s.whyList}`}>
+        <Reveal as="ol" stagger className={`${layout.afterLead} ${s.whyList}`}>
           {WHY.items.map(([title, body], i) => (
             <li key={title}>
               <span className={s.whyNum} aria-hidden="true">
@@ -24,8 +24,10 @@ export function Why() {
               </div>
             </li>
           ))}
-        </ol>
-        <p className={`t-h3 ${s.whyClosing}`}>{WHY.closing}</p>
+        </Reveal>
+        <Reveal>
+          <p className={`t-h3 ${s.whyClosing}`}>{WHY.closing}</p>
+        </Reveal>
       </div>
     </Section>
   );

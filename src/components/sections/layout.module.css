@@ -118,15 +118,3 @@
     margin-top: var(--lead-to-content);
   }
 }
-
-/* One-time fade-up on first view (DESIGN.md §11). JS-only; see useRevealOnce. */
-.reveal[data-reveal='pending'] {
-  opacity: 0;
-  transform: translateY(12px);
-}
-
-.reveal[data-reveal='in'] {
-  transition:
-    opacity var(--dur-slow) var(--ease-out),
-    transform var(--dur-slow) var(--ease-out);
-}

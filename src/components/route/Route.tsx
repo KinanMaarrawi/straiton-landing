@@ -1,10 +1,10 @@
 'use client';
 
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { ASSESS, COMPLETE, SHARE, TRACK } from '@/content/copy';
 import { usePageState } from '@/components/state/PageState';
-import { desktopRoute, mobileRoute, type Box, type RouteShape } from './geometry';
-import { PaymentMarker, Waypoint } from './Waypoint';
+import { desktopRoute, mobileRoute, sampleSegments, type Box, type RouteShape } from './geometry';
+import { RouteMarker, RouteWaypoint } from './RouteMarks';
 import s from './Route.module.css';
 
 type Sampled = RouteShape & {
@@ -103,19 +103,14 @@ function measure(root: HTMLElement): RouteShape | null {
   });
 }
 
-/** Sample the path once so scrolling never touches layout. */
-function sample(shape: RouteShape, pathEl: SVGPathElement, root: HTMLElement): Sampled {
-  const total = pathEl.getTotalLength();
-  const n = Math.max(2, Math.ceil(total / STEP) + 1);
-  const xs = new Float32Array(n);
-  const ys = new Float32Array(n);
+/** Sample the path once, in JS, so scrolling never touches layout or SVG APIs. */
+function sample(shape: RouteShape, root: HTMLElement): Sampled {
+  const { xs, ys, total } = sampleSegments(shape.segs, STEP);
+  const n = xs.length;
   const maxY = new Float32Array(n);
   let m = -Infinity;
   for (let i = 0; i < n; i++) {
-    const p = pathEl.getPointAtLength(Math.min(i * STEP, total));
-    xs[i] = p.x;
-    ys[i] = p.y;
-    m = Math.max(m, p.y);
+    m = Math.max(m, ys[i]);
     maxY[i] = m;
   }
   const nearest = (x: number, y: number) => {
@@ -130,7 +125,6 @@ function sample(shape: RouteShape, pathEl: SVGPathElement, root: HTMLElement): S
     }
     return best * STEP;
   };
-  const loadLen = lenAtY(maxY, shape.loadCutY, total);
   return {
     ...shape,
     total,
@@ -138,7 +132,7 @@ function sample(shape: RouteShape, pathEl: SVGPathElement, root: HTMLElement): S
     ys,
     maxY,
     wpLen: shape.wps.map((w) => nearest(w.x, w.y)),
-    loadLen,
+    loadLen: lenAtY(maxY, shape.loadCutY, total),
     width: root.clientWidth,
     height: root.scrollHeight,
     desktop: root.clientWidth >= 960,
@@ -159,32 +153,148 @@ function lenAtY(maxY: Float32Array, y: number, total: number): number {
   return Math.min(lo * STEP, total);
 }
 
+/** Position at a length, interpolated between samples so the marker glides. */
 function pointAt(r: Sampled, len: number): [number, number] {
-  const i = Math.min(r.xs.length - 1, Math.max(0, Math.round(len / STEP)));
-  return [r.xs[i], r.ys[i]];
+  const f = Math.min(r.xs.length - 1, Math.max(0, len / STEP));
+  const i = Math.floor(f);
+  const j = Math.min(r.xs.length - 1, i + 1);
+  const t = f - i;
+  return [r.xs[i] + (r.xs[j] - r.xs[i]) * t, r.ys[i] + (r.ys[j] - r.ys[i]) * t];
 }
 
 const easeInOut = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - (-2 * t + 2) ** 3 / 2);
 
+/** Dot spacing of the course (matches stroke-dasharray "0 8"). */
+const DOT = 8;
+
 /**
- * The page-level route (DESIGN.md §8). One absolutely positioned SVG,
- * aria-hidden, pointer-events none. The charted course is always visible;
- * the sailed course is revealed through a mask whose stroke-dashoffset
- * follows scroll with light smoothing. Recomputed from section rects on
- * resize (debounced) and whenever the page's height changes.
+ * The sailed dots. Rendered once per route shape and memoised, so React
+ * never re-renders ~2,000 circles; the animation loop toggles a class on
+ * the few dots that change each frame. Each dot fades in on its own, so
+ * the course grows smoothly instead of the whole path repainting.
+ */
+/** Band height for tiling the course: only bands on screen get painted. */
+const BAND = 1024;
+/** How long a newly sailed dot animates before it settles into its chunk's path. */
+const SETTLE_MS = 280;
+/** Settled dots are grouped in chunks of this many, so a repaint stays small. */
+const CHUNK = 32;
+
+type Tiles = {
+  /** Band index and page position of every dot, in course order. */
+  band: Int32Array;
+  x: Float32Array;
+  y: Float32Array;
+  /** Per band: its dots' subpath strings (band-relative), in course order, and their indices. */
+  strs: string[][];
+  ks: number[][];
+  count: number;
+};
+
+/**
+ * Dot centres every DOT px of length (the charted and sailed courses share
+ * them), grouped into horizontal bands. Each band is its own small SVG,
+ * so the browser only rasterises the one or two bands in view.
+ */
+function tile(route: Sampled): Tiles {
+  const n = Math.floor(route.total / DOT) + 1;
+  const count = Math.max(1, Math.ceil(route.height / BAND));
+  const t: Tiles = {
+    band: new Int32Array(n),
+    x: new Float32Array(n),
+    y: new Float32Array(n),
+    strs: Array.from({ length: count }, () => []),
+    ks: Array.from({ length: count }, () => []),
+    count,
+  };
+  for (let k = 0; k < n; k++) {
+    const i = Math.min(route.xs.length - 1, (k * DOT) / STEP);
+    const x = route.xs[i];
+    const y = route.ys[i];
+    const b = Math.min(count - 1, Math.max(0, Math.floor(y / BAND)));
+    t.band[k] = b;
+    t.x[k] = x;
+    t.y[k] = y;
+    t.strs[b].push(`M${x.toFixed(1)} ${(y - b * BAND).toFixed(1)}h0`);
+    t.ks[b].push(k);
+  }
+  return t;
+}
+
+/** The distinct chunk numbers of a band's dots. */
+function chunksOf(ks: number[]): number[] {
+  const out: number[] = [];
+  for (const k of ks) {
+    const c = Math.floor(k / CHUNK);
+    if (out[out.length - 1] !== c) out.push(c);
+  }
+  return out;
+}
+
+/**
+ * Static structure of both courses, memoised per layout. Per band: the
+ * charted course (never changes) and the sailed course (a path the loop
+ * rewrites only when dots settle in that band). Dots that are still
+ * fading in live briefly as circles in the head layer.
+ */
+const Course = memo(function Course({ route, tiles }: { route: Sampled; tiles: Tiles }) {
+  return (
+    <>
+      {tiles.strs.map((strs, b) =>
+        strs.length ? (
+          <svg
+            key={b}
+            className={s.band}
+            width={route.width}
+            height={BAND}
+            viewBox={`0 0 ${route.width} ${BAND}`}
+            style={{ top: b * BAND }}
+          >
+            <path className={s.charted} d={strs.join('')} />
+            {chunksOf(tiles.ks[b]).map((c) => (
+              <path key={c} className={s.sailed} data-band={b} data-chunk={c} d="" />
+            ))}
+          </svg>
+        ) : null,
+      )}
+      <svg className={s.layer} width={route.width} height={route.height}>
+        {!route.desktop && <circle className={s.start} cx={route.start[0]} cy={route.start[1]} r={5} />}
+        <circle className={s.endRing} cx={route.end[0]} cy={route.end[1]} r={5} />
+        <g className={s.head} data-head="" />
+      </svg>
+    </>
+  );
+});
+
+/**
+ * The page-level route (DESIGN.md §8), aria-hidden and pointer-events none.
+ * Split into layers so scrolling repaints almost nothing:
+ * - the charted course is a static SVG, drawn once per layout;
+ * - the sailed course is individual dots, switched on as the marker passes;
+ * - the marker and waypoints are small elements moved with transforms.
+ * Recomputed from section rects on resize (debounced) and whenever the
+ * page's height changes.
  */
 export function Route() {
   const { amountLabel, arrived } = usePageState();
-  const svgRef = useRef<SVGSVGElement>(null);
-  const measureRef = useRef<SVGPathElement>(null);
-  const maskPathRef = useRef<SVGPathElement>(null);
-  const markerRef = useRef<SVGGElement>(null);
+  const rootRef = useRef<HTMLDivElement>(null);
+  const markerRef = useRef<HTMLDivElement>(null);
   const [route, setRoute] = useState<Sampled | null>(null);
+  const tiles = useMemo(() => (route ? tile(route) : null), [route]);
   const [passed, setPassed] = useState(0);
   const [reduced, setReduced] = useState(false);
-  const [markerRight, setMarkerRight] = useState(true);
 
-  const live = useRef({ current: 0, target: 0, raf: 0, intro: null as null | { t0: number; to: number }, arrived: false, reduced: false });
+  const live = useRef({
+    current: 0,
+    target: 0,
+    lit: 0,
+    settled: 0,
+    raf: 0,
+    last: 0,
+    intro: null as null | { t0: number; to: number },
+    arrived: false,
+    reduced: false,
+  });
   live.current.arrived = arrived;
   live.current.reduced = reduced;
 
@@ -197,20 +307,18 @@ export function Route() {
     return () => mq.removeEventListener('change', on);
   }, []);
 
-  // Measure → path string (render) → sample (layout effect below).
-  const [shape, setShape] = useState<RouteShape | null>(null);
+  // Measure → sample. Skipped when the layout produced the same course.
+  const lastKey = useRef('');
   const recompute = useCallback(() => {
-    const root = svgRef.current?.parentElement;
+    const root = rootRef.current?.parentElement;
     if (!root) return;
     const next = measure(root);
-    if (next) setShape(next);
+    if (!next) return;
+    const key = `${next.d}|${root.clientWidth}x${root.scrollHeight}`;
+    if (key === lastKey.current) return;
+    lastKey.current = key;
+    setRoute(sample(next, root));
   }, []);
-
-  useLayoutEffect(() => {
-    const root = svgRef.current?.parentElement;
-    if (!shape || !measureRef.current || !root) return;
-    setRoute(sample(shape, measureRef.current, root));
-  }, [shape]);
 
   useEffect(() => {
     recompute();
@@ -219,7 +327,7 @@ export function Route() {
       window.clearTimeout(t);
       t = window.setTimeout(recompute, 150);
     };
-    const root = svgRef.current?.parentElement;
+    const root = rootRef.current?.parentElement;
     const ro = new ResizeObserver(debounced);
     if (root) ro.observe(root);
     window.addEventListener('resize', debounced);
@@ -233,10 +341,79 @@ export function Route() {
 
   // Drive the sailed course.
   useEffect(() => {
-    if (!route) return;
+    if (!route || !tiles) return;
     const L = live.current;
+    const root = rootRef.current;
+    // Sailed paths keyed by "band:chunk".
+    const chunkPaths = new Map<string, SVGPathElement>();
+    root?.querySelectorAll<SVGPathElement>('path[data-chunk]').forEach((p) => {
+      chunkPaths.set(`${p.dataset.band}:${p.dataset.chunk}`, p);
+    });
+    const head = root?.querySelector('g[data-head]');
+    const ns = 'http://www.w3.org/2000/svg';
+    const animating = new Map<number, { el: SVGCircleElement; at: number }>();
+    const n = tiles.x.length;
     let vh = window.innerHeight;
     let maxScroll = document.documentElement.scrollHeight - vh;
+    // A new layout means new dots: relight from scratch.
+    L.lit = 0;
+    L.settled = 0;
+    head?.replaceChildren();
+
+    /** Rewrite only the sailed chunk paths touched by dots [from, to). */
+    const rebuildBands = (from: number, to: number) => {
+      const touched = new Set<string>();
+      for (let k = Math.max(0, from); k < Math.min(n, to); k++) touched.add(`${tiles.band[k]}:${Math.floor(k / CHUNK)}`);
+      touched.forEach((key) => {
+        const [b, c] = key.split(':').map(Number);
+        const ks = tiles.ks[b];
+        const strs = tiles.strs[b];
+        let d = '';
+        for (let i = 0; i < ks.length; i++) {
+          if (Math.floor(ks[i] / CHUNK) === c && ks[i] < L.settled) d += strs[i];
+        }
+        chunkPaths.get(key)?.setAttribute('d', d);
+      });
+    };
+
+    /** Dots between settled and lit animate in as circles; then settle into their band's path. */
+    const updateDots = (len: number, now: number, instant: boolean) => {
+      const want = Math.min(n, Math.floor(len / DOT) + 1);
+      if (want > L.lit) {
+        for (let k = L.lit; k < want; k++) {
+          if (instant || !head) continue;
+          const el = document.createElementNS(ns, 'circle');
+          el.setAttribute('cx', tiles.x[k].toFixed(1));
+          el.setAttribute('cy', tiles.y[k].toFixed(1));
+          el.setAttribute('r', '1.75');
+          head.appendChild(el);
+          animating.set(k, { el, at: now });
+        }
+      } else if (want < L.lit) {
+        // Sailing back up the page: drop dots past the head at once.
+        for (let k = want; k < L.lit; k++) {
+          animating.get(k)?.el.remove();
+          animating.delete(k);
+        }
+        const before = L.settled;
+        L.settled = Math.min(L.settled, want);
+        if (L.settled < before) rebuildBands(L.settled, before);
+      }
+      L.lit = want;
+      // Settle finished dots, in order.
+      const before = L.settled;
+      while (L.settled < L.lit) {
+        const a = animating.get(L.settled);
+        if (a && !instant && now - a.at < SETTLE_MS) break;
+        if (a) {
+          a.el.remove();
+          animating.delete(L.settled);
+        }
+        L.settled++;
+      }
+      if (L.settled > before) rebuildBands(before, L.settled);
+      return animating.size > 0;
+    };
 
     const targetNow = () => {
       if (L.reduced || L.arrived) return route.total;
@@ -245,36 +422,41 @@ export function Route() {
       return Math.max(route.loadLen, lenAtY(route.maxY, y + vh * ANCHOR, route.total));
     };
 
-    const paint = (len: number) => {
-      const mask = maskPathRef.current;
-      const marker = markerRef.current;
-      if (mask) mask.style.strokeDashoffset = String(route.total - len);
+    /** Returns true while dots are still animating in. */
+    const paint = (len: number, now = performance.now(), instant = L.reduced) => {
+      const busy = updateDots(len, now, instant);
       const [x, y] = pointAt(route, len);
-      if (marker) marker.setAttribute('transform', `translate(${x.toFixed(1)} ${y.toFixed(1)})`);
+      const m = markerRef.current;
+      if (m) {
+        m.style.transform = `translate3d(${x.toFixed(2)}px, ${y.toFixed(2)}px, 0)`;
+        m.dataset.side = x < route.width - 150 ? 'right' : 'left';
+      }
       let p = 0;
-      route.wpLen.forEach((wl) => {
-        if (len >= wl - 2) p++;
-      });
+      for (const wl of route.wpLen) if (len >= wl - 2) p++;
       setPassed((prev) => (prev === p ? prev : p));
-      const right = x < route.width - 140;
-      setMarkerRight((prev) => (prev === right ? prev : right));
+      return busy;
     };
 
     const tick = (now: number) => {
       L.raf = 0;
+      const dt = Math.min(64, L.last ? now - L.last : 16.7);
+      L.last = now;
       L.target = targetNow();
       if (L.intro) {
         const t = Math.min(1, (now - L.intro.t0) / 1200);
         L.current = easeInOut(t) * L.intro.to;
         if (t >= 1) L.intro = null;
-        paint(L.current);
+        paint(L.current, now);
         L.raf = requestAnimationFrame(tick);
         return;
       }
+      // Frame-rate independent smoothing: 0.15 per 60Hz frame.
+      const k = 1 - Math.pow(1 - LERP, dt / 16.7);
       const diff = L.target - L.current;
-      L.current = Math.abs(diff) < 0.5 ? L.target : L.current + diff * LERP;
-      paint(L.current);
-      if (L.current !== L.target) L.raf = requestAnimationFrame(tick);
+      L.current = Math.abs(diff) < 0.25 ? L.target : L.current + diff * k;
+      const busy = paint(L.current, now);
+      if (L.current !== L.target || busy) L.raf = requestAnimationFrame(tick);
+      else L.last = 0;
     };
 
     const kick = () => {
@@ -287,10 +469,12 @@ export function Route() {
     } else if (L.current === 0) {
       // First draw: the hero's first stretch sails once on load.
       L.intro = { t0: performance.now(), to: targetNow() };
+      paint(0);
       kick();
     } else {
-      // Re-measured: keep the same proportion of the course.
+      // Re-measured: relight what was already sailed, without replaying it.
       L.current = Math.min(L.current, route.total);
+      paint(L.current, performance.now(), true);
       kick();
     }
 
@@ -305,8 +489,9 @@ export function Route() {
       window.removeEventListener('resize', onResize);
       if (L.raf) cancelAnimationFrame(L.raf);
       L.raf = 0;
+      L.last = 0;
     };
-  }, [route]);
+  }, [route, tiles]);
 
   // Arrival and reduced-motion changes retarget the loop.
   useEffect(() => {
@@ -315,42 +500,20 @@ export function Route() {
   }, [arrived, reduced, route]);
 
   const label = amountLabel ?? 'Your payment';
-  const labelW = Math.max(104, label.length * 7.6 + 22);
 
   return (
-    <svg
-      ref={svgRef}
+    <div
+      ref={rootRef}
       className={s.route}
-      width={route?.width ?? 0}
-      height={route?.height ?? 0}
+      data-reduced={reduced || undefined}
+      style={{ width: route?.width ?? 0, height: route?.height ?? 0 }}
       aria-hidden="true"
-      focusable="false"
     >
-      {/* Hidden path used only to measure a freshly computed shape. */}
-      {shape && <path ref={measureRef} d={shape.d} fill="none" stroke="none" />}
       {route && (
         <>
-          <defs>
-            <mask id="route-sailed" maskUnits="userSpaceOnUse" x={0} y={0} width={route.width} height={route.height}>
-              <path
-                ref={maskPathRef}
-                d={route.d}
-                fill="none"
-                stroke="#fff"
-                strokeWidth={14}
-                strokeDasharray={`${route.total} ${route.total + 10}`}
-                style={{ strokeDashoffset: route.total - (reduced ? route.total : live.current.current) }}
-              />
-            </mask>
-          </defs>
-          <path className={s.charted} d={route.d} />
-          <path className={s.sailed} d={route.d} mask="url(#route-sailed)" />
-
-          {/* Desktop's start point is drawn on the hero map (works without JS). */}
-          {!route.desktop && <circle className={s.start} cx={route.start[0]} cy={route.start[1]} r={5} />}
-
+          {tiles && <Course route={route} tiles={tiles} />}
           {route.wps.map((w, i) => (
-            <Waypoint
+            <RouteWaypoint
               key={w.n}
               x={w.x}
               y={w.y}
@@ -359,21 +522,9 @@ export function Route() {
               variant={route.desktop ? 'desktop' : 'mobile'}
             />
           ))}
-
-          {/* Endpoint ring: the marker settles on it. */}
-          <circle className={s.endRing} cx={route.end[0]} cy={route.end[1]} r={5} />
-
-          <g ref={markerRef} transform={`translate(${route.start[0]} ${route.start[1]})`}>
-            <PaymentMarker
-              x={0}
-              y={0}
-              label={route.desktop ? label : undefined}
-              labelSide={markerRight ? 'right' : 'left'}
-              labelWidth={labelW}
-            />
-          </g>
+          <RouteMarker ref={markerRef} start={route.start} label={route.desktop ? label : undefined} arrived={arrived} />
         </>
       )}
-    </svg>
+    </div>
   );
 }

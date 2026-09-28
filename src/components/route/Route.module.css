@@ -1,4 +1,4 @@
-/* Page-level route SVG (DESIGN.md §8) */
+/* Page-level route (DESIGN.md §8). Layers: static course, sailed dots, marks. */
 
 .route {
   position: absolute;
@@ -6,25 +6,46 @@
   top: 0;
   z-index: 3;
   pointer-events: none;
+  contain: layout style;
+}
+
+.layer,
+.band {
+  position: absolute;
+  left: 0;
+  top: 0;
   overflow: visible;
 }
 
-/* Charted course: navy 25%, 3px round dots every 8px. */
+/* Charted course: navy 25%, 3px round dots every 8px. Static: never repaints on scroll. */
 .charted {
   fill: none;
   stroke: var(--route-charted);
   stroke-width: 3;
-  stroke-dasharray: 0 8;
   stroke-linecap: round;
 }
 
-/* Sailed course: teal 3.5px dots, same pattern, revealed by the mask. */
+/* Sailed course, settled: one 3.5px teal dot over each charted dot. */
 .sailed {
   fill: none;
   stroke: var(--teal-500);
   stroke-width: 3.5;
-  stroke-dasharray: 0 8;
   stroke-linecap: round;
+}
+
+/* Dots still arriving: each grows and fades in, then settles into .sailed. */
+.head circle {
+  fill: var(--teal-500);
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: dotIn 260ms var(--ease-out) both;
+}
+
+@keyframes dotIn {
+  from {
+    opacity: 0;
+    transform: scale(0.3);
+  }
 }
 
 .start {
@@ -37,4 +58,199 @@
   fill: var(--white);
   stroke: var(--ink-500);
   stroke-width: 1.5;
+}
+
+/* ── Waypoints ─────────────────────────────────────────── */
+.wp {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+}
+
+.dot,
+.ripple {
+  position: absolute;
+  left: -5px;
+  top: -5px;
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-pill);
+}
+
+.dot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--white);
+  box-shadow: inset 0 0 0 1.5px var(--ink-500);
+  transition:
+    background-color var(--dur-base) var(--ease-out),
+    box-shadow var(--dur-base) var(--ease-out),
+    transform var(--dur-base) var(--ease-out);
+}
+
+.wp[data-passed] .dot {
+  background: var(--teal-500);
+  box-shadow: 0 0 0 2px var(--white);
+}
+
+.ripple {
+  opacity: 0;
+  box-shadow: 0 0 0 1.5px var(--teal-500);
+}
+
+/* One ripple when the marker passes (never loops). */
+.wp[data-passed] .ripple {
+  animation: ripple 900ms var(--ease-out) 1;
+}
+
+@keyframes ripple {
+  0% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(3.4);
+  }
+}
+
+.checkBeside {
+  position: absolute;
+  left: 14px;
+  top: -6px;
+  fill: none;
+  stroke: var(--navy-900);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.checkBeside path,
+.checkIn path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset var(--dur-slow) var(--ease-out) 120ms;
+}
+
+.wp[data-passed] .checkBeside path,
+.wp[data-passed] .checkIn path {
+  stroke-dashoffset: 0;
+}
+
+.wpLabel {
+  position: absolute;
+  left: 18px;
+  top: -10px;
+  color: var(--ink-700);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  white-space: nowrap;
+  transition:
+    transform var(--dur-base) var(--ease-out),
+    color var(--dur-base) var(--ease-out);
+}
+
+.wp[data-passed] .wpLabel {
+  color: var(--navy-900);
+  font-weight: 600;
+  transform: translateX(12px);
+}
+
+/* Mobile waypoint: a 16px ring with the check inside. */
+.wp[data-variant='mobile'] .dot,
+.wp[data-variant='mobile'] .ripple {
+  left: -8px;
+  top: -8px;
+  width: 16px;
+  height: 16px;
+}
+
+.checkIn {
+  fill: none;
+  stroke: var(--navy-900);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ── Payment marker ────────────────────────────────────── */
+.marker {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  will-change: transform;
+}
+
+.markerDot,
+.markerPulse {
+  position: absolute;
+  left: -7px;
+  top: -7px;
+  width: 14px;
+  height: 14px;
+  border-radius: var(--radius-pill);
+}
+
+.markerDot {
+  background: var(--teal-500);
+  box-shadow: inset 0 0 0 2px var(--navy-900);
+}
+
+.markerPulse {
+  opacity: 0;
+  box-shadow: 0 0 0 2px var(--teal-500);
+}
+
+/* Arrival: one pulse as the marker settles on the supplier. */
+.marker[data-arrived] .markerPulse {
+  animation: ripple 1200ms var(--ease-out) 300ms 2;
+}
+
+.chip {
+  position: absolute;
+  top: -38px;
+  left: 12px;
+  min-width: 104px;
+  height: 24px;
+  padding: 0 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  background: var(--navy-900);
+  /* Keeps the chip's edge visible over the navy sections. */
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.22);
+  color: var(--on-dark);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  animation: chipIn var(--dur-base) var(--ease-out);
+  transition:
+    left var(--dur-base) var(--ease-out),
+    transform var(--dur-base) var(--ease-out);
+}
+
+.chip[data-money] {
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.marker[data-side='left'] .chip {
+  left: -12px;
+  transform: translateX(-100%);
+}
+
+@keyframes chipIn {
+  from {
+    opacity: 0;
+    translate: 0 4px;
+  }
 }

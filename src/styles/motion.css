@@ -1,0 +1,143 @@
+/*
+ * Motion vocabulary (DESIGN.md §11). Everything here only runs when JS has
+ * marked content as below the fold ([data-reveal='pending']) or on first
+ * paint of the hero, and all of it is switched off under
+ * prefers-reduced-motion by the global rule in globals.css.
+ */
+
+:root {
+  --rise: 14px;
+  --stagger: 70ms;
+  --stagger-tight: 40ms;
+}
+
+/* ── Scroll reveals ────────────────────────────────────── */
+/* A Reveal block fades up as one... */
+[data-reveal='pending']:not([data-stagger]) {
+  opacity: 0;
+  transform: translateY(var(--rise));
+}
+
+[data-reveal='in']:not([data-stagger]) {
+  transition:
+    opacity var(--dur-slow) var(--ease-out),
+    transform var(--dur-slow) var(--ease-out);
+}
+
+/* ...or, with data-stagger, its children cascade in order. Any list inside a
+   Reveal marked data-stagger cascades too. */
+[data-reveal='pending'][data-stagger] > *,
+[data-reveal='pending'] [data-stagger] > * {
+  opacity: 0;
+  transform: translateY(var(--rise));
+}
+
+[data-reveal='in'][data-stagger] > *,
+[data-reveal='in'] [data-stagger] > * {
+  transition:
+    opacity 560ms var(--ease-out),
+    transform 560ms var(--ease-out);
+  transition-delay: calc(var(--rv-base, 0ms) + var(--rv-i, 0) * var(--rv-step, var(--stagger)));
+}
+
+[data-stagger='tight'] {
+  --rv-step: var(--stagger-tight);
+}
+
+/* Nested lists start after their section's header has begun. */
+[data-reveal] [data-stagger] {
+  --rv-base: 160ms;
+}
+
+/* Child index for the cascade (up to 16 items). */
+[data-stagger] > :nth-child(2) { --rv-i: 1; }
+[data-stagger] > :nth-child(3) { --rv-i: 2; }
+[data-stagger] > :nth-child(4) { --rv-i: 3; }
+[data-stagger] > :nth-child(5) { --rv-i: 4; }
+[data-stagger] > :nth-child(6) { --rv-i: 5; }
+[data-stagger] > :nth-child(7) { --rv-i: 6; }
+[data-stagger] > :nth-child(8) { --rv-i: 7; }
+[data-stagger] > :nth-child(9) { --rv-i: 8; }
+[data-stagger] > :nth-child(10) { --rv-i: 9; }
+[data-stagger] > :nth-child(11) { --rv-i: 10; }
+[data-stagger] > :nth-child(12) { --rv-i: 11; }
+[data-stagger] > :nth-child(13) { --rv-i: 12; }
+[data-stagger] > :nth-child(14) { --rv-i: 13; }
+[data-stagger] > :nth-child(15) { --rv-i: 14; }
+[data-stagger] > :nth-child(16) { --rv-i: 15; }
+
+/* Fade without moving, for things the route is anchored to (maps). */
+[data-reveal='pending'].reveal-fade {
+  transform: none;
+}
+
+/* ── Hero entrance: plays once on first paint (CSS only, no JS needed) ── */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(var(--rise));
+  }
+}
+
+@keyframes lineUp {
+  from {
+    transform: translateY(105%);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+}
+
+/* Opacity only: the route is drawn on top of the map and must stay aligned. */
+@keyframes mapIn {
+  from {
+    opacity: 0;
+  }
+}
+
+.enter-rise {
+  animation: rise 700ms var(--ease-out) both;
+  animation-delay: var(--enter-delay, 0ms);
+}
+
+/* Headline lines slide up from behind a clip, one after the other. */
+.enter-line {
+  display: block;
+  overflow: clip;
+  overflow-clip-margin: 0.2em;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+
+.enter-line > span {
+  display: block;
+  animation: lineUp 900ms var(--ease-out) both;
+  animation-delay: var(--enter-delay, 0ms);
+}
+
+.enter-map {
+  animation: mapIn 1400ms var(--ease-out) both;
+  animation-delay: var(--enter-delay, 0ms);
+}
+
+.enter-fade {
+  animation: fadeIn 700ms var(--ease-out) both;
+  animation-delay: var(--enter-delay, 0ms);
+}
+
+/* ── Micro-interactions ────────────────────────────────── */
+/* Trailing arrows nudge forward on hover and focus. */
+.nudge {
+  display: inline-block;
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+a:hover .nudge,
+a:focus-visible .nudge,
+button:hover .nudge,
+button:focus-visible .nudge {
+  transform: translateX(3px);
+}

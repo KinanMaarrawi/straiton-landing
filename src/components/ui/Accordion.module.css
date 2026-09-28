@@ -78,6 +78,19 @@
     visibility 0s linear 0s;
 }
 
+:global(.js) .item[data-open='false'] .answer {
+  opacity: 0;
+  transform: translateY(-6px);
+}
+
+.button:hover .glyph {
+  color: var(--teal-700);
+}
+
+.glyph {
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
 :global(.js) .item[data-open='false'] .panel {
   grid-template-rows: 0fr;
   visibility: hidden;
@@ -92,6 +105,9 @@
 }
 
 .answer {
+  transition:
+    opacity var(--dur-base) var(--ease-out),
+    transform var(--dur-base) var(--ease-out);
   padding: 0 0 20px;
   max-width: 40em;
   color: var(--text-secondary);

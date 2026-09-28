@@ -8,7 +8,7 @@ import { useEffect, useRef, useState } from 'react';
  * enters view. Never repeats. Skipped entirely under reduced motion or
  * when the element is already on screen at load.
  */
-export function useRevealOnce<T extends Element>(threshold = 0.2) {
+export function useRevealOnce<T extends Element>(_threshold = 0.2) {
   const ref = useRef<T>(null);
   const [state, setState] = useState<'static' | 'pending' | 'in'>('static');
 
@@ -26,11 +26,13 @@ export function useRevealOnce<T extends Element>(threshold = 0.2) {
           io.disconnect();
         }
       },
-      { threshold },
+      // Trigger when the top edge is ~10% up from the bottom of the screen;
+      // works for blocks of any height.
+      { threshold: 0, rootMargin: '0px 0px -10% 0px' },
     );
     io.observe(el);
     return () => io.disconnect();
-  }, [threshold]);
+  }, []);
 
   return { ref, state };
 }

@@ -33,6 +33,19 @@ function cx(...names: Array<string | false | undefined>) {
   return names.filter(Boolean).join(' ');
 }
 
+/** "Compare it with us →" → text plus an arrow that nudges on hover (motion.css). */
+function withNudge(children: ReactNode): ReactNode {
+  if (typeof children !== 'string' || !children.endsWith('→')) return children;
+  return (
+    <>
+      {`${children.slice(0, -1).trimEnd()}\u00a0`}
+      <span className="nudge" aria-hidden="true">
+        →
+      </span>
+    </>
+  );
+}
+
 export function Button(props: ButtonProps) {
   const { variant = 'primary', size = 'md', tone = 'light', fullWidth, children, className } = props;
   const classes = cx(
@@ -48,7 +61,7 @@ export function Button(props: ButtonProps) {
     const { variant: _v, size: _s, tone: _t, fullWidth: _f, children: _c, className: _cn, ...rest } = props;
     return (
       <a {...rest} className={classes}>
-        {children}
+        {withNudge(children)}
       </a>
     );
   }
@@ -77,7 +90,7 @@ export function Button(props: ButtonProps) {
     >
       {/* Both labels share one grid cell so the width never changes. */}
       <span className={styles.label} aria-hidden={loading || undefined}>
-        {children}
+        {withNudge(children)}
       </span>
       {loading && (
         <span className={styles.loadingLabel}>

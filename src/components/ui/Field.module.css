@@ -43,6 +43,7 @@
 }
 
 .error {
+  animation: errorIn var(--dur-base) var(--ease-out);
   margin-top: var(--space-2);
   display: flex;
   align-items: flex-start;
@@ -55,4 +56,11 @@
 .errorIcon {
   flex: none;
   margin-top: 1px;
+}
+
+@keyframes errorIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
 }

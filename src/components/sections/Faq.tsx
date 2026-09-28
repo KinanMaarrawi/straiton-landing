@@ -10,12 +10,12 @@ export function Faq() {
   return (
     <Section id="faq" run="faq" lane="right" className={s.faq} labelledBy="faq-title">
       <div className={layout.content}>
-        <Reveal>
+        <Reveal stagger>
           <StageHeader eyebrow={FAQ.eyebrow} title={FAQ.h2} titleId="faq-title" />
         </Reveal>
-        <div className={s.faqList}>
-          <Accordion items={FAQ.items} defaultOpen={[0]} />
-        </div>
+        <Reveal className={s.faqList}>
+          <Accordion items={FAQ.items} defaultOpen={[0]} stagger />
+        </Reveal>
       </div>
     </Section>
   );
