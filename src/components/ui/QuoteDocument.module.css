@@ -1,0 +1,120 @@
+/* Quote document: Component Sheet 07 · Desktop/Mobile 02 Assess */
+
+.doc {
+  container-type: inline-size;
+  background: var(--white);
+  border: var(--hairline);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-raised);
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: var(--space-4) 20px;
+  border-bottom: var(--hairline);
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+}
+
+.titleText {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.pair {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  color: var(--text-tertiary);
+  font-size: var(--fs-small);
+}
+
+.row {
+  padding: 14px 20px;
+  border-bottom: var(--hairline);
+}
+
+.row:last-child {
+  border-bottom: 0;
+}
+
+.label {
+  font-size: var(--fs-small);
+  line-height: 1.5;
+  color: var(--text-tertiary);
+}
+
+.value {
+  margin: 2px 0 0;
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--text);
+}
+
+.money {
+  font-family: var(--font-mono);
+  font-size: var(--fs-figure);
+  font-variant-numeric: tabular-nums;
+}
+
+.highlight {
+  background: var(--teal-50);
+}
+
+.highlight .label {
+  color: var(--ink-700);
+  font-weight: 500;
+}
+
+.highlight .value {
+  font-weight: 500;
+}
+
+@container (min-width: 420px) {
+  .header {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding: 20px var(--space-5);
+  }
+
+  .title {
+    gap: var(--space-3);
+  }
+
+  .row {
+    display: grid;
+    grid-template-columns: 150px minmax(0, 1fr);
+    gap: var(--space-4);
+    align-items: baseline;
+    padding: var(--space-4) var(--space-5);
+  }
+
+  .value {
+    margin: 0;
+  }
+}
+
+/* First-view sequence: only when JS has marked it pending. */
+.doc[data-reveal='pending'] .row {
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+.doc[data-reveal='in'] .row {
+  transition:
+    opacity var(--dur-slow) var(--ease-out),
+    transform var(--dur-slow) var(--ease-out);
+  transition-delay: calc(var(--i) * 60ms);
+}

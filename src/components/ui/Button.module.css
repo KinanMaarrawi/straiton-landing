@@ -1,0 +1,170 @@
+/* Buttons: DESIGN.md §10 · Component Sheet 03 */
+
+.btn {
+  display: inline-grid;
+  grid-template-areas: 'stack';
+  place-items: center;
+  min-height: var(--control-h);
+  padding: 0 var(--space-5);
+  border: 1px solid transparent;
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: var(--navy-900);
+  font-family: var(--font-sans);
+  font-size: var(--fs-ui);
+  font-weight: 500;
+  line-height: 1.25;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn:hover {
+  text-decoration: none;
+}
+
+.label,
+.loadingLabel {
+  grid-area: stack;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.lg {
+  min-height: var(--control-h-lg);
+  padding: 0 var(--space-6);
+  font-size: 17px;
+}
+
+.full {
+  display: grid;
+  width: 100%;
+}
+
+/* ── Primary: teal fill, navy label (never white on teal) ─── */
+.primary {
+  background: var(--teal-500);
+  color: var(--navy-900);
+}
+
+.primary:hover {
+  background: var(--teal-500-hover);
+}
+
+.primary:active {
+  background: var(--teal-500-hover);
+  box-shadow: inset 0 1px 0 rgba(11, 34, 49, 0.25);
+}
+
+/* ── Secondary: hairline outline ─────────────────────────── */
+.secondary {
+  border-color: var(--navy-900);
+  color: var(--navy-900);
+}
+
+.secondary:hover {
+  background: var(--surface-50);
+}
+
+.secondary:active {
+  background: var(--teal-50);
+  box-shadow: inset 0 1px 0 rgba(11, 34, 49, 0.15);
+}
+
+.secondary.dark {
+  border-color: var(--on-dark-border);
+  color: var(--on-dark);
+  padding: 0 20px;
+}
+
+.secondary.dark:hover {
+  background: var(--on-dark-hover);
+}
+
+.secondary.dark:active {
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.25);
+}
+
+/* ── Tertiary: text link with trailing arrow in the copy ─── */
+.tertiary {
+  display: inline-flex;
+  place-items: initial;
+  align-items: center;
+  /* 44px hit area without adding visual space around the text. */
+  min-height: var(--touch-min);
+  margin-block: -10px;
+  padding: 0;
+  border: 0;
+  color: var(--teal-700);
+  text-align: left;
+  line-height: 1.5;
+}
+
+.tertiary:hover,
+.tertiary:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.tertiary:active {
+  color: var(--teal-700-pressed);
+}
+
+.tertiary.dark {
+  color: var(--teal-500);
+}
+
+/* ── Focus ───────────────────────────────────────────────── */
+.btn:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-offset);
+  border-radius: var(--radius-control);
+}
+
+.tertiary:focus-visible {
+  border-radius: 2px;
+}
+
+.dark:focus-visible {
+  outline: var(--focus-ring-dark);
+}
+
+/* ── Disabled ────────────────────────────────────────────── */
+.btn:disabled,
+.btn[aria-disabled='true']:not(.loading) {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ── Loading: label swapped, width locked by the shared cell ─ */
+.loading {
+  cursor: progress;
+}
+
+.loading .label {
+  visibility: hidden;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border-radius: var(--radius-pill);
+  border: 2px solid rgba(11, 34, 49, 0.25);
+  border-top-color: var(--navy-900);
+  animation: spin 800ms linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

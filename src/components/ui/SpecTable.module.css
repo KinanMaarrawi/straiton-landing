@@ -1,0 +1,77 @@
+/* Spec table: DESIGN.md §10 · Component Sheet 07 · Desktop/Mobile 03 Complete */
+
+.wrap {
+  container-type: inline-size;
+}
+
+.table {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.row {
+  padding: var(--space-3) 0;
+  border-top: var(--hairline);
+}
+
+.row:last-child {
+  border-bottom: var(--hairline);
+}
+
+.label {
+  font-size: var(--fs-small);
+  color: var(--text-secondary);
+}
+
+.value {
+  margin: 2px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 10px;
+  min-width: 0;
+}
+
+.hasTag .value {
+  margin-top: 6px;
+}
+
+/* Wider containers: label | value on one row. */
+@container (min-width: 480px) {
+  .row {
+    display: grid;
+    grid-template-columns: 40% minmax(0, 1fr);
+    column-gap: var(--space-3);
+    align-items: baseline;
+    padding: var(--space-4) 0;
+  }
+
+  .hasTag {
+    align-items: center;
+  }
+
+  .label {
+    font-size: 16px;
+  }
+
+  .value,
+  .hasTag .value {
+    margin: 0;
+    gap: var(--space-3);
+  }
+}
+
+/* Two columns of N rows, filled top-to-bottom (half the height). */
+@container (min-width: 720px) {
+  .two {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-rows: repeat(var(--rows), auto);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--space-7);
+  }
+
+  .two .row[data-col-end] {
+    border-bottom: var(--hairline);
+  }
+}

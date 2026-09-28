@@ -1,0 +1,102 @@
+/* Shared input chrome: 48px, 1px line-200, 6px radius, 16px text. */
+
+.input {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  height: var(--control-h);
+  padding: 0 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-control);
+  background: var(--white);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--fs-ui);
+  line-height: 1.25;
+  appearance: none;
+  transition:
+    border-color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+}
+
+.input::placeholder {
+  color: var(--text-tertiary);
+  opacity: 1;
+}
+
+.input:hover {
+  border-color: var(--border-hover);
+}
+
+/* Focus: 2px teal-700 ring (fields use a ring, not the navy outline). */
+.input:focus-visible,
+.input:focus {
+  outline: none;
+  border-color: var(--teal-700);
+  box-shadow: var(--field-focus-shadow);
+}
+
+.input[aria-invalid='true'] {
+  border-color: var(--error);
+  box-shadow: var(--field-error-shadow);
+}
+
+.input[aria-invalid='true']:focus {
+  border-color: var(--error);
+  box-shadow: 0 0 0 2px var(--error);
+}
+
+.input:disabled {
+  background: var(--surface-50);
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Sending: read-only fields take the surface fill (DESIGN.md §10). */
+.input:read-only:not(select) {
+  background: var(--surface-50);
+}
+
+.input:read-only:not(select):hover {
+  border-color: var(--border);
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.textarea {
+  height: auto;
+  min-height: 96px;
+  padding: 12px 14px;
+  line-height: 1.5;
+  resize: vertical;
+}
+
+/* Native select, styled to match. Chevron is an overlaid inline SVG. */
+.selectWrap {
+  position: relative;
+}
+
+.select {
+  padding-right: 40px;
+  cursor: pointer;
+}
+
+.select:has(option[value='']:checked) {
+  color: var(--text-tertiary);
+}
+
+.select option {
+  color: var(--text);
+}
+
+.chevron {
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  transform: translateY(-50%);
+  color: var(--navy-900);
+  pointer-events: none;
+}

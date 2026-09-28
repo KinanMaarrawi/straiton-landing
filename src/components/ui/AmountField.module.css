@@ -1,0 +1,69 @@
+/* Hero amount + currency: Component Sheet 04 "Amount + currency (hero, 56px)" */
+
+.field {
+  min-width: 0;
+}
+
+.label {
+  display: block;
+  font-size: var(--fs-label);
+  font-weight: 500;
+  line-height: var(--lh-label);
+}
+
+.box {
+  margin-top: var(--space-2);
+  display: flex;
+  height: var(--control-h-lg);
+  border: 1px solid var(--ink-500);
+  border-radius: var(--radius-control);
+  background: var(--white);
+  overflow: hidden;
+  transition: box-shadow var(--dur-fast) var(--ease-out);
+}
+
+.box > fieldset {
+  flex: none;
+  height: 100%;
+}
+
+.box:has(.input:focus) {
+  border-color: var(--teal-700);
+  box-shadow: var(--field-focus-shadow);
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  padding: 0 12px;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-variant-numeric: tabular-nums;
+}
+
+.input::placeholder {
+  color: var(--text-tertiary);
+  opacity: 1;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.hint {
+  margin-top: var(--space-2);
+  font-size: var(--fs-small);
+  line-height: 1.5;
+  color: var(--text-tertiary);
+}
+
+@media (min-width: 960px) {
+  .input {
+    padding: 0 16px;
+    font-size: 20px;
+  }
+}

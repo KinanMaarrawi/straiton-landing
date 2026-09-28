@@ -1,0 +1,165 @@
+/*
+ * Design tokens. Source of truth: docs/DESIGN.md §4–7, §11.
+ * Every value used in component CSS should come from here.
+ * Replace hex values if official brand assets arrive; keep the roles.
+ */
+
+:root {
+  /* ── Colour: core palette (§4) ───────────────────────────── */
+  --navy-900: #0b2231;
+  --navy-800: #12303f;
+  --ink-700: #3d5260;
+  --ink-500: #5f707b;
+  --line-200: #dce3e2;
+  --surface-50: #f3f6f5;
+  --white: #ffffff;
+  --teal-500: #17b3a0;
+  --teal-500-hover: #15a594; /* primary hover, ~6% darker */
+  --teal-700: #0b7a6e;
+  --teal-700-pressed: #085f55; /* tertiary link, active */
+  --teal-50: #e7f4f1;
+  --amber-50: #fbf1dc;
+  --amber-800: #7a5200;
+  --red-700: #b42318;
+  --red-50: #fdecea;
+
+  /* On dark (navy-900) surfaces */
+  --on-dark: #eef3f4;
+  --on-dark-muted: #a9b8bf;
+  --on-dark-line: rgba(255, 255, 255, 0.12);
+  --on-dark-border: rgba(255, 255, 255, 0.3);
+  --on-dark-hover: rgba(255, 255, 255, 0.06);
+
+  /* Semantic roles */
+  --text: var(--navy-900);
+  --text-secondary: var(--ink-700);
+  --text-tertiary: var(--ink-500);
+  --border: var(--line-200);
+  --border-hover: var(--ink-500);
+  --link: var(--teal-700);
+  --error: var(--red-700);
+  --error-bg: var(--red-50);
+
+  /* Route (§8) */
+  --route-charted: rgba(11, 34, 49, 0.25);
+  --map-dot: rgba(11, 34, 49, 0.3);
+
+  /* ── Typography (§5) ─────────────────────────────────────── */
+  /* Families are set by next/font in app/layout.tsx; fallbacks here. */
+  --font-serif: var(--font-newsreader), Georgia, 'Times New Roman', serif;
+  --font-sans: var(--font-plex-sans), system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+
+  /* Fluid sizes: mobile value at 390px → desktop value at 1440px */
+  --fs-display: clamp(52px, 2.3679rem + 3.619vw, 90px);
+  --fs-h2: clamp(36px, 1.6929rem + 2.2857vw, 60px);
+  --fs-h3: clamp(24px, 1.3607rem + 0.5714vw, 30px);
+  --fs-lead: clamp(18px, 1.0554rem + 0.2857vw, 21px);
+  --fs-body: clamp(16px, 0.9768rem + 0.0952vw, 17px);
+  --fs-small: 14px;
+  --fs-label: 14px;
+  --fs-eyebrow: 14px;
+  --fs-tag: 13px;
+  --fs-figure-lg: clamp(24px, 1.3143rem + 0.7619vw, 32px);
+  --fs-figure: clamp(15px, 0.9143rem + 0.0952vw, 16px);
+  --fs-ui: 16px; /* buttons, inputs (16px prevents iOS zoom) */
+
+  --lh-display: 0.98;
+  --lh-h2: 1.04;
+  --lh-h3: 1.2;
+  --lh-lead: 1.5;
+  --lh-body: 1.6;
+  --lh-small: 1.5;
+  --lh-label: 1.3;
+  --lh-figure-lg: 1.1;
+  --lh-figure: 1.4;
+
+  --ls-display: -0.02em;
+  --ls-h2: -0.015em;
+  --ls-h3: -0.01em;
+  --ls-eyebrow: 0.01em;
+  --ls-figure-lg: -0.01em;
+  --ls-wordmark: 0.04em;
+
+  --fw-display: 300;
+  --fw-h2: 350;
+  --fw-h3: 400;
+
+  --measure-body: 62ch;
+  --measure-display: 18ch;
+  --measure-lead: 34em;
+
+  /* ── Space (§7): 4px base ────────────────────────────────── */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+  --space-11: 160px;
+
+  --section-pad: clamp(96px, 5.2571rem + 3.0476vw, 128px);
+  --heading-to-lead: var(--space-5);
+  --lead-to-content: var(--space-7);
+
+  /* ── Grid (§7) ───────────────────────────────────────────── */
+  --container-max: 1200px;
+  --grid-gutter: 16px;
+  --page-margin: 20px;
+  --route-gutter: 48px; /* mobile: gutter on the route's side */
+
+  /* ── Shape (§7) ──────────────────────────────────────────── */
+  --radius-tag: 4px;
+  --radius-control: 6px;
+  --radius-card: 10px;
+  --radius-pill: 999px;
+  --hairline: 1px solid var(--line-200);
+  --hairline-dark: 1px solid var(--on-dark-line);
+  --shadow-raised: 0 1px 2px rgba(11, 34, 49, 0.06), 0 12px 32px rgba(11, 34, 49, 0.08);
+
+  /* ── Controls ────────────────────────────────────────────── */
+  --control-h: 48px;
+  --control-h-lg: 56px;
+  --touch-min: 44px;
+  --focus-ring: 2px solid var(--navy-900);
+  --focus-ring-dark: 2px solid var(--white);
+  --focus-offset: 2px;
+  --field-focus-shadow: 0 0 0 2px var(--teal-700);
+  --field-error-shadow: 0 0 0 1px var(--red-700);
+
+  /* ── Motion (§11) ────────────────────────────────────────── */
+  --dur-fast: 150ms;
+  --dur-base: 240ms;
+  --dur-slow: 480ms;
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.6, 0, 0.2, 1);
+
+  /* ── Layers ──────────────────────────────────────────────── */
+  --z-route: 1;
+  --z-content: 2;
+  --z-nav: 20;
+  --z-sticky-cta: 30;
+  --z-menu: 40;
+  --z-skip: 50;
+}
+
+/* Breakpoints (§7): 640 · 960 · 1200 · 1440. Custom media can't be used
+   without a PostCSS plugin, so each module repeats the literal widths. */
+@media (min-width: 640px) {
+  :root {
+    --page-margin: 32px;
+    --grid-gutter: 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0ms;
+    --dur-base: 0ms;
+    --dur-slow: 0ms;
+  }
+}

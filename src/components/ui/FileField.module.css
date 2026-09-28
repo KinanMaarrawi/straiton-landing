@@ -1,0 +1,139 @@
+/* File attach (bank-quote mode): Component Sheet 04 · Form States E */
+
+.drop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  border: 1px dashed var(--ink-500);
+  border-radius: var(--radius-control);
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
+}
+
+.drop[data-dragging] {
+  background: var(--teal-50);
+  border-color: var(--teal-700);
+}
+
+/* Mobile: the whole zone is one full-width 48px button, no drag text. */
+.choose {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: var(--control-h);
+  border-radius: var(--radius-control);
+  font-size: var(--fs-ui);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.choose:hover {
+  background: var(--surface-50);
+}
+
+.uploadIcon {
+  flex: none;
+}
+
+.dropText {
+  display: none;
+  color: var(--ink-700);
+  font-size: 15px;
+}
+
+.input:focus-visible ~ .drop .choose {
+  outline: var(--focus-ring);
+  outline-offset: 2px;
+}
+
+.input:disabled ~ .drop {
+  opacity: 0.6;
+}
+
+.input[aria-invalid='true'] ~ .drop {
+  border-color: var(--error);
+}
+
+.selected {
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  border: var(--hairline);
+  border-radius: var(--radius-control);
+  font-size: 15px;
+}
+
+.fileInfo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.fileIcon {
+  flex: none;
+  color: var(--ink-700);
+}
+
+.fileText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.fileName {
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+
+.kept {
+  font-size: 13px;
+  color: var(--text-tertiary);
+}
+
+.remove {
+  flex: none;
+  min-height: var(--touch-min);
+  padding: 0 var(--space-1);
+  border: 0;
+  background: transparent;
+  color: var(--teal-700);
+  font-size: var(--fs-small);
+  font-weight: 500;
+}
+
+.remove:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (min-width: 640px) {
+  .drop {
+    min-height: 88px;
+    gap: var(--space-3);
+  }
+
+  .choose {
+    flex: none;
+    min-height: var(--touch-min);
+    padding: 0 14px;
+    border: 1px solid var(--navy-900);
+    font-size: 15px;
+  }
+
+  .uploadIcon {
+    display: none;
+  }
+
+  .dropText {
+    display: inline;
+  }
+}
