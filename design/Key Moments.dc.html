@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Straiton — Key moments</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..400&amp;display=swap">
+<style>
+body{margin:0;background:#E9EEED;-webkit-font-smoothing:antialiased}
+a{color:#0B7A6E;text-decoration:none}
+a:hover{text-decoration:underline}
+*{box-sizing:border-box}
+</style>
+</helmet>
+<div style="width:1680px;background:#E9EEED;color:#0B2231;font-family:'IBM Plex Sans',sans-serif;padding:96px 120px 128px">
+
+<div style="display:flex;align-items:baseline;justify-content:space-between;border-bottom:1px solid #DCE3E2;padding-bottom:32px">
+  <div>
+    <div style="font:600 17px 'IBM Plex Sans',sans-serif;letter-spacing:0.04em">STRAITON</div>
+    <h1 style="margin:24px 0 0;font:300 72px/0.98 'Newsreader',serif;letter-spacing:-0.02em">Key moments</h1>
+  </div>
+  <div style="font-size:14px;color:#5F707B;text-align:right;line-height:1.6">Viewport crops of the live frames · desktop 1440×900 · mobile 390×844<br>Behaviour: DESIGN.md §Route motion, §Navigation</div>
+</div>
+
+<div data-screen-label="1 Hero at load" style="margin-top:72px">
+  <div style="display:flex;align-items:baseline;gap:12px"><span style="font-size:14px;font-weight:500;color:#0B7A6E">1</span><span style="font:400 30px/1.2 'Newsreader',serif;letter-spacing:-0.01em">Desktop · hero at load</span></div>
+  <p style="margin:8px 0 24px;font-size:14px;line-height:1.5;color:#5F707B;max-width:72ch">Only the first stretch is sailed, from Dubai out through the map. The rest is charted in grey and every waypoint is upcoming. The marker carries the hero amount.</p>
+  <div style="width:1440px;height:900px;overflow:hidden;position:relative;background:#FFFFFF;box-shadow:0 1px 2px rgba(11,34,49,.06), 0 12px 32px rgba(11,34,49,.08)">
+    <dc-import name="Desktop 1440 v2" moment="load" hint-size="1440px,900px"></dc-import>
+  </div>
+</div>
+
+<div data-screen-label="2 Assess mid-scroll" style="margin-top:96px">
+  <div style="display:flex;align-items:baseline;gap:12px"><span style="font-size:14px;font-weight:500;color:#0B7A6E">2</span><span style="font:400 30px/1.2 'Newsreader',serif;letter-spacing:-0.01em">Desktop · Assess, mid-scroll</span></div>
+  <p style="margin:8px 0 24px;font-size:14px;line-height:1.5;color:#5F707B;max-width:72ch">The marker is crossing between 02 Strait of Hormuz (passed) and 03 Muscat (upcoming). Nav is sticky with its hairline, and Quote is underlined as the active anchor.</p>
+  <div ref="{{ midRef }}" style="width:1440px;height:900px;overflow:hidden;position:relative;background:#FFFFFF;box-shadow:0 1px 2px rgba(11,34,49,.06), 0 12px 32px rgba(11,34,49,.08)">
+    <div style="{{ midInner }}"><dc-import name="Desktop 1440 v2" moment="mid" hint-size="1440px,900px"></dc-import></div>
+    <header style="position:absolute;left:0;top:0;right:0;z-index:5;height:80px;border-bottom:1px solid #DCE3E2;background:#FFFFFF">
+      <div style="width:1200px;height:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between">
+        <div style="font:600 18px 'IBM Plex Sans',sans-serif;letter-spacing:0.04em">STRAITON</div>
+        <nav style="display:flex;gap:40px;font-size:15px;white-space:nowrap">
+          <span style="color:#3D5260">How it works</span>
+          <span style="color:#0B2231;font-weight:500;text-decoration:underline;text-decoration-color:#17B3A0;text-decoration-thickness:2px;text-underline-offset:8px">Quote</span>
+          <span style="color:#3D5260">Documents</span>
+          <span style="color:#3D5260">FAQ</span>
+        </nav>
+        <span style="display:inline-flex;align-items:center;height:48px;padding:0 24px;border-radius:6px;background:#17B3A0;font-weight:500;font-size:16px">Request an assessment</span>
+      </div>
+    </header>
+  </div>
+</div>
+
+<div style="margin-top:96px;display:flex;gap:96px;align-items:flex-start">
+
+  <div data-screen-label="3 Mobile menu open">
+    <div style="display:flex;align-items:baseline;gap:12px"><span style="font-size:14px;font-weight:500;color:#0B7A6E">3</span><span style="font:400 30px/1.2 'Newsreader',serif;letter-spacing:-0.01em">Mobile · menu open</span></div>
+    <p style="margin:8px 0 24px;font-size:14px;line-height:1.5;color:#5F707B;max-width:390px">A full-height sheet. Focus is trapped while it's open, Esc and the close button dismiss it, and body scroll is locked. The sticky CTA is hidden.</p>
+    <div style="width:390px;height:844px;overflow:hidden;position:relative;background:#FFFFFF;box-shadow:0 1px 2px rgba(11,34,49,.06), 0 12px 32px rgba(11,34,49,.08);display:flex;flex-direction:column">
+      <div style="height:64px;flex:none;border-bottom:1px solid #DCE3E2;display:flex;align-items:center;justify-content:space-between;padding:0 12px 0 20px">
+        <div style="font:600 17px 'IBM Plex Sans',sans-serif;letter-spacing:0.04em">STRAITON</div>
+        <span aria-label="Close menu" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:6px;outline:2px solid #0B2231;outline-offset:-2px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0B2231" stroke-width="2" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"></path></svg></span>
+      </div>
+      <nav style="padding:24px 20px 0;display:flex;flex-direction:column">
+        <span style="min-height:64px;display:flex;align-items:center;border-bottom:1px solid #DCE3E2;font-size:24px">How it works</span>
+        <span style="min-height:64px;display:flex;align-items:center;border-bottom:1px solid #DCE3E2;font-size:24px">Quote</span>
+        <span style="min-height:64px;display:flex;align-items:center;border-bottom:1px solid #DCE3E2;font-size:24px">Documents</span>
+        <span style="min-height:64px;display:flex;align-items:center;border-bottom:1px solid #DCE3E2;font-size:24px">FAQ</span>
+      </nav>
+      <div style="margin-top:auto;padding:20px 20px 34px">
+        <span style="height:56px;display:flex;align-items:center;justify-content:center;border-radius:6px;background:#17B3A0;font-size:17px;font-weight:500">Request an assessment</span>
+      </div>
+    </div>
+    <p style="margin:16px 0 0;font-size:13px;line-height:1.5;color:#5F707B;max-width:390px">Focus lands on Close menu when the sheet opens (ring shown).</p>
+  </div>
+
+  <div data-screen-label="4 Mobile sticky CTA">
+    <div style="display:flex;align-items:baseline;gap:12px"><span style="font-size:14px;font-weight:500;color:#0B7A6E">4</span><span style="font:400 30px/1.2 'Newsreader',serif;letter-spacing:-0.01em">Mobile · sticky CTA</span></div>
+    <p style="margin:8px 0 24px;font-size:14px;line-height:1.5;color:#5F707B;max-width:390px">Slides up once the hero leaves the viewport. It hides while #assessment is in view or the menu is open, and respects the safe-area inset.</p>
+    <div ref="{{ stickyRef }}" style="width:390px;height:844px;overflow:hidden;position:relative;background:#FFFFFF;box-shadow:0 1px 2px rgba(11,34,49,.06), 0 12px 32px rgba(11,34,49,.08)">
+      <div style="{{ stickyInner }}"><dc-import name="Mobile 390" hint-size="390px,844px"></dc-import></div>
+      <header style="position:absolute;left:0;top:0;right:0;z-index:5;height:64px;border-bottom:1px solid #DCE3E2;background:#FFFFFF;display:flex;align-items:center;justify-content:space-between;padding:0 12px 0 20px">
+        <div style="font:600 17px 'IBM Plex Sans',sans-serif;letter-spacing:0.04em">STRAITON</div>
+        <span aria-label="Open menu" style="width:44px;height:44px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px"><span style="width:20px;height:2px;background:#0B2231;border-radius:2px"></span><span style="width:20px;height:2px;background:#0B2231;border-radius:2px"></span><span style="width:20px;height:2px;background:#0B2231;border-radius:2px"></span></span>
+      </header>
+      <div style="position:absolute;left:0;right:0;bottom:0;z-index:5;background:#FFFFFF;border-top:1px solid #DCE3E2;padding:12px 20px 34px">
+        <span style="height:48px;display:flex;align-items:center;justify-content:center;border-radius:6px;background:#17B3A0;font-size:16px;font-weight:500">Request a payment assessment</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1680}}">
+class Component extends DCLogic {
+  midRef = React.createRef();
+  stickyRef = React.createRef();
+  state = { mid: 0, sticky: 0 };
+  top(wrap, sel) {
+    const el = wrap && wrap.querySelector(sel); if (!el) return null;
+    let t = 0, n = el; while (n && n !== wrap) { t += n.offsetTop; n = n.offsetParent; }
+    return t;
+  }
+  componentDidMount() {
+    let tries = 0;
+    const tick = () => {
+      const tipEl = this.midRef.current && this.midRef.current.querySelector('[data-tip-y]');
+      const c = tipEl ? +tipEl.getAttribute('data-tip-y') : null, s = this.top(this.stickyRef.current, '#assess');
+      const next = { mid: c != null ? c - 490 : this.state.mid, sticky: s != null ? s - 40 : this.state.sticky };
+      if (next.mid !== this.state.mid || next.sticky !== this.state.sticky) this.setState(next);
+      if (++tries < 25) this._t = setTimeout(tick, 300);
+    };
+    tick();
+  }
+  componentWillUnmount() { clearTimeout(this._t); }
+  renderVals() {
+    return {
+      midRef: this.midRef, stickyRef: this.stickyRef,
+      midInner: { transform: `translateY(${-this.state.mid}px)` },
+      stickyInner: { transform: `translateY(${-this.state.sticky}px)` }
+    };
+  }
+}
+</script>
+</body>
+</html>

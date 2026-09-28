@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Straiton — Form states</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..400&amp;display=swap">
+<style>
+body{margin:0;background:#F3F6F5;-webkit-font-smoothing:antialiased}
+a{color:#0B7A6E;text-decoration:none}
+a:hover{text-decoration:underline}
+*{box-sizing:border-box}
+</style>
+</helmet>
+<div style="width:1440px;background:#F3F6F5;color:#0B2231;font-family:'IBM Plex Sans',sans-serif;padding:96px 120px 128px">
+
+<div style="display:flex;align-items:baseline;justify-content:space-between;border-bottom:1px solid #DCE3E2;padding-bottom:32px">
+  <div>
+    <div style="font:600 17px 'IBM Plex Sans',sans-serif;letter-spacing:0.04em">STRAITON</div>
+    <h1 style="margin:24px 0 0;font:300 72px/0.98 'Newsreader',serif;letter-spacing:-0.02em">Form states</h1>
+  </div>
+  <div style="font-size:14px;color:#5F707B;text-align:right;line-height:1.6">Arrival · assessment card at 588px (desktop, 6 cols)<br>Copy: COPY.md §10 · Behaviour: DESIGN.md §Assessment form</div>
+</div>
+
+<div style="margin-top:72px;display:grid;grid-template-columns:588px 588px;gap:96px 24px;align-items:start">
+
+  <div data-screen-label="A Step 1 empty">
+    <div style="display:flex;align-items:baseline;gap:12px"><span style="font-size:14px;font-weight:500;color:#0B7A6E">A</span><span style="font:400 30px/1.2 'Newsreader',serif;letter-spacing:-0.01em">Step 1 · empty</span></div>
+    <p style="margin:8px 0 24px;font-size:14px;line-height:1.5;color:#5F707B;max-width:62ch">Arrived without a hero amount. Placeholder in ink-500; AED selected by default.</p>
+    <div style="background:#FFFFFF;border:1px solid #DCE3E2;border-radius:10px;box-shadow:0 1px 2px rgba(11,34,49,.06), 0 12px 32px rgba(11,34,49,.08);padding:32px">
+      <div style="display:flex;align-items:baseline;justify-content:space-between"><span style="font-size:18px;font-weight:600">Payment assessment</span><span style="font-size:14px;color:#5F707B">Step 1 of 2</span></div>
+      <div style="margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:6px"><span style="height:4px;border-radius:999px;background:#17B3A0"></span><span style="height:4px;border-radius:999px;background:#DCE3E2"></span></div>
+      <div style="margin-top:24px;display:grid;grid-template-columns:1fr 1fr;padding:4px;gap:4px;border:1px solid #DCE3E2;border-radius:6px;background:#F3F6F5"><span style="height:40px;display:flex;align-items:center;justify-content:center;border-radius:4px;background:#FFFFFF;box-shadow:inset 0 0 0 1px #0B7A6E;font-size:15px;font-weight:500">Planning a payment</span><span style="height:40px;display:flex;align-items:center;justify-content:center;border-radius:4px;font-size:15px;color:#3D5260">I have a bank quote</span></div>
+      <div style="margin-top:28px;display:flex;flex-direction:column;gap:24px">
+        <div><label style="display:block;font-size:14px;font-weight:500;line-height:1.3">Payment amount</label><div style="margin-top:8px;height:48px;border:1px solid #DCE3E2;border-radius:6px;display:flex;align-items:center;padding:0 14px;font:400 16px 'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums;color:#5F707B">250,000</div></div>
+        <div><label style="display:block;font-size:14px;font-weight:500;line-height:1.3">Funding currency</label><div style="margin-top:8px;display:grid;grid-template-columns:1fr 1fr;padding:4px;gap:4px;border:1px solid #DCE3E2;border-radius:6px"><span style="height:38px;display:flex;align-items:center;justify-content:center;gap:6px;border-radius:4px;background:#E7F4F1;box-shadow:inset 0 0 0 1px #0B7A6E;font-size:15px;font-weight:500"><svg width="0.95em" height="0.95em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="AED"><path d="M7 4v16M7 4h3.5c5 0 8.5 3.4 8.5 8s-3.5 8-8.5 8H7M3 10h17.5M3 14h17.5"></path></svg>AED</span><span style="height:38px;display:flex;align-items:center;justify-content:center;border-radius:4px;font-size:15px;font-weight:500;color:#3D5260">$ USD</span></div></div>
+        <div><label style="display:block;font-size:14px;font-weight:500;line-height:1.3">Payment type</label><div style="margin-top:8px;height:48px;border:1px solid #DCE3E2;border-radius:6px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-size:16px;color:#5F707B">Select a payment type<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0B2231" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></div></div>
+      </div>
+      <div style="margin-top:32px;height:48px;border-radius:6px;background:#17B3A0;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:500">Continue</div>
+    </div>
+  </div>
+
+  <div data-screen-label="B Step 1 errors">
+    <div style="display:flex;align-items:baseline;gap:12px"><span style="font-size:14px;font-weight:500;color:#0B7A6E">B</span><span style="font:400 30px/1.2 'Newsreader',serif;letter-spacing:-0.01em">Step 1 · with errors</span></div>
+    <p style="margin:8px 0 24px;font-size:14px;line-height:1.5;color:#5F707B;max-width:62ch">After Continue. Focus moves to the summary (aria-live="assertive"); each link jumps to its field.</p>
+    <div style="background:#FFFFFF;border:1px solid #DCE3E2;border-radius:10px;box-shadow:0 1px 2px rgba(11,34,49,.06), 0 12px 32px rgba(11,34,49,.08);padding:32px">
+      <div style="display:flex;align-items:baseline;justify-content:space-between"><span style="font-size:18px;font-weight:600">Payment assessment</span><span style="font-size:14px;color:#5F707B">Step 1 of 2</span></div>
+      <div style="margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:6px"><span style="height:4px;border-radius:999px;background:#17B3A0"></span><span style="height:4px;border-radius:999px;background:#DCE3E2"></span></div>
+      <div style="margin-top:24px;background:#FDECEA;border:1px solid #B42318;border-radius:6px;padding:16px;outline:2px solid #0B2231;outline-offset:2px">
+        <div style="display:flex;gap:8px;align-items:center;font-size:15px;font-weight:600;color:#B42318"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7.5v5.5M12 16.5v.01"></path></svg>Check 2 fields before continuing</div>
+        <div style="margin-top:8px;padding-left:24px;display:flex;flex-direction:column;gap:4px;font-size:14px"><a href="#" style="color:#B42318;text-decoration:underline">Payment amount</a><a href="#" style="color:#B42318;text-decoration:underline">Payment type</a></div>
+      </div>
+      <div style="margin-top:24px;display:grid;grid-template-columns:1fr 1fr;padding:4px;gap:4px;border:1px solid #DCE3E2;border-radius:6px;background:#F3F6F5"><span style="height:40px;display:flex;align-items:center;justify-content:center;border-radius:4px;background:#FFFFFF;box-shadow:inset 0 0 0 1px #0B7A6E;font-size:15px;font-weight:500">Planning a payment</span><span style="height:40px;display:flex;align-items:center;justify-content:center;border-radius:4px;font-size:15px;color:#3D5260">I have a bank quote</span></div>
+      <div style="margin-top:28px;display:flex;flex-direction:column;gap:24px">
+        <div><label style="display:block;font-size:14px;font-weight:500;line-height:1.3">Payment amount</label><div style="margin-top:8px;height:48px;border:1px solid #B42318;box-shadow:0 0 0 1px #B42318;border-radius:6px;display:flex;align-items:center;padding:0 14px;font:400 16px 'IBM Plex Mono',monospace;color:#5F707B">250,000</div><div style="margin-top:8px;display:flex;gap:8px;align-items:flex-start;font-size:14px;line-height:1.4;color:#B42318"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="flex:none;margin-top:1px"><circle cx="12" cy="12" r="9"></circle><path d="M12 7.5v5.5M12 16.5v.01"></path></svg>Enter the amount you plan to send.</div></div>
+        <div><label style="display:block;font-size:14px;font-weight:500;line-height:1.3">Funding currency</label><div style="margin-top:8px;display:grid;grid-template-columns:1fr 1fr;padding:4px;gap:4px;border:1px solid #DCE3E2;border-radius:6px"><span style="height:38px;display:flex;align-items:center;justify-content:center;gap:6px;border-radius:4px;background:#E7F4F1;box-shadow:inset 0 0 0 1px #0B7A6E;font-size:15px;font-weight:500"><svg width="0.95em" height="0.95em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="AED"><path d="M7 4v16M7 4h3.5c5 0 8.5 3.4 8.5 8s-3.5 8-8.5 8H7M3 10h17.5M3 14h17.5"></path></svg>AED</span><span style="height:38px;display:flex;align-items:center;justify-content:center;border-radius:4px;font-size:15px;font-weight:500;color:#3D5260">$ USD</span></div></div>
+        <div><label style="display:block;font-size:14px;font-weight:500;line-height:1.3">Payment type</label><div style="margin-top:8px;height:48px;border:1px solid #B42318;box-shadow:0 0 0 1px #B42318;border-radius:6px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-size:16px;color:#5F707B">Select a payment type<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0B2231" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></div><div style="margin-top:8px;display:flex;gap:8px;align-items:flex-start;font-size:14px;line-height:1.4;color:#B42318"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="flex:none;margin-top:1px"><circle cx="12" cy="12" r="9"></circle><path d="M12 7.5v5.5M12 16.5v.01"></path></svg>Choose a payment type.</div></div>
+      </div>
+      <div style="margin-top:32px;height:48px;border-radius:6px;background:#17B3A0;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:500">Continue</div>
+    </div>
+  </div>
+
+  <div data-screen-label="C Step 2 filled">
+    <div style="display:flex;align-items:baseline;gap:12px"><span style="font-size:14px;font-weight:500;color:#0B7A6E">C</span><span style="font:400 30px/1.2 'Newsreader',serif;letter-spacing:-0.01em">Step 2 · filled</span></div>
+    <p style="margin:8px 0 24px;font-size:14px;line-height:1.5;color:#5F707B;max-width:62ch">Enters with a 16px slide and fade. Mode switch hides on Step 2; Back keeps every Step 1 value.</p>
+    <div style="background:#FFFFFF;border:1px solid #DCE3E2;border-radius:10px;box-shadow:0 1px 2px rgba(11,34,49,.06), 0 12px 32px rgba(11,34,49,.08);padding:32px">
+      <div style="display:flex;align-items:baseline;justify-content:space-between"><span style="font-size:18px;font-weight:600">Payment assessment</span><span style="font-size:14px;color:#5F707B">Step 2 of 2</span></div>
+      <div style="margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:6px"><span style="height:4px;border-radius:999px;background:#17B3A0"></span><span style="height:4px;border-radius:999px;background:#17B3A0"></span></div>
+      <div style="margin-top:28px;display:flex;flex-direction:column;gap:24px">
+        <div><label style="display:block;font-size:14px;font-weight:500;line-height:1.3">Full name</label><div style="margin-top:8px;height:48px;border:1px solid #DCE3E2;border-radius:6px;display:flex;align-items:center;padding:0 14px;font-size:16px">Priya Nair</div></div>
+        <div><label style="display:block;font-size:14px;font-weight:500;line-height:1.3">Work email</label><div style="margin-top:8px;height:48px;border:1px solid #DCE3E2;border-radius:6px;display:flex;align-items:center;padding:0 14px;font-size:16px">priya.nair@gulfmarine.example</div></div>
+        <div><label style="display:block;font-size:14px;font-weight:500;line-height:1.3">Company name</label><div style="margin-top:8px;height:48px;border:1px solid #DCE3E2;border-radius:6px;display:flex;align-items:center;padding:0 14px;font-size:16px">Gulf Marine Supplies LLC</div></div>
+        <div><label style="display:block;font-size:14px;font-weight:500;line-height:1.3">Phone or WhatsApp (optional)</label><div style="margin-top:8px;height:48px;border:1px solid #0B7A6E;box-shadow:0 0 0 2px #0B7A6E;border-radius:6px;display:flex;align-items:center;padding:0 14px;font-size:16px">+971 50 123 4567<span style="width:1px;height:20px;background:#0B2231;margin-left:1px"></span></div></div>
+        <div><label style="display:block;font-size:14px;font-weight:500;line-height:1.3">How should we reach you?</label><div style="margin-top:8px;display:grid;grid-template-columns:repeat(3,1fr);padding:4px;gap:4px;border:1px solid #DCE3E2;border-radius:6px"><span style="height:40px;display:flex;align-items:center;justify-content:center;border-radius:4px;font-size:15px;color:#3D5260">Email</span><span style="height:40px;display:flex;align-items:center;justify-content:center;border-radius:4px;background:#E7F4F1;box-shadow:inset 0 0 0 1px #0B7A6E;font-size:15px;font-weight:500">WhatsApp</span><span style="height:40px;display:flex;align-items:center;justify-content:center;border-radius:4px;font-size:15px;color:#3D5260">Call</span></div></div>
+      </div>
+      <div style="margin-top:32px;display:grid;grid-template-columns:140px 1fr;gap:12px"><span style="height:48px;display:flex;align-items:center;justify-content:center;border-radius:6px;border:1px solid #0B2231;font-size:16px;font-weight:500">Back</span><span style="height:48px;display:flex;align-items:center;justify-content:center;border-radius:6px;background:#17B3A0;font-size:16px;font-weight:500">Send request</span></div>
+      <div style="margin-top:16px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;font-size:14px;line-height:1.5;color:#5F707B"><span>We'll use these details only to respond to this request.</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:4px;background:#F3F6F5;color:#3D5260;border:1px solid #DCE3E2;font-size:13px;font-weight:500">Demo</span><span>Nothing is sent from this prototype.</span></div>
+    </div>
+  </div>
+
+  <div data-screen-label="D Confirmation">
+    <div style="display:flex;align-items:baseline;gap:12px"><span style="font-size:14px;font-weight:500;color:#0B7A6E">D</span><span style="font:400 30px/1.2 'Newsreader',serif;letter-spacing:-0.01em">Confirmation</span></div>
+    <p style="margin:8px 0 24px;font-size:14px;line-height:1.5;color:#5F707B;max-width:62ch">Replaces the form in place after ~900ms of Sending…. Focus moves to the heading; the map label switches to Arrived.</p>
+    <div style="background:#FFFFFF;border:1px solid #DCE3E2;border-radius:10px;box-shadow:0 1px 2px rgba(11,34,49,.06), 0 12px 32px rgba(11,34,49,.08);padding:32px">
+      <div style="display:flex;align-items:center;gap:12px"><span style="width:28px;height:28px;border-radius:999px;background:#17B3A0;display:flex;align-items:center;justify-content:center;flex:none"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0B2231" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span><span style="font:400 30px/1.2 'Newsreader',serif;letter-spacing:-0.01em">Request received</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:4px;background:#F3F6F5;color:#3D5260;border:1px solid #DCE3E2;font-size:13px;font-weight:500">Demo</span></div>
+      <p style="margin:12px 0 0;font-size:16px;line-height:1.6;color:#3D5260">This is a design prototype: nothing was sent.</p>
+      <div style="margin-top:28px;border:1px solid #DCE3E2;border-radius:6px;overflow:hidden">
+        <div style="padding:14px 20px;border-bottom:1px solid #DCE3E2;font-size:15px;font-weight:600">Your request</div>
+        <div style="display:grid;grid-template-columns:170px 1fr;gap:16px;padding:14px 20px;border-bottom:1px solid #DCE3E2;align-items:baseline"><span style="font-size:14px;color:#5F707B">Amount</span><span style="font:400 16px/1.4 'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums">AED 250,000</span></div>
+        <div style="display:grid;grid-template-columns:170px 1fr;gap:16px;padding:14px 20px;border-bottom:1px solid #DCE3E2;align-items:baseline"><span style="font-size:14px;color:#5F707B">Funding currency</span><span style="font-size:15px">AED</span></div>
+        <div style="display:grid;grid-template-columns:170px 1fr;gap:16px;padding:14px 20px;border-bottom:1px solid #DCE3E2;align-items:baseline"><span style="font-size:14px;color:#5F707B">Payment type</span><span style="font-size:15px">Supplier payment</span></div>
+        <div style="display:grid;grid-template-columns:170px 1fr;gap:16px;padding:14px 20px;border-bottom:1px solid #DCE3E2;align-items:baseline"><span style="font-size:14px;color:#5F707B">Bank quote attached</span><span style="font-size:15px">No</span></div>
+        <div style="display:grid;grid-template-columns:170px 1fr;gap:16px;padding:14px 20px;align-items:baseline"><span style="font-size:14px;color:#5F707B">Contact by</span><span style="font-size:15px">WhatsApp</span></div>
+      </div>
+      <p style="margin:24px 0 0;font-size:16px;line-height:1.6;color:#3D5260;text-wrap:pretty">In the live service, an India payments manager reviews your request and replies with the quote structure and a document checklist for this payment.</p>
+      <div style="margin-top:28px;display:flex"><span style="height:48px;display:flex;align-items:center;padding:0 24px;border-radius:6px;border:1px solid #0B2231;font-size:16px;font-weight:500">Start another request</span></div>
+    </div>
+  </div>
+
+  <div data-screen-label="E Step 1 bank quote">
+    <div style="display:flex;align-items:baseline;gap:12px"><span style="font-size:14px;font-weight:500;color:#0B7A6E">E</span><span style="font:400 30px/1.2 'Newsreader',serif;letter-spacing:-0.01em">Step 1 · bank-quote mode</span></div>
+    <p style="margin:8px 0 24px;font-size:14px;line-height:1.5;color:#5F707B;max-width:62ch">Same card, two extra fields below payment type. File selected; Remove returns the drop zone. Over 10 MB shows the file error.</p>
+    <div style="background:#FFFFFF;border:1px solid #DCE3E2;border-radius:10px;box-shadow:0 1px 2px rgba(11,34,49,.06), 0 12px 32px rgba(11,34,49,.08);padding:32px">
+      <div style="display:flex;align-items:baseline;justify-content:space-between"><span style="font-size:18px;font-weight:600">Payment assessment</span><span style="font-size:14px;color:#5F707B">Step 1 of 2</span></div>
+      <div style="margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:6px"><span style="height:4px;border-radius:999px;background:#17B3A0"></span><span style="height:4px;border-radius:999px;background:#DCE3E2"></span></div>
+      <div style="margin-top:24px;display:grid;grid-template-columns:1fr 1fr;padding:4px;gap:4px;border:1px solid #DCE3E2;border-radius:6px;background:#F3F6F5"><span style="height:40px;display:flex;align-items:center;justify-content:center;border-radius:4px;font-size:15px;color:#3D5260">Planning a payment</span><span style="height:40px;display:flex;align-items:center;justify-content:center;border-radius:4px;background:#FFFFFF;box-shadow:inset 0 0 0 1px #0B7A6E;font-size:15px;font-weight:500">I have a bank quote</span></div>
+      <div style="margin-top:28px;display:flex;flex-direction:column;gap:24px">
+        <div><label style="display:block;font-size:14px;font-weight:500;line-height:1.3">Payment amount</label><div style="margin-top:8px;height:48px;border:1px solid #DCE3E2;border-radius:6px;display:flex;align-items:center;padding:0 14px;font:400 16px 'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums">250,000</div></div>
+        <div><label style="display:block;font-size:14px;font-weight:500;line-height:1.3">Funding currency</label><div style="margin-top:8px;display:grid;grid-template-columns:1fr 1fr;padding:4px;gap:4px;border:1px solid #DCE3E2;border-radius:6px"><span style="height:38px;display:flex;align-items:center;justify-content:center;gap:6px;border-radius:4px;background:#E7F4F1;box-shadow:inset 0 0 0 1px #0B7A6E;font-size:15px;font-weight:500"><svg width="0.95em" height="0.95em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="AED"><path d="M7 4v16M7 4h3.5c5 0 8.5 3.4 8.5 8s-3.5 8-8.5 8H7M3 10h17.5M3 14h17.5"></path></svg>AED</span><span style="height:38px;display:flex;align-items:center;justify-content:center;border-radius:4px;font-size:15px;font-weight:500;color:#3D5260">$ USD</span></div></div>
+        <div><label style="display:block;font-size:14px;font-weight:500;line-height:1.3">Payment type</label><div style="margin-top:8px;height:48px;border:1px solid #DCE3E2;border-radius:6px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-size:16px">Supplier payment<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0B2231" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></div></div>
+        <div>
+          <div style="display:flex;align-items:center;gap:8px"><label style="font-size:14px;font-weight:500;line-height:1.3">Your bank quote (optional)</label><span style="display:inline-flex;align-items:center;height:20px;padding:0 6px;border-radius:4px;background:#F3F6F5;color:#3D5260;border:1px solid #DCE3E2;font-size:12px;font-weight:500">Demo</span></div>
+          <div style="margin-top:8px;min-height:64px;border:1px solid #DCE3E2;border-radius:6px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 16px;font-size:15px"><span style="display:flex;align-items:center;gap:12px;min-width:0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3D5260" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"></path><path d="M14 3v5h5"></path></svg><span style="display:flex;flex-direction:column;gap:2px;min-width:0"><span style="font-weight:500">bank-quote-march.pdf</span><span style="font-size:13px;color:#5F707B">Stays in your browser</span></span></span><span style="font-size:14px;font-weight:500;color:#0B7A6E">Remove</span></div>
+          <div style="margin-top:8px;font-size:14px;color:#5F707B">PDF, image or screenshot. In this demo, it stays in your browser.</div>
+        </div>
+        <div><label style="display:block;font-size:14px;font-weight:500;line-height:1.3">Anything we should know about it? (optional)</label><div style="margin-top:8px;height:96px;border:1px solid #DCE3E2;border-radius:6px;padding:12px 14px;font-size:16px;line-height:1.5;color:#5F707B">e.g. the rate, fees or timing your bank quoted</div></div>
+      </div>
+      <div style="margin-top:32px;height:48px;border-radius:6px;background:#17B3A0;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:500">Continue</div>
+    </div>
+  </div>
+
+  <div data-screen-label="F Step 2 sending">
+    <div style="display:flex;align-items:baseline;gap:12px"><span style="font-size:14px;font-weight:500;color:#0B7A6E">F</span><span style="font:400 30px/1.2 'Newsreader',serif;letter-spacing:-0.01em">Step 2 · sending</span></div>
+    <p style="margin:8px 0 24px;font-size:14px;line-height:1.5;color:#5F707B;max-width:62ch">Simulated for about 900ms. Fields go read-only and Back is disabled, the button holds its width, and aria-busy="true" is set on the form.</p>
+    <div style="background:#FFFFFF;border:1px solid #DCE3E2;border-radius:10px;box-shadow:0 1px 2px rgba(11,34,49,.06), 0 12px 32px rgba(11,34,49,.08);padding:32px">
+      <div style="display:flex;align-items:baseline;justify-content:space-between"><span style="font-size:18px;font-weight:600">Payment assessment</span><span style="font-size:14px;color:#5F707B">Step 2 of 2</span></div>
+      <div style="margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:6px"><span style="height:4px;border-radius:999px;background:#17B3A0"></span><span style="height:4px;border-radius:999px;background:#17B3A0"></span></div>
+      <div style="margin-top:28px;display:flex;flex-direction:column;gap:24px">
+        <div><label style="display:block;font-size:14px;font-weight:500;line-height:1.3">Full name</label><div style="margin-top:8px;height:48px;border:1px solid #DCE3E2;background:#F3F6F5;border-radius:6px;display:flex;align-items:center;padding:0 14px;font-size:16px">Priya Nair</div></div>
+        <div><label style="display:block;font-size:14px;font-weight:500;line-height:1.3">Work email</label><div style="margin-top:8px;height:48px;border:1px solid #DCE3E2;background:#F3F6F5;border-radius:6px;display:flex;align-items:center;padding:0 14px;font-size:16px">priya.nair@gulfmarine.example</div></div>
+        <div><label style="display:block;font-size:14px;font-weight:500;line-height:1.3">Company name</label><div style="margin-top:8px;height:48px;border:1px solid #DCE3E2;background:#F3F6F5;border-radius:6px;display:flex;align-items:center;padding:0 14px;font-size:16px">Gulf Marine Supplies LLC</div></div>
+        <div><label style="display:block;font-size:14px;font-weight:500;line-height:1.3">Phone or WhatsApp (optional)</label><div style="margin-top:8px;height:48px;border:1px solid #DCE3E2;background:#F3F6F5;border-radius:6px;display:flex;align-items:center;padding:0 14px;font-size:16px">+971 50 123 4567</div></div>
+        <div><label style="display:block;font-size:14px;font-weight:500;line-height:1.3">How should we reach you?</label><div style="margin-top:8px;display:grid;grid-template-columns:repeat(3,1fr);padding:4px;gap:4px;border:1px solid #DCE3E2;border-radius:6px"><span style="height:40px;display:flex;align-items:center;justify-content:center;border-radius:4px;font-size:15px;color:#3D5260">Email</span><span style="height:40px;display:flex;align-items:center;justify-content:center;border-radius:4px;background:#E7F4F1;box-shadow:inset 0 0 0 1px #0B7A6E;font-size:15px;font-weight:500">WhatsApp</span><span style="height:40px;display:flex;align-items:center;justify-content:center;border-radius:4px;font-size:15px;color:#3D5260">Call</span></div></div>
+      </div>
+      <div style="margin-top:32px;display:grid;grid-template-columns:140px 1fr;gap:12px"><span style="height:48px;display:flex;align-items:center;justify-content:center;border-radius:6px;border:1px solid #0B2231;font-size:16px;font-weight:500;opacity:0.4">Back</span><span style="height:48px;display:flex;align-items:center;justify-content:center;gap:10px;border-radius:6px;background:#17B3A0;font-size:16px;font-weight:500"><span style="width:16px;height:16px;border-radius:999px;border:2px solid rgba(11,34,49,0.25);border-top-color:#0B2231"></span>Sending…</span></div>
+      <div style="margin-top:16px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;font-size:14px;line-height:1.5;color:#5F707B"><span>We'll use these details only to respond to this request.</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:4px;background:#F3F6F5;color:#3D5260;border:1px solid #DCE3E2;font-size:13px;font-weight:500">Demo</span><span>Nothing is sent from this prototype.</span></div>
+    </div>
+  </div>
+
+</div>
+
+<section data-screen-label="Mobile form states" style="margin-top:128px;border-top:1px solid #DCE3E2;padding-top:48px">
+  <div style="font-size:14px;font-weight:500;color:#0B7A6E">Mobile · 390</div>
+  <h2 style="margin:12px 0 0;font:350 40px/1.04 'Newsreader',serif;letter-spacing:-0.015em">The card at 322px</h2>
+  <p style="margin:12px 0 0;font-size:16px;line-height:1.6;color:#3D5260;max-width:62ch">48px route gutter on the left and 20px on the right. Card padding drops to 24/20. Paired buttons stack with the primary on top, the drop zone becomes a single full-width button, and receipt rows stack their labels.</p>
+  <div style="margin-top:40px;display:grid;grid-template-columns:repeat(4,322px);gap:24px;justify-content:space-between;align-items:start">
+
+    <div>
+      <div style="font-size:13px;color:#5F707B;margin-bottom:12px">B · Step 1 with errors</div>
+      <div style="background:#FFFFFF;border:1px solid #DCE3E2;border-radius:10px;box-shadow:0 1px 2px rgba(11,34,49,.06), 0 12px 32px rgba(11,34,49,.08);padding:24px 20px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px"><span style="font-size:17px;font-weight:600">Payment assessment</span><span style="font-size:14px;color:#5F707B;white-space:nowrap">Step 1 of 2</span></div>
+        <div style="margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:6px"><span style="height:4px;border-radius:999px;background:#17B3A0"></span><span style="height:4px;border-radius:999px;background:#DCE3E2"></span></div>
+        <div style="margin-top:20px;background:#FDECEA;border:1px solid #B42318;border-radius:6px;padding:14px;outline:2px solid #0B2231;outline-offset:2px">
+          <div style="display:flex;gap:8px;align-items:flex-start;font-size:15px;font-weight:600;line-height:1.35;color:#B42318"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="flex:none;margin-top:2px"><circle cx="12" cy="12" r="9"></circle><path d="M12 7.5v5.5M12 16.5v.01"></path></svg>Check 2 fields before continuing</div>
+          <div style="margin-top:8px;padding-left:24px;display:flex;flex-direction:column;gap:4px;font-size:14px"><a href="#" style="color:#B42318;text-decoration:underline;min-height:24px">Payment amount</a><a href="#" style="color:#B42318;text-decoration:underline;min-height:24px">Payment type</a></div>
+        </div>
+        <div style="margin-top:20px;display:grid;grid-template-columns:1fr 1fr;padding:4px;gap:4px;border:1px solid #DCE3E2;border-radius:6px;background:#F3F6F5"><span style="min-height:44px;display:flex;align-items:center;justify-content:center;text-align:center;border-radius:4px;background:#FFFFFF;box-shadow:inset 0 0 0 1px #0B7A6E;font-size:14px;font-weight:500;line-height:1.3;padding:4px 6px">Planning a payment</span><span style="min-height:44px;display:flex;align-items:center;justify-content:center;text-align:center;border-radius:4px;font-size:14px;color:#3D5260;line-height:1.3;padding:4px 6px">I have a bank quote</span></div>
+        <div style="margin-top:24px;display:flex;flex-direction:column;gap:20px">
+          <div><label style="display:block;font-size:14px;font-weight:500;line-height:1.3">Payment amount</label><div style="margin-top:8px;height:48px;border:1px solid #B42318;box-shadow:0 0 0 1px #B42318;border-radius:6px;display:flex;align-items:center;padding:0 14px;font:400 16px 'IBM Plex Mono',monospace;color:#5F707B">250,000</div><div style="margin-top:8px;display:flex;gap:8px;align-items:flex-start;font-size:14px;line-height:1.4;color:#B42318"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="flex:none;margin-top:1px"><circle cx="12" cy="12" r="9"></circle><path d="M12 7.5v5.5M12 16.5v.01"></path></svg>Enter the amount you plan to send.</div></div>
+          <div><label style="display:block;font-size:14px;font-weight:500;line-height:1.3">Funding currency</label><div style="margin-top:8px;display:grid;grid-template-columns:1fr 1fr;padding:4px;gap:4px;border:1px solid #DCE3E2;border-radius:6px"><span style="height:40px;display:flex;align-items:center;justify-content:center;gap:6px;border-radius:4px;background:#E7F4F1;box-shadow:inset 0 0 0 1px #0B7A6E;font-size:15px;font-weight:500"><svg width="0.95em" height="0.95em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="AED"><path d="M7 4v16M7 4h3.5c5 0 8.5 3.4 8.5 8s-3.5 8-8.5 8H7M3 10h17.5M3 14h17.5"></path></svg>AED</span><span style="height:40px;display:flex;align-items:center;justify-content:center;border-radius:4px;font-size:15px;font-weight:500;color:#3D5260">$ USD</span></div></div>
+          <div><label style="display:block;font-size:14px;font-weight:500;line-height:1.3">Payment type</label><div style="margin-top:8px;height:48px;border:1px solid #B42318;box-shadow:0 0 0 1px #B42318;border-radius:6px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-size:16px;color:#5F707B">Select a payment type<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0B2231" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></div><div style="margin-top:8px;display:flex;gap:8px;align-items:flex-start;font-size:14px;line-height:1.4;color:#B42318"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="flex:none;margin-top:1px"><circle cx="12" cy="12" r="9"></circle><path d="M12 7.5v5.5M12 16.5v.01"></path></svg>Choose a payment type.</div></div>
+        </div>
+        <div style="margin-top:28px;height:48px;border-radius:6px;background:#17B3A0;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:500">Continue</div>
+      </div>
+    </div>
+
+    <div>
+      <div style="font-size:13px;color:#5F707B;margin-bottom:12px">E · Bank-quote mode, empty drop zone</div>
+      <div style="background:#FFFFFF;border:1px solid #DCE3E2;border-radius:10px;box-shadow:0 1px 2px rgba(11,34,49,.06), 0 12px 32px rgba(11,34,49,.08);padding:24px 20px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px"><span style="font-size:17px;font-weight:600">Payment assessment</span><span style="font-size:14px;color:#5F707B;white-space:nowrap">Step 1 of 2</span></div>
+        <div style="margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:6px"><span style="height:4px;border-radius:999px;background:#17B3A0"></span><span style="height:4px;border-radius:999px;background:#DCE3E2"></span></div>
+        <div style="margin-top:20px;display:grid;grid-template-columns:1fr 1fr;padding:4px;gap:4px;border:1px solid #DCE3E2;border-radius:6px;background:#F3F6F5"><span style="min-height:44px;display:flex;align-items:center;justify-content:center;text-align:center;border-radius:4px;font-size:14px;color:#3D5260;line-height:1.3;padding:4px 6px">Planning a payment</span><span style="min-height:44px;display:flex;align-items:center;justify-content:center;text-align:center;border-radius:4px;background:#FFFFFF;box-shadow:inset 0 0 0 1px #0B7A6E;font-size:14px;font-weight:500;line-height:1.3;padding:4px 6px">I have a bank quote</span></div>
+        <div style="margin-top:24px;display:flex;flex-direction:column;gap:20px">
+          <div><label style="display:block;font-size:14px;font-weight:500;line-height:1.3">Payment amount</label><div style="margin-top:8px;height:48px;border:1px solid #DCE3E2;border-radius:6px;display:flex;align-items:center;padding:0 14px;font:400 16px 'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums">250,000</div></div>
+          <div><label style="display:block;font-size:14px;font-weight:500;line-height:1.3">Funding currency</label><div style="margin-top:8px;display:grid;grid-template-columns:1fr 1fr;padding:4px;gap:4px;border:1px solid #DCE3E2;border-radius:6px"><span style="height:40px;display:flex;align-items:center;justify-content:center;gap:6px;border-radius:4px;background:#E7F4F1;box-shadow:inset 0 0 0 1px #0B7A6E;font-size:15px;font-weight:500"><svg width="0.95em" height="0.95em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="AED"><path d="M7 4v16M7 4h3.5c5 0 8.5 3.4 8.5 8s-3.5 8-8.5 8H7M3 10h17.5M3 14h17.5"></path></svg>AED</span><span style="height:40px;display:flex;align-items:center;justify-content:center;border-radius:4px;font-size:15px;font-weight:500;color:#3D5260">$ USD</span></div></div>
+          <div><label style="display:block;font-size:14px;font-weight:500;line-height:1.3">Payment type</label><div style="margin-top:8px;height:48px;border:1px solid #DCE3E2;border-radius:6px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-size:16px">Supplier payment<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0B2231" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></div></div>
+          <div>
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px"><label style="font-size:14px;font-weight:500;line-height:1.3">Your bank quote (optional)</label><span style="display:inline-flex;align-items:center;height:20px;padding:0 6px;border-radius:4px;background:#F3F6F5;color:#3D5260;border:1px solid #DCE3E2;font-size:12px;font-weight:500">Demo</span></div>
+            <div style="margin-top:8px;height:48px;border:1px dashed #5F707B;border-radius:6px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:16px;font-weight:500"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0B2231" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V5M7.5 9.5L12 5l4.5 4.5M5 19h14"></path></svg>Choose file</div>
+            <div style="margin-top:8px;font-size:14px;line-height:1.4;color:#5F707B">PDF, image or screenshot. In this demo, it stays in your browser.</div>
+          </div>
+          <div><label style="display:block;font-size:14px;font-weight:500;line-height:1.3">Anything we should know about it? (optional)</label><div style="margin-top:8px;height:96px;border:1px solid #DCE3E2;border-radius:6px;padding:12px 14px;font-size:16px;line-height:1.5;color:#5F707B">e.g. the rate, fees or timing your bank quoted</div></div>
+        </div>
+        <div style="margin-top:28px;height:48px;border-radius:6px;background:#17B3A0;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:500">Continue</div>
+      </div>
+    </div>
+
+    <div>
+      <div style="font-size:13px;color:#5F707B;margin-bottom:12px">C · Step 2 filled</div>
+      <div style="background:#FFFFFF;border:1px solid #DCE3E2;border-radius:10px;box-shadow:0 1px 2px rgba(11,34,49,.06), 0 12px 32px rgba(11,34,49,.08);padding:24px 20px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px"><span style="font-size:17px;font-weight:600">Payment assessment</span><span style="font-size:14px;color:#5F707B;white-space:nowrap">Step 2 of 2</span></div>
+        <div style="margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:6px"><span style="height:4px;border-radius:999px;background:#17B3A0"></span><span style="height:4px;border-radius:999px;background:#17B3A0"></span></div>
+        <div style="margin-top:24px;display:flex;flex-direction:column;gap:20px">
+          <div><label style="display:block;font-size:14px;font-weight:500;line-height:1.3">Full name</label><div style="margin-top:8px;height:48px;border:1px solid #DCE3E2;border-radius:6px;display:flex;align-items:center;padding:0 14px;font-size:16px">Priya Nair</div></div>
+          <div><label style="display:block;font-size:14px;font-weight:500;line-height:1.3">Work email</label><div style="margin-top:8px;height:48px;border:1px solid #DCE3E2;border-radius:6px;display:flex;align-items:center;padding:0 14px;font-size:16px;overflow:hidden;white-space:nowrap">priya.nair@gulfmarine.example</div></div>
+          <div><label style="display:block;font-size:14px;font-weight:500;line-height:1.3">Company name</label><div style="margin-top:8px;height:48px;border:1px solid #DCE3E2;border-radius:6px;display:flex;align-items:center;padding:0 14px;font-size:16px">Gulf Marine Supplies LLC</div></div>
+          <div><label style="display:block;font-size:14px;font-weight:500;line-height:1.3">Phone or WhatsApp (optional)</label><div style="margin-top:8px;height:48px;border:1px solid #DCE3E2;border-radius:6px;display:flex;align-items:center;padding:0 14px;font-size:16px">+971 50 123 4567</div></div>
+          <div><label style="display:block;font-size:14px;font-weight:500;line-height:1.3">How should we reach you?</label><div style="margin-top:8px;display:grid;grid-template-columns:repeat(3,1fr);padding:4px;gap:4px;border:1px solid #DCE3E2;border-radius:6px"><span style="height:44px;display:flex;align-items:center;justify-content:center;border-radius:4px;font-size:15px;color:#3D5260">Email</span><span style="height:44px;display:flex;align-items:center;justify-content:center;border-radius:4px;background:#E7F4F1;box-shadow:inset 0 0 0 1px #0B7A6E;font-size:15px;font-weight:500">WhatsApp</span><span style="height:44px;display:flex;align-items:center;justify-content:center;border-radius:4px;font-size:15px;color:#3D5260">Call</span></div></div>
+        </div>
+        <div style="margin-top:28px;display:flex;flex-direction:column;gap:12px"><span style="height:48px;display:flex;align-items:center;justify-content:center;border-radius:6px;background:#17B3A0;font-size:16px;font-weight:500">Send request</span><span style="height:48px;display:flex;align-items:center;justify-content:center;border-radius:6px;border:1px solid #0B2231;font-size:16px;font-weight:500">Back</span></div>
+        <div style="margin-top:16px;font-size:14px;line-height:1.5;color:#5F707B">We'll use these details only to respond to this request. <span style="display:inline-flex;align-items:center;height:20px;padding:0 6px;border-radius:4px;background:#F3F6F5;color:#3D5260;border:1px solid #DCE3E2;font-size:12px;font-weight:500;vertical-align:1px">Demo</span> Nothing is sent from this prototype.</div>
+      </div>
+    </div>
+
+    <div>
+      <div style="font-size:13px;color:#5F707B;margin-bottom:12px">D · Confirmation</div>
+      <div style="background:#FFFFFF;border:1px solid #DCE3E2;border-radius:10px;box-shadow:0 1px 2px rgba(11,34,49,.06), 0 12px 32px rgba(11,34,49,.08);padding:24px 20px">
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px"><span style="width:28px;height:28px;border-radius:999px;background:#17B3A0;display:flex;align-items:center;justify-content:center;flex:none"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0B2231" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span><span style="font:400 24px/1.2 'Newsreader',serif;letter-spacing:-0.01em">Request received</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:4px;background:#F3F6F5;color:#3D5260;border:1px solid #DCE3E2;font-size:13px;font-weight:500">Demo</span></div>
+        <p style="margin:12px 0 0;font-size:16px;line-height:1.6;color:#3D5260">This is a design prototype: nothing was sent.</p>
+        <div style="margin-top:24px;border:1px solid #DCE3E2;border-radius:6px;overflow:hidden">
+          <div style="padding:12px 16px;border-bottom:1px solid #DCE3E2;font-size:15px;font-weight:600">Your request</div>
+          <div style="padding:12px 16px;border-bottom:1px solid #DCE3E2"><div style="font-size:14px;color:#5F707B">Amount</div><div style="margin-top:2px;font:400 16px/1.4 'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums">AED 250,000</div></div>
+          <div style="padding:12px 16px;border-bottom:1px solid #DCE3E2"><div style="font-size:14px;color:#5F707B">Funding currency</div><div style="margin-top:2px;font-size:15px">AED</div></div>
+          <div style="padding:12px 16px;border-bottom:1px solid #DCE3E2"><div style="font-size:14px;color:#5F707B">Payment type</div><div style="margin-top:2px;font-size:15px">Supplier payment</div></div>
+          <div style="padding:12px 16px;border-bottom:1px solid #DCE3E2"><div style="font-size:14px;color:#5F707B">Bank quote attached</div><div style="margin-top:2px;font-size:15px">No</div></div>
+          <div style="padding:12px 16px"><div style="font-size:14px;color:#5F707B">Contact by</div><div style="margin-top:2px;font-size:15px">WhatsApp</div></div>
+        </div>
+        <p style="margin:20px 0 0;font-size:16px;line-height:1.6;color:#3D5260;text-wrap:pretty">In the live service, an India payments manager reviews your request and replies with the quote structure and a document checklist for this payment.</p>
+        <div style="margin-top:24px"><span style="height:48px;display:flex;align-items:center;justify-content:center;border-radius:6px;border:1px solid #0B2231;font-size:16px;font-weight:500">Start another request</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440}}"></script>
+</body>
+</html>

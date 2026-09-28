@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Straiton — Component sheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..400&amp;display=swap">
+<style>
+body{margin:0;background:#fff;-webkit-font-smoothing:antialiased}
+a{color:#0B7A6E;text-decoration:none}
+a:hover{text-decoration:underline}
+*{box-sizing:border-box}
+@keyframes spin{to{transform:rotate(360deg)}}
+</style>
+</helmet>
+<div style="width:1440px;background:#FFFFFF;color:#0B2231;font-family:'IBM Plex Sans',sans-serif;padding:96px 120px 128px">
+
+<div style="display:flex;align-items:baseline;justify-content:space-between;border-bottom:1px solid #DCE3E2;padding-bottom:32px">
+  <div>
+    <div style="font:600 17px 'IBM Plex Sans',sans-serif;letter-spacing:0.04em">STRAITON</div>
+    <h1 style="margin:24px 0 0;font:300 72px/0.98 'Newsreader',serif;letter-spacing:-0.02em">Component sheet</h1>
+  </div>
+  <div style="font-size:14px;color:#5F707B;text-align:right;line-height:1.6">UAE → India landing · design pass<br>Source of truth: DESIGN.md</div>
+</div>
+
+<section style="margin-top:96px">
+  <div style="font-size:14px;font-weight:500;color:#0B7A6E">01 — Colour</div>
+  <h2 style="margin:12px 0 0;font:350 40px/1.04 'Newsreader',serif;letter-spacing:-0.015em">Tokens</h2>
+  <p style="margin:12px 0 0;font-size:16px;line-height:1.6;color:#3D5260;max-width:62ch">Mostly white and navy ink. Teal means act or progress, nothing else. Amber marks what's unconfirmed.</p>
+  <div style="margin-top:40px;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:24px">
+    <div><div style="height:96px;border-radius:10px;background:#0B2231"></div><div style="margin-top:12px;font-size:14px;font-weight:500">navy-900</div><div style="font:400 13px 'IBM Plex Mono',monospace;color:#5F707B">#0B2231</div><div style="margin-top:4px;font-size:13px;line-height:1.45;color:#3D5260">Ink, dark sections, footer</div></div>
+    <div><div style="height:96px;border-radius:10px;background:#12303F"></div><div style="margin-top:12px;font-size:14px;font-weight:500">navy-800</div><div style="font:400 13px 'IBM Plex Mono',monospace;color:#5F707B">#12303F</div><div style="margin-top:4px;font-size:13px;line-height:1.45;color:#3D5260">Raised on dark</div></div>
+    <div><div style="height:96px;border-radius:10px;background:#3D5260"></div><div style="margin-top:12px;font-size:14px;font-weight:500">ink-700</div><div style="font:400 13px 'IBM Plex Mono',monospace;color:#5F707B">#3D5260</div><div style="margin-top:4px;font-size:13px;line-height:1.45;color:#3D5260">Secondary text</div></div>
+    <div><div style="height:96px;border-radius:10px;background:#5F707B"></div><div style="margin-top:12px;font-size:14px;font-weight:500">ink-500</div><div style="font:400 13px 'IBM Plex Mono',monospace;color:#5F707B">#5F707B</div><div style="margin-top:4px;font-size:13px;line-height:1.45;color:#3D5260">Captions, hints</div></div>
+    <div><div style="height:96px;border-radius:10px;background:#DCE3E2"></div><div style="margin-top:12px;font-size:14px;font-weight:500">line-200</div><div style="font:400 13px 'IBM Plex Mono',monospace;color:#5F707B">#DCE3E2</div><div style="margin-top:4px;font-size:13px;line-height:1.45;color:#3D5260">Hairlines</div></div>
+    <div><div style="height:96px;border-radius:10px;background:#F3F6F5;border:1px solid #DCE3E2"></div><div style="margin-top:12px;font-size:14px;font-weight:500">surface-50</div><div style="font:400 13px 'IBM Plex Mono',monospace;color:#5F707B">#F3F6F5</div><div style="margin-top:4px;font-size:13px;line-height:1.45;color:#3D5260">Alternate sections</div></div>
+    <div><div style="height:96px;border-radius:10px;background:#FFFFFF;border:1px solid #DCE3E2"></div><div style="margin-top:12px;font-size:14px;font-weight:500">white</div><div style="font:400 13px 'IBM Plex Mono',monospace;color:#5F707B">#FFFFFF</div><div style="margin-top:4px;font-size:13px;line-height:1.45;color:#3D5260">Default ground</div></div>
+    <div><div style="height:96px;border-radius:10px;background:#17B3A0"></div><div style="margin-top:12px;font-size:14px;font-weight:500">teal-500</div><div style="font:400 13px 'IBM Plex Mono',monospace;color:#5F707B">#17B3A0</div><div style="margin-top:4px;font-size:13px;line-height:1.45;color:#3D5260">Primary fill, route, passed waypoint. Navy text only.</div></div>
+    <div><div style="height:96px;border-radius:10px;background:#0B7A6E"></div><div style="margin-top:12px;font-size:14px;font-weight:500">teal-700</div><div style="font:400 13px 'IBM Plex Mono',monospace;color:#5F707B">#0B7A6E</div><div style="margin-top:4px;font-size:13px;line-height:1.45;color:#3D5260">Teal text on light</div></div>
+    <div><div style="height:96px;border-radius:10px;background:#E7F4F1"></div><div style="margin-top:12px;font-size:14px;font-weight:500">teal-50</div><div style="font:400 13px 'IBM Plex Mono',monospace;color:#5F707B">#E7F4F1</div><div style="margin-top:4px;font-size:13px;line-height:1.45;color:#3D5260">Selected, highlight row</div></div>
+    <div><div style="height:96px;border-radius:10px;background:#FBF1DC"></div><div style="margin-top:12px;font-size:14px;font-weight:500">amber-50</div><div style="font:400 13px 'IBM Plex Mono',monospace;color:#5F707B">#FBF1DC</div><div style="margin-top:4px;font-size:13px;line-height:1.45;color:#3D5260">Pilot / TBC tag fill</div></div>
+    <div><div style="height:96px;border-radius:10px;background:#7A5200"></div><div style="margin-top:12px;font-size:14px;font-weight:500">amber-800</div><div style="font:400 13px 'IBM Plex Mono',monospace;color:#5F707B">#7A5200</div><div style="margin-top:4px;font-size:13px;line-height:1.45;color:#3D5260">Pilot / TBC tag text</div></div>
+    <div><div style="height:96px;border-radius:10px;background:#B42318"></div><div style="margin-top:12px;font-size:14px;font-weight:500">red-700</div><div style="font:400 13px 'IBM Plex Mono',monospace;color:#5F707B">#B42318</div><div style="margin-top:4px;font-size:13px;line-height:1.45;color:#3D5260">Error text, error border</div></div>
+    <div><div style="height:96px;border-radius:10px;background:#FDECEA"></div><div style="margin-top:12px;font-size:14px;font-weight:500">red-50</div><div style="font:400 13px 'IBM Plex Mono',monospace;color:#5F707B">#FDECEA</div><div style="margin-top:4px;font-size:13px;line-height:1.45;color:#3D5260">Error summary fill</div></div>
+  </div>
+  <div style="margin-top:40px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px">
+    <div style="border-radius:10px;background:#17B3A0;padding:20px 24px;display:flex;justify-content:space-between;align-items:center"><span style="font-size:16px;font-weight:500;color:#0B2231">Navy on teal-500</span><span style="font-size:14px;font-weight:500;color:#0B2231">≈ 6:1 · Pass</span></div>
+    <div style="border-radius:10px;background:#17B3A0;padding:20px 24px;display:flex;justify-content:space-between;align-items:center;position:relative"><span style="font-size:16px;font-weight:500;color:#FFFFFF">White on teal-500</span><span style="font-size:14px;font-weight:600;color:#0B2231;background:#FFFFFF;border-radius:4px;padding:2px 8px">≈ 2.6:1 · Never</span></div>
+    <div style="border-radius:10px;background:#0B2231;padding:20px 24px;display:flex;justify-content:space-between;align-items:center"><span style="font-size:16px;font-weight:500;color:#17B3A0">Teal-500 on navy</span><span style="font-size:14px;font-weight:500;color:#EEF3F4">≈ 6:1 · Pass</span></div>
+  </div>
+</section>
+
+<section style="margin-top:128px">
+  <div style="font-size:14px;font-weight:500;color:#0B7A6E">02 — Type</div>
+  <h2 style="margin:12px 0 0;font:350 40px/1.04 'Newsreader',serif;letter-spacing:-0.015em">Scale</h2>
+  <p style="margin:12px 0 0;font-size:16px;line-height:1.6;color:#3D5260;max-width:62ch">Newsreader for headlines only. Plex Sans for everything readable. Plex Mono for money only.</p>
+  <div style="margin-top:40px">
+    <div style="display:grid;grid-template-columns:200px 1fr 220px;align-items:baseline;gap:32px;padding:24px 0;border-top:1px solid #DCE3E2"><div style="font-size:14px;font-weight:500">display</div><div style="font:300 90px/0.98 'Newsreader',serif;letter-spacing:-0.02em">Same sea.</div><div style="font-size:13px;line-height:1.5;color:#5F707B">Newsreader 300 · 90 / 52<br>lh 0.98 · −0.02em</div></div>
+    <div style="display:grid;grid-template-columns:200px 1fr 220px;align-items:baseline;gap:32px;padding:24px 0;border-top:1px solid #DCE3E2"><div style="font-size:14px;font-weight:500">h2</div><div style="font:350 60px/1.04 'Newsreader',serif;letter-spacing:-0.015em">Straight answers.</div><div style="font-size:13px;line-height:1.5;color:#5F707B">Newsreader 350 · 60 / 36<br>lh 1.04 · −0.015em</div></div>
+    <div style="display:grid;grid-template-columns:200px 1fr 220px;align-items:baseline;gap:32px;padding:24px 0;border-top:1px solid #DCE3E2"><div style="font-size:14px;font-weight:500">h3</div><div style="font:400 30px/1.2 'Newsreader',serif;letter-spacing:-0.01em">What we check upfront</div><div style="font-size:13px;line-height:1.5;color:#5F707B">Newsreader 400 · 30 / 24<br>lh 1.2 · −0.01em</div></div>
+    <div style="display:grid;grid-template-columns:200px 1fr 220px;align-items:baseline;gap:32px;padding:24px 0;border-top:1px solid #DCE3E2"><div style="font-size:14px;font-weight:500">lead</div><div style="font-size:21px;line-height:1.5;color:#3D5260;max-width:34em">Start with the basics. No account, no onboarding, no commitment.</div><div style="font-size:13px;line-height:1.5;color:#5F707B">Plex Sans 400 · 21 / 18<br>lh 1.5</div></div>
+    <div style="display:grid;grid-template-columns:200px 1fr 220px;align-items:baseline;gap:32px;padding:24px 0;border-top:1px solid #DCE3E2"><div style="font-size:14px;font-weight:500">body</div><div style="font-size:17px;line-height:1.6;max-width:62ch">The details you hold don't match your supplier's bank records.</div><div style="font-size:13px;line-height:1.5;color:#5F707B">Plex Sans 400 · 17 / 16<br>lh 1.6 · max 62ch</div></div>
+    <div style="display:grid;grid-template-columns:200px 1fr 220px;align-items:baseline;gap:32px;padding:24px 0;border-top:1px solid #DCE3E2"><div style="font-size:14px;font-weight:500">small</div><div style="font-size:14px;line-height:1.5;color:#5F707B">Final eligibility is subject to compliance review.</div><div style="font-size:13px;line-height:1.5;color:#5F707B">Plex Sans 400 · 14</div></div>
+    <div style="display:grid;grid-template-columns:200px 1fr 220px;align-items:baseline;gap:32px;padding:24px 0;border-top:1px solid #DCE3E2"><div style="font-size:14px;font-weight:500">label</div><div style="font-size:14px;font-weight:500;line-height:1.3">How much are you sending?</div><div style="font-size:13px;line-height:1.5;color:#5F707B">Plex Sans 500 · 14</div></div>
+    <div style="display:grid;grid-template-columns:200px 1fr 220px;align-items:baseline;gap:32px;padding:24px 0;border-top:1px solid #DCE3E2"><div style="font-size:14px;font-weight:500">eyebrow</div><div style="font-size:14px;font-weight:500;letter-spacing:0.01em;color:#0B7A6E">02 — Assess</div><div style="font-size:13px;line-height:1.5;color:#5F707B">Plex Sans 500 · 14<br>sentence case · teal-700</div></div>
+    <div style="display:grid;grid-template-columns:200px 1fr 220px;align-items:baseline;gap:32px;padding:24px 0;border-top:1px solid #DCE3E2"><div style="font-size:14px;font-weight:500">figure-lg</div><div style="font:400 32px/1.1 'IBM Plex Mono',monospace;letter-spacing:-0.01em;font-variant-numeric:tabular-nums">AED 250,000</div><div style="font-size:13px;line-height:1.5;color:#5F707B">Plex Mono 400 · 32 / 24<br>money only · tabular</div></div>
+    <div style="display:grid;grid-template-columns:200px 1fr 220px;align-items:baseline;gap:32px;padding:24px 0;border-top:1px solid #DCE3E2;border-bottom:1px solid #DCE3E2"><div style="font-size:14px;font-weight:500">figure</div><div style="font:400 16px/1.4 'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums">250,000</div><div style="font-size:13px;line-height:1.5;color:#5F707B">Plex Mono 400 · 16 / 15<br>inputs, quote amount</div></div>
+  </div>
+</section>
+
+<section style="margin-top:128px">
+  <div style="font-size:14px;font-weight:500;color:#0B7A6E">03 — Actions</div>
+  <h2 style="margin:12px 0 0;font:350 40px/1.04 'Newsreader',serif;letter-spacing:-0.015em">Buttons</h2>
+  <p style="margin:12px 0 0;font-size:16px;line-height:1.6;color:#3D5260;max-width:62ch">One primary per view. Hover darkens about 6%, with no movement. Focus is always visible.</p>
+  <div style="margin-top:40px;display:grid;grid-template-columns:160px repeat(6,minmax(0,1fr));gap:20px 20px;align-items:center">
+    <span></span>
+    <span style="font-size:13px;color:#5F707B">Default</span><span style="font-size:13px;color:#5F707B">Hover</span><span style="font-size:13px;color:#5F707B">Active</span><span style="font-size:13px;color:#5F707B">Focus-visible</span><span style="font-size:13px;color:#5F707B">Disabled</span><span style="font-size:13px;color:#5F707B">Loading</span>
+
+    <span style="font-size:14px;font-weight:500">Primary</span>
+    <span style="height:48px;display:flex;align-items:center;justify-content:center;border-radius:6px;background:#17B3A0;font-size:15px;font-weight:500">Send request</span>
+    <span style="height:48px;display:flex;align-items:center;justify-content:center;border-radius:6px;background:#15A594;font-size:15px;font-weight:500">Send request</span>
+    <span style="height:48px;display:flex;align-items:center;justify-content:center;border-radius:6px;background:#15A594;box-shadow:inset 0 1px 0 rgba(11,34,49,0.25);font-size:15px;font-weight:500">Send request</span>
+    <span style="height:48px;display:flex;align-items:center;justify-content:center;border-radius:6px;background:#17B3A0;outline:2px solid #0B2231;outline-offset:2px;font-size:15px;font-weight:500">Send request</span>
+    <span style="height:48px;display:flex;align-items:center;justify-content:center;border-radius:6px;background:#17B3A0;opacity:0.4;font-size:15px;font-weight:500">Send request</span>
+    <span style="height:48px;display:flex;align-items:center;justify-content:center;gap:10px;border-radius:6px;background:#17B3A0;font-size:15px;font-weight:500"><span style="width:16px;height:16px;border-radius:999px;border:2px solid rgba(11,34,49,0.25);border-top-color:#0B2231;animation:spin 800ms linear infinite"></span>Sending…</span>
+
+    <span style="font-size:14px;font-weight:500">Secondary</span>
+    <span style="height:48px;display:flex;align-items:center;justify-content:center;border-radius:6px;border:1px solid #0B2231;font-size:15px;font-weight:500">Back</span>
+    <span style="height:48px;display:flex;align-items:center;justify-content:center;border-radius:6px;border:1px solid #0B2231;background:#F3F6F5;font-size:15px;font-weight:500">Back</span>
+    <span style="height:48px;display:flex;align-items:center;justify-content:center;border-radius:6px;border:1px solid #0B2231;background:#E7F4F1;box-shadow:inset 0 1px 0 rgba(11,34,49,0.15);font-size:15px;font-weight:500">Back</span>
+    <span style="height:48px;display:flex;align-items:center;justify-content:center;border-radius:6px;border:1px solid #0B2231;outline:2px solid #0B2231;outline-offset:2px;font-size:15px;font-weight:500">Back</span>
+    <span style="height:48px;display:flex;align-items:center;justify-content:center;border-radius:6px;border:1px solid #0B2231;opacity:0.4;font-size:15px;font-weight:500">Back</span>
+    <span></span>
+
+    <span style="font-size:14px;font-weight:500">Tertiary</span>
+    <span style="font-size:15px;font-weight:500;color:#0B7A6E">Compare it with us →</span>
+    <span style="font-size:15px;font-weight:500;color:#0B7A6E;text-decoration:underline;text-underline-offset:3px">Compare it with us →</span>
+    <span style="font-size:15px;font-weight:500;color:#085F55;text-decoration:underline;text-underline-offset:3px">Compare it with us →</span>
+    <span style="justify-self:start;font-size:15px;font-weight:500;color:#0B7A6E;text-decoration:underline;text-underline-offset:3px;outline:2px solid #0B2231;outline-offset:2px;border-radius:2px">Compare it with us →</span>
+    <span style="font-size:15px;font-weight:500;color:#0B7A6E;opacity:0.4">Compare it with us →</span>
+    <span></span>
+  </div>
+  <div style="margin-top:32px;background:#0B2231;border-radius:10px;padding:32px;display:grid;grid-template-columns:160px repeat(4,minmax(0,1fr));gap:20px;align-items:center">
+    <span style="font-size:14px;font-weight:500;color:#EEF3F4">On navy</span>
+    <span style="height:48px;display:flex;align-items:center;justify-content:center;border-radius:6px;background:#17B3A0;font-size:15px;font-weight:500">WhatsApp</span>
+    <span style="height:48px;display:flex;align-items:center;justify-content:center;border-radius:6px;background:#17B3A0;outline:2px solid #FFFFFF;outline-offset:2px;font-size:15px;font-weight:500">WhatsApp · focus</span>
+    <span style="height:48px;display:flex;align-items:center;justify-content:center;border-radius:6px;border:1px solid rgba(255,255,255,0.3);color:#EEF3F4;font-size:15px;font-weight:500">Call</span>
+    <span style="height:48px;display:flex;align-items:center;justify-content:center;border-radius:6px;border:1px solid rgba(255,255,255,0.3);background:rgba(255,255,255,0.06);color:#EEF3F4;font-size:15px;font-weight:500">Call · hover</span>
+  </div>
+</section>
+
+<section style="margin-top:128px">
+  <div style="font-size:14px;font-weight:500;color:#0B7A6E">04 — Input</div>
+  <h2 style="margin:12px 0 0;font:350 40px/1.04 'Newsreader',serif;letter-spacing:-0.015em">Fields</h2>
+  <p style="margin:12px 0 0;font-size:16px;line-height:1.6;color:#3D5260;max-width:62ch">Label above, hint below, error below that. 48px tall, 16px text. Errors carry an icon and words, never just red.</p>
+  <div style="margin-top:40px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 32px">
+    <div><div style="font-size:13px;color:#5F707B;margin-bottom:12px">Default</div><label style="display:block;font-size:14px;font-weight:500">Company name</label><div style="margin-top:8px;height:48px;border:1px solid #DCE3E2;border-radius:6px"></div></div>
+    <div><div style="font-size:13px;color:#5F707B;margin-bottom:12px">Hover</div><label style="display:block;font-size:14px;font-weight:500">Company name</label><div style="margin-top:8px;height:48px;border:1px solid #5F707B;border-radius:6px"></div></div>
+    <div><div style="font-size:13px;color:#5F707B;margin-bottom:12px">Focus</div><label style="display:block;font-size:14px;font-weight:500">Company name</label><div style="margin-top:8px;height:48px;border:1px solid #0B7A6E;box-shadow:0 0 0 2px #0B7A6E;border-radius:6px;display:flex;align-items:center;padding:0 14px"><span style="width:1px;height:20px;background:#0B2231"></span></div></div>
+    <div><div style="font-size:13px;color:#5F707B;margin-bottom:12px">Filled</div><label style="display:block;font-size:14px;font-weight:500">Work email</label><div style="margin-top:8px;height:48px;border:1px solid #DCE3E2;border-radius:6px;display:flex;align-items:center;padding:0 14px;font-size:16px">finance@company.com</div></div>
+    <div><div style="font-size:13px;color:#5F707B;margin-bottom:12px">Error</div><label style="display:block;font-size:14px;font-weight:500">Work email</label><div style="margin-top:8px;height:48px;border:1px solid #B42318;box-shadow:0 0 0 1px #B42318;border-radius:6px;display:flex;align-items:center;padding:0 14px;font-size:16px">priya@</div><div style="margin-top:8px;display:flex;gap:8px;align-items:flex-start;font-size:14px;line-height:1.4;color:#B42318"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="flex:none;margin-top:1px"><circle cx="12" cy="12" r="9"></circle><path d="M12 7.5v5.5M12 16.5v.01"></path></svg>Enter an email address like name@company.com.</div></div>
+    <div><div style="font-size:13px;color:#5F707B;margin-bottom:12px">Disabled</div><label style="display:block;font-size:14px;font-weight:500;opacity:0.4">Company name</label><div style="margin-top:8px;height:48px;border:1px solid #DCE3E2;background:#F3F6F5;border-radius:6px;opacity:0.6"></div></div>
+
+    <div><div style="font-size:13px;color:#5F707B;margin-bottom:12px">Amount + currency (hero, 56px)</div><label style="display:block;font-size:14px;font-weight:500">How much are you sending?</label>
+      <div style="margin-top:8px;display:flex;height:56px;border:1px solid #5F707B;border-radius:6px;overflow:hidden">
+        <div style="display:flex;padding:4px;gap:4px;border-right:1px solid #DCE3E2"><span style="display:flex;align-items:center;gap:5px;padding:0 12px;border-radius:4px;background:#E7F4F1;box-shadow:inset 0 0 0 1px #0B7A6E;font-size:15px;font-weight:500"><svg width="0.95em" height="0.95em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="AED"><path d="M7 4v16M7 4h3.5c5 0 8.5 3.4 8.5 8s-3.5 8-8.5 8H7M3 10h17.5M3 14h17.5"></path></svg>AED</span><span style="display:flex;align-items:center;padding:0 12px;border-radius:4px;color:#3D5260;font-size:15px;font-weight:500;white-space:nowrap">$ USD</span></div>
+        <div style="flex:1;display:flex;align-items:center;padding:0 14px;font:400 18px 'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums">250,000</div>
+      </div>
+      <div style="margin-top:8px;font-size:14px;color:#5F707B">A rough figure is fine. You can change it later.</div>
+    </div>
+    <div><div style="font-size:13px;color:#5F707B;margin-bottom:12px">Select (native)</div><label style="display:block;font-size:14px;font-weight:500">Payment type</label><div style="margin-top:8px;height:48px;border:1px solid #DCE3E2;border-radius:6px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-size:16px">Supplier payment<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0B2231" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></div></div>
+    <div><div style="font-size:13px;color:#5F707B;margin-bottom:12px">Segmented</div><label style="display:block;font-size:14px;font-weight:500">How should we reach you?</label><div style="margin-top:8px;display:grid;grid-template-columns:repeat(3,1fr);padding:4px;gap:4px;border:1px solid #DCE3E2;border-radius:6px"><span style="height:40px;display:flex;align-items:center;justify-content:center;border-radius:4px;background:#E7F4F1;box-shadow:inset 0 0 0 1px #0B7A6E;font-size:15px;font-weight:500">Email</span><span style="height:40px;display:flex;align-items:center;justify-content:center;border-radius:4px;font-size:15px;color:#3D5260">WhatsApp</span><span style="height:40px;display:flex;align-items:center;justify-content:center;border-radius:4px;font-size:15px;color:#3D5260">Call</span></div></div>
+
+    <div style="grid-column:span 2"><div style="font-size:13px;color:#5F707B;margin-bottom:12px">File attach (bank-quote mode): empty · selected</div>
+      <div style="display:flex;align-items:center;gap:8px"><label style="font-size:14px;font-weight:500">Your bank quote (optional)</label><span style="display:inline-flex;align-items:center;height:20px;padding:0 6px;border-radius:4px;background:#F3F6F5;color:#3D5260;border:1px solid #DCE3E2;font-size:12px;font-weight:500">Demo</span></div>
+      <div style="margin-top:8px;display:grid;grid-template-columns:1fr 1fr;gap:16px">
+        <div style="height:88px;border:1px dashed #5F707B;border-radius:6px;display:flex;align-items:center;justify-content:center;gap:12px;font-size:15px"><span style="height:36px;display:flex;align-items:center;padding:0 14px;border:1px solid #0B2231;border-radius:6px;font-weight:500">Choose file</span><span style="color:#3D5260">or drag it here</span></div>
+        <div style="height:88px;border:1px solid #DCE3E2;border-radius:6px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-size:15px"><span style="display:flex;flex-direction:column;gap:2px"><span style="font-weight:500">bank-quote-march.pdf</span><span style="font-size:13px;color:#5F707B">Stays in your browser</span></span><span style="font-size:14px;font-weight:500;color:#0B7A6E">Remove</span></div>
+      </div>
+      <div style="margin-top:8px;font-size:14px;color:#5F707B">PDF, image or screenshot. In this demo, it stays in your browser.</div>
+    </div>
+    <div><div style="font-size:13px;color:#5F707B;margin-bottom:12px">Error summary</div>
+      <div style="background:#FDECEA;border:1px solid #B42318;border-radius:6px;padding:16px">
+        <div style="display:flex;gap:8px;align-items:center;font-size:15px;font-weight:600;color:#B42318"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7.5v5.5M12 16.5v.01"></path></svg>Check 2 fields before continuing</div>
+        <div style="margin-top:8px;padding-left:24px;display:flex;flex-direction:column;gap:4px;font-size:14px"><a href="#" style="color:#B42318;text-decoration:underline">Payment amount</a><a href="#" style="color:#B42318;text-decoration:underline">Payment type</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="margin-top:128px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px">
+  <div>
+    <div style="font-size:14px;font-weight:500;color:#0B7A6E">05 — Labels</div>
+    <h2 style="margin:12px 0 0;font:350 40px/1.04 'Newsreader',serif;letter-spacing:-0.015em">Tags</h2>
+    <p style="margin:12px 0 0;font-size:16px;line-height:1.6;color:#3D5260">Plex Sans 500, 13px, sentence case, 4px radius. They always carry words, so they never rely on colour.</p>
+    <div style="margin-top:32px;display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;align-items:center;gap:16px"><span style="display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:4px;background:#FBF1DC;color:#7A5200;font-size:13px;font-weight:500">India pilot</span><span style="display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:4px;background:#FBF1DC;color:#7A5200;font-size:13px;font-weight:500">To be confirmed</span><span style="font-size:14px;color:#5F707B">Unconfirmed or pilot status</span></div>
+      <div style="display:flex;align-items:center;gap:16px"><span style="display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:4px;background:#F3F6F5;color:#3D5260;border:1px dotted #5F707B;font-size:13px;font-weight:500">Illustrative · no live rates</span><span style="font-size:14px;color:#5F707B">Example content, dotted border</span></div>
+      <div style="display:flex;align-items:center;gap:16px"><span style="display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:4px;background:#F3F6F5;color:#3D5260;border:1px solid #DCE3E2;font-size:13px;font-weight:500">Demo</span><span style="font-size:14px;color:#5F707B">Behaviour that does nothing real, solid border</span></div>
+    </div>
+  </div>
+  <div>
+    <div style="font-size:14px;font-weight:500;color:#0B7A6E">06 — Currency</div>
+    <h2 style="margin:12px 0 0;font:350 40px/1.04 'Newsreader',serif;letter-spacing:-0.015em">Dirham sign</h2>
+    <p style="margin:12px 0 0;font-size:16px;line-height:1.6;color:#3D5260">Inline SVG until fonts ship U+20C3. Sized in em, uses currentColor, <span style="white-space:nowrap">role="img" aria-label="AED"</span>.</p>
+    <div style="margin-top:32px;display:flex;align-items:flex-end;gap:48px">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:12px"><svg width="96" height="96" viewBox="0 0 24 24" fill="none" stroke="#0B2231" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="AED"><path d="M7 4v16M7 4h3.5c5 0 8.5 3.4 8.5 8s-3.5 8-8.5 8H7M3 10h17.5M3 14h17.5"></path></svg><span style="font-size:13px;color:#5F707B">96px · display</span></div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:12px"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0B2231" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="AED"><path d="M7 4v16M7 4h3.5c5 0 8.5 3.4 8.5 8s-3.5 8-8.5 8H7M3 10h17.5M3 14h17.5"></path></svg><span style="font-size:13px;color:#5F707B">32px · figure-lg</span></div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:12px"><span style="display:flex;align-items:center;gap:4px;font-size:15px;font-weight:500"><svg width="0.95em" height="0.95em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="AED"><path d="M7 4v16M7 4h3.5c5 0 8.5 3.4 8.5 8s-3.5 8-8.5 8H7M3 10h17.5M3 14h17.5"></path></svg>AED → ₹</span><span style="font-size:13px;color:#5F707B">1em · inline, selectors</span></div>
+    </div>
+  </div>
+</section>
+
+<section style="margin-top:128px">
+  <div style="font-size:14px;font-weight:500;color:#0B7A6E">07 — Documents</div>
+  <h2 style="margin:12px 0 0;font:350 40px/1.04 'Newsreader',serif;letter-spacing:-0.015em">Quote document and spec table</h2>
+  <div style="margin-top:40px;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:64px;align-items:start">
+    <div style="background:#FFFFFF;border:1px solid #DCE3E2;border-radius:10px;box-shadow:0 1px 2px rgba(11,34,49,.06), 0 12px 32px rgba(11,34,49,.08);overflow:hidden">
+      <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding:20px 24px;border-bottom:1px solid #DCE3E2">
+        <div style="display:flex;align-items:center;gap:12px;white-space:nowrap"><span style="font-size:16px;font-weight:600">Quote anatomy</span><span style="display:flex;align-items:center;gap:4px;font-size:14px;color:#5F707B"><svg width="0.95em" height="0.95em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="AED"><path d="M7 4v16M7 4h3.5c5 0 8.5 3.4 8.5 8s-3.5 8-8.5 8H7M3 10h17.5M3 14h17.5"></path></svg>→ ₹</span></div>
+        <span style="display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:4px;background:#F3F6F5;color:#3D5260;border:1px dotted #5F707B;font-size:13px;font-weight:500;white-space:nowrap">Illustrative · no live rates</span>
+      </div>
+      <div style="display:grid;grid-template-columns:150px 1fr;gap:16px;padding:16px 24px;border-bottom:1px solid #DCE3E2"><span style="font-size:14px;color:#5F707B">You send</span><span style="font:400 16px/1.4 'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums">AED 250,000</span></div>
+      <div style="display:grid;grid-template-columns:150px 1fr;gap:16px;padding:16px 24px;border-bottom:1px solid #DCE3E2"><span style="font-size:14px;color:#5F707B">FX rate</span><span style="font-size:15px">Transaction-specific quote</span></div>
+      <div style="display:grid;grid-template-columns:150px 1fr;gap:16px;padding:16px 24px;border-bottom:1px solid #DCE3E2"><span style="font-size:14px;color:#5F707B">Fee</span><span style="font-size:15px">Shown where applicable</span></div>
+      <div style="display:grid;grid-template-columns:150px 1fr;gap:16px;padding:16px 24px;border-bottom:1px solid #DCE3E2;background:#E7F4F1"><span style="font-size:14px;color:#3D5260;font-weight:500">Supplier receives</span><span style="font-size:15px;font-weight:500">INR amount, shown before you fund</span></div>
+      <div style="display:grid;grid-template-columns:150px 1fr;gap:16px;padding:16px 24px"><span style="font-size:14px;color:#5F707B">Expected timing</span><span style="font-size:15px">Confirmed for the approved payment</span></div>
+    </div>
+    <div>
+      <div style="font-size:13px;color:#5F707B;margin-bottom:12px">Spec rows · desktop (label 44%)</div>
+      <div style="font-size:16px;line-height:1.5">
+        <div style="display:grid;grid-template-columns:44% 56%;column-gap:12px;padding:16px 0;border-top:1px solid #DCE3E2"><span style="color:#3D5260">Expected timing</span><span>Same-day where supported</span></div>
+        <div style="display:grid;grid-template-columns:44% 56%;column-gap:12px;padding:16px 0;border-top:1px solid #DCE3E2;align-items:center"><span style="color:#3D5260">Cut-off</span><span><span style="display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:4px;background:#FBF1DC;color:#7A5200;font-size:13px;font-weight:500">To be confirmed</span></span></div>
+        <div style="display:grid;grid-template-columns:44% 56%;column-gap:12px;padding:16px 0;border-top:1px solid #DCE3E2;border-bottom:1px solid #DCE3E2;align-items:center"><span style="color:#3D5260">Status</span><span style="display:flex;align-items:center;gap:12px"><span style="display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:4px;background:#FBF1DC;color:#7A5200;font-size:13px;font-weight:500">India pilot</span>Pilot preparation</span></div>
+      </div>
+      <div style="font-size:13px;color:#5F707B;margin:32px 0 12px">Spec rows · mobile (stacked)</div>
+      <div style="max-width:322px;font-size:16px;line-height:1.5">
+        <div style="padding:12px 0;border-top:1px solid #DCE3E2"><div style="font-size:14px;color:#3D5260">Expected timing</div><div style="margin-top:2px">Same-day where supported</div></div>
+        <div style="padding:12px 0;border-top:1px solid #DCE3E2;border-bottom:1px solid #DCE3E2"><div style="font-size:14px;color:#3D5260">Cut-off</div><div style="margin-top:6px"><span style="display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:4px;background:#FBF1DC;color:#7A5200;font-size:13px;font-weight:500">To be confirmed</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="margin-top:128px;display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:64px;align-items:start">
+  <div>
+    <div style="font-size:14px;font-weight:500;color:#0B7A6E">08 — Disclosure</div>
+    <h2 style="margin:12px 0 0;font:350 40px/1.04 'Newsreader',serif;letter-spacing:-0.015em">Accordion</h2>
+    <p style="margin:12px 0 0;font-size:16px;line-height:1.6;color:#3D5260">Independent items. The glyph turns from + to − and the panel opens in 240ms (instant under reduced motion).</p>
+    <div style="margin-top:32px;border-bottom:1px solid #DCE3E2">
+      <div style="border-top:1px solid #DCE3E2;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:24px 0;font-size:19px;font-weight:500">Do I need to hold or manage crypto?<span style="display:flex;align-items:center;gap:16px"><span style="font-size:13px;font-weight:400;color:#5F707B">Closed · aria-expanded="false"</span><span style="font-size:24px;font-weight:400;line-height:1">+</span></span></div>
+      <div style="border-top:1px solid #DCE3E2">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:24px;padding:24px 0;font-size:19px;font-weight:500">Do you guarantee same-day execution?<span style="display:flex;align-items:center;gap:16px"><span style="font-size:13px;font-weight:400;color:#5F707B">Open</span><span style="font-size:24px;font-weight:400;line-height:1">−</span></span></div>
+        <p style="margin:0;padding:0 64px 28px 0;font-size:17px;line-height:1.6;color:#3D5260;text-wrap:pretty">No. Same-day execution may be available where supported, but timing depends on eligibility, documentation, cut-offs and review. We'll tell you what to expect before you fund.</p>
+      </div>
+      <div style="border-top:1px solid #DCE3E2;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:24px 0;font-size:19px;font-weight:500"><span style="outline:2px solid #0B2231;outline-offset:4px;border-radius:2px">What does my supplier receive?</span><span style="display:flex;align-items:center;gap:16px"><span style="font-size:13px;font-weight:400;color:#5F707B">Focus-visible</span><span style="font-size:24px;font-weight:400;line-height:1">+</span></span></div>
+    </div>
+  </div>
+  <div>
+    <div style="font-size:14px;font-weight:500;color:#0B7A6E">09 — Route</div>
+    <h2 style="margin:12px 0 0;font:350 40px/1.04 'Newsreader',serif;letter-spacing:-0.015em">Waypoints and line</h2>
+    <p style="margin:12px 0 0;font-size:16px;line-height:1.6;color:#3D5260">A passed waypoint gets a fill, a check and a heavier label, so state never relies on colour alone.</p>
+    <svg width="100%" height="330" viewBox="0 0 520 330" style="display:block;margin-top:32px" aria-hidden="true">
+      <text x="0" y="16" style="font:400 13px 'IBM Plex Sans',sans-serif" fill="#5F707B">Charted course</text>
+      <path d="M150 12 H500" stroke="#0B2231" stroke-opacity="0.25" stroke-width="3" stroke-dasharray="0 8" stroke-linecap="round"></path>
+      <text x="0" y="56" style="font:400 13px 'IBM Plex Sans',sans-serif" fill="#5F707B">Sailed course</text>
+      <path d="M150 52 H500" stroke="#17B3A0" stroke-width="3.5" stroke-dasharray="0 8" stroke-linecap="round"></path>
+      <text x="0" y="116" style="font:400 13px 'IBM Plex Sans',sans-serif" fill="#5F707B">Upcoming</text>
+      <circle cx="160" cy="111" r="5" fill="#FFFFFF" stroke="#5F707B" stroke-width="1.5"></circle>
+      <text x="178" y="116" style="font:400 14px 'IBM Plex Sans',sans-serif" fill="#3D5260">Muscat</text>
+      <text x="0" y="166" style="font:400 13px 'IBM Plex Sans',sans-serif" fill="#5F707B">Passed</text>
+      <circle cx="160" cy="161" r="5" fill="#17B3A0" stroke="#FFFFFF" stroke-width="2"></circle>
+      <path d="M175 161 l3 3 l6 -6" fill="none" stroke="#0B2231" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+      <text x="190" y="166" style="font:600 14px 'IBM Plex Sans',sans-serif" fill="#0B2231">Strait of Hormuz</text>
+      <text x="0" y="216" style="font:400 13px 'IBM Plex Sans',sans-serif" fill="#5F707B">Passed · mobile</text>
+      <circle cx="160" cy="211" r="8" fill="#17B3A0" stroke="#FFFFFF" stroke-width="2"></circle>
+      <path d="M156.5 211 l2.5 2.5 l4.5 -5" fill="none" stroke="#0B2231" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+      <text x="0" y="276" style="font:400 13px 'IBM Plex Sans',sans-serif" fill="#5F707B">Payment marker</text>
+      <path d="M150 271 H193" stroke="#17B3A0" stroke-width="3.5" stroke-dasharray="0 8" stroke-linecap="round"></path>
+      <circle cx="200" cy="271" r="7" fill="#17B3A0" stroke="#0B2231" stroke-width="2"></circle>
+      <rect x="216" y="259" width="104" height="24" rx="4" fill="#0B2231"></rect>
+      <text x="268" y="275" text-anchor="middle" style="font:500 12px 'IBM Plex Mono',monospace" fill="#EEF3F4">AED 250,000</text>
+      <rect x="336" y="259" width="112" height="24" rx="4" fill="#0B2231"></rect>
+      <text x="392" y="275" text-anchor="middle" style="font:500 12px 'IBM Plex Sans',sans-serif" fill="#EEF3F4">Your payment</text>
+      <text x="216" y="306" style="font:400 12px 'IBM Plex Sans',sans-serif" fill="#5F707B">With hero amount</text>
+      <text x="336" y="306" style="font:400 12px 'IBM Plex Sans',sans-serif" fill="#5F707B">Fallback</text>
+    </svg>
+  </div>
+</section>
+
+<section style="margin-top:128px">
+  <div style="font-size:14px;font-weight:500;color:#0B7A6E">10 — Navigation</div>
+  <h2 style="margin:12px 0 0;font:350 40px/1.04 'Newsreader',serif;letter-spacing:-0.015em">Header</h2>
+  <p style="margin:12px 0 0;font-size:16px;line-height:1.6;color:#3D5260;max-width:62ch">Sticky and white. The hairline appears only after scroll. The active anchor gets a 2px teal underline, and weight carries the state as well as colour.</p>
+  <div style="margin-top:40px;display:flex;flex-direction:column;gap:32px">
+    <div>
+      <div style="font-size:13px;color:#5F707B;margin-bottom:12px">Desktop · at top (no hairline)</div>
+      <div style="height:80px;background:#FFFFFF;border:1px dashed #DCE3E2;border-radius:6px;display:flex;align-items:center;justify-content:space-between;padding:0 40px">
+        <div style="font:600 18px 'IBM Plex Sans',sans-serif;letter-spacing:0.04em">STRAITON</div>
+        <div style="display:flex;gap:40px;font-size:15px;color:#3D5260;white-space:nowrap"><span>How it works</span><span>Quote</span><span>Documents</span><span>FAQ</span></div>
+        <span style="display:inline-flex;align-items:center;height:48px;padding:0 24px;border-radius:6px;background:#17B3A0;font-weight:500;font-size:16px">Request an assessment</span>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:13px;color:#5F707B;margin-bottom:12px">Desktop · scrolled, Quote active, FAQ hover, Documents focus-visible</div>
+      <div style="height:80px;background:#FFFFFF;border-bottom:1px solid #DCE3E2;box-shadow:0 0 0 1px #F3F6F5;display:flex;align-items:center;justify-content:space-between;padding:0 40px">
+        <div style="font:600 18px 'IBM Plex Sans',sans-serif;letter-spacing:0.04em">STRAITON</div>
+        <div style="display:flex;gap:40px;font-size:15px;color:#3D5260;white-space:nowrap"><span>How it works</span><span style="color:#0B2231;font-weight:500;text-decoration:underline;text-decoration-color:#17B3A0;text-decoration-thickness:2px;text-underline-offset:8px">Quote</span><span style="outline:2px solid #0B2231;outline-offset:4px;border-radius:2px">Documents</span><span style="color:#0B2231;text-decoration:underline;text-decoration-color:#DCE3E2;text-decoration-thickness:2px;text-underline-offset:8px">FAQ</span></div>
+        <span style="display:inline-flex;align-items:center;height:48px;padding:0 24px;border-radius:6px;background:#17B3A0;font-weight:500;font-size:16px">Request an assessment</span>
+      </div>
+    </div>
+    <div style="display:flex;gap:32px;align-items:flex-start">
+      <div>
+        <div style="font-size:13px;color:#5F707B;margin-bottom:12px">Mobile · closed</div>
+        <div style="width:390px;height:64px;background:#FFFFFF;border-bottom:1px solid #DCE3E2;display:flex;align-items:center;justify-content:space-between;padding:0 12px 0 20px">
+          <div style="font:600 17px 'IBM Plex Sans',sans-serif;letter-spacing:0.04em">STRAITON</div>
+          <span style="width:44px;height:44px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;border-radius:6px"><span style="width:20px;height:2px;background:#0B2231;border-radius:2px"></span><span style="width:20px;height:2px;background:#0B2231;border-radius:2px"></span><span style="width:20px;height:2px;background:#0B2231;border-radius:2px"></span></span>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:13px;color:#5F707B;margin-bottom:12px">Mobile · open (focus on Close menu)</div>
+        <div style="width:390px;height:64px;background:#FFFFFF;border-bottom:1px solid #DCE3E2;display:flex;align-items:center;justify-content:space-between;padding:0 12px 0 20px">
+          <div style="font:600 17px 'IBM Plex Sans',sans-serif;letter-spacing:0.04em">STRAITON</div>
+          <span style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:6px;outline:2px solid #0B2231;outline-offset:-2px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0B2231" stroke-width="2" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"></path></svg></span>
+        </div>
+      </div>
+      <div style="font-size:13px;line-height:1.5;color:#5F707B;max-width:260px;padding-top:28px">44×44 target. aria-expanded on the button; label swaps Open menu / Close menu. Full sheet: see Key Moments 3.</div>
+    </div>
+  </div>
+</section>
+
+<section style="margin-top:128px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:start">
+  <div>
+    <div style="font-size:14px;font-weight:500;color:#0B7A6E">11 — Space</div>
+    <h2 style="margin:12px 0 0;font:350 40px/1.04 'Newsreader',serif;letter-spacing:-0.015em">Spacing scale</h2>
+    <p style="margin:12px 0 0;font-size:16px;line-height:1.6;color:#3D5260">4px base. Section padding is 128 on desktop and 96 on mobile. Heading to lead is 24, lead to content is 48.</p>
+    <div style="margin-top:32px;display:flex;flex-direction:column;gap:10px">
+      <div style="display:grid;grid-template-columns:48px 1fr;align-items:center;gap:16px"><span style="font:400 13px 'IBM Plex Mono',monospace;color:#5F707B">4</span><span style="width:4px;height:12px;background:#17B3A0;border-radius:2px"></span></div>
+      <div style="display:grid;grid-template-columns:48px 1fr;align-items:center;gap:16px"><span style="font:400 13px 'IBM Plex Mono',monospace;color:#5F707B">8</span><span style="width:8px;height:12px;background:#17B3A0;border-radius:2px"></span></div>
+      <div style="display:grid;grid-template-columns:48px 1fr;align-items:center;gap:16px"><span style="font:400 13px 'IBM Plex Mono',monospace;color:#5F707B">12</span><span style="width:12px;height:12px;background:#17B3A0;border-radius:2px"></span></div>
+      <div style="display:grid;grid-template-columns:48px 1fr;align-items:center;gap:16px"><span style="font:400 13px 'IBM Plex Mono',monospace;color:#5F707B">16</span><span style="width:16px;height:12px;background:#17B3A0;border-radius:2px"></span></div>
+      <div style="display:grid;grid-template-columns:48px 1fr;align-items:center;gap:16px"><span style="font:400 13px 'IBM Plex Mono',monospace;color:#5F707B">24</span><span style="width:24px;height:12px;background:#17B3A0;border-radius:2px"></span></div>
+      <div style="display:grid;grid-template-columns:48px 1fr;align-items:center;gap:16px"><span style="font:400 13px 'IBM Plex Mono',monospace;color:#5F707B">32</span><span style="width:32px;height:12px;background:#17B3A0;border-radius:2px"></span></div>
+      <div style="display:grid;grid-template-columns:48px 1fr;align-items:center;gap:16px"><span style="font:400 13px 'IBM Plex Mono',monospace;color:#5F707B">48</span><span style="width:48px;height:12px;background:#17B3A0;border-radius:2px"></span></div>
+      <div style="display:grid;grid-template-columns:48px 1fr;align-items:center;gap:16px"><span style="font:400 13px 'IBM Plex Mono',monospace;color:#5F707B">64</span><span style="width:64px;height:12px;background:#17B3A0;border-radius:2px"></span></div>
+      <div style="display:grid;grid-template-columns:48px 1fr;align-items:center;gap:16px"><span style="font:400 13px 'IBM Plex Mono',monospace;color:#5F707B">96</span><span style="width:96px;height:12px;background:#17B3A0;border-radius:2px"></span></div>
+      <div style="display:grid;grid-template-columns:48px 1fr;align-items:center;gap:16px"><span style="font:400 13px 'IBM Plex Mono',monospace;color:#5F707B">128</span><span style="width:128px;height:12px;background:#17B3A0;border-radius:2px"></span></div>
+      <div style="display:grid;grid-template-columns:48px 1fr;align-items:center;gap:16px"><span style="font:400 13px 'IBM Plex Mono',monospace;color:#5F707B">160</span><span style="width:160px;height:12px;background:#17B3A0;border-radius:2px"></span></div>
+    </div>
+    <div style="margin-top:32px;font-size:14px;line-height:1.6;color:#3D5260">Grid: 12 cols · 1200 max · 24 gutters · 120 margins (desktop). 4 cols · 48 / 20 gutters, alternating (mobile).<br>Radius: 4 tags · 6 fields and buttons · 10 cards · 999 pills.</div>
+  </div>
+  <div>
+    <div style="font-size:14px;font-weight:500;color:#0B7A6E">12 — Feedback</div>
+    <h2 style="margin:12px 0 0;font:350 40px/1.04 'Newsreader',serif;letter-spacing:-0.015em">Contact demo notice</h2>
+    <p style="margin:12px 0 0;font-size:16px;line-height:1.6;color:#3D5260">Appears inline under the contact buttons when any one of them is clicked. role="status", so it's announced without moving focus. It stays until dismissed, and clicking again doesn't stack a second one.</p>
+    <div style="margin-top:32px;background:#0B2231;border-radius:10px;padding:32px">
+      <div style="display:flex;flex-wrap:wrap;gap:12px">
+        <span style="display:inline-flex;align-items:center;height:48px;padding:0 24px;border-radius:6px;background:#15A594;box-shadow:inset 0 1px 0 rgba(11,34,49,0.25);font-weight:500;font-size:16px">WhatsApp an India payments manager</span>
+        <span style="display:inline-flex;align-items:center;height:48px;padding:0 20px;border-radius:6px;border:1px solid rgba(255,255,255,0.3);color:#EEF3F4;font-weight:500;font-size:16px">Call</span>
+        <span style="display:inline-flex;align-items:center;height:48px;padding:0 20px;border-radius:6px;border:1px solid rgba(255,255,255,0.3);color:#EEF3F4;font-weight:500;font-size:16px">Email</span>
+      </div>
+      <div role="status" style="margin-top:16px;background:#12303F;border:1px solid rgba(255,255,255,0.12);border-radius:6px;padding:16px;display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:start">
+        <span style="display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:4px;background:#F3F6F5;color:#3D5260;border:1px solid #DCE3E2;font-size:13px;font-weight:500">Demo</span>
+        <span style="font-size:15px;line-height:1.5;color:#EEF3F4;text-wrap:pretty">This is a design prototype. In the live site, this would open WhatsApp, your phone or your email. Nothing has been sent.</span>
+        <span aria-label="Dismiss" style="width:44px;height:44px;margin:-12px -12px -12px 0;display:flex;align-items:center;justify-content:center;border-radius:6px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#EEF3F4" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440}}"></script>
+</body>
+</html>

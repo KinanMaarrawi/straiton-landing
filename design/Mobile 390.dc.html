@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Straiton — Pay suppliers in India from the UAE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..400&amp;display=swap">
+<style>
+body{margin:0;background:#fff;-webkit-font-smoothing:antialiased}
+a{color:#0B7A6E;text-decoration:none}
+a:hover{text-decoration:underline}
+*{box-sizing:border-box}
+</style>
+</helmet>
+<div ref="{{ rootRef }}" style="position:relative;width:390px;background:#FFFFFF;color:#0B2231;font-family:'IBM Plex Sans',sans-serif;overflow:hidden">
+
+<header style="height:64px;border-bottom:1px solid #DCE3E2;display:flex;align-items:center;justify-content:space-between;padding:0 12px 0 20px">
+  <div style="font:600 17px 'IBM Plex Sans',sans-serif;letter-spacing:0.04em">STRAITON</div>
+  <span aria-label="Open menu" style="width:44px;height:44px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;border-radius:6px">
+    <span style="width:20px;height:2px;background:#0B2231;border-radius:2px"></span>
+    <span style="width:20px;height:2px;background:#0B2231;border-radius:2px"></span>
+    <span style="width:20px;height:2px;background:#0B2231;border-radius:2px"></span>
+  </span>
+</header>
+
+<section id="top" style="padding:0 0 96px">
+  <div data-run="hero" style="padding:56px 20px 0 48px">
+    <div data-pt="start" style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px">
+      <span style="font:500 14px 'IBM Plex Sans',sans-serif;color:#0B7A6E;white-space:nowrap">UAE → India business payments</span>
+      <span style="display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:4px;background:#FBF1DC;color:#7A5200;font:500 13px 'IBM Plex Sans',sans-serif;white-space:nowrap">India pilot</span>
+    </div>
+    <h1 style="margin:20px 0 0;font:300 52px/0.98 'Newsreader',serif;letter-spacing:-0.02em">Same sea. Better paperwork.</h1>
+    <p style="margin:24px 0 0;font-size:18px;line-height:1.5;color:#3D5260;text-wrap:pretty">Straiton prepares your supplier payments from the UAE to India before you fund them: a transaction-specific quote, a checklist of what this payment needs, and a dedicated India payments manager you can actually reach.</p>
+    <div style="margin-top:32px">
+      <label style="display:block;font-size:14px;font-weight:500;line-height:1.3">How much are you sending?</label>
+      <div style="margin-top:8px;display:flex;height:56px;border:1px solid #5F707B;border-radius:6px;overflow:hidden">
+        <div style="display:flex;padding:4px;gap:4px;border-right:1px solid #DCE3E2">
+          <span style="display:flex;align-items:center;gap:5px;padding:0 10px;border-radius:4px;background:#E7F4F1;box-shadow:inset 0 0 0 1px #0B7A6E;font:500 15px 'IBM Plex Sans',sans-serif"><svg width="0.95em" height="0.95em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="AED"><path d="M7 4v16M7 4h3.5c5 0 8.5 3.4 8.5 8s-3.5 8-8.5 8H7M3 10h17.5M3 14h17.5"></path></svg>AED</span>
+          <span style="display:flex;align-items:center;padding:0 10px;border-radius:4px;color:#3D5260;font:500 15px 'IBM Plex Sans',sans-serif;white-space:nowrap">$ USD</span>
+        </div>
+        <div style="flex:1;min-width:0;display:flex;align-items:center;padding:0 12px;font:400 18px 'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums">250,000</div>
+      </div>
+      <div style="margin-top:8px;font-size:14px;line-height:1.5;color:#5F707B">A rough figure is fine. You can change it later.</div>
+      <a href="#assessment" style="margin-top:24px;display:flex;align-items:center;justify-content:center;height:56px;border-radius:6px;background:#17B3A0;color:#0B2231;font-weight:500;font-size:17px" style-hover="background:#15A594;text-decoration:none">Request a payment assessment</a>
+      <a href="#assessment" style="margin-top:20px;display:block;font-size:16px;line-height:1.5;font-weight:500;color:#0B7A6E">Already have a bank quote? Compare it with us →</a>
+      <div style="margin-top:12px;font-size:14px;line-height:1.5;color:#5F707B">No sign-up required. Direct access to an India payments manager.</div>
+    </div>
+  </div>
+</section>
+
+<section data-run="strip" style="background:#F3F6F5;padding:32px 20px 32px 48px">
+  <div style="font-size:14px;color:#3D5260">The India pilot is currently for</div>
+  <div style="margin-top:12px;display:flex;flex-direction:column;gap:8px;font-size:16px;font-weight:500">
+    <span style="display:flex;gap:10px"><span>✓</span>UAE companies</span>
+    <span style="display:flex;gap:10px"><span>✓</span>Genuine B2B payments</span>
+    <span style="display:flex;gap:10px"><span>✓</span>Indian business beneficiaries</span>
+    <span style="display:flex;gap:10px"><span>✓</span>Documented commercial purpose</span>
+  </div>
+  <div style="margin-top:12px;font-size:14px;line-height:1.5;color:#5F707B">Final eligibility is subject to compliance review.</div>
+</section>
+
+<section id="why" data-run="why" style="background:#0B2231;color:#EEF3F4;padding:96px 48px 144px 20px">
+  <div style="font:500 14px 'IBM Plex Sans',sans-serif;color:#17B3A0">Why payments to India stall</div>
+  <h2 style="margin:20px 0 0;font:350 36px/1.04 'Newsreader',serif;letter-spacing:-0.015em;text-wrap:pretty">Most delays are decided before the money moves.</h2>
+  <p style="margin:20px 0 0;font-size:18px;line-height:1.5;color:#A9B8BF;text-wrap:pretty">A cross-border payment rarely goes wrong on the day it's sent. It goes wrong on a detail nobody checked the week before.</p>
+  <ol style="list-style:none;margin:40px 0 0;padding:0">
+    <li style="display:grid;grid-template-columns:36px 1fr;padding:16px 0;border-top:1px solid rgba(255,255,255,0.12)"><span style="font-size:15px;line-height:1.5;color:#A9B8BF;font-variant-numeric:tabular-nums">01</span><div><div style="font-size:17px;font-weight:500;line-height:1.4">Returned for missing or inconsistent information.</div><div style="margin-top:4px;font-size:16px;line-height:1.6;color:#A9B8BF">A name, account or purpose that doesn't line up, and the payment comes back.</div></div></li>
+    <li style="display:grid;grid-template-columns:36px 1fr;padding:16px 0;border-top:1px solid rgba(255,255,255,0.12)"><span style="font-size:15px;line-height:1.5;color:#A9B8BF;font-variant-numeric:tabular-nums">02</span><div><div style="font-size:17px;font-weight:500;line-height:1.4">Documents requested after submission.</div><div style="margin-top:4px;font-size:16px;line-height:1.6;color:#A9B8BF">The invoice or contract gets asked for once the payment is already moving.</div></div></li>
+    <li style="display:grid;grid-template-columns:36px 1fr;padding:16px 0;border-top:1px solid rgba(255,255,255,0.12)"><span style="font-size:15px;line-height:1.5;color:#A9B8BF;font-variant-numeric:tabular-nums">03</span><div><div style="font-size:17px;font-weight:500;line-height:1.4">Beneficiary mismatch.</div><div style="margin-top:4px;font-size:16px;line-height:1.6;color:#A9B8BF">The details you hold don't match your supplier's bank records.</div></div></li>
+    <li style="display:grid;grid-template-columns:36px 1fr;padding:16px 0;border-top:1px solid rgba(255,255,255,0.12)"><span style="font-size:15px;line-height:1.5;color:#A9B8BF;font-variant-numeric:tabular-nums">04</span><div><div style="font-size:17px;font-weight:500;line-height:1.4">Compliance back-and-forth.</div><div style="margin-top:4px;font-size:16px;line-height:1.6;color:#A9B8BF">Questions arrive one at a time, and every round adds time.</div></div></li>
+    <li style="display:grid;grid-template-columns:36px 1fr;padding:16px 0;border-top:1px solid rgba(255,255,255,0.12);border-bottom:1px solid rgba(255,255,255,0.12)"><span style="font-size:15px;line-height:1.5;color:#A9B8BF;font-variant-numeric:tabular-nums">05</span><div><div style="font-size:17px;font-weight:500;line-height:1.4">A missed cut-off.</div><div style="margin-top:4px;font-size:16px;line-height:1.6;color:#A9B8BF">One late answer, and execution slips.</div></div></li>
+  </ol>
+  <p style="margin:40px 0 0;font:400 24px/1.2 'Newsreader',serif;letter-spacing:-0.01em;text-wrap:pretty">Straiton does the checking first, so it isn't happening while your supplier waits.</p>
+</section>
+
+<section id="share" data-run="share" style="padding:144px 20px 96px 48px">
+  <div data-wp="01" style="display:flex;flex-wrap:wrap;gap:4px 12px;font-size:14px;font-weight:500"><span style="color:#0B7A6E;white-space:nowrap">01 — Share</span><span style="color:#3D5260;font-weight:600;white-space:nowrap">Mina Rashid</span></div>
+  <h2 style="margin:20px 0 0;font:350 36px/1.04 'Newsreader',serif;letter-spacing:-0.015em">Tell us about the payment.</h2>
+  <p style="margin:20px 0 0;font-size:18px;line-height:1.5;color:#3D5260">Start with the basics. No account, no onboarding, no commitment.</p>
+  <dl style="margin:40px 0 0">
+    <div style="padding:14px 0;border-top:1px solid #DCE3E2"><dt style="font-size:16px;font-weight:500">Amount</dt><dd style="margin:4px 0 0;font-size:16px;line-height:1.6;color:#3D5260">What you plan to send.</dd></div>
+    <div style="padding:14px 0;border-top:1px solid #DCE3E2"><dt style="font-size:16px;font-weight:500">Funding currency</dt><dd style="margin:4px 0 0;font-size:16px;line-height:1.6;color:#3D5260">AED or USD.</dd></div>
+    <div style="padding:14px 0;border-top:1px solid #DCE3E2"><dt style="font-size:16px;font-weight:500">Payment type</dt><dd style="margin:4px 0 0;font-size:16px;line-height:1.6;color:#3D5260">A supplier payment, an invoice payment or another eligible business payment.</dd></div>
+    <div style="padding:14px 0;border-top:1px solid #DCE3E2"><dt style="font-size:16px;font-weight:500">The context</dt><dd style="margin:4px 0 0;font-size:16px;line-height:1.6;color:#3D5260">The invoice or contract behind it.</dd></div>
+    <div style="padding:14px 0;border-top:1px solid #DCE3E2;border-bottom:1px solid #DCE3E2"><dt style="font-size:16px;font-weight:500">Who you're paying</dt><dd style="margin:4px 0 0;font-size:16px;line-height:1.6;color:#3D5260">Your supplier's business details in India.</dd></div>
+  </dl>
+</section>
+
+<section id="assess" data-run="assess" style="padding:96px 48px 96px 20px">
+  <div data-wp="02" style="display:flex;flex-wrap:wrap;gap:4px 12px;font-size:14px;font-weight:500"><span style="color:#0B7A6E;white-space:nowrap">02 — Assess</span><span style="color:#3D5260;font-weight:600;white-space:nowrap">Strait of Hormuz</span></div>
+  <h2 style="margin:20px 0 0;font:350 36px/1.04 'Newsreader',serif;letter-spacing:-0.015em;text-wrap:pretty">Know what your supplier receives before you fund.</h2>
+  <p style="margin:20px 0 0;font-size:18px;line-height:1.5;color:#3D5260;text-wrap:pretty">You get an assessment of this specific payment: how it would be quoted, what it needs, and what could slow it down.</p>
+  <div style="margin-top:40px;background:#FFFFFF;border:1px solid #DCE3E2;border-radius:10px;box-shadow:0 1px 2px rgba(11,34,49,.06), 0 12px 32px rgba(11,34,49,.08);overflow:hidden">
+    <div style="padding:16px 20px;border-bottom:1px solid #DCE3E2;display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="font-size:16px;font-weight:600">Quote anatomy</span>
+        <span style="display:flex;align-items:center;gap:4px;font-size:14px;color:#5F707B"><svg width="0.95em" height="0.95em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="AED"><path d="M7 4v16M7 4h3.5c5 0 8.5 3.4 8.5 8s-3.5 8-8.5 8H7M3 10h17.5M3 14h17.5"></path></svg>→ ₹</span>
+      </div>
+      <span style="align-self:flex-start;display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:4px;background:#F3F6F5;color:#3D5260;border:1px dotted #5F707B;font:500 13px 'IBM Plex Sans',sans-serif;white-space:nowrap">Illustrative · no live rates</span>
+    </div>
+    <div style="padding:14px 20px;border-bottom:1px solid #DCE3E2"><div style="font-size:14px;color:#5F707B">You send</div><div style="margin-top:2px;font:400 16px/1.4 'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums">AED 250,000</div></div>
+    <div style="padding:14px 20px;border-bottom:1px solid #DCE3E2"><div style="font-size:14px;color:#5F707B">FX rate</div><div style="margin-top:2px;font-size:15px;line-height:1.4">Transaction-specific quote</div></div>
+    <div style="padding:14px 20px;border-bottom:1px solid #DCE3E2"><div style="font-size:14px;color:#5F707B">Fee</div><div style="margin-top:2px;font-size:15px;line-height:1.4">Shown where applicable</div></div>
+    <div style="padding:14px 20px;border-bottom:1px solid #DCE3E2;background:#E7F4F1"><div style="font-size:14px;color:#3D5260;font-weight:500">Supplier receives</div><div style="margin-top:2px;font-size:15px;line-height:1.4;font-weight:500">INR amount, shown before you fund</div></div>
+    <div style="padding:14px 20px"><div style="font-size:14px;color:#5F707B">Expected timing</div><div style="margin-top:2px;font-size:15px;line-height:1.4">Confirmed for the approved payment</div></div>
+  </div>
+  <p style="margin:14px 0 0;font-size:14px;line-height:1.5;color:#5F707B;text-wrap:pretty">Same-day execution may be available where supported. Pricing and timing are specific to each transaction.</p>
+  <h3 style="margin:48px 0 0;font:400 24px/1.2 'Newsreader',serif;letter-spacing:-0.01em">What we check upfront</h3>
+  <ul style="list-style:none;margin:20px 0 0;padding:0;display:flex;flex-direction:column;gap:10px;font-size:16px;line-height:1.5">
+    <li style="display:flex;gap:10px"><span>✓</span>Company information</li>
+    <li style="display:flex;gap:10px"><span>✓</span>Invoice or contract context</li>
+    <li style="display:flex;gap:10px"><span>✓</span>Beneficiary details</li>
+    <li style="display:flex;gap:10px"><span>✓</span>Payment purpose</li>
+    <li style="display:flex;gap:10px"><span>✓</span>Supporting documents, where required</li>
+  </ul>
+  <p style="margin:20px 0 0;font-size:14px;line-height:1.5;color:#5F707B;text-wrap:pretty">What's needed depends on the transaction, and everything remains subject to review. Preparation reduces avoidable friction; it doesn't guarantee approval or execution timing.</p>
+</section>
+
+<section id="complete" data-run="complete" style="background:#F3F6F5;padding:96px 20px 96px 48px">
+  <div data-wp="03" style="display:flex;flex-wrap:wrap;gap:4px 12px;font-size:14px;font-weight:500"><span style="color:#0B7A6E;white-space:nowrap">03 — Complete</span><span style="color:#3D5260;font-weight:600;white-space:nowrap">Muscat</span></div>
+  <h2 style="margin:20px 0 0;font:350 36px/1.04 'Newsreader',serif;letter-spacing:-0.015em">Onboard once. Fund the approved payment.</h2>
+  <p style="margin:20px 0 0;font-size:18px;line-height:1.5;color:#3D5260;text-wrap:pretty">When the assessment is agreed, you complete onboarding and fund the transaction in AED or USD. Your supplier receives INR.</p>
+  <h3 style="margin:48px 0 0;font:400 24px/1.2 'Newsreader',serif;letter-spacing:-0.01em">Corridor specification</h3>
+  <p style="margin:10px 0 0;font-size:16px;line-height:1.6;color:#3D5260">What the UAE → India corridor is designed to support during the pilot. Unconfirmed details are marked, not hidden.</p>
+  <dl style="margin:24px 0 0;font-size:16px;line-height:1.5">
+    <div style="padding:12px 0;border-top:1px solid #DCE3E2"><dt style="font-size:14px;color:#3D5260">From</dt><dd style="margin:2px 0 0">United Arab Emirates</dd></div>
+    <div style="padding:12px 0;border-top:1px solid #DCE3E2"><dt style="font-size:14px;color:#3D5260">To</dt><dd style="margin:2px 0 0">India</dd></div>
+    <div style="padding:12px 0;border-top:1px solid #DCE3E2"><dt style="font-size:14px;color:#3D5260">Funding currencies</dt><dd style="margin:2px 0 0">AED / USD</dd></div>
+    <div style="padding:12px 0;border-top:1px solid #DCE3E2"><dt style="font-size:14px;color:#3D5260">Supplier receives</dt><dd style="margin:2px 0 0">INR</dd></div>
+    <div style="padding:12px 0;border-top:1px solid #DCE3E2"><dt style="font-size:14px;color:#3D5260">Beneficiary type</dt><dd style="margin:2px 0 0">Eligible Indian businesses</dd></div>
+    <div style="padding:12px 0;border-top:1px solid #DCE3E2"><dt style="font-size:14px;color:#3D5260">Payment types</dt><dd style="margin:2px 0 0">Supplier payments · Invoice payments · Other eligible business payments</dd></div>
+    <div style="padding:12px 0;border-top:1px solid #DCE3E2"><dt style="font-size:14px;color:#3D5260">Expected timing</dt><dd style="margin:2px 0 0">Same-day where supported</dd></div>
+    <div style="padding:12px 0;border-top:1px solid #DCE3E2"><dt style="font-size:14px;color:#3D5260">Payout</dt><dd style="margin:2px 0 0">INR business payout, subject to confirmed capability</dd></div>
+    <div style="padding:12px 0;border-top:1px solid #DCE3E2"><dt style="font-size:14px;color:#3D5260">Payout method</dt><dd style="margin:6px 0 0"><span style="display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:4px;background:#FBF1DC;color:#7A5200;font:500 13px 'IBM Plex Sans',sans-serif">To be confirmed</span></dd></div>
+    <div style="padding:12px 0;border-top:1px solid #DCE3E2"><dt style="font-size:14px;color:#3D5260">Cut-off</dt><dd style="margin:6px 0 0"><span style="display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:4px;background:#FBF1DC;color:#7A5200;font:500 13px 'IBM Plex Sans',sans-serif">To be confirmed</span></dd></div>
+    <div style="padding:12px 0;border-top:1px solid #DCE3E2"><dt style="font-size:14px;color:#3D5260">Minimum / maximum amount</dt><dd style="margin:6px 0 0"><span style="display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:4px;background:#FBF1DC;color:#7A5200;font:500 13px 'IBM Plex Sans',sans-serif">To be confirmed</span></dd></div>
+    <div style="padding:12px 0;border-top:1px solid #DCE3E2"><dt style="font-size:14px;color:#3D5260">Required information</dt><dd style="margin:2px 0 0">Transaction-specific</dd></div>
+    <div style="padding:12px 0;border-top:1px solid #DCE3E2"><dt style="font-size:14px;color:#3D5260">Tracking</dt><dd style="margin:2px 0 0">Payment status and confirmation</dd></div>
+    <div style="padding:12px 0;border-top:1px solid #DCE3E2;border-bottom:1px solid #DCE3E2"><dt style="font-size:14px;color:#3D5260">Status</dt><dd style="margin:6px 0 0;display:flex;align-items:center;gap:10px"><span style="display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:4px;background:#FBF1DC;color:#7A5200;font:500 13px 'IBM Plex Sans',sans-serif">India pilot</span>Pilot preparation</dd></div>
+  </dl>
+</section>
+
+<section id="track" data-run="track" style="padding:96px 48px 96px 20px">
+  <div data-wp="04" style="display:flex;flex-wrap:wrap;gap:4px 12px;font-size:14px;font-weight:500"><span style="color:#0B7A6E;white-space:nowrap">04 — Track</span><span style="color:#3D5260;font-weight:600;white-space:nowrap">Arabian Sea</span></div>
+  <h2 style="margin:20px 0 0;font:350 36px/1.04 'Newsreader',serif;letter-spacing:-0.015em">Follow it all the way to confirmation.</h2>
+  <p style="margin:20px 0 0;font-size:18px;line-height:1.5;color:#3D5260;text-wrap:pretty">Every payment has a status, from request to beneficiary confirmation, so "has it gone through?" always has an answer.</p>
+  <div style="margin-top:40px;border:1px solid #DCE3E2;border-radius:10px;padding:20px">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <span style="font-size:15px;font-weight:500">Supplier payment · UAE → India</span>
+      <span style="align-self:flex-start;display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:4px;background:#F3F6F5;color:#3D5260;border:1px dotted #5F707B;font:500 13px 'IBM Plex Sans',sans-serif">Illustrative interface</span>
+    </div>
+    <div style="margin-top:24px;display:grid;grid-template-columns:24px 1fr;column-gap:14px">
+      <div style="display:flex;flex-direction:column;align-items:center"><span style="width:24px;height:24px;border-radius:999px;background:#17B3A0;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600">✓</span><span style="width:2px;flex:1;min-height:20px;background:#17B3A0;margin:4px 0"></span></div>
+      <div style="padding:2px 0 20px;font-size:15px;font-weight:500">Request</div>
+      <div style="display:flex;flex-direction:column;align-items:center"><span style="width:24px;height:24px;border-radius:999px;background:#17B3A0;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600">✓</span><span style="width:2px;flex:1;min-height:20px;background:#17B3A0;margin:4px 0"></span></div>
+      <div style="padding:2px 0 20px;font-size:15px;font-weight:500">Assessment</div>
+      <div style="display:flex;flex-direction:column;align-items:center"><span style="width:24px;height:24px;border-radius:999px;border:2px solid #0B2231;display:flex;align-items:center;justify-content:center"><span style="width:8px;height:8px;border-radius:999px;background:#0B2231"></span></span><span style="width:0;flex:1;min-height:20px;border-left:2px dotted #DCE3E2;margin:4px 0"></span></div>
+      <div style="padding:2px 0 20px"><div style="font-size:15px;font-weight:600">Funding</div><div style="margin-top:2px;font-size:14px;line-height:1.5;color:#5F707B">Waiting for funds to be received.</div></div>
+      <div style="display:flex;justify-content:center"><span style="width:24px;height:24px;border-radius:999px;border:1.5px solid #5F707B"></span></div>
+      <div style="padding:2px 0 0;font-size:15px;color:#3D5260">Confirmation</div>
+    </div>
+  </div>
+</section>
+
+<section id="support" data-run="support" style="background:#0B2231;color:#EEF3F4;padding:96px 20px 144px 48px">
+  <div style="font:500 14px 'IBM Plex Sans',sans-serif;color:#17B3A0">Your payments manager</div>
+  <div style="margin-top:24px;display:flex;align-items:center;gap:14px">
+    <span style="width:56px;height:56px;border-radius:10px;background:#12303F;border:1px solid rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:600;letter-spacing:0.04em">IN</span>
+    <span style="font-size:16px;font-weight:500">India payments manager</span>
+  </div>
+  <h2 style="margin:24px 0 0;font:350 36px/1.04 'Newsreader',serif;letter-spacing:-0.015em">A person who knows this corridor.</h2>
+  <p style="margin:20px 0 0;font-size:18px;line-height:1.5;color:#A9B8BF;text-wrap:pretty">Speak directly with an India payments manager before onboarding, during the payment, and whenever something needs attention.</p>
+  <div style="margin-top:32px;font-size:14px;color:#A9B8BF">Helps with</div>
+  <div style="margin-top:6px;font-size:16px;line-height:1.6">Quotes · Onboarding · Documents · Payment setup · Status · Exceptions</div>
+  <div style="margin-top:32px;display:flex;align-items:center;gap:10px">
+    <span style="display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:4px;background:#F3F6F5;color:#3D5260;border:1px solid #DCE3E2;font:500 13px 'IBM Plex Sans',sans-serif">Demo</span>
+    <span style="font-size:14px;color:#A9B8BF">Placeholder contact details</span>
+  </div>
+  <div style="margin-top:14px;display:flex;flex-direction:column;gap:10px">
+    <span style="height:48px;display:flex;align-items:center;justify-content:center;border-radius:6px;background:#17B3A0;color:#0B2231;font-weight:500;font-size:16px">WhatsApp an India payments manager</span>
+    <span style="height:48px;display:flex;align-items:center;justify-content:center;border-radius:6px;border:1px solid rgba(255,255,255,0.3);font-weight:500;font-size:16px">Call +971 00 000 0000</span>
+    <span style="height:48px;display:flex;align-items:center;justify-content:center;border-radius:6px;border:1px solid rgba(255,255,255,0.3);font-weight:500;font-size:16px">Email india@straiton.example</span>
+  </div>
+</section>
+
+<section id="faq" data-run="faq" style="padding:144px 48px 96px 20px">
+  <div style="font:500 14px 'IBM Plex Sans',sans-serif;color:#0B7A6E">FAQ</div>
+  <h2 style="margin:20px 0 0;font:350 36px/1.04 'Newsreader',serif;letter-spacing:-0.015em">Straight answers.</h2>
+  <div style="margin-top:32px;border-bottom:1px solid #DCE3E2">
+    <div style="border-top:1px solid #DCE3E2">
+      <div style="display:flex;justify-content:space-between;gap:16px;padding:18px 0;font-size:17px;font-weight:500;line-height:1.4">How fast can a UAE–India business payment be?<span style="font-size:22px;font-weight:400;line-height:1">−</span></div>
+      <p style="margin:0;padding:0 0 20px;font-size:16px;line-height:1.6;color:#3D5260;text-wrap:pretty">Same-day execution may be available where supported. Actual timing depends on eligibility, payment details, documentation, cut-offs and compliance review. Your assessment tells you what to expect for your specific payment.</p>
+    </div>
+    <div style="border-top:1px solid #DCE3E2;display:flex;justify-content:space-between;gap:16px;padding:18px 0;font-size:17px;font-weight:500;line-height:1.4">What does my supplier receive?<span style="font-size:22px;font-weight:400;line-height:1">+</span></div>
+    <div style="border-top:1px solid #DCE3E2;display:flex;justify-content:space-between;gap:16px;padding:18px 0;font-size:17px;font-weight:500;line-height:1.4">Can I speak to someone before onboarding?<span style="font-size:22px;font-weight:400;line-height:1">+</span></div>
+    <div style="border-top:1px solid #DCE3E2;display:flex;justify-content:space-between;gap:16px;padding:18px 0;font-size:17px;font-weight:500;line-height:1.4">Can you compare this with my bank's quote?<span style="font-size:22px;font-weight:400;line-height:1">+</span></div>
+    <div style="border-top:1px solid #DCE3E2;display:flex;justify-content:space-between;gap:16px;padding:18px 0;font-size:17px;font-weight:500;line-height:1.4">Do I need to hold or manage crypto?<span style="font-size:22px;font-weight:400;line-height:1">+</span></div>
+    <div style="border-top:1px solid #DCE3E2;display:flex;justify-content:space-between;gap:16px;padding:18px 0;font-size:17px;font-weight:500;line-height:1.4">Do you guarantee same-day execution?<span style="font-size:22px;font-weight:400;line-height:1">+</span></div>
+  </div>
+</section>
+
+<section id="assessment" style="background:#F3F6F5;padding:96px 0 96px">
+  <div style="padding:0 20px 0 48px">
+    <div data-pt="end" style="font:500 14px 'IBM Plex Sans',sans-serif;color:#0B7A6E">Arrival · India</div>
+    <h2 style="margin:20px 0 0;font:350 36px/1.04 'Newsreader',serif;letter-spacing:-0.015em">Start with one real payment.</h2>
+    <p style="margin:20px 0 0;font-size:18px;line-height:1.5;color:#3D5260;text-wrap:pretty">Share the details and an India payments manager comes back with an assessment: the quote structure and a document checklist for that payment.</p>
+  </div>
+  <div style="padding:40px 20px 0 48px">
+    <div style="background:#FFFFFF;border:1px solid #DCE3E2;border-radius:10px;box-shadow:0 1px 2px rgba(11,34,49,.06), 0 12px 32px rgba(11,34,49,.08);padding:24px 20px">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+        <span style="font-size:17px;font-weight:600">Payment assessment</span>
+        <span style="font-size:14px;color:#5F707B;white-space:nowrap">Step 1 of 2</span>
+      </div>
+      <div style="margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:6px"><span style="height:4px;border-radius:999px;background:#17B3A0"></span><span style="height:4px;border-radius:999px;background:#DCE3E2"></span></div>
+      <div style="margin-top:20px;display:grid;grid-template-columns:1fr 1fr;padding:4px;gap:4px;border:1px solid #DCE3E2;border-radius:6px;background:#F3F6F5">
+        <span style="min-height:44px;display:flex;align-items:center;justify-content:center;text-align:center;border-radius:4px;background:#FFFFFF;box-shadow:inset 0 0 0 1px #0B7A6E;font-size:14px;font-weight:500;line-height:1.3;padding:4px 6px">Planning a payment</span>
+        <span style="min-height:44px;display:flex;align-items:center;justify-content:center;text-align:center;border-radius:4px;font-size:14px;color:#3D5260;line-height:1.3;padding:4px 6px">I have a bank quote</span>
+      </div>
+      <div style="margin-top:24px;display:flex;flex-direction:column;gap:20px">
+        <div>
+          <label style="display:block;font-size:14px;font-weight:500;line-height:1.3">Payment amount</label>
+          <div style="margin-top:8px;height:48px;border:1px solid #DCE3E2;border-radius:6px;display:flex;align-items:center;padding:0 14px;font:400 16px 'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums">250,000</div>
+        </div>
+        <div>
+          <label style="display:block;font-size:14px;font-weight:500;line-height:1.3">Funding currency</label>
+          <div style="margin-top:8px;display:grid;grid-template-columns:1fr 1fr;padding:4px;gap:4px;border:1px solid #DCE3E2;border-radius:6px">
+            <span style="height:40px;display:flex;align-items:center;justify-content:center;gap:6px;border-radius:4px;background:#E7F4F1;box-shadow:inset 0 0 0 1px #0B7A6E;font-size:15px;font-weight:500"><svg width="0.95em" height="0.95em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="AED"><path d="M7 4v16M7 4h3.5c5 0 8.5 3.4 8.5 8s-3.5 8-8.5 8H7M3 10h17.5M3 14h17.5"></path></svg>AED</span>
+            <span style="height:40px;display:flex;align-items:center;justify-content:center;border-radius:4px;font-size:15px;font-weight:500;color:#3D5260">$ USD</span>
+          </div>
+        </div>
+        <div>
+          <label style="display:block;font-size:14px;font-weight:500;line-height:1.3">Payment type</label>
+          <!-- TODO(copy): select placeholder -->
+          <div style="margin-top:8px;height:48px;border:1px solid #DCE3E2;border-radius:6px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-size:16px;color:#5F707B">Select a payment type<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0B2231" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></div>
+        </div>
+      </div>
+      <div style="margin-top:28px;height:48px;border-radius:6px;background:#17B3A0;color:#0B2231;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:500">Continue</div>
+    </div>
+  </div>
+</section>
+
+<footer style="background:#0B2231;color:#EEF3F4;padding:72px 20px 40px">
+  <div style="font:600 17px 'IBM Plex Sans',sans-serif;letter-spacing:0.04em">STRAITON</div>
+  <p style="margin:12px 0 0;font-size:15px;line-height:1.6;color:#A9B8BF">Business payments from the UAE to India, prepared before you fund.</p>
+  <div style="margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:32px 24px;font-size:15px">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <span style="font-size:14px;font-weight:500;color:#A9B8BF;margin-bottom:4px">The route</span>
+      <a href="#share" style="color:#EEF3F4">Share</a><a href="#assess" style="color:#EEF3F4">Assess</a><a href="#complete" style="color:#EEF3F4">Complete</a><a href="#track" style="color:#EEF3F4">Track</a>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <span style="font-size:14px;font-weight:500;color:#A9B8BF;margin-bottom:4px">Help</span>
+      <a href="#faq" style="color:#EEF3F4">FAQ</a><a href="#support" style="color:#EEF3F4">Your payments manager</a><a href="#assessment" style="color:#EEF3F4">Request an assessment</a>
+    </div>
+    <div style="grid-column:1 / -1;display:flex;flex-direction:column;gap:10px">
+      <span style="display:flex;align-items:center;gap:10px;margin-bottom:4px"><span style="font-size:14px;font-weight:500;color:#A9B8BF">Contact</span><span style="display:inline-flex;align-items:center;height:20px;padding:0 6px;border-radius:4px;background:#F3F6F5;color:#3D5260;border:1px solid #DCE3E2;font-size:12px;font-weight:500">Demo</span></span>
+      <span>WhatsApp</span><span>+971 00 000 0000</span><span>india@straiton.example</span>
+    </div>
+  </div>
+  <div style="margin-top:48px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.12)">
+    <div style="font-size:14px;font-weight:500">Straiton / Regulatory information</div>
+    <p style="margin:10px 0 0;font-size:14px;line-height:1.6;color:#A9B8BF">Design placeholder. Approved legal entity and regulatory disclosures will be supplied separately. Do not infer licensing, coverage or guaranteed execution from this prototype.</p>
+  </div>
+  <div style="margin-top:32px;font-size:14px;color:#A9B8BF">© 2026 Straiton · Design prototype</div>
+</footer>
+
+{{ overlay }}
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:390}}">
+class Component extends DCLogic {
+  rootRef = React.createRef();
+  state = { route: null };
+  componentDidMount() {
+    this.compute();
+    if (document.fonts) document.fonts.ready.then(() => this.compute());
+    this._t = setTimeout(() => this.compute(), 700);
+  }
+  componentWillUnmount() { clearTimeout(this._t); }
+  compute() {
+    const root = this.rootRef.current; if (!root) return;
+    const rect = q => { const el = root.querySelector(q); if (!el) return null; let t = 0, n = el; while (n && n !== root) { t += n.offsetTop; n = n.offsetParent; } return { top: t, h: el.offsetHeight, el }; };
+    const cont = k => { const r = rect(`[data-run="${k}"]`), cs = getComputedStyle(r.el); return { top: r.top + parseFloat(cs.paddingTop), bottom: r.top + r.h - parseFloat(cs.paddingBottom) }; };
+    const mid = q => { const r = rect(q); return r.top + Math.min(r.h, 22) / 2; };
+    const G = { L: 22, R: 368 }, B = { L: [13, 31], R: [359, 377] };
+    const start = [G.L, mid('[data-pt="start"]')], end = [G.L, mid('[data-pt="end"]')];
+    const wp = n => ({ n, y: rect(`[data-wp="${n}"]`).top + 10 });
+    const runs = [
+      { s: 'L', top: start[1], bottom: cont('strip').bottom },
+      { s: 'R', ...cont('why'), loop: 1 },
+      { s: 'L', ...cont('share'), w: wp('01') },
+      { s: 'R', ...cont('assess'), w: wp('02') },
+      { s: 'L', ...cont('complete'), w: wp('03') },
+      { s: 'R', ...cont('track'), w: wp('04') },
+      { s: 'L', ...cont('support'), loop: -1 },
+      { s: 'R', ...cont('faq') }
+    ];
+    const wps = [], chain = [];
+    runs.forEach((r, i) => {
+      const x = G[r.s];
+      chain.push([x, r.top]);
+      if (r.w) { wps.push({ n: r.w.n, x, y: r.w.y }); if (r.w.y - r.top > 4) chain.push([x, r.w.y]); }
+      const from = r.w ? r.w.y : r.top; let side = 0;
+      for (let y = from + 240; y < r.bottom - 120; y += 240) chain.push([B[r.s][side++ % 2], y]);
+      chain.push([x, r.bottom]);
+      if (r.loop) {
+        const nx = runs[i + 1] ? cont(['why','share','assess','complete','track','support','faq'][i]).top : 0;
+        const rad = 40, v = 6, blk = 2 * rad + 2 * Math.PI * v, y0 = r.bottom + (nx - r.bottom - blk) / 2 + rad;
+        chain.push({ loop: true, x: 195 - r.loop * rad, y: y0, r: rad, v, dir: r.loop });
+      }
+    });
+    chain.push(end);
+    const f = n => n.toFixed(1);
+    let a = chain[0], d = `M${f(a[0])} ${f(a[1])}`;
+    for (let i = 1; i < chain.length; i++) {
+      const c = chain[i], b = c.loop ? [c.x, c.y] : c, k = (b[1] - a[1]) * 0.5;
+      d += `C${f(a[0])} ${f(a[1] + k)} ${f(b[0])} ${f(b[1] - k)} ${f(b[0])} ${f(b[1])}`;
+      if (c.loop) {
+        const cx = c.x + c.dir * c.r;
+        for (let j = 1; j <= 64; j++) { const t = -Math.PI / 2 + j / 64 * 2 * Math.PI; d += `L${f(cx + c.dir * c.r * Math.sin(t))} ${f(c.y + c.v * (t + Math.PI / 2) + c.r * Math.cos(t))}`; }
+        a = [c.x, c.y + 2 * Math.PI * c.v];
+      } else a = b;
+    }
+    this.setState({ route: { d, h: root.scrollHeight, wps, start, end } });
+  }
+  overlay() {
+    const R = this.state.route; if (!R) return null;
+    const e = React.createElement, mono = "'IBM Plex Mono', monospace", sans = "'IBM Plex Sans', sans-serif";
+    const k = [
+      e('path', { key: 'c', d: R.d, fill: 'none', stroke: '#0B2231', strokeOpacity: 0.25, strokeWidth: 3, strokeDasharray: '0 8', strokeLinecap: 'round' }),
+      e('path', { key: 's', d: R.d, fill: 'none', stroke: '#17B3A0', strokeWidth: 3.5, strokeDasharray: '0 8', strokeLinecap: 'round' })
+    ];
+    R.wps.forEach(w => k.push(e('g', { key: w.n },
+      e('circle', { cx: w.x, cy: w.y, r: 8, fill: '#17B3A0', stroke: '#FFFFFF', strokeWidth: 2 }),
+      e('path', { d: `M${w.x - 3.5} ${w.y} l2.5 2.5 l4.5 -5`, fill: 'none', stroke: '#0B2231', strokeWidth: 1.6, strokeLinecap: 'round', strokeLinejoin: 'round' }))));
+    const [sx, sy] = R.start, [ex, ey] = R.end;
+    k.push(e('circle', { key: 'st', cx: sx, cy: sy, r: 5, fill: '#17B3A0', stroke: '#FFFFFF', strokeWidth: 2 }));
+    k.push(e('circle', { key: 'en', cx: ex, cy: ey, r: 7, fill: '#17B3A0', stroke: '#0B2231', strokeWidth: 2 }));
+    return e('svg', { width: 390, height: R.h, style: { position: 'absolute', left: 0, top: 0, pointerEvents: 'none', zIndex: 3 }, 'aria-hidden': 'true' }, k);
+  }
+  renderVals() {
+    return { rootRef: this.rootRef, overlay: this.overlay() };
+  }
+}
+</script>
+</body>
+</html>
