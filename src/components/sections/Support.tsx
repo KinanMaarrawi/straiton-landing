@@ -5,6 +5,7 @@ import { SUPPORT } from '@/content/copy';
 import { Button } from '@/components/ui/Button';
 import { DemoNotice } from '@/components/ui/DemoNotice';
 import { Tag } from '@/components/ui/Tag';
+import { ManagerChat } from './ManagerChat';
 import { Reveal } from './Reveal';
 import { Section, layout } from './Section';
 import { StageHeader } from './StageHeader';
@@ -36,18 +37,12 @@ export function Support() {
             eyebrow={SUPPORT.eyebrow}
             title={SUPPORT.h2}
             titleId="support-title"
-            titleClassName={`${s.maxTitle} ${s.supportTitle}`}
+            titleClassName={s.maxTitle}
             lead={SUPPORT.lead}
-            between={
-              <div className={s.person}>
-                <span className={s.monogram} aria-hidden="true">
-                  {SUPPORT.monogram}
-                </span>
-                <span className={s.personRole}>{SUPPORT.role}</span>
-              </div>
-            }
           />
         </Reveal>
+        <div className={s.supportGrid}>
+        <div className={s.supportInfo}>
         <Reveal stagger>
         <p className={s.helpsLabel}>{SUPPORT.helpsWithLabel}</p>
         <p className={s.helps}>{SUPPORT.helpsWith}</p>
@@ -71,6 +66,11 @@ export function Support() {
         </Reveal>
         <div id="contact-notice">
           <DemoNotice open={notice} onDismiss={dismiss} message={SUPPORT.notice} />
+        </div>
+        </div>
+        <Reveal className={s.supportChat}>
+          <ManagerChat />
+        </Reveal>
         </div>
       </div>
     </Section>

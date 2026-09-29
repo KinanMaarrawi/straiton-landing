@@ -378,36 +378,9 @@
   --pad-bottom: 144px;
 }
 
-.person {
-  margin-top: var(--space-5);
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
 
-.monogram {
-  flex: none;
-  width: 56px;
-  height: 56px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: var(--hairline-dark);
-  border-radius: var(--radius-card);
-  background: var(--navy-800);
-  font-size: 20px;
-  font-weight: 600;
-  letter-spacing: var(--ls-wordmark);
-}
 
-.personRole {
-  font-size: 16px;
-  font-weight: 500;
-}
 
-.support .supportTitle {
-  margin-top: var(--space-5);
-}
 
 .helpsLabel {
   margin-top: var(--space-6);
@@ -457,25 +430,9 @@
     --pad-bottom: var(--section-pad);
   }
 
-  .person {
-    margin-top: var(--space-6);
-    gap: var(--space-4);
-  }
 
-  .monogram {
-    width: 72px;
-    height: 72px;
-    font-size: 24px;
-    font-weight: 500;
-  }
 
-  .personRole {
-    font-size: 17px;
-  }
 
-  .support .supportTitle {
-    margin-top: var(--space-6);
-  }
 
   .helpsLabel {
     margin-top: 40px;
@@ -493,6 +450,34 @@
 
   .contactButtons {
     margin-top: var(--space-4);
+  }
+}
+
+/* Contact actions beside the illustrative conversation (stacked when narrow). */
+.supportGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 40px;
+}
+
+.supportInfo {
+  min-width: 0;
+}
+
+.supportChat {
+  min-width: 0;
+}
+
+@media (min-width: 1200px) {
+  .supportGrid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--space-7);
+    align-items: start;
+  }
+
+  /* Align the chat card with the top of the "Helps with" block. */
+  .supportChat {
+    margin-top: 40px;
   }
 }
 

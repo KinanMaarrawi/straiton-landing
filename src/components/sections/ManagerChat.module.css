@@ -1,0 +1,110 @@
+/* Illustrative manager conversation (COPY.md §8), on the navy manager section. */
+
+.chat {
+  margin: 0;
+  border: var(--hairline-dark);
+  border-radius: var(--radius-card);
+  background: var(--navy-800);
+  overflow: hidden;
+}
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: 14px var(--space-4);
+  border-bottom: var(--hairline-dark);
+}
+
+.who {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar {
+  flex: none;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: var(--hairline-dark);
+  border-radius: var(--radius-pill);
+  background: var(--navy-900);
+  color: var(--on-dark);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: var(--ls-wordmark);
+}
+
+.title {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.thread {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px var(--space-4) var(--space-5);
+}
+
+.msg {
+  display: flex;
+}
+
+.msg[data-from='you'] {
+  justify-content: flex-end;
+}
+
+.bubble {
+  max-width: 86%;
+  padding: 10px 14px;
+  border-radius: 14px;
+  font-size: 15px;
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+/* The reader's messages: navy on teal (never white on teal). */
+.msg[data-from='you'] .bubble {
+  border-bottom-right-radius: 4px;
+  background: var(--teal-500);
+  color: var(--navy-900);
+}
+
+.msg[data-from='manager'] .bubble {
+  border-bottom-left-radius: 4px;
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--on-dark);
+}
+
+/* Consecutive messages from the same side sit closer together. */
+.msg[data-from='manager'] + .msg[data-from='manager'] {
+  margin-top: -6px;
+}
+
+.money {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* Messages arrive one by one, a little slower than a list. */
+.thread {
+  --rv-step: 260ms;
+  --rv-base: 200ms;
+}
+
+@media (min-width: 640px) {
+  .head {
+    padding: var(--space-4) 20px;
+  }
+
+  .thread {
+    padding: var(--space-5) 20px 28px;
+  }
+}

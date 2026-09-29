@@ -118,6 +118,21 @@ export const SUPPORT = {
   email: 'india@straiton.example',
   notice:
     'This is a design prototype. In the live site, this would open WhatsApp, your phone or your email. Nothing has been sent.',
+  /** Illustrative conversation (COPY.md §8, trial). Every line restates a fact already on the page. */
+  chat: {
+    title: 'India payments manager',
+    caption: 'Illustrative conversation with an India payments manager',
+    youLabel: 'You',
+    managerLabel: 'India payments manager',
+    sampleAmount: 'AED 250,000',
+    messages: [
+      { from: 'you', text: 'We need to pay a supplier in India. The invoice is {amount}.' },
+      { from: 'manager', text: "Thanks. Before you fund anything, I'll send you a transaction-specific quote and a checklist for this payment." },
+      { from: 'manager', text: "For an invoice payment, that's usually the invoice, your supplier's business details and the payment purpose." },
+      { from: 'you', text: 'Can it go same-day?' },
+      { from: 'manager', text: "Same-day execution may be available where supported. I'll confirm the timing for this payment before you fund." },
+    ] as const,
+  },
 };
 
 export const FAQ = {

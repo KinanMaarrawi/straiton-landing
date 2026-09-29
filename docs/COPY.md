@@ -164,7 +164,7 @@ Skip to assessment
 ## 8. Your payments manager (navy)
 
 - Eyebrow: Your payments manager
-- Monogram tile: IN — India payments manager
+- ~~Monogram tile: IN — India payments manager~~ (removed 2026-09-29: the illustrative conversation below carries the manager's identity; its avatar uses the IN initials)
 - **H2:** A person who knows this corridor.
 - Lead: Speak directly with an India payments manager before onboarding, during the payment, and whenever something needs attention.
 - Helps with: Quotes · Onboarding · Documents · Payment setup · Status · Exceptions
@@ -174,6 +174,15 @@ Skip to assessment
 - Secondary: Call +971 00 000 0000
 - Secondary: Email india@straiton.example
 - Demo notice (shown on click): This is a design prototype. In the live site, this would open WhatsApp, your phone or your email. Nothing has been sent.
+
+**Illustrative conversation** `[tag: Illustrative]` *(added 2026-09-29, trial; every line restates a fact already on the page)*
+- Card title: India payments manager
+- Caption (visually hidden): Illustrative conversation with an India payments manager
+- You: We need to pay a supplier in India. The invoice is *{hero amount, fallback AED 250,000}*.
+- Manager: Thanks. Before you fund anything, I'll send you a transaction-specific quote and a checklist for this payment.
+- Manager: For an invoice payment, that's usually the invoice, your supplier's business details and the payment purpose.
+- You: Can it go same-day?
+- Manager: Same-day execution may be available where supported. I'll confirm the timing for this payment before you fund.
 
 ---
 
