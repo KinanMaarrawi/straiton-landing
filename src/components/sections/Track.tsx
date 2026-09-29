@@ -11,7 +11,7 @@ export function Track() {
     <Section id="track" run="track" lane="right" className={s.track} labelledBy="track-title">
       <div className={layout.content}>
         <Reveal stagger>
-          <StageHeader eyebrow={TRACK.eyebrow} place={TRACK.waypoint} waypoint="04" title={TRACK.h2} titleId="track-title" titleClassName={s.maxTitle} lead={TRACK.lead} />
+          <StageHeader eyebrow={TRACK.eyebrow} waypoint="04" title={TRACK.h2} titleId="track-title" titleClassName={s.maxTitle} lead={TRACK.lead} />
         </Reveal>
         <Reveal className={layout.afterLead}>
         <figure className={s.statusCard}>

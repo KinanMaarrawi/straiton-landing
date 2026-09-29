@@ -38,7 +38,7 @@ export function Complete() {
     <Section id="complete" run="complete" lane="left" surface="surface" className={s.complete} labelledBy="complete-title">
       <div className={layout.content}>
         <Reveal stagger>
-          <StageHeader eyebrow={COMPLETE.eyebrow} place={COMPLETE.waypoint} waypoint="03" title={COMPLETE.h2} titleId="complete-title" titleClassName={s.maxTitle} lead={COMPLETE.lead} />
+          <StageHeader eyebrow={COMPLETE.eyebrow} waypoint="03" title={COMPLETE.h2} titleId="complete-title" titleClassName={s.maxTitle} lead={COMPLETE.lead} />
         </Reveal>
         <Reveal stagger>
           <h3 className={`t-h3 ${s.specHeading}`}>{COMPLETE.specHeading}</h3>

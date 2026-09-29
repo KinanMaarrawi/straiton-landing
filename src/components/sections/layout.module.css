@@ -77,17 +77,6 @@
   gap: var(--space-1) var(--space-3);
 }
 
-/* Mobile shows the waypoint's place name in the eyebrow; desktop shows it on the route. */
-.place {
-  color: var(--ink-700);
-  font-size: var(--fs-eyebrow);
-  font-weight: 600;
-  white-space: nowrap;
-}
-
-.dark .place {
-  color: var(--on-dark-muted);
-}
 
 .h2 {
   margin-top: 20px;
@@ -102,9 +91,6 @@
 }
 
 @media (min-width: 960px) {
-  .place {
-    display: none;
-  }
 
   .h2 {
     margin-top: var(--heading-to-lead);

@@ -28,7 +28,7 @@ Conflict order: DESIGN.md / COPY.md → reference frames → your judgement (fla
 - Don't invent capabilities, pricing, guarantees or regulatory claims.
 
 ## Working style
-- Build reusable components (Button, Field, AmountField, Segmented, Tag, QuoteDocument, SpecTable, Accordion, Nav, MobileMenu, StickyCta, AssessmentForm, Route).
+- Build reusable components (Button, Field, AmountField, Segmented, Tag, QuoteDocument, SpecTable, Accordion, Nav, MobileMenu, AssessmentForm, Route).
 - After each section, compare against the matching reference frame at 1440 and 390 before moving on.
 - Keep README's "Unfinished / assumptions" list current.
 

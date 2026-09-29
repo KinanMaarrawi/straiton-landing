@@ -11,7 +11,7 @@ type ChainItem = Pt | Loop;
 
 export type Box = { top: number; bottom: number; left: number; width: number; height: number };
 
-export type WaypointSpec = { n: string; label: string; x: number; y: number };
+export type WaypointSpec = { n: string; x: number; y: number };
 
 export type RouteShape = {
   d: string;
@@ -88,7 +88,6 @@ export type DesktopInput = {
   arrMap: Box;
   runs: Record<'why' | 'share' | 'assess' | 'complete' | 'track' | 'support' | 'faq', Box>;
   wpY: Record<'01' | '02' | '03' | '04', number>;
-  labels: Record<'01' | '02' | '03' | '04', string>;
 };
 
 /**
@@ -103,8 +102,8 @@ export function desktopRoute(inp: DesktopInput): RouteShape {
   const L1 = cl + 4 * (col + gutter);
   const R0 = cl + 8 * col + 7 * gutter;
   const X = (x: number) => (x < 720 ? (x * L1) / 520 : R0 + ((x - 896) * (vw - R0)) / (1440 - 896));
-  // Waypoint labels sit to the right of the mark; keep them inside the viewport.
-  const XW = (x: number) => (x < 720 ? X(x) : Math.min(X(x), vw - 190));
+  // Keep waypoint marks clear of the viewport edge.
+  const XW = (x: number) => (x < 720 ? X(x) : Math.min(X(x), vw - 40));
 
   const place = (k: 'hero' | 'arr', b: Box): Pt[] => {
     const s = b.width / MAPS[k].W;
@@ -123,10 +122,10 @@ export function desktopRoute(inp: DesktopInput): RouteShape {
     return { loop: true, x: lx, y, r: rad, v: 15, dir };
   };
   const wps: WaypointSpec[] = [
-    { n: '01', label: inp.labels['01'], x: XW(270), y: inp.wpY['01'] },
-    { n: '02', label: inp.labels['02'], x: XW(1220), y: inp.wpY['02'] },
-    { n: '03', label: inp.labels['03'], x: XW(220), y: inp.wpY['03'] },
-    { n: '04', label: inp.labels['04'], x: XW(1190), y: inp.wpY['04'] },
+    { n: '01', x: XW(270), y: inp.wpY['01'] },
+    { n: '02', x: XW(1220), y: inp.wpY['02'] },
+    { n: '03', x: XW(220), y: inp.wpY['03'] },
+    { n: '04', x: XW(1190), y: inp.wpY['04'] },
   ];
   const W = (w: WaypointSpec): Pt => [w.x, w.y];
   const P = (x: number, y: number): Pt => [X(x), y];
@@ -191,7 +190,7 @@ export function mobileRoute(inp: MobileInput): RouteShape {
     let from = run.top;
     if (run.w) {
       const y = inp.wpY[run.w];
-      wps.push({ n: run.w, label: '', x, y });
+      wps.push({ n: run.w, x, y });
       if (y - run.top > 4) chain.push([x, y]);
       from = y;
     }

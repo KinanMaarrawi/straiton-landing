@@ -1,7 +1,6 @@
 'use client';
 
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { ASSESS, COMPLETE, SHARE, TRACK } from '@/content/copy';
 import { usePageState } from '@/components/state/PageState';
 import { desktopRoute, mobileRoute, sampleSegments, type Box, type RouteShape } from './geometry';
 import { RouteMarker, RouteWaypoint } from './RouteMarks';
@@ -90,7 +89,6 @@ function measure(root: HTMLElement): RouteShape | null {
       arrMap: boxOf(am, root),
       runs: R,
       wpY: { '01': wpMid('01', false), '02': wpMid('02', false), '03': wpMid('03', false), '04': wpMid('04', false) },
-      labels: { '01': SHARE.waypoint, '02': ASSESS.waypoint, '03': COMPLETE.waypoint, '04': TRACK.waypoint },
     });
   }
 
@@ -539,14 +537,7 @@ export function Route() {
         <>
           {tiles && <Course route={route} tiles={tiles} />}
           {route.wps.map((w, i) => (
-            <RouteWaypoint
-              key={w.n}
-              x={w.x}
-              y={w.y}
-              passed={reduced || i < passed}
-              label={route.desktop ? w.label : undefined}
-              variant={route.desktop ? 'desktop' : 'mobile'}
-            />
+            <RouteWaypoint key={w.n} x={w.x} y={w.y} passed={reduced || i < passed} />
           ))}
           <RouteMarker ref={markerRef} start={route.start} label={route.desktop ? label : undefined} arrived={arrived} />
         </>

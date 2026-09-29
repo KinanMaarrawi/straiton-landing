@@ -54,7 +54,6 @@ export const WHY = {
 };
 
 export const SHARE = {
-  waypoint: 'Mina Rashid',
   eyebrow: '01 — Share',
   h2: 'Tell us about the payment.',
   lead: 'Start with the basics. No account, no onboarding, no commitment.',
@@ -68,7 +67,6 @@ export const SHARE = {
 };
 
 export const ASSESS = {
-  waypoint: 'Strait of Hormuz',
   eyebrow: '02 — Assess',
   h2: 'Know what your supplier receives before you fund.',
   lead: 'You get an assessment of this specific payment: how it would be quoted, what it needs, and what could slow it down.',
@@ -86,7 +84,6 @@ export const ASSESS = {
 };
 
 export const COMPLETE = {
-  waypoint: 'Muscat',
   eyebrow: '03 — Complete',
   h2: 'Onboard once. Fund the approved payment.',
   lead: 'When the assessment is agreed, you complete onboarding and fund the transaction in AED or USD. Your supplier receives INR.',
@@ -95,7 +92,6 @@ export const COMPLETE = {
 };
 
 export const TRACK = {
-  waypoint: 'Arabian Sea',
   eyebrow: '04 — Track',
   h2: 'Follow it all the way to confirmation.',
   lead: 'Every payment has a status, from request to beneficiary confirmation, so "has it gone through?" always has an answer.',
@@ -257,8 +253,6 @@ export const FORM = {
     again: 'Start another request',
   },
 };
-
-export const STICKY_CTA = 'Request a payment assessment';
 
 export const FOOTER = {
   descriptor: 'Business payments from the UAE to India, prepared before you fund.',

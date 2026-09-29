@@ -37,6 +37,34 @@ export function Nav() {
     return () => window.removeEventListener('resize', place);
   }, [active]);
 
+  // Phones: the header gains a compact "Request an assessment" once the
+  // hero (and its own button) has scrolled away, and drops it again while
+  // the form is in view. Replaces a sliding bottom bar, which felt pushy.
+  const [pastHero, setPastHero] = useState(false);
+  const [atForm, setAtForm] = useState(false);
+  // null until mounted: CSS decides the first paint (hidden on phones, shown on desktop).
+  const [phone, setPhone] = useState<boolean | null>(null);
+  useEffect(() => {
+    const hero = document.getElementById('top');
+    const form = document.getElementById('assessment');
+    const mq = window.matchMedia('(max-width: 959px)');
+    const onMq = () => setPhone(mq.matches);
+    onMq();
+    mq.addEventListener('change', onMq);
+    if (!hero || !form) return () => mq.removeEventListener('change', onMq);
+    const heroIo = new IntersectionObserver(([e]) => setPastHero(!e.isIntersecting && e.boundingClientRect.top < 0));
+    const formIo = new IntersectionObserver(([e]) => setAtForm(e.isIntersecting));
+    heroIo.observe(hero);
+    formIo.observe(form);
+    return () => {
+      mq.removeEventListener('change', onMq);
+      heroIo.disconnect();
+      formIo.disconnect();
+    };
+  }, []);
+  const ctaShown = phone === false || (phone === true && pastHero && !atForm && !menuOpen);
+  const ctaHidden = phone === true && !ctaShown;
+
   // Hairline appears after scroll.
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 4);
@@ -94,7 +122,14 @@ export function Nav() {
             </li>
           </ul>
         </nav>
-        <Button href="#assessment" className={s.cta} onClick={onCta}>
+        <Button
+          href="#assessment"
+          className={s.cta}
+          onClick={onCta}
+          data-shown={ctaShown || undefined}
+          inert={ctaHidden}
+          aria-hidden={ctaHidden || undefined}
+        >
           {NAV_CTA}
         </Button>
         <button

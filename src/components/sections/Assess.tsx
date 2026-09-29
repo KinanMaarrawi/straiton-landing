@@ -16,7 +16,7 @@ export function Assess() {
     <Section id="assess" run="assess" lane="right" className={s.assess} labelledBy="assess-title">
       <div className={layout.content}>
         <Reveal stagger>
-          <StageHeader eyebrow={ASSESS.eyebrow} place={ASSESS.waypoint} waypoint="02" title={ASSESS.h2} titleId="assess-title" titleClassName={s.maxTitle} lead={ASSESS.lead} />
+          <StageHeader eyebrow={ASSESS.eyebrow} waypoint="02" title={ASSESS.h2} titleId="assess-title" titleClassName={s.maxTitle} lead={ASSESS.lead} />
         </Reveal>
         <div className={`${layout.afterLead} ${s.assessGrid}`}>
           <div>

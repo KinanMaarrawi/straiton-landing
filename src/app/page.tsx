@@ -1,6 +1,5 @@
 import { Nav } from '@/components/nav/Nav';
 import { PrototypeBar } from '@/components/nav/PrototypeBar';
-import { StickyCta } from '@/components/nav/StickyCta';
 import { Arrival } from '@/components/sections/Arrival';
 import { Assess } from '@/components/sections/Assess';
 import { Complete } from '@/components/sections/Complete';
@@ -41,7 +40,6 @@ export default function Home() {
         <Route />
       </main>
       <Footer />
-      <StickyCta />
     </PageStateProvider>
   );
 }

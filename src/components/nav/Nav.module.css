@@ -18,7 +18,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-5);
+  gap: var(--space-2);
   padding: 0 12px 0 20px;
 }
 
@@ -34,10 +34,49 @@
   text-decoration: none;
 }
 
-.links,
-.inner .cta {
-  /* Scoped so it beats Button's own display rule in any stylesheet order. */
+.links {
   display: none;
+}
+
+/* Phones: a compact header button that fades in once the hero has gone.
+   Scoped (.inner .cta) so it beats Button's own rules in any stylesheet order. */
+.inner .cta {
+  position: relative;
+  margin-left: auto;
+  min-height: 36px;
+  padding: 0 var(--space-3);
+  font-size: 14px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  transition:
+    opacity var(--dur-base) var(--ease-out),
+    transform var(--dur-base) var(--ease-out),
+    visibility 0s linear var(--dur-base);
+}
+
+/* 44px hit area around the 36px visual. */
+.inner .cta::after {
+  content: '';
+  position: absolute;
+  inset: -4px 0;
+}
+
+.inner .cta[data-shown] {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition:
+    opacity var(--dur-base) var(--ease-out),
+    transform var(--dur-base) var(--ease-out),
+    visibility 0s linear 0s;
+}
+
+/* Too narrow for the logo, the button and the menu: the menu has the same action. */
+@media (max-width: 359px) {
+  .inner .cta {
+    display: none;
+  }
 }
 
 .menuButton {
@@ -261,6 +300,17 @@
 
   .inner .cta {
     display: inline-grid;
+    margin-left: 0;
+    min-height: var(--control-h);
+    padding: 0 var(--space-5);
+    font-size: var(--fs-ui);
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  .inner .cta::after {
+    content: none;
   }
 
   .menuButton,

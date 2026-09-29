@@ -28,10 +28,10 @@ Open any `design/*.dc.html` directly in a browser (keep `support.js` beside them
 2. Hero `#top`: departure map on the right · white
 3. Eligibility strip: `surface-50`
 4. Why payments stall `#why`: navy
-5. 01 Share `#share` · Mina Rashid: lane left · white
-6. 02 Assess `#assess` · Strait of Hormuz: lane right · white (quote document + checklist)
-7. 03 Complete `#complete` · Muscat: lane left · `surface-50` (corridor spec, two columns of seven rows)
-8. 04 Track `#track` · Arabian Sea: lane right · white (illustrative stepper)
+5. 01 Share `#share`: lane left · white
+6. 02 Assess `#assess`: lane right · white (quote document + checklist)
+7. 03 Complete `#complete`: lane left · `surface-50` (corridor spec, two columns of seven rows)
+8. 04 Track `#track`: lane right · white (illustrative stepper)
 9. Your payments manager `#support`: navy (contact buttons → demo notice)
 10. FAQ `#faq`: white, six independent accordion items
 11. Arrival `#assessment`: India map on the left, form card on the right · `surface-50`
@@ -49,7 +49,7 @@ Full notes per section: DESIGN.md §9.
 
 ## Interactions and behaviour
 - **Nav:** anchors scroll smoothly; the active anchor is underlined (2px teal, 8px offset, weight 500) via IntersectionObserver. Mobile menu: full-height sheet; focus moves to Close, is trapped, Esc closes, scroll is locked, and focus returns to the menu button.
-- **Sticky CTA (mobile):** slides up after the hero leaves; hidden while `#assessment` is in view or the menu is open; safe-area aware.
+- **Header CTA (mobile):** a compact "Request an assessment" fades into the sticky header after the hero leaves; hidden while `#assessment` is in view, while the menu is open and below 360px. (Replaced a sliding bottom bar.)
 - **Hero amount starter:** digits only, thousands separators as you type, AED/USD toggle. The primary button scrolls to `#assessment` with the amount and currency pre-filled and labels the route marker (`AED 250,000`). "Compare it with us →" opens the form in bank-quote mode.
 - **Route:** one page-level absolutely-positioned SVG (`aria-hidden`, `pointer-events:none`) recomputed from section rects every frame while the layout changes. Only the sailed course is drawn (the route ahead stays hidden); it is revealed dot by dot as the marker passes, and the marker trails the reader by ~1.5s on a critically damped spring (`FOLLOW` in `Route.tsx`; lower is lazier). Waypoints stay hidden until the marker reaches them. The page reopens at the top on reload, and buttons don't write `#assessment` to the URL. Reduced motion shows the full route drawn. Geometry, loops and lanes: DESIGN.md §8; working path logic is in the reference frames' logic class (`compute()`).
 - **FAQ:** `<button aria-expanded aria-controls>`; independent items; 240ms height animation.
@@ -94,7 +94,7 @@ npm run typecheck
 - Placeholder contact details, the regulatory copy and sample form values are illustrative by brief.
 - Tablet (768–1199) has no dedicated frame; follow DESIGN.md §7 (8 cols, 32 margins) and the lane rules.
 - Mobile route frames show only the end state; mid-scroll behaviour follows the desktop rules.
-- Build status: the full page is built: sections, form, nav, mobile menu, sticky CTA, FAQ, contact demo notice and route. `/components` remains as a living component sheet.
+- Build status: the full page is built: sections, form, nav, mobile menu, mobile header CTA, FAQ, contact demo notice and route. `/components` remains as a living component sheet.
 - Spec table label column is 40% (DESIGN.md §10). The frames use 44%; DESIGN.md wins the conflict.
 - Quote document: only the "You send" amount is Plex Mono. Other values are Plex Sans, per the money-only rule and the frames (DESIGN.md §10 says "value in Plex Mono").
 - Tags have a small size (20px, 12px text) for the Demo tag beside field labels and footer headings, as in the frames. DESIGN.md only specifies 13px.

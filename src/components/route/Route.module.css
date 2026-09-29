@@ -82,10 +82,10 @@
 .dot,
 .ripple {
   position: absolute;
-  left: -5px;
-  top: -5px;
-  width: 10px;
-  height: 10px;
+  left: -8px;
+  top: -8px;
+  width: 16px;
+  height: 16px;
   border-radius: var(--radius-pill);
 }
 
@@ -128,58 +128,19 @@
   }
 }
 
-.checkBeside {
-  position: absolute;
-  left: 14px;
-  top: -6px;
-  fill: none;
-  stroke: var(--navy-900);
-  stroke-width: 1.6;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
 
-.checkBeside path,
 .checkIn path {
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
   transition: stroke-dashoffset var(--dur-slow) var(--ease-out) 120ms;
 }
 
-.wp[data-passed] .checkBeside path,
 .wp[data-passed] .checkIn path {
   stroke-dashoffset: 0;
 }
 
-.wpLabel {
-  position: absolute;
-  left: 18px;
-  top: -10px;
-  color: var(--ink-700);
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
-  white-space: nowrap;
-  transition:
-    opacity var(--dur-slow) var(--ease-out),
-    transform var(--dur-base) var(--ease-out),
-    color var(--dur-base) var(--ease-out);
-}
 
-.wp[data-passed] .wpLabel {
-  color: var(--navy-900);
-  font-weight: 600;
-  transform: translateX(12px);
-}
 
-/* Mobile waypoint: a 16px ring with the check inside. */
-.wp[data-variant='mobile'] .dot,
-.wp[data-variant='mobile'] .ripple {
-  left: -8px;
-  top: -8px;
-  width: 16px;
-  height: 16px;
-}
 
 .checkIn {
   fill: none;

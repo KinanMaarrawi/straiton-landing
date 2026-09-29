@@ -82,7 +82,6 @@ Design prototype. Figures and interface examples are illustrative, contact detai
 
 ## 4. Stage 01 — Share
 
-- Waypoint label: Mina Rashid
 - Eyebrow: 01 — Share
 - **H2:** Tell us about the payment.
 - Lead: Start with the basics. No account, no onboarding, no commitment.
@@ -98,7 +97,6 @@ Design prototype. Figures and interface examples are illustrative, contact detai
 
 ## 5. Stage 02 — Assess
 
-- Waypoint label: Strait of Hormuz
 - Eyebrow: 02 — Assess
 - **H2:** Know what your supplier receives before you fund.
 - Lead: You get an assessment of this specific payment: how it would be quoted, what it needs, and what could slow it down.
@@ -125,7 +123,6 @@ Design prototype. Figures and interface examples are illustrative, contact detai
 
 ## 6. Stage 03 — Complete
 
-- Waypoint label: Muscat
 - Eyebrow: 03 — Complete
 - **H2:** Onboard once. Fund the approved payment.
 - Lead: When the assessment is agreed, you complete onboarding and fund the transaction in AED or USD. Your supplier receives INR.
@@ -155,7 +152,6 @@ Design prototype. Figures and interface examples are illustrative, contact detai
 
 ## 7. Stage 04 — Track
 
-- Waypoint label: Arabian Sea
 - Eyebrow: 04 — Track
 - **H2:** Follow it all the way to confirmation.
 - Lead: Every payment has a status, from request to beneficiary confirmation, so "has it gone through?" always has an answer.
@@ -273,9 +269,9 @@ Design prototype. Figures and interface examples are illustrative, contact detai
 
 ---
 
-## 11. Mobile sticky CTA
+## 11. Mobile header CTA
 
-Request a payment assessment
+Request an assessment *(the nav button, shown compact in the mobile header after the hero; replaced the sliding bottom bar on 2026-09-29)*
 
 ---
 
@@ -299,5 +295,5 @@ Request a payment assessment
 - **Honesty as a feature.** The corridor is in pilot and several details are unconfirmed. Instead of hiding that, the page marks unconfirmed items openly ("To be confirmed", "Illustrative"). For a finance audience, visible candour builds more trust than confident vagueness.
 - **One conversion path.** The prototype offered four competing CTAs. Here there's one primary action (request an assessment) with the bank-quote comparison as a *mode of the same form*, and WhatsApp in the manager section for people who want a human first.
 - **Crypto kept in its place.** Stablecoins are internal plumbing, so they appear once, in an FAQ answer that leads with what the customer holds: AED/USD in, INR out, no crypto to manage.
-- **The route.** The page is structured as the payment's journey from you, in the UAE, to your supplier, in India. The four stages sit at recognisable points on the passage (Mina Rashid, Strait of Hormuz, Muscat, Arabian Sea), so the metaphor is grounded in real geography, not decoration. The metaphor lives in structure, place names and visuals only; the copy never gets cute about it.
+- **The route.** The page is structured as the payment's journey from you, in the UAE, to your supplier, in India. The drawn route runs the real sea lane on the two maps; the four stages are waypoints along it. The metaphor lives in structure and visuals only; the copy never gets cute about it.
 - **Cut for length.** FAQs on funding currencies, payment types and documents were removed because the corridor specification and the checklist already answer them.

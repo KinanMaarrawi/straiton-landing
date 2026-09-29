@@ -3,8 +3,7 @@
 .footer {
   background: var(--navy-900);
   color: var(--on-dark);
-  /* Bottom room so the mobile sticky CTA never covers the last line. */
-  padding: 72px 0 calc(40px + 72px + env(safe-area-inset-bottom, 0px));
+  padding: 72px 0 calc(40px + env(safe-area-inset-bottom, 0px));
 }
 
 .inner {

@@ -176,7 +176,7 @@ Mumbai is the illustrative endpoint for the drawing only: it's where the Dubai s
 
 ### Three parts
 1. **Departure map (hero).** A dotted map zoomed on the UAE coast and the Strait of Hormuz. Land is a grid of small dots (`--navy-900` at 30% opacity, 3px dots on an 8px grid); the sea is empty white. The route begins at Dubai Creek as a small filled teal point with a two-line Plex Sans label on a white chip: **You, in the UAE** / Payment starts. (Changed from "You, in Dubai" on 2026-09-29: the brief frames the product around UAE businesses, not one emirate, and it mirrors the endpoint, which is labelled by country too. The drawn point stays at Dubai Creek as illustrative geography.) The route leaves the map edge heading toward Hormuz and continues into the page. Caption, small and in `ink-500`: *"Until 1966, the rupee was legal tender on this coast."*
-2. **Open sea (the page body).** No land and no map, just the route line travelling through the lanes from section to section. The four stage sections each carry a **waypoint** on the route, labelled with a **recognisable place on the Gulf–India passage** (Plex Sans 600, 14px, no number): **Mina Rashid** (Share), **Strait of Hormuz** (Assess), **Muscat** (Complete), **Arabian Sea** (Track). These don't need to match the drawn geography exactly; they need to be places a UAE or Indian reader knows. The stage number lives only in the section eyebrow (`01 — Share`), so the two never repeat each other. No coordinates.
+2. **Open sea (the page body).** No land and no map, just the route line travelling through the lanes from section to section. The four stage sections each carry an unlabelled **waypoint** on the route: a teal ring with a check. The stage number lives only in the section eyebrow (`01 — Share`). (Place-name labels, Mina Rashid, Strait of Hormuz, Muscat and Arabian Sea, were removed on 2026-09-29 at the client's request: away from a map they read as noise.)
 3. **Arrival map (final section).** A dotted map zoomed on India's west coast. The route comes in from the left and ends at Mumbai with the label **Your supplier, in India** / Receives INR. The assessment form sits beside it.
 
 ### The line
@@ -192,7 +192,7 @@ Mumbai is the illustrative endpoint for the drawing only: it's where the Dubai s
 ### Behaviour
 - The drawn length maps to **overall page scroll progress between the hero and the arrival map**, and the marker follows the reader on a critically damped spring: it eases in and out and arrives ~1.5s after the reader, scrolling down or up (80% of the way after 1s, 94% after 1.5s). Changed from a quick lerp on 2026-09-29 at the client's request, so the route trails the reader like a ship rather than snapping to them.
 - The path is **one page-level SVG** positioned absolutely behind content (`pointer-events: none`, `aria-hidden="true"`). Its coordinates are recomputed from section and lane positions on resize (debounced), so it always threads the actual gaps.
-- **Mobile has no maps.** The route starts at a teal point beside the hero eyebrow (`UAE → India business payments`) and ends with the payment marker beside the arrival eyebrow (`Arrival · India`). The rupee caption and the start and end map labels are desktop-only. There are **two loops** (radius ~40px), placed in the crossings after *Why payments stall* and after *Your payments manager*; those gaps get 144px padding on each side. Waypoints sit in the active gutter as a filled ring with a check; the place name shows in the stage eyebrow (`01 — Share · Mina Rashid`), not on the route.
+- **Mobile has no maps.** The route starts at a teal point beside the hero eyebrow (`UAE → India business payments`) and ends with the payment marker beside the arrival eyebrow (`Arrival · India`). The rupee caption and the start and end map labels are desktop-only. There are **two loops** (radius ~40px), placed in the crossings after *Why payments stall* and after *Your payments manager*; those gaps get 144px padding on each side. Waypoints sit in the active gutter as a filled ring with a check (the same mark as desktop).
 - **Reduced motion (`prefers-reduced-motion: reduce`):** the full route is shown already drawn, the marker sits at the arrival point, and all waypoints appear as passed. Nothing animates.
 - **Static design frames:** show the **full route drawn**, as the end state.
 - **Opening the page:** a reload always opens at the top with the marker resting on the start point, at any window height; a shared deep link like `/#faq` is honoured, and the course is shown sailed up to that point without animating down the page.
@@ -274,10 +274,10 @@ A `<button>` header with the full question text and a plus/minus glyph that rota
 ### Navigation
 - **Desktop:** wordmark left; anchors centre (How it works → `#share`, Quote → `#assess`, Documents → `#assess`, FAQ → `#faq`); primary button right. The active anchor is underlined as its section scrolls into view.
 - **Mobile:** wordmark plus a menu button (44×44) that opens a **full-height sheet** with the same anchors at 24px and the primary button at the bottom. Focus moves to the close button on open, is trapped while open and returns to the menu button on close. Esc closes, body scroll is locked, and the button's `aria-expanded` and label (Open menu / Close menu) swap.
-- **Mobile sticky CTA:** after the hero leaves the viewport, a bottom bar slides up with the primary button (full width). It hides while `#assessment` is in view and whenever the menu is open. It respects safe-area insets.
+- **Mobile header CTA** (replaced the sliding bottom bar on 2026-09-29, which felt intrusive): once the hero has left the viewport, a compact "Request an assessment" button (36px visual, 44px hit area) fades into the sticky header beside the menu button. It hides while `#assessment` is in view and while the menu is open, and below 360px, where the menu carries the same action.
 
 ### Stage header
-The eyebrow `02 — Assess` (Plex Sans, teal-700), the h2, and the lead. The waypoint beside it carries the place name (Strait of Hormuz); the number appears only here.
+The eyebrow `02 — Assess` (Plex Sans, teal-700), the h2, and the lead. The number appears only here; the waypoint on the route is unlabelled.
 
 ### Assessment form (two steps)
 - **Mode switch** at the top: `Planning a payment` | `I have a bank quote` (segmented control, keyboard accessible).
@@ -313,7 +313,7 @@ The eyebrow `02 — Assess` (Plex Sans, teal-700), the h2, and the lead. The way
 - **Section reveals, once per section:** eyebrow, h2 and lead cascade in (14px rise plus opacity, 560ms, 70ms stagger); lists inside a section cascade after the header (why items, share rows, checklist, eligibility items, FAQ items, spec rows at a tighter 40ms). Never repeated.
 - **Progress moments:** the Track stepper plays its progress once (dots pop, lines fill step by step); the quote's "Supplier receives" row highlight sweeps in after its rows (60ms stagger); the form's progress bar fills from the left.
 - **Cause and effect:** the nav's active underline slides between links; trailing arrows nudge 3px on hover and focus; FAQ answers fade in as their panel opens; field errors and the error summary slide in; the confirmation check pops and receipt rows cascade; the arrival label crossfades to "Arrived" and the marker pulses twice on arrival; the mobile menu's links cascade in.
-- Accordion height, form step transitions (a 16px horizontal slide plus fade), button state changes, sticky CTA slide-up.
+- Accordion height, form step transitions (a 16px horizontal slide plus fade), button state changes, the mobile header CTA fading in.
 
 Motion was expanded on 2026-09-28 at the client's request ("less of a static webpage and more of a dynamic experience"). The principle above still holds: every addition shows progress or cause and effect, plays once, and the forbidden list below is unchanged.
 
