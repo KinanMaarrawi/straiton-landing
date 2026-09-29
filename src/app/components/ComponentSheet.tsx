@@ -18,7 +18,11 @@ import { SpecTable, type SpecRow } from '@/components/ui/SpecTable';
 import { Tag } from '@/components/ui/Tag';
 import { Textarea } from '@/components/ui/Textarea';
 import { TextInput } from '@/components/ui/TextInput';
-import { PaymentMarker, Waypoint } from '@/components/route/Waypoint';
+import { Stepper } from '@/components/ui/Stepper';
+import { PrototypeBar } from '@/components/nav/PrototypeBar';
+import { RouteMarker, RouteWaypoint } from '@/components/route/RouteMarks';
+import { ManagerChat } from '@/components/sections/ManagerChat';
+import { TRACK } from '@/content/copy';
 import s from './ComponentSheet.module.css';
 
 const COLOURS: Array<[string, string, string]> = [
@@ -348,18 +352,14 @@ export function ComponentSheet() {
       </Section>
 
       <div className={s.twoUp}>
-        <Section n="05 — Labels" title="Tags" lead="Plex Sans 500, 13px, sentence case, 4px radius. They always carry words, so they never rely on colour.">
+        <Section n="05 — Labels" title="Tags" lead="Plex Sans 500, 13px, sentence case, 4px radius. Tags mark product facts that are unconfirmed or in pilot, in words, never colour alone.">
           <div className={s.tagRows}>
             <p>
               <Tag variant="pilot" /> <Tag variant="tbc" /> <span className={s.caption}>Unconfirmed or pilot status</span>
             </p>
-            <p>
-              <Tag variant="illustrative">Illustrative · no live rates</Tag>{' '}
-              <span className={s.caption}>Example content, dotted border</span>
-            </p>
-            <p>
-              <Tag variant="demo" /> <Tag variant="demo" size="sm" />{' '}
-              <span className={s.caption}>Behaviour that does nothing real, solid border (md · sm)</span>
+            <p className={s.caption}>
+              Demo and illustrative content is not tagged item by item. One page-level notice discloses it (section 14), backed
+              by in-the-moment messages; the quote card and example chat keep a quiet plain-text label.
             </p>
           </div>
         </Section>
@@ -428,26 +428,40 @@ export function ComponentSheet() {
             ]}
           />
         </Section>
-        <Section n="09 — Route" title="Waypoints and line" lead="A passed waypoint gets a fill, a check and a heavier label, so state never relies on colour alone.">
-          <svg viewBox="0 0 520 330" width="100%" className={s.routeSvg} aria-hidden="true">
-            <text x="0" y="56" className={s.svgCaption}>Sailed course</text>
-            <path d="M150 52 H500" stroke="var(--teal-500)" strokeWidth="3.5" strokeDasharray="0 8" strokeLinecap="round" />
-            <text x="0" y="116" className={s.svgCaption}>Upcoming (sheet only)</text>
-            <Waypoint x={160} y={111} passed={false} label="Muscat" />
-            <text x="0" y="166" className={s.svgCaption}>Passed</text>
-            <Waypoint x={160} y={161} passed label="Strait of Hormuz" />
-            <text x="0" y="216" className={s.svgCaption}>Passed · mobile</text>
-            <Waypoint x={160} y={211} passed variant="mobile" />
-            <text x="0" y="276" className={s.svgCaption}>Payment marker</text>
-            <path d="M150 271 H193" stroke="var(--teal-500)" strokeWidth="3.5" strokeDasharray="0 8" strokeLinecap="round" />
-            <PaymentMarker x={200} y={271} label="AED 250,000" />
-            <PaymentMarker x={400} y={271} label="Your payment" />
-          </svg>
+        <Section n="09 — Route" title="Waypoints and line" lead="Only water already crossed is drawn. Waypoints stay hidden until the marker reaches them, then appear as a teal ring whose check draws in, with one ripple.">
+          <div className={s.routeDemo} aria-hidden="true">
+            <span className={s.routeCaption} style={{ top: 12 }}>Sailed course</span>
+            <svg className={s.routeLine} viewBox="0 0 350 8" preserveAspectRatio="none">
+              <path d="M4 4 H346" stroke="var(--teal-500)" strokeWidth="3.5" strokeDasharray="0 8" strokeLinecap="round" />
+            </svg>
+            <span className={s.routeCaption} style={{ top: 72 }}>Waypoint, passed</span>
+            <RouteWaypoint x={178} y={80} passed />
+            <span className={s.routeCaption} style={{ top: 142 }}>Marker, with the hero amount</span>
+            <RouteMarker start={[178, 170]} label="AED 250,000" arrived={false} />
+            <span className={s.routeCaption} style={{ top: 222 }}>Marker, no amount entered</span>
+            <RouteMarker start={[178, 250]} label="Your payment" arrived={false} />
+          </div>
         </Section>
       </div>
 
       <div className={s.twoUp}>
-        <Section n="11 — Space" title="Spacing scale" lead="4px base. Section padding is 128 on desktop and 96 on mobile. Heading to lead is 24, lead to content is 48.">
+        <Section n="10 — Status" title="Stepper" lead="The Track stage's illustrative status. Horizontal in wide containers, vertical in narrow ones; it plays its progress once on first view.">
+          <div className={s.card}>
+            <p className={s.cardHead}>
+              {TRACK.header} · <span style={{ fontWeight: 400 }}>{TRACK.corridor}</span>
+            </p>
+            <Stepper steps={TRACK.steps} />
+          </div>
+        </Section>
+        <Section n="11 — Conversation" title="Example chat" lead="An illustrative exchange with the India payments manager. Every reply restates a fact the page already makes; the first message uses the reader's hero amount.">
+          <div className={s.navyCard} data-surface="dark">
+            <ManagerChat />
+          </div>
+        </Section>
+      </div>
+
+      <div className={s.twoUp}>
+        <Section n="12 — Space" title="Spacing scale" lead="4px base. Section padding is 128 on desktop and 96 on mobile. Heading to lead is 24, lead to content is 48.">
           <div className={s.spaces}>
             {[4, 8, 12, 16, 24, 32, 48, 64, 96, 128, 160].map((n) => (
               <div key={n} className={s.spaceRow}>
@@ -462,7 +476,7 @@ export function ComponentSheet() {
             Radius: 4 tags · 6 fields and buttons · 10 cards · 999 pills.
           </p>
         </Section>
-        <Section n="12 — Feedback" title="Contact demo notice" lead='Appears inline under the contact buttons when any one of them is clicked. role="status", so it is announced without moving focus. Clicking again never stacks a second one.'>
+        <Section n="13 — Feedback" title="Contact demo notice" lead='Appears inline under the contact buttons when any one of them is clicked. role="status", so it is announced without moving focus. Clicking again never stacks a second one.'>
           <div className={s.navyCard} data-surface="dark">
             <div className={s.contactRow}>
               <Button tone="dark" onClick={() => setNotice(true)}>
@@ -483,6 +497,12 @@ export function ComponentSheet() {
           </div>
         </Section>
       </div>
+
+      <Section n="14 — Notice" title="Prototype notice" lead="The page's single demo disclosure, above the nav. It replaces per-item Demo and Illustrative tags; contact, form and receipt messages still say nothing is sent when it matters.">
+        <div className={s.barFrame}>
+          <PrototypeBar />
+        </div>
+      </Section>
     </main>
   );
 }

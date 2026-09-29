@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { PageStateProvider } from '@/components/state/PageState';
 import { ComponentSheet } from './ComponentSheet';
 
 export const metadata: Metadata = {
@@ -8,5 +9,10 @@ export const metadata: Metadata = {
 
 /** Living component sheet: the Component Sheet frame rebuilt with the real components. */
 export default function ComponentsPage() {
-  return <ComponentSheet />;
+  // The example conversation reads the (empty) hero amount from page state.
+  return (
+    <PageStateProvider>
+      <ComponentSheet />
+    </PageStateProvider>
+  );
 }

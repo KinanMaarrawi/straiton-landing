@@ -5,6 +5,7 @@
   border: var(--hairline-dark);
   border-radius: var(--radius-card);
   background: var(--navy-800);
+  color: var(--on-dark); /* self-contained: don't rely on the section's text colour */
   overflow: hidden;
 }
 
