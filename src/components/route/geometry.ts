@@ -19,8 +19,6 @@ export type RouteShape = {
   start: Pt;
   end: Pt;
   wps: WaypointSpec[];
-  /** Length along the path where the sailed course should rest at page load. */
-  loadCutY: number;
 };
 
 const f = (n: number) => n.toFixed(1);
@@ -153,7 +151,7 @@ export function desktopRoute(inp: DesktopInput): RouteShape {
   chainPath(b, chain);
   catmullRom(b, A, [A[1][0], 2 * A[0][1] - A[1][1]], [2 * A[an - 1][0] - A[an - 2][0], 2 * A[an - 1][1] - A[an - 2][1]]);
 
-  return { d: b.d, segs: b.segs, start: H[0], end: A[an - 1], wps, loadCutY: inp.heroMap.bottom - 40 };
+  return { d: b.d, segs: b.segs, start: H[0], end: A[an - 1], wps };
 }
 
 export type MobileInput = {
@@ -212,7 +210,7 @@ export function mobileRoute(inp: MobileInput): RouteShape {
   const b = new PathBuilder();
   b.move(start);
   chainPath(b, chain);
-  return { d: b.d, segs: b.segs, start, end, wps, loadCutY: start[1] };
+  return { d: b.d, segs: b.segs, start, end, wps };
 }
 
 /**

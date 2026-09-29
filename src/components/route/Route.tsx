@@ -14,7 +14,6 @@ type Sampled = RouteShape & {
   ys: Float32Array;
   maxY: Float32Array;
   wpLen: number[];
-  loadLen: number;
   width: number;
   height: number;
   desktop: boolean;
@@ -28,8 +27,14 @@ const STEP = 4;
  * 98% after 2s. Lower = lazier.
  */
 const FOLLOW = 3;
-/** Where on screen the marker is aimed: ~62% down the viewport. */
+/** Where on screen the marker is aimed once the reader is underway: ~62% down the viewport. */
 const ANCHOR = 0.62;
+/**
+ * At the top of the page the marker rests on the start (Dubai), whatever
+ * the window height. As the reader scrolls, the aim moves CATCHUP times
+ * faster than the page until it reaches the ANCHOR line, then rides it.
+ */
+const CATCHUP = 2;
 
 /** Offset-chain position relative to root (ignores transforms, like the frames). */
 function boxOf(el: HTMLElement, root: HTMLElement): Box {
@@ -138,7 +143,6 @@ function sample(shape: RouteShape, root: HTMLElement): Sampled {
     ys,
     maxY,
     wpLen: shape.wps.map((w) => nearest(w.x, w.y)),
-    loadLen: lenAtY(maxY, shape.loadCutY, total),
     width: root.clientWidth,
     height: root.scrollHeight,
     desktop: root.clientWidth >= 960,
@@ -167,8 +171,6 @@ function pointAt(r: Sampled, len: number): [number, number] {
   const t = f - i;
   return [r.xs[i] + (r.xs[j] - r.xs[i]) * t, r.ys[i] + (r.ys[j] - r.ys[i]) * t];
 }
-
-const easeInOut = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - (-2 * t + 2) ** 3 / 2);
 
 /** Dot spacing of the course (matches stroke-dasharray "0 8"). */
 const DOT = 8;
@@ -297,7 +299,6 @@ export function Route() {
     settled: 0,
     raf: 0,
     last: 0,
-    intro: null as null | { t0: number; to: number },
     started: false,
     arrived: false,
     reduced: false,
@@ -432,7 +433,8 @@ export function Route() {
       if (L.reduced || L.arrived) return route.total;
       const y = window.scrollY;
       if (y >= maxScroll - 2) return route.total;
-      return Math.max(route.loadLen, lenAtY(route.maxY, y + vh * ANCHOR, route.total));
+      const aim = Math.min(y + vh * ANCHOR, route.start[1] + y * CATCHUP);
+      return lenAtY(route.maxY, aim, route.total);
     };
 
     /** Returns true while dots are still animating in. */
@@ -455,17 +457,6 @@ export function Route() {
       const dt = Math.min(64, L.last ? now - L.last : 16.7);
       L.last = now;
       L.target = targetNow();
-      if (L.intro) {
-        const t = Math.min(1, (now - L.intro.t0) / 1200);
-        L.current = easeInOut(t) * L.intro.to;
-        if (t >= 1) {
-          L.intro = null;
-          L.velocity = 0;
-        }
-        paint(L.current, now);
-        L.raf = requestAnimationFrame(tick);
-        return;
-      }
       // Critically damped spring, stepped exactly (stable at any frame rate).
       const d = L.current - L.target;
       if (Math.abs(d) < 0.3 && Math.abs(L.velocity) < 2) {
@@ -491,18 +482,12 @@ export function Route() {
       L.current = route.total;
       paint(route.total);
     } else if (!L.started) {
+      // First draw: place the marker where the reader is, without animating.
+      // At the top that is the start point (Dubai); on a shared deep link it
+      // is the course sailed up to that section.
       L.started = true;
-      const to = targetNow();
-      if (to <= route.loadLen + 1) {
-        // Opened at the top: the hero's first stretch sails once from Dubai.
-        L.intro = { t0: performance.now(), to };
-        paint(0);
-      } else {
-        // Opened part-way down (a shared deep link): don't race down the
-        // page, just show the course sailed up to where the reader is.
-        L.current = to;
-        paint(to, performance.now(), true);
-      }
+      L.current = targetNow();
+      paint(L.current, performance.now(), true);
       kick();
     } else {
       // Re-measured (resize, an FAQ opening): relight what was already

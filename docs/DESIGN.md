@@ -194,7 +194,7 @@ Mumbai is the illustrative endpoint for the drawing only: it's where the Dubai s
 - **Mobile has no maps.** The route starts at a teal point beside the hero eyebrow (`UAE → India business payments`) and ends with the payment marker beside the arrival eyebrow (`Arrival · India`). The rupee caption and the start and end map labels are desktop-only. There are **two loops** (radius ~40px), placed in the crossings after *Why payments stall* and after *Your payments manager*; those gaps get 144px padding on each side. Waypoints sit in the active gutter as a filled ring with a check; the place name shows in the stage eyebrow (`01 — Share · Mina Rashid`), not on the route.
 - **Reduced motion (`prefers-reduced-motion: reduce`):** the full route is shown already drawn, the marker sits at the arrival point, and all waypoints appear as passed. Nothing animates.
 - **Static design frames:** show the **full route drawn**, as the end state.
-- **Opening the page:** a reload always opens at the top (the journey starts in Dubai); a shared deep link like `/#faq` is honoured, and the course is shown sailed up to that point without animating down the page.
+- **Opening the page:** a reload always opens at the top with the marker resting on the start point, at any window height; a shared deep link like `/#faq` is honoured, and the course is shown sailed up to that point without animating down the page.
 - **Layout changes** (an FAQ answer opening, the form changing step) re-measure the route every frame, so it stretches with the page. The FAQ loop is placed at fixed offsets from the section top, so opening answers never moves it.
 - **Performance:** transform and `stroke-dashoffset` only; one `requestAnimationFrame` loop; no layout reads during scroll other than cached values.
 
@@ -307,7 +307,7 @@ The eyebrow `02 — Assess` (Plex Sans, teal-700), the h2, and the lead. The way
 
 **Allowed**
 - The route drawing with scroll (Section 8). Each sailed dot grows and fades in (260ms) as the marker passes; passed waypoints ripple once and their check draws in.
-- The hero map's first route segment drawing once on load (1200ms, `ease-in-out`).
+- ~~The hero map's first route segment drawing once on load.~~ Removed on 2026-09-29: on shorter windows the sailed stretch ran below the fold. The marker now rests on the start point at the top of the page and gets underway as the reader scrolls (its aim moves twice as fast as the page until it reaches ~62% down the screen).
 - **Hero entrance, once on load:** eyebrow, then each headline line rising out of a clip (900ms, 120ms apart), then lead, amount starter, map (opacity only, so the route stays aligned), start label and caption. The whole sequence finishes within ~1.2s and never blocks input.
 - **Section reveals, once per section:** eyebrow, h2 and lead cascade in (14px rise plus opacity, 560ms, 70ms stagger); lists inside a section cascade after the header (why items, share rows, checklist, eligibility items, FAQ items, spec rows at a tighter 40ms). Never repeated.
 - **Progress moments:** the Track stepper plays its progress once (dots pop, lines fill step by step); the quote's "Supplier receives" row highlight sweeps in after its rows (60ms stagger); the form's progress bar fills from the left.
