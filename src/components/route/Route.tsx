@@ -153,7 +153,9 @@ function sample(shape: RouteShape, root: HTMLElement): Sampled {
 function lenAtY(maxY: Float32Array, y: number, total: number): number {
   let lo = 0;
   let hi = maxY.length - 1;
-  if (y <= maxY[0]) return 0;
+  // Samples are Float32: allow for rounding, or an aim exactly at the start
+  // would skip ahead to the next point the course returns to that height.
+  if (y <= maxY[0] + 0.5) return 0;
   if (y > maxY[hi]) return total;
   while (lo < hi) {
     const mid = (lo + hi) >> 1;
@@ -369,6 +371,9 @@ export function Route() {
     const n = tiles.x.length;
     let vh = window.innerHeight;
     let maxScroll = document.documentElement.scrollHeight - vh;
+    // Route coordinates are relative to <main>; scroll positions are page
+    // coordinates. The prototype notice and header sit between the two.
+    let mainTop = (rootRef.current?.parentElement?.getBoundingClientRect().top ?? 0) + window.scrollY;
     // A new layout means new dots: relight from scratch.
     L.lit = 0;
     L.settled = 0;
@@ -431,9 +436,10 @@ export function Route() {
 
     const targetNow = () => {
       if (L.reduced || L.arrived) return route.total;
-      const y = window.scrollY;
-      if (y >= maxScroll - 2) return route.total;
-      const aim = Math.min(y + vh * ANCHOR, route.start[1] + y * CATCHUP);
+      const scrolled = window.scrollY;
+      if (scrolled >= maxScroll - 2) return route.total;
+      const anchorLine = scrolled - mainTop + vh * ANCHOR; // in route coordinates
+      const aim = Math.max(route.start[1], Math.min(anchorLine, route.start[1] + scrolled * CATCHUP));
       return lenAtY(route.maxY, aim, route.total);
     };
 
@@ -500,6 +506,7 @@ export function Route() {
     const onResize = () => {
       vh = window.innerHeight;
       maxScroll = document.documentElement.scrollHeight - vh;
+      mainTop = (rootRef.current?.parentElement?.getBoundingClientRect().top ?? 0) + window.scrollY;
     };
     window.addEventListener('scroll', kick, { passive: true });
     window.addEventListener('resize', onResize);
