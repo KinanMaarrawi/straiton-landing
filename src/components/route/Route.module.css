@@ -17,13 +17,7 @@
   overflow: visible;
 }
 
-/* Charted course: navy 25%, 3px round dots every 8px. Static: never repaints on scroll. */
-.charted {
-  fill: none;
-  stroke: var(--route-charted);
-  stroke-width: 3;
-  stroke-linecap: round;
-}
+/* The course ahead is not drawn: only what has been sailed is visible. */
 
 /* Sailed course, settled: one 3.5px teal dot over each charted dot. */
 .sailed {
@@ -69,6 +63,22 @@
   height: 0;
 }
 
+/* Upcoming waypoints stay hidden, like the course ahead; each appears
+   (with its ripple and check) as the marker reaches it. */
+.wp > * {
+  transition:
+    opacity var(--dur-slow) var(--ease-out),
+    transform var(--dur-slow) var(--ease-out);
+}
+
+.wp:not([data-passed]) > * {
+  opacity: 0;
+}
+
+.wp:not([data-passed]) .dot {
+  transform: scale(0.4);
+}
+
 .dot,
 .ripple {
   position: absolute;
@@ -86,9 +96,10 @@
   background: var(--white);
   box-shadow: inset 0 0 0 1.5px var(--ink-500);
   transition:
+    opacity var(--dur-slow) var(--ease-out),
     background-color var(--dur-base) var(--ease-out),
     box-shadow var(--dur-base) var(--ease-out),
-    transform var(--dur-base) var(--ease-out);
+    transform var(--dur-slow) var(--ease-out);
 }
 
 .wp[data-passed] .dot {
@@ -150,6 +161,7 @@
   line-height: 20px;
   white-space: nowrap;
   transition:
+    opacity var(--dur-slow) var(--ease-out),
     transform var(--dur-base) var(--ease-out),
     color var(--dur-base) var(--ease-out);
 }

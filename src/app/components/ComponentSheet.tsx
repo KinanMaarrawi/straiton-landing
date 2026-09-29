@@ -430,11 +430,9 @@ export function ComponentSheet() {
         </Section>
         <Section n="09 — Route" title="Waypoints and line" lead="A passed waypoint gets a fill, a check and a heavier label, so state never relies on colour alone.">
           <svg viewBox="0 0 520 330" width="100%" className={s.routeSvg} aria-hidden="true">
-            <text x="0" y="16" className={s.svgCaption}>Charted course</text>
-            <path d="M150 12 H500" stroke="var(--route-charted)" strokeWidth="3" strokeDasharray="0 8" strokeLinecap="round" />
             <text x="0" y="56" className={s.svgCaption}>Sailed course</text>
             <path d="M150 52 H500" stroke="var(--teal-500)" strokeWidth="3.5" strokeDasharray="0 8" strokeLinecap="round" />
-            <text x="0" y="116" className={s.svgCaption}>Upcoming</text>
+            <text x="0" y="116" className={s.svgCaption}>Upcoming (sheet only)</text>
             <Waypoint x={160} y={111} passed={false} label="Muscat" />
             <text x="0" y="166" className={s.svgCaption}>Passed</text>
             <Waypoint x={160} y={161} passed label="Strait of Hormuz" />

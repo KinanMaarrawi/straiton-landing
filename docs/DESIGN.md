@@ -180,10 +180,10 @@ Mumbai is the illustrative endpoint for the drawing only: it's where the Dubai s
 
 ### The line
 - **Both courses are dotted**, in the same vocabulary as the map dots.
-- **Charted course:** the full path is always faintly visible (`--navy-900` at 25%, 3px round dots every 8px: `stroke-width: 3; stroke-dasharray: 0 8; stroke-linecap: round`). This is "the route we planned".
+- **No charted course:** the route ahead is not drawn. The reader only sees water already crossed, so each stretch, and each waypoint, appears as the marker reaches it. (Changed on 2026-09-29 at the client's request; it previously showed the full course at 25% navy.)
 - **Sailed course:** `--teal-500` dots (3.5px, same `0 8` pattern) revealed on top as the user scrolls, via a mask or clip driven by scroll progress, because `stroke-dashoffset` is already used by the dot pattern. This is "how far your payment has come".
 - **The payment marker:** a small teal-filled circle with a navy outline at the head of the drawn line. If the visitor entered an amount in the hero, the marker carries a mono label with it (`AED 250,000`); otherwise it reads `YOUR PAYMENT`.
-- **Waypoints** switch from outline (upcoming) to teal-filled (passed) as the marker reaches them. State is never colour-only: passed waypoints also get a check glyph and their label weight increases.
+- **Waypoints** are hidden while upcoming and appear teal-filled (passed) as the marker reaches them. State is never colour-only: passed waypoints also get a check glyph and their label weight increases.
 - Curves are smooth cubic Béziers with generous radii. No sharp corners and no zig-zags. It should feel like a ship's track, not a circuit diagram.
 - **Variance:** each lane run swings across its lane (roughly 140–350px from the edge on the left, 1100–1330px on the right) rather than running straight.
 - **Four loops** (a ship holding position): in *Why payments stall*, *03 Complete*, *Your payments manager* and *FAQ*. Each is a full circle (radius ~50–65px) with a slight downward drift so the path doesn't cross itself exactly. Loops sit in open lane space, never near a waypoint or text.
@@ -194,6 +194,8 @@ Mumbai is the illustrative endpoint for the drawing only: it's where the Dubai s
 - **Mobile has no maps.** The route starts at a teal point beside the hero eyebrow (`UAE → India business payments`) and ends with the payment marker beside the arrival eyebrow (`Arrival · India`). The rupee caption and the start and end map labels are desktop-only. There are **two loops** (radius ~40px), placed in the crossings after *Why payments stall* and after *Your payments manager*; those gaps get 144px padding on each side. Waypoints sit in the active gutter as a filled ring with a check; the place name shows in the stage eyebrow (`01 — Share · Mina Rashid`), not on the route.
 - **Reduced motion (`prefers-reduced-motion: reduce`):** the full route is shown already drawn, the marker sits at the arrival point, and all waypoints appear as passed. Nothing animates.
 - **Static design frames:** show the **full route drawn**, as the end state.
+- **Opening the page:** a reload always opens at the top (the journey starts in Dubai); a shared deep link like `/#faq` is honoured, and the course is shown sailed up to that point without animating down the page.
+- **Layout changes** (an FAQ answer opening, the form changing step) re-measure the route every frame, so it stretches with the page. The FAQ loop is placed at fixed offsets from the section top, so opening answers never moves it.
 - **Performance:** transform and `stroke-dashoffset` only; one `requestAnimationFrame` loop; no layout reads during scroll other than cached values.
 
 ---

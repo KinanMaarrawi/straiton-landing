@@ -140,7 +140,9 @@ export function desktopRoute(inp: DesktopInput): RouteShape {
     W(wps[2]), P(150, at(r.complete, 0.44)), L(150, at(r.complete, 0.52), 52, -1), P(310, r.complete.bottom),
     W(wps[3]), P(1320, r.track.bottom),
     P(190, r.support.top), P(330, at(r.support, 0.36)), L(330, at(r.support, 0.46), 54, 1), P(170, r.support.bottom),
-    P(1090, r.faq.top), P(1100, at(r.faq, 0.36)), L(1100, at(r.faq, 0.46), 52, 1), P(1290, r.faq.bottom), A[0],
+    // FAQ: fixed offsets from the section top (not fractions of its height),
+    // so opening an answer only stretches the tail, never moves the loop.
+    P(1090, r.faq.top), P(1100, r.faq.top + 250), L(1100, r.faq.top + 320, 52, 1), P(1290, r.faq.bottom), A[0],
   ];
 
   const hn = H.length;

@@ -256,7 +256,6 @@ const Course = memo(function Course({ route, tiles }: { route: Sampled; tiles: T
             viewBox={`0 0 ${route.width} ${BAND}`}
             style={{ top: b * BAND }}
           >
-            <path className={s.charted} d={strs.join('')} />
             {chunksOf(tiles.ks[b]).map((c) => (
               <path key={c} className={s.sailed} data-band={b} data-chunk={c} d="" />
             ))}
@@ -299,6 +298,7 @@ export function Route() {
     raf: 0,
     last: 0,
     intro: null as null | { t0: number; to: number },
+    started: false,
     arrived: false,
     reduced: false,
   });
@@ -329,20 +329,26 @@ export function Route() {
 
   useEffect(() => {
     recompute();
-    let t = 0;
-    const debounced = () => {
-      window.clearTimeout(t);
-      t = window.setTimeout(recompute, 150);
+    // Follow layout changes frame by frame (an FAQ answer opening, the form
+    // changing step), so the route stretches with the page instead of
+    // snapping into place after it settles.
+    let frame = 0;
+    const onLayout = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        recompute();
+      });
     };
     const root = rootRef.current?.parentElement;
-    const ro = new ResizeObserver(debounced);
+    const ro = new ResizeObserver(onLayout);
     if (root) ro.observe(root);
-    window.addEventListener('resize', debounced);
+    window.addEventListener('resize', onLayout);
     document.fonts?.ready.then(recompute).catch(() => {});
     return () => {
-      window.clearTimeout(t);
+      cancelAnimationFrame(frame);
       ro.disconnect();
-      window.removeEventListener('resize', debounced);
+      window.removeEventListener('resize', onLayout);
     };
   }, [recompute]);
 
@@ -484,15 +490,24 @@ export function Route() {
     if (L.reduced) {
       L.current = route.total;
       paint(route.total);
-    } else if (L.current === 0) {
-      // First draw: the hero's first stretch sails once on load.
-      L.intro = { t0: performance.now(), to: targetNow() };
-      paint(0);
+    } else if (!L.started) {
+      L.started = true;
+      const to = targetNow();
+      if (to <= route.loadLen + 1) {
+        // Opened at the top: the hero's first stretch sails once from Dubai.
+        L.intro = { t0: performance.now(), to };
+        paint(0);
+      } else {
+        // Opened part-way down (a shared deep link): don't race down the
+        // page, just show the course sailed up to where the reader is.
+        L.current = to;
+        paint(to, performance.now(), true);
+      }
       kick();
     } else {
-      // Re-measured: relight what was already sailed, without replaying it.
+      // Re-measured (resize, an FAQ opening): relight what was already
+      // sailed without replaying it, and keep the marker's momentum.
       L.current = Math.min(L.current, route.total);
-      L.velocity = 0;
       paint(L.current, performance.now(), true);
       kick();
     }

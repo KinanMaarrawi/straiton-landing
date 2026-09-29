@@ -48,8 +48,8 @@ export function PageStateProvider({ children }: { children: ReactNode }) {
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     // Land the form card in view on small screens; the section top on large.
     const target = window.innerWidth < 960 ? document.getElementById('assessment-card') ?? section : section;
+    // No hash is written, so a reload still opens at the top of the journey.
     target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
-    history.replaceState(null, '', '#assessment');
     // Focus without a second jump, once the form has re-rendered for the mode.
     requestAnimationFrame(() => document.getElementById(FORM_FOCUS_ID)?.focus({ preventScroll: true }));
   }, []);
