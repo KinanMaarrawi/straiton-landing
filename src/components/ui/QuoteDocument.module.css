@@ -30,6 +30,12 @@
   font-weight: 600;
 }
 
+.illustrative {
+  color: var(--text-tertiary);
+  font-size: 13px;
+  white-space: nowrap;
+}
+
 .pair {
   display: inline-flex;
   align-items: center;

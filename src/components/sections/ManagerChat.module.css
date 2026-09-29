@@ -40,6 +40,11 @@
   letter-spacing: var(--ls-wordmark);
 }
 
+.example {
+  color: var(--on-dark-muted);
+  font-size: 13px;
+}
+
 .title {
   font-size: 15px;
   font-weight: 500;

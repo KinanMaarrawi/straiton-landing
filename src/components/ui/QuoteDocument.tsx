@@ -2,7 +2,6 @@
 
 import type { ReactNode } from 'react';
 import { DirhamSign } from './DirhamSign';
-import { Tag } from './Tag';
 import { useRevealOnce } from './useRevealOnce';
 import styles from './QuoteDocument.module.css';
 
@@ -39,7 +38,7 @@ export function QuoteDocument({ amount }: QuoteDocumentProps) {
             <span className="visually-hidden">to INR</span>
           </span>
         </div>
-        <Tag variant="illustrative">Illustrative · no live rates</Tag>
+        <span className={styles.illustrative}>Illustrative · no live rates</span>
       </div>
       <dl className={styles.rows}>
         {rows.map((row, i) => (

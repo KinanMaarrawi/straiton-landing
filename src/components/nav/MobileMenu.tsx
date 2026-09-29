@@ -28,6 +28,10 @@ export function MobileMenu({ open, onClose, toggleRef }: MobileMenuProps) {
     const toggle = toggleRef.current;
     const root = document.documentElement;
     const prevOverflow = root.style.overflow;
+    // The sheet starts at the header's bottom edge, which is lower than 64px
+    // while the prototype notice above the header is still on screen.
+    const headerBottom = toggle?.closest('header')?.getBoundingClientRect().bottom;
+    if (sheetRef.current && headerBottom) sheetRef.current.style.top = `${Math.max(0, headerBottom)}px`;
     root.style.overflow = 'hidden';
     toggle?.focus();
 

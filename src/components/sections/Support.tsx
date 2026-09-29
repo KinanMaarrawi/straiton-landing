@@ -4,7 +4,6 @@ import { useRef, useState } from 'react';
 import { SUPPORT } from '@/content/copy';
 import { Button } from '@/components/ui/Button';
 import { DemoNotice } from '@/components/ui/DemoNotice';
-import { Tag } from '@/components/ui/Tag';
 import { ManagerChat } from './ManagerChat';
 import { Reveal } from './Reveal';
 import { Section, layout } from './Section';
@@ -46,21 +45,15 @@ export function Support() {
         <Reveal stagger>
         <p className={s.helpsLabel}>{SUPPORT.helpsWithLabel}</p>
         <p className={s.helps}>{SUPPORT.helpsWith}</p>
-        <div className={s.demoLine}>
-          <Tag variant="demo" />
-          <span>{SUPPORT.placeholderNote}</span>
-        </div>
         <div className={s.contactButtons}>
           <Button tone="dark" onClick={show} aria-controls="contact-notice">
             {SUPPORT.whatsapp}
           </Button>
           <Button tone="dark" variant="secondary" onClick={show} aria-controls="contact-notice">
             {SUPPORT.callLabel}
-            <span className={s.contactDetail}>{SUPPORT.phone}</span>
           </Button>
           <Button tone="dark" variant="secondary" onClick={show} aria-controls="contact-notice">
             {SUPPORT.emailLabel}
-            <span className={s.contactDetail}>{SUPPORT.email}</span>
           </Button>
         </div>
         </Reveal>

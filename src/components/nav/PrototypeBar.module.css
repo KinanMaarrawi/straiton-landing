@@ -1,0 +1,23 @@
+/* Page-level prototype disclosure. Quiet, but on every first view. */
+
+.bar {
+  background: var(--surface-50);
+  border-bottom: var(--hairline);
+}
+
+.text {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 8px 20px;
+  color: var(--ink-700);
+  font-size: 13px;
+  line-height: 1.45;
+  text-align: center;
+  text-wrap: balance;
+}
+
+@media (min-width: 640px) {
+  .text {
+    padding: 8px 32px;
+  }
+}

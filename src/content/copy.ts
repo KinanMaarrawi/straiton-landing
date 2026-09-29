@@ -10,6 +10,13 @@ export const NAV_LINKS = [
   { href: '#faq', label: 'FAQ', section: 'faq' },
 ] as const;
 
+/**
+ * One page-level disclosure instead of a Demo/Illustrative tag on every item
+ * (COPY.md, 2026-09-29). TODO(copy): confirm wording.
+ */
+export const PROTOTYPE_NOTICE =
+  'Design prototype. Figures and interface examples are illustrative, contact details are placeholders, and nothing you enter is sent anywhere.';
+
 export const NAV_CTA = 'Request an assessment';
 export const PRIMARY_CTA = 'Request a payment assessment';
 
@@ -110,17 +117,15 @@ export const SUPPORT = {
   lead: 'Speak directly with an India payments manager before onboarding, during the payment, and whenever something needs attention.',
   helpsWithLabel: 'Helps with', // TODO(copy): label above the "Helps with" line, taken from the frames
   helpsWith: 'Quotes · Onboarding · Documents · Payment setup · Status · Exceptions',
-  placeholderNote: 'Placeholder contact details', // TODO(copy): from the frames, not COPY.md
   whatsapp: 'WhatsApp an India payments manager',
   callLabel: 'Call',
-  phone: '+971 00 000 0000',
   emailLabel: 'Email',
-  email: 'india@straiton.example',
   notice:
     'This is a design prototype. In the live site, this would open WhatsApp, your phone or your email. Nothing has been sent.',
   /** Illustrative conversation (COPY.md §8, trial). Every line restates a fact already on the page. */
   chat: {
     title: 'India payments manager',
+    label: 'Example', // TODO(copy): quiet label in the chat header
     caption: 'Illustrative conversation with an India payments manager',
     youLabel: 'You',
     managerLabel: 'India payments manager',
@@ -269,8 +274,6 @@ export const FOOTER = {
     { href: '#support', label: 'Your payments manager' },
     { href: '#assessment', label: 'Request an assessment' },
   ],
-  contactHeading: 'Contact',
-  contact: ['WhatsApp', '+971 00 000 0000', 'india@straiton.example'],
   regulatoryHeading: 'Straiton / Regulatory information',
   regulatory:
     'Design placeholder. Approved legal entity and regulatory disclosures will be supplied separately. Do not infer licensing, coverage or guaranteed execution from this prototype.',

@@ -1,4 +1,5 @@
 import { Nav } from '@/components/nav/Nav';
+import { PrototypeBar } from '@/components/nav/PrototypeBar';
 import { StickyCta } from '@/components/nav/StickyCta';
 import { Arrival } from '@/components/sections/Arrival';
 import { Assess } from '@/components/sections/Assess';
@@ -24,6 +25,7 @@ export default function Home() {
       <a className="skip-link" href="#assessment">
         Skip to assessment
       </a>
+      <PrototypeBar />
       <Nav />
       <main id="main" className="route-root">
         <Hero />

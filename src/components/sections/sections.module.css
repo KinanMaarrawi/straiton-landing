@@ -394,27 +394,14 @@
   line-height: 1.6;
 }
 
-.demoLine {
-  margin-top: var(--space-6);
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 10px;
-  color: var(--on-dark-muted);
-  font-size: 14px;
-}
 
 .contactButtons {
-  margin-top: 14px;
+  margin-top: var(--space-6);
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.contactDetail {
-  margin-left: 6px;
-  font-weight: 400;
-}
 
 @media (min-width: 640px) {
   .contactButtons {
@@ -443,13 +430,9 @@
     font-size: 17px;
   }
 
-  .demoLine {
-    margin-top: var(--space-7);
-    gap: var(--space-3);
-  }
 
   .contactButtons {
-    margin-top: var(--space-4);
+    margin-top: 40px;
   }
 }
 

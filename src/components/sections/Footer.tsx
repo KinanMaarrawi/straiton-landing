@@ -1,5 +1,4 @@
 import { FOOTER } from '@/content/copy';
-import { Tag } from '@/components/ui/Tag';
 import s from './Footer.module.css';
 
 export function Footer() {
@@ -35,16 +34,6 @@ export function Footer() {
               ))}
             </ul>
           </nav>
-          <div className={`${s.col} ${s.contact}`}>
-            <h2 className={s.colHeading}>
-              {FOOTER.contactHeading} <Tag variant="demo" size="sm" />
-            </h2>
-            <ul>
-              {FOOTER.contact.map((c) => (
-                <li key={c}>{c}</li>
-              ))}
-            </ul>
-          </div>
         </div>
         <div className={s.regulatory}>
           <h2 className={s.regHeading}>{FOOTER.regulatoryHeading}</h2>

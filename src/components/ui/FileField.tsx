@@ -3,7 +3,6 @@
 import { useRef, useState, type DragEvent, type RefObject } from 'react';
 import { Field, useField } from './Field';
 import { FileIcon, UploadIcon } from './icons';
-import { Tag } from './Tag';
 import styles from './FileField.module.css';
 
 type FileFieldProps = {
@@ -59,7 +58,7 @@ export function FileField({
   }
 
   return (
-    <Field id={id} label={label} hint={hint} error={error} labelAside={<Tag variant="demo" size="sm" />}>
+    <Field id={id} label={label} hint={hint} error={error}>
       <FileInput inputRef={inputRef} accept={accept} disabled={disabled} inert={Boolean(file)} onPick={onFileChange} />
       {file ? (
         <div className={styles.selected}>

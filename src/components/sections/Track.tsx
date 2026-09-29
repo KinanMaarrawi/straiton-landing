@@ -1,6 +1,5 @@
 import { TRACK } from '@/content/copy';
 import { Stepper } from '@/components/ui/Stepper';
-import { Tag } from '@/components/ui/Tag';
 import { Reveal } from './Reveal';
 import { Section, layout } from './Section';
 import { StageHeader } from './StageHeader';
@@ -20,7 +19,6 @@ export function Track() {
             <span className={s.statusTitle}>
               {TRACK.header} · <span className={s.statusCorridor}>{TRACK.corridor}</span>
             </span>
-            <Tag variant="illustrative">Illustrative interface</Tag>
           </figcaption>
           <Stepper steps={TRACK.steps} />
         </figure>

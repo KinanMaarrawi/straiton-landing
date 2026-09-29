@@ -24,7 +24,7 @@ Conflict order: DESIGN.md / COPY.md → reference frames → your judgement (fla
 - State is never colour-only (icons + words on errors, check glyph + weight on waypoints).
 - Every interactive element has a visible `:focus-visible` style from DESIGN.md. Touch targets ≥ 44px.
 - `prefers-reduced-motion`: route fully drawn, nothing animates.
-- Demo-only behaviour is visibly tagged `Demo`; illustrative content tagged `Illustrative`. Nothing is sent anywhere.
+- Demo and illustrative content is disclosed by one page-level prototype notice (above the nav), plus the in-the-moment messages (contact notice, form privacy line, receipt). No per-item Demo/Illustrative pills. The quote card and the example chat keep a quiet plain-text label. Nothing is sent anywhere.
 - Don't invent capabilities, pricing, guarantees or regulatory claims.
 
 ## Working style

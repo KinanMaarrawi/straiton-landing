@@ -19,6 +19,12 @@ Skip to assessment
 
 ---
 
+## Prototype notice (above the nav)
+
+Design prototype. Figures and interface examples are illustrative, contact details are placeholders, and nothing you enter is sent anywhere. *(TODO(copy): confirm wording. Replaces per-item Demo/Illustrative tags, 2026-09-29.)*
+
+---
+
 ## Nav
 
 - Wordmark: STRAITON
@@ -98,7 +104,7 @@ Skip to assessment
 - Lead: You get an assessment of this specific payment: how it would be quoted, what it needs, and what could slow it down.
 
 **Quote document**
-- Title: Quote anatomy `[tag: Illustrative · no live rates]`
+- Title: Quote anatomy · label (plain text): Illustrative · no live rates
 
 | Row | Value |
 |---|---|
@@ -154,7 +160,7 @@ Skip to assessment
 - **H2:** Follow it all the way to confirmation.
 - Lead: Every payment has a status, from request to beneficiary confirmation, so "has it gone through?" always has an answer.
 
-**Status component** `[tag: Illustrative interface]`
+**Status component** (covered by the prototype notice)
 - Header: Supplier payment · UAE → India
 - Steps: Request (done) · Assessment (done) · Funding (current) · Confirmation (upcoming)
 - Current-step note: Waiting for funds to be received.
@@ -169,13 +175,13 @@ Skip to assessment
 - Lead: Speak directly with an India payments manager before onboarding, during the payment, and whenever something needs attention.
 - Helps with: Quotes · Onboarding · Documents · Payment setup · Status · Exceptions
 
-**Contact actions** `[tag: Demo]`
+**Contact actions** (channels only; placeholder details removed 2026-09-29)
 - Primary button: WhatsApp an India payments manager
-- Secondary: Call +971 00 000 0000
-- Secondary: Email india@straiton.example
+- Secondary: Call
+- Secondary: Email
 - Demo notice (shown on click): This is a design prototype. In the live site, this would open WhatsApp, your phone or your email. Nothing has been sent.
 
-**Illustrative conversation** `[tag: Illustrative]` *(added 2026-09-29, trial; every line restates a fact already on the page)*
+**Illustrative conversation** · header label (plain text): Example *(added 2026-09-29, trial; every line restates a fact already on the page)*
 - Card title: India payments manager
 - Caption (visually hidden): Illustrative conversation with an India payments manager
 - You: We need to pay a supplier in India. The invoice is *{hero amount, fallback AED 250,000}*.
@@ -228,7 +234,7 @@ Skip to assessment
 - Amount — label: Payment amount · placeholder: 250,000
 - Funding currency — label: Funding currency · options: AED, USD
 - Payment type — label: Payment type · placeholder: Select a payment type · options: Supplier payment · Invoice payment · Other eligible business payment
-- *(Bank-quote mode only)* Attach — label: Your bank quote (optional) · button: Choose file · drop text: or drag it here · hint: PDF, image or screenshot. In this demo, it stays in your browser. `[tag: Demo]` · selected-file note: Stays in your browser · remove link: Remove
+- *(Bank-quote mode only)* Attach — label: Your bank quote (optional) · button: Choose file · drop text: or drag it here · hint: PDF, image or screenshot. In this demo, it stays in your browser. · selected-file note: Stays in your browser · remove link: Remove
 - *(Bank-quote mode only)* Notes — label: Anything we should know about it? (optional) · placeholder: e.g. the rate, fees or timing your bank quoted
 - Button: Continue
 
@@ -240,7 +246,7 @@ Skip to assessment
 - Preferred contact — label: How should we reach you? · options: Email · WhatsApp · Call
 - Buttons: Back · Send request
 - Submitting label: Sending…
-- Privacy line: We'll use these details only to respond to this request. `[tag: Demo]` Nothing is sent from this prototype.
+- Privacy line: We'll use these details only to respond to this request. Nothing is sent from this prototype.
 
 **Errors**
 - Summary heading: Check {n} field(s) before continuing
@@ -257,7 +263,7 @@ Skip to assessment
 - File (too large, >10 MB): Choose a file under 10 MB.
 
 **Confirmation**
-- Heading: Request received `[tag: Demo]`
+- Heading: Request received
 - Line: This is a design prototype: nothing was sent.
 - Receipt title: Your request
 - Receipt rows: Amount · Funding currency · Payment type · Bank quote attached (Yes / No) · Contact by
@@ -278,7 +284,6 @@ Request a payment assessment
 - Descriptor: Business payments from the UAE to India, prepared before you fund.
 - Column **The route** (heading in sentence case): Share · Assess · Complete · Track
 - Column **Help:** FAQ · Your payments manager · Request an assessment
-- Column **Contact** `[tag: Demo]`: WhatsApp · +971 00 000 0000 · india@straiton.example
 - **Regulatory block:**
   **Straiton / Regulatory information**
   Design placeholder. Approved legal entity and regulatory disclosures will be supplied separately. Do not infer licensing, coverage or guaranteed execution from this prototype.

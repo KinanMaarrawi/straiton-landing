@@ -265,7 +265,6 @@ export function AssessmentForm() {
           <h3 ref={doneHeadingRef} tabIndex={-1} className={s.doneTitle}>
             {FORM.done.heading}
           </h3>
-          <Tag variant="demo" />
         </div>
         <p className={s.doneLine}>{FORM.done.line}</p>
         <div className={s.receipt}>
@@ -470,7 +469,7 @@ export function AssessmentForm() {
             </Button>
           </div>
           <p className={s.privacy}>
-            <span>{FORM.privacy}</span> <Tag variant="demo" size="sm" /> <span>{FORM.privacyAfter}</span>
+            {FORM.privacy} {FORM.privacyAfter}
           </p>
         </div>
       )}

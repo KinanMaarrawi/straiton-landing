@@ -1,7 +1,6 @@
 'use client';
 
 import { SUPPORT } from '@/content/copy';
-import { Tag } from '@/components/ui/Tag';
 import { usePageState } from '@/components/state/PageState';
 import { Reveal } from './Reveal';
 import s from './ManagerChat.module.css';
@@ -27,7 +26,7 @@ export function ManagerChat() {
           </span>
           <span className={s.title}>{C.title}</span>
         </span>
-        <Tag variant="illustrative" />
+        <span className={s.example}>{C.label}</span>
         <span className="visually-hidden">{C.caption}</span>
       </figcaption>
       <Reveal as="ol" stagger className={s.thread}>
