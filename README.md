@@ -1,5 +1,7 @@
 # Handoff: Straiton — UAE → India landing page
 
+**Live:** https://straiton-landing-nine.vercel.app · **Source:** https://github.com/KinanMaarrawi/straiton-landing · **Component sheet:** https://straiton-landing-nine.vercel.app/components
+
 ## Overview
 A single responsive landing page for Straiton's UAE → India B2B payments pilot. It explains the proposition and turns interest into a **payment assessment request**. The page is structured as the payment's sea route: it starts in the UAE (hero), passes four waypoints (the four stages: Share, Assess, Complete, Track) and arrives in India (assessment form). Target: a working **Vercel Preview** with a functional nav, CTAs, FAQ and a two-step form with validation and a demo confirmation.
 
@@ -128,3 +130,5 @@ npm run typecheck
 - Checks run (Firefox, plus headless Chrome for Lighthouse): axe-core reports no WCAG 2.2 AA or best-practice violations across the page, mobile menu, every form state, the contact notice and the 404. Lighthouse mobile performance 90-93 (observed LCP ~0.2s; the simulated 3.2s is slow-4G contention with the 129KB Newsreader opsz font), desktop 100, accessibility and best practices 100. SEO scores 63 only because of the deliberate noindex.
 - Without JavaScript: every section and FAQ answer is readable, anchors work, the mobile header shows its links in place of the menu button, and the form explains that it needs JavaScript (a submit lands back on the form). Contact buttons do nothing without JS; the prototype notice already says contact details are placeholders.
 - Chrome (headless, 2026-09-29): no overflow 320–1920, 60fps scrolling with no frame over 17ms on desktop and mobile, FAQ toggles at 60fps, full form/menu/notice flow, axe clean, reduced motion correct, no console errors. Not yet done: a real iPhone in Safari, and a screen-reader pass with a real reader. Structure checks passed (one H1, ordered headings, labelled landmarks, live regions).
+- Deployment (2026-09-29): Vercel project `straiton-landing`, deployed to production from the CLI (production is public; preview URLs sit behind Vercel's login by default). `straiton-landing.vercel.app` belongs to a different project, so Vercel assigned `straiton-landing-nine.vercel.app`. Live checks: Lighthouse mobile 87 / desktop 100, accessibility and best practices 100, axe clean, no overflow. Automatic deploys from GitHub need the Vercel GitHub app to be given access to the repo (Vercel dashboard → project → Settings → Git).
+
