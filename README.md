@@ -1,7 +1,7 @@
 # Handoff: Straiton — UAE → India landing page
 
 ## Overview
-A single responsive landing page for Straiton's UAE → India B2B payments pilot. It explains the proposition and turns interest into a **payment assessment request**. The page is structured as the payment's sea route: it starts in Dubai (hero), passes four waypoints (the four stages: Share, Assess, Complete, Track) and arrives in India (assessment form). Target: a working **Vercel Preview** with a functional nav, CTAs, FAQ and a two-step form with validation and a demo confirmation.
+A single responsive landing page for Straiton's UAE → India B2B payments pilot. It explains the proposition and turns interest into a **payment assessment request**. The page is structured as the payment's sea route: it starts in the UAE (hero), passes four waypoints (the four stages: Share, Assess, Complete, Track) and arrives in India (assessment form). Target: a working **Vercel Preview** with a functional nav, CTAs, FAQ and a two-step form with validation and a demo confirmation.
 
 ## About the design files
 Files in `design/` are **design references built in HTML**. They're prototypes showing the intended look and behaviour, not production code. Recreate them in the target stack (Next.js + TypeScript, see `CLAUDE.md`) using proper components. The references use inline styles and a small runtime (`support.js`) only so they render standalone.

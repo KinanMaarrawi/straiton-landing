@@ -21,7 +21,7 @@ Skip to assessment
 
 ## Prototype notice (above the nav)
 
-Design prototype. Figures and interface examples are illustrative, contact details are placeholders, and nothing you enter is sent anywhere. *(TODO(copy): confirm wording. Replaces per-item Demo/Illustrative tags, 2026-09-29.)*
+Design prototype. Figures and interface examples are illustrative, contact details are placeholders, and nothing you enter is sent anywhere. *(Replaces per-item Demo/Illustrative tags, 2026-09-29.)*
 
 ---
 
@@ -50,7 +50,7 @@ Design prototype. Figures and interface examples are illustrative, contact detai
 - Microcopy: No sign-up required. Direct access to an India payments manager.
 
 **Departure map**
-- Point label: You, in Dubai / Payment starts
+- Point label: You, in the UAE / Payment starts
 - Caption: Until 1966, the rupee was legal tender on this coast.
 
 ---
@@ -173,7 +173,7 @@ Design prototype. Figures and interface examples are illustrative, contact detai
 - ~~Monogram tile: IN — India payments manager~~ (removed 2026-09-29: the illustrative conversation below carries the manager's identity; its avatar uses the IN initials)
 - **H2:** A person who knows this corridor.
 - Lead: Speak directly with an India payments manager before onboarding, during the payment, and whenever something needs attention.
-- Helps with: Quotes · Onboarding · Documents · Payment setup · Status · Exceptions
+- Helps with (label above the line): Quotes · Onboarding · Documents · Payment setup · Status · Exceptions
 
 **Contact actions** (channels only; placeholder details removed 2026-09-29)
 - Primary button: WhatsApp an India payments manager
@@ -227,7 +227,7 @@ Design prototype. Figures and interface examples are illustrative, contact detai
 
 **Form card**
 - Card title: Payment assessment
-- Mode switch: Planning a payment · I have a bank quote
+- Mode switch: Planning a payment · I have a bank quote (hidden legend: Request type)
 - Progress: Step 1 of 2 · Step 2 of 2
 
 **Step 1 — The payment**
@@ -298,5 +298,5 @@ Request a payment assessment
 - **Honesty as a feature.** The corridor is in pilot and several details are unconfirmed. Instead of hiding that, the page marks unconfirmed items openly ("To be confirmed", "Illustrative"). For a finance audience, visible candour builds more trust than confident vagueness.
 - **One conversion path.** The prototype offered four competing CTAs. Here there's one primary action (request an assessment) with the bank-quote comparison as a *mode of the same form*, and WhatsApp in the manager section for people who want a human first.
 - **Crypto kept in its place.** Stablecoins are internal plumbing, so they appear once, in an FAQ answer that leads with what the customer holds: AED/USD in, INR out, no crypto to manage.
-- **The route.** The page is structured as the payment's journey from you, in Dubai, to your supplier, in India. The four stages sit at recognisable points on the passage (Mina Rashid, Strait of Hormuz, Muscat, Arabian Sea), so the metaphor is grounded in real geography, not decoration. The metaphor lives in structure, place names and visuals only; the copy never gets cute about it.
+- **The route.** The page is structured as the payment's journey from you, in the UAE, to your supplier, in India. The four stages sit at recognisable points on the passage (Mina Rashid, Strait of Hormuz, Muscat, Arabian Sea), so the metaphor is grounded in real geography, not decoration. The metaphor lives in structure, place names and visuals only; the copy never gets cute about it.
 - **Cut for length.** FAQs on funding currencies, payment types and documents were removed because the corridor specification and the checklist already answer them.

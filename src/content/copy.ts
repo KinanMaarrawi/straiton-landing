@@ -12,7 +12,7 @@ export const NAV_LINKS = [
 
 /**
  * One page-level disclosure instead of a Demo/Illustrative tag on every item
- * (COPY.md, 2026-09-29). TODO(copy): confirm wording.
+ * (COPY.md, 2026-09-29).
  */
 export const PROTOTYPE_NOTICE =
   'Design prototype. Figures and interface examples are illustrative, contact details are placeholders, and nothing you enter is sent anywhere.';
@@ -28,7 +28,7 @@ export const HERO = {
   hint: 'A rough figure is fine. You can change it later.',
   bankQuoteLink: 'Already have a bank quote? Compare it with us →',
   micro: 'No sign-up required. Direct access to an India payments manager.',
-  pointTitle: 'You, in Dubai',
+  pointTitle: 'You, in the UAE',
   pointSub: 'Payment starts',
   caption: 'Until 1966, the rupee was legal tender on this coast.',
 };
@@ -115,7 +115,7 @@ export const SUPPORT = {
   role: 'India payments manager',
   h2: 'A person who knows this corridor.',
   lead: 'Speak directly with an India payments manager before onboarding, during the payment, and whenever something needs attention.',
-  helpsWithLabel: 'Helps with', // TODO(copy): label above the "Helps with" line, taken from the frames
+  helpsWithLabel: 'Helps with',
   helpsWith: 'Quotes · Onboarding · Documents · Payment setup · Status · Exceptions',
   whatsapp: 'WhatsApp an India payments manager',
   callLabel: 'Call',
@@ -125,7 +125,7 @@ export const SUPPORT = {
   /** Illustrative conversation (COPY.md §8, trial). Every line restates a fact already on the page. */
   chat: {
     title: 'India payments manager',
-    label: 'Example', // TODO(copy): quiet label in the chat header
+    label: 'Example',
     caption: 'Illustrative conversation with an India payments manager',
     youLabel: 'You',
     managerLabel: 'India payments manager',
@@ -188,7 +188,7 @@ export const ARRIVAL = {
 export const FORM = {
   title: 'Payment assessment',
   modes: { planning: 'Planning a payment', bankQuote: 'I have a bank quote' },
-  modeLegend: 'Request type', // TODO(copy): visually hidden legend for the mode switch
+  modeLegend: 'Request type', // visually hidden legend for the mode switch
   progress: (n: 1 | 2) => `Step ${n} of 2`,
   amountLabel: 'Payment amount',
   amountPlaceholder: '250,000',
