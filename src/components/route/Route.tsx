@@ -21,7 +21,13 @@ type Sampled = RouteShape & {
 };
 
 const STEP = 4;
-const LERP = 0.15;
+/**
+ * How the marker follows the reader: a critically damped spring. It eases
+ * in and out (no lunge, no overshoot) and arrives where the reader is
+ * ~1.5s later, scrolling down or up: 80% there after 1s, 94% after 1.5s,
+ * 98% after 2s. Lower = lazier.
+ */
+const FOLLOW = 3;
 /** Where on screen the marker is aimed: ~62% down the viewport. */
 const ANCHOR = 0.62;
 
@@ -286,6 +292,7 @@ export function Route() {
 
   const live = useRef({
     current: 0,
+    velocity: 0,
     target: 0,
     lit: 0,
     settled: 0,
@@ -445,15 +452,26 @@ export function Route() {
       if (L.intro) {
         const t = Math.min(1, (now - L.intro.t0) / 1200);
         L.current = easeInOut(t) * L.intro.to;
-        if (t >= 1) L.intro = null;
+        if (t >= 1) {
+          L.intro = null;
+          L.velocity = 0;
+        }
         paint(L.current, now);
         L.raf = requestAnimationFrame(tick);
         return;
       }
-      // Frame-rate independent smoothing: 0.15 per 60Hz frame.
-      const k = 1 - Math.pow(1 - LERP, dt / 16.7);
-      const diff = L.target - L.current;
-      L.current = Math.abs(diff) < 0.25 ? L.target : L.current + diff * k;
+      // Critically damped spring, stepped exactly (stable at any frame rate).
+      const d = L.current - L.target;
+      if (Math.abs(d) < 0.3 && Math.abs(L.velocity) < 2) {
+        L.current = L.target;
+        L.velocity = 0;
+      } else {
+        const t = dt / 1000;
+        const e = Math.exp(-FOLLOW * t);
+        const tmp = (L.velocity + FOLLOW * d) * t;
+        L.current = L.target + (d + tmp) * e;
+        L.velocity = (L.velocity - FOLLOW * tmp) * e;
+      }
       const busy = paint(L.current, now);
       if (L.current !== L.target || busy) L.raf = requestAnimationFrame(tick);
       else L.last = 0;
@@ -474,6 +492,7 @@ export function Route() {
     } else {
       // Re-measured: relight what was already sailed, without replaying it.
       L.current = Math.min(L.current, route.total);
+      L.velocity = 0;
       paint(L.current, performance.now(), true);
       kick();
     }
