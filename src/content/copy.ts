@@ -221,6 +221,7 @@ export const FORM = {
     { value: 'whatsapp', label: 'WhatsApp' },
     { value: 'call', label: 'Call' },
   ],
+  noScript: 'This demo form needs JavaScript to run. Nothing is sent from this prototype.',
   back: 'Back',
   send: 'Send request',
   sending: 'Sending…',

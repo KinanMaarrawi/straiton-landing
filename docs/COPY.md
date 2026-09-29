@@ -244,6 +244,7 @@ Design prototype. Figures and interface examples are illustrative, contact detai
 - Company — label: Company name
 - Phone — label: Phone or WhatsApp (optional) · placeholder: +971 50 000 0000
 - Preferred contact — label: How should we reach you? · options: Email · WhatsApp · Call
+- No-JS note (shown only without JavaScript): This demo form needs JavaScript to run. Nothing is sent from this prototype.
 - Buttons: Back · Send request
 - Submitting label: Sending…
 - Privacy line: We'll use these details only to respond to this request. Nothing is sent from this prototype.

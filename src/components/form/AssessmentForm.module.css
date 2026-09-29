@@ -98,6 +98,16 @@
   width: 100%;
 }
 
+.noScript {
+  margin-top: var(--space-5);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-control);
+  background: var(--surface-50);
+  color: var(--ink-700);
+  font-size: var(--fs-small);
+  line-height: 1.5;
+}
+
 .privacy {
   margin-top: var(--space-4);
   color: var(--text-tertiary);

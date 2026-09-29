@@ -308,6 +308,8 @@ export function AssessmentForm() {
     <form
       className={s.card}
       id="assessment-card"
+      // Without JS a submit reloads the page; land back on the form, not the top.
+      action="#assessment"
       noValidate
       onSubmit={onSubmit}
       onPointerDownCapture={() => {
@@ -396,6 +398,9 @@ export function AssessmentForm() {
               </>
             )}
           </div>
+          <noscript>
+            <p className={s.noScript}>{FORM.noScript}</p>
+          </noscript>
           <div className={s.actions}>
             <Button type="submit" fullWidth>
               {FORM.continue}

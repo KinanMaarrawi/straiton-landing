@@ -275,3 +275,36 @@
     transform: translateY(8px);
   }
 }
+
+/* ── Without JavaScript the menu can't open: show the links in the header. ── */
+@media (max-width: 959px) {
+  :global(html:not(.js)) .menuButton {
+    display: none;
+  }
+
+  :global(html:not(.js)) .inner {
+    height: auto;
+    min-height: 64px;
+    flex-wrap: wrap;
+    gap: 0 var(--space-4);
+    padding: var(--space-2) 20px;
+  }
+
+  :global(html:not(.js)) .links {
+    display: block;
+  }
+
+  :global(html:not(.js)) .links ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 var(--space-4);
+  }
+
+  :global(html:not(.js)) .links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--touch-min);
+    color: var(--ink-700);
+    font-size: 15px;
+  }
+}

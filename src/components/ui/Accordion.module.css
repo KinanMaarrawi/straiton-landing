@@ -65,7 +65,9 @@
   transform: rotate(90deg);
 }
 
-.item[data-open='true'] .glyph::after {
+.item[data-open='true'] .glyph::after,
+:global(html:not(.js)) .glyph::after {
+  /* Without JS every answer is shown, so every glyph reads as open (−). */
   transform: rotate(0deg);
 }
 
