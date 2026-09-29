@@ -59,7 +59,9 @@ function AccordionItem({
           <span className={styles.glyph} aria-hidden="true" />
         </button>
       </Heading>
-      <div id={panelId} role="region" aria-labelledby={buttonId} className={styles.panel}>
+      {/* No role="region": six FAQ landmarks would clutter screen-reader
+          landmark lists (ARIA APG). The button's aria-controls links them. */}
+      <div id={panelId} className={styles.panel}>
         <div className={styles.panelInner}>
           <div className={styles.answer}>{answer}</div>
         </div>
