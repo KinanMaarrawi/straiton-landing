@@ -3,10 +3,41 @@ import type { ReactNode } from 'react';
 import { newsreader, plexMono, plexSans } from './fonts';
 import '@/styles/globals.css';
 
+const TITLE = 'Straiton — Pay suppliers in India from the UAE';
+const DESCRIPTION =
+  'UAE-to-India business payments, prepared before you fund: a transaction-specific quote, a document checklist and a dedicated India payments manager.';
+
+/**
+ * Absolute base for link-preview image URLs. On Vercel, prefer the
+ * production domain: preview URLs sit behind Vercel's login by default,
+ * which preview bots can't pass.
+ */
+function siteUrl(): URL {
+  const host = process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_BRANCH_URL || process.env.VERCEL_URL;
+  return new URL(host ? `https://${host}` : 'http://localhost:3000');
+}
+
 export const metadata: Metadata = {
-  title: 'Straiton — Pay suppliers in India from the UAE',
-  description:
-    'UAE-to-India business payments, prepared before you fund: a transaction-specific quote, a document checklist and a dedicated India payments manager.',
+  metadataBase: siteUrl(),
+  title: TITLE,
+  description: DESCRIPTION,
+  applicationName: 'Straiton',
+  // A design prototype with placeholder content: keep it out of search
+  // results (see app/robots.ts for why crawling is still allowed).
+  robots: { index: false, follow: false },
+  openGraph: {
+    type: 'website',
+    siteName: 'Straiton',
+    title: TITLE,
+    description: DESCRIPTION,
+    locale: 'en_GB',
+    url: '/',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: TITLE,
+    description: DESCRIPTION,
+  },
 };
 
 export const viewport: Viewport = {
