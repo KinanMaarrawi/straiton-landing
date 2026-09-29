@@ -1,0 +1,115 @@
+/* 404: on-brand, self-contained (the page's #section links don't exist here). */
+
+.header {
+  display: flex;
+  align-items: center;
+  height: 64px;
+  padding: 0 20px;
+  border-bottom: var(--hairline);
+}
+
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--touch-min);
+  color: var(--navy-900);
+  font-size: 17px;
+}
+
+.wordmark:hover {
+  text-decoration: none;
+}
+
+.main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: var(--space-8) 20px var(--space-10);
+}
+
+.course {
+  width: min(100%, 400px);
+  height: auto;
+  margin-bottom: var(--space-6);
+}
+
+.dots {
+  fill: none;
+  stroke: var(--teal-500);
+  stroke-width: 3.5;
+  stroke-dasharray: 0 8;
+  stroke-linecap: round;
+}
+
+.marker {
+  fill: var(--teal-500);
+  stroke: var(--navy-900);
+  stroke-width: 2;
+}
+
+.title {
+  margin-top: var(--space-4);
+}
+
+.lead {
+  margin-top: var(--space-5);
+}
+
+.actions {
+  margin-top: var(--space-7);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-5) var(--space-6);
+}
+
+/* Mirrors Button (primary, lg) and the tertiary link without the client component. */
+.primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--control-h-lg);
+  padding: 0 var(--space-6);
+  border-radius: var(--radius-control);
+  background: var(--teal-500);
+  color: var(--navy-900);
+  font-size: 17px;
+  font-weight: 500;
+  transition: background-color var(--dur-fast) var(--ease-out);
+}
+
+.primary:hover {
+  background: var(--teal-500-hover);
+  text-decoration: none;
+}
+
+.primary:focus-visible {
+  border-radius: var(--radius-control);
+}
+
+.tertiary {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--touch-min);
+  color: var(--teal-700);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+@media (min-width: 960px) {
+  .header {
+    height: 80px;
+    padding: 0;
+  }
+
+  .header > * {
+    margin-left: max(40px, calc((100vw - 1200px) / 2));
+  }
+
+  .wordmark {
+    font-size: 18px;
+  }
+
+  .main {
+    padding-top: var(--space-9);
+  }
+}
