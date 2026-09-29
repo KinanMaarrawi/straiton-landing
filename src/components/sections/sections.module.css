@@ -395,18 +395,27 @@
 }
 
 
+/* WhatsApp on top; Call and Email split its width exactly below it. */
 .contactButtons {
   margin-top: var(--space-6);
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
 }
 
+.contactButtons > * {
+  width: 100%;
+}
+
+.contactButtons > :first-child {
+  grid-column: 1 / -1;
+}
 
 @media (min-width: 640px) {
+  /* Shrink to the WhatsApp button's width instead of the full column. */
   .contactButtons {
-    flex-direction: row;
-    flex-wrap: wrap;
+    width: fit-content;
+    max-width: 100%;
     gap: var(--space-3);
   }
 }
