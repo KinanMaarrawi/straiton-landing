@@ -3,7 +3,7 @@
 **Live preview:** https://straiton-landing-nine.vercel.app
 **Source:** https://github.com/KinanMaarrawi/straiton-landing
 **Component sheet:** https://straiton-landing-nine.vercel.app/components
-**Time spent:** {{TIME, to confirm}}
+**Time spent:** roughly 12 to 15 hours, over four days (Sunday to Wednesday)
 
 A responsive landing page for Straiton's UAE → India B2B payments pilot. It explains the proposition and turns interest into a **payment assessment request**: a working two-step form with validation and a demo confirmation. Next.js (App Router) + TypeScript on Vercel.
 
