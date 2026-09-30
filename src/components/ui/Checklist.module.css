@@ -1,0 +1,71 @@
+/* Checklist: "What we check upfront". Boxes tick in sequence on first view. */
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+@media (min-width: 960px) {
+  .list {
+    gap: var(--space-3);
+    font-size: 17px;
+  }
+}
+
+.item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+/* Checkbox: ticked by default (no JS, reduced motion, already on screen). */
+.box {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin-top: 0.15em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid var(--teal-700);
+  border-radius: 4px;
+  background: var(--white);
+  transition: border-color var(--dur-base) var(--ease-out);
+}
+
+.box svg {
+  fill: none;
+  stroke: var(--navy-900);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.box path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+
+/* First view: the boxes start empty and tick one after another, after the
+   items have faded in (motion.css provides --rv-i per item). */
+[data-reveal='pending'] .box {
+  border-color: var(--line-control);
+}
+
+[data-reveal='pending'] .box path {
+  stroke-dashoffset: 1;
+}
+
+[data-reveal='in'] .box {
+  transition: border-color var(--dur-base) var(--ease-out) calc(500ms + var(--rv-i, 0) * 280ms);
+}
+
+[data-reveal='in'] .box path {
+  transition: stroke-dashoffset 320ms var(--ease-out) calc(500ms + var(--rv-i, 0) * 280ms);
+}

@@ -1,6 +1,7 @@
 'use client';
 
 import { ASSESS } from '@/content/copy';
+import { Checklist } from '@/components/ui/Checklist';
 import { QuoteDocument } from '@/components/ui/QuoteDocument';
 import { usePageState } from '@/components/state/PageState';
 import { Reveal } from './Reveal';
@@ -24,19 +25,7 @@ export function Assess() {
           </div>
           <div id="documents">
             <h3 className={`t-h3 ${s.checkHeading}`}>{ASSESS.checklistHeading}</h3>
-            <Reveal as="ul" stagger className={s.checklist}>
-              {ASSESS.checklist.map((item) => (
-                <li key={item}>
-                  {/* A checkbox whose tick draws in as the list is read (decorative). */}
-                  <span className={s.box} aria-hidden="true">
-                    <svg viewBox="0 0 16 16" width="16" height="16">
-                      <path d="M3.5 8.4l2.8 2.8L12.5 5" pathLength={1} />
-                    </svg>
-                  </span>
-                  {item}
-                </li>
-              ))}
-            </Reveal>
+            <Checklist items={ASSESS.checklist} className={s.checklist} />
             <p className={s.checkFootnote}>{ASSESS.checklistFootnote}</p>
           </div>
         </div>

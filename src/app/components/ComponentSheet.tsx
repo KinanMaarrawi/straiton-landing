@@ -18,11 +18,13 @@ import { SpecTable, type SpecRow } from '@/components/ui/SpecTable';
 import { Tag } from '@/components/ui/Tag';
 import { Textarea } from '@/components/ui/Textarea';
 import { TextInput } from '@/components/ui/TextInput';
+import { Checklist } from '@/components/ui/Checklist';
+import { Stamp } from '@/components/ui/Stamp';
 import { Stepper } from '@/components/ui/Stepper';
 import { PrototypeBar } from '@/components/nav/PrototypeBar';
 import { RouteMarker, RouteWaypoint } from '@/components/route/RouteMarks';
 import { ManagerChat } from '@/components/sections/ManagerChat';
-import { TRACK } from '@/content/copy';
+import { ASSESS, TRACK } from '@/content/copy';
 import s from './ComponentSheet.module.css';
 
 const COLOURS: Array<[string, string, string]> = [
@@ -430,16 +432,16 @@ export function ComponentSheet() {
         </Section>
         <Section n="09 · Route" title="Waypoints and line" lead="Only water already crossed is drawn. Waypoints stay hidden until the marker reaches them, then appear as a teal ring whose check draws in, with one ripple.">
           <div className={s.routeDemo} aria-hidden="true">
-            <span className={s.routeCaption} style={{ top: 12 }}>Sailed course</span>
+            <span className={s.routeCaption} style={{ top: 0 }}>Sailed course</span>
             <svg className={s.routeLine} viewBox="0 0 350 8" preserveAspectRatio="none">
               <path d="M4 4 H346" stroke="var(--teal-500)" strokeWidth="3.5" strokeDasharray="0 8" strokeLinecap="round" />
             </svg>
-            <span className={s.routeCaption} style={{ top: 72 }}>Waypoint, passed</span>
-            <RouteWaypoint x={178} y={80} passed />
-            <span className={s.routeCaption} style={{ top: 142 }}>Marker, with the hero amount</span>
-            <RouteMarker start={[178, 170]} label="AED 250,000" arrived={false} />
-            <span className={s.routeCaption} style={{ top: 222 }}>Marker, no amount entered</span>
-            <RouteMarker start={[178, 250]} label="Your payment" arrived={false} />
+            <span className={s.routeCaption} style={{ top: 64 }}>Waypoint, passed (desktop shows the place name)</span>
+            <RouteWaypoint x={10} y={104} passed label="Strait of Hormuz" />
+            <span className={s.routeCaption} style={{ top: 138 }}>Marker, with the hero amount</span>
+            <RouteMarker start={[10, 200]} label="AED 250,000" arrived={false} />
+            <span className={s.routeCaption} style={{ top: 226 }}>Marker, no amount entered</span>
+            <RouteMarker start={[10, 288]} label="Your payment" arrived={false} />
           </div>
         </Section>
       </div>
@@ -501,6 +503,22 @@ export function ComponentSheet() {
       <Section n="14 · Notice" title="Prototype notice" lead="The page's single demo disclosure, above the nav. It replaces per-item Demo and Illustrative tags; contact, form and receipt messages still say nothing is sent when it matters.">
         <div className={s.barFrame}>
           <PrototypeBar />
+        </div>
+      </Section>
+      <Section n="15 · Paperwork" title="Checklist and stamps" lead={`The other half of the headline. The upfront checklist ticks one item after another on first view; an outlined stamp presses once onto the quote document ("Before you fund") and the form receipt ("Received"). One colour, decorative, already ticked and stamped without JS or motion.`}>
+        <div className={s.paperwork}>
+          <div>
+            <Caption>Checklist (scroll it into view to replay)</Caption>
+            <Checklist items={ASSESS.checklist} />
+          </div>
+          <div>
+            <Caption>Stamps</Caption>
+            <div className={s.stamps}>
+              <Stamp label="Before you fund" />
+              <Stamp label="Received" />
+            </div>
+            <Caption>Dotted leaders between label and value: see the quote document (07) and the form receipt.</Caption>
+          </div>
         </div>
       </Section>
     </main>
