@@ -18,7 +18,7 @@ Open any `design/*.dc.html` directly in a browser (keep `support.js` beside them
 |---|---|
 | `docs/DESIGN.md` | **Full spec**: tokens, type scale, grid and lanes, the route system, every component and its states, motion, accessibility, page architecture |
 | `docs/COPY.md` | Every string, in page order. Verbatim. Includes the messaging rationale for the submission write-up |
-| `docs/Straiton_Web_Designer_Assignment.pdf` | The brief and review checklist |
+| `docs/Straiton_Web_Designer_Assignment.pdf` | The brief and review checklist. Kept locally only (git-ignored): it's the company's candidate material |
 | `design/Desktop 1440 v2.dc.html` | Full desktop page, route shown in its end state. Has a `moment` prop (`end` / `load` / `mid`) for partial route states |
 | `design/Mobile 390.dc.html` | Full mobile page (no maps; the route runs in alternating gutters) |
 | `design/Component Sheet.dc.html` | Tokens, type, buttons (all states), fields (all states), tags, dirham sign, quote document, spec rows, accordion, route/waypoint, navigation, spacing, contact demo notice |
