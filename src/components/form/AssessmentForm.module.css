@@ -172,10 +172,22 @@ form[aria-busy='true'] select:disabled {
 }
 
 .receipt {
+  position: relative;
   margin-top: var(--space-5);
   border: var(--hairline);
   border-radius: var(--radius-control);
-  overflow: hidden;
+}
+
+/* Stamped on the receipt's top edge, like a received document. */
+.stamp {
+  position: absolute;
+  top: -14px;
+  right: var(--space-4);
+}
+
+/* Leaders only where label and value share a line (wider cards). */
+.leader {
+  display: none;
 }
 
 .receiptTitle {
@@ -279,16 +291,30 @@ form[aria-busy='true'] select:disabled {
     padding: 14px 20px;
   }
 
+  /* Receipt rows: label, dotted leader, value, as on the quote document. */
   .receipt dl > div {
-    display: grid;
-    grid-template-columns: 170px minmax(0, 1fr);
-    gap: var(--space-4);
+    display: flex;
     align-items: baseline;
     padding: 14px 20px;
   }
 
+  .receipt dt {
+    flex: none;
+  }
+
+  .leader {
+    display: block;
+    flex: 1 1 24px;
+    min-width: 24px;
+    margin: 0 var(--space-3);
+    border-bottom: 1.5px dotted var(--line-control);
+    transform: translateY(-4px);
+  }
+
   .receipt dd {
+    flex: 0 1 auto;
     margin: 0;
+    text-align: right;
   }
 
   .doneNext {

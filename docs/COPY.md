@@ -113,6 +113,7 @@ Design prototype. Figures and interface examples are illustrative, contact detai
 | Expected timing | Confirmed for the approved payment |
 
 - Footnote: Same-day execution may be available where supported. Pricing and timing are specific to each transaction.
+- Stamp on the quote document (decorative, trial 2026-09-30): Before you fund
 
 **Checklist**
 - Heading: What we check upfront
@@ -263,6 +264,7 @@ Design prototype. Figures and interface examples are illustrative, contact detai
 - Heading: Request received
 - Line: This is a design prototype: nothing was sent.
 - Receipt title: Your request
+- Stamp on the receipt (decorative, trial 2026-09-30): Received
 - Receipt rows: Amount · Funding currency · Payment type · Bank quote attached (Yes / No) · Contact by
 - What happens next: In the live service, an India payments manager reviews your request and replies with the quote structure and a document checklist for this payment.
 - Button: Start another request

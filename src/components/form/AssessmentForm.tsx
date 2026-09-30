@@ -12,7 +12,7 @@ import { FileField } from '@/components/ui/FileField';
 import { CheckIcon } from '@/components/ui/icons';
 import { Segmented } from '@/components/ui/Segmented';
 import { Select } from '@/components/ui/Select';
-import { Tag } from '@/components/ui/Tag';
+import { Stamp } from '@/components/ui/Stamp';
 import { Textarea } from '@/components/ui/Textarea';
 import { TextInput } from '@/components/ui/TextInput';
 import { FORM_FOCUS_ID, usePageState, type FormMode } from '@/components/state/PageState';
@@ -269,25 +269,31 @@ export function AssessmentForm() {
         <p className={s.doneLine}>{FORM.done.line}</p>
         <div className={s.receipt}>
           <p className={s.receiptTitle}>{FORM.done.receiptTitle}</p>
+          <Stamp label="Received" pressOnMount className={s.stamp} />
           <dl>
             <div>
               <dt>{FORM.done.rows.amount}</dt>
+              <span className={s.leader} aria-hidden="true" />
               <dd className={s.money}>{formatMoney(currency, amount)}</dd>
             </div>
             <div>
               <dt>{FORM.done.rows.currency}</dt>
+              <span className={s.leader} aria-hidden="true" />
               <dd>{currency}</dd>
             </div>
             <div>
               <dt>{FORM.done.rows.type}</dt>
+              <span className={s.leader} aria-hidden="true" />
               <dd>{typeLabel}</dd>
             </div>
             <div>
               <dt>{FORM.done.rows.attached}</dt>
+              <span className={s.leader} aria-hidden="true" />
               <dd>{mode === 'bankQuote' && file ? FORM.done.yes : FORM.done.no}</dd>
             </div>
             <div>
               <dt>{FORM.done.rows.contact}</dt>
+              <span className={s.leader} aria-hidden="true" />
               <dd>{contactLabel}</dd>
             </div>
           </dl>

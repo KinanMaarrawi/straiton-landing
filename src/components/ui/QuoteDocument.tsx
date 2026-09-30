@@ -2,6 +2,7 @@
 
 import type { ReactNode } from 'react';
 import { DirhamSign } from './DirhamSign';
+import { Stamp } from './Stamp';
 import { useRevealOnce } from './useRevealOnce';
 import styles from './QuoteDocument.module.css';
 
@@ -48,10 +49,12 @@ export function QuoteDocument({ amount }: QuoteDocumentProps) {
             style={{ ['--i' as string]: i }}
           >
             <dt className={styles.label}>{row.label}</dt>
+            <span className={styles.leader} aria-hidden="true" />
             <dd className={row.money ? `${styles.value} ${styles.money}` : styles.value}>{row.value}</dd>
           </div>
         ))}
       </dl>
+      <Stamp label="Before you fund" className={styles.stamp} />
     </div>
   );
 }

@@ -1,7 +1,6 @@
 'use client';
 
 import { ASSESS } from '@/content/copy';
-import { CheckIcon } from '@/components/ui/icons';
 import { QuoteDocument } from '@/components/ui/QuoteDocument';
 import { usePageState } from '@/components/state/PageState';
 import { Reveal } from './Reveal';
@@ -28,7 +27,12 @@ export function Assess() {
             <Reveal as="ul" stagger className={s.checklist}>
               {ASSESS.checklist.map((item) => (
                 <li key={item}>
-                  <CheckIcon size={16} className={s.check} />
+                  {/* A checkbox whose tick draws in as the list is read (decorative). */}
+                  <span className={s.box} aria-hidden="true">
+                    <svg viewBox="0 0 16 16" width="16" height="16">
+                      <path d="M3.5 8.4l2.8 2.8L12.5 5" pathLength={1} />
+                    </svg>
+                  </span>
                   {item}
                 </li>
               ))}

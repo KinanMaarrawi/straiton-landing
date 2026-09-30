@@ -6,7 +6,7 @@
   border: var(--hairline);
   border-radius: var(--radius-card);
   box-shadow: var(--shadow-raised);
-  overflow: hidden;
+  position: relative;
 }
 
 .header {
@@ -104,6 +104,11 @@
   font-weight: 500;
 }
 
+/* Leaders only where label and value share a line. */
+.leader {
+  display: none;
+}
+
 @container (min-width: 420px) {
   .header {
     flex-direction: row;
@@ -118,17 +123,39 @@
     gap: var(--space-3);
   }
 
+  /* Receipt rows: label, a dotted leader, the value (like a printed remittance advice). */
   .row {
-    display: grid;
-    grid-template-columns: 150px minmax(0, 1fr);
-    gap: var(--space-4);
+    display: flex;
     align-items: baseline;
     padding: var(--space-4) var(--space-5);
   }
 
-  .value {
-    margin: 0;
+  .label {
+    flex: none;
   }
+
+  .leader {
+    display: block;
+    flex: 1 1 24px;
+    min-width: 24px;
+    margin: 0 var(--space-3);
+    border-bottom: 1.5px dotted var(--line-control);
+    transform: translateY(-4px);
+  }
+
+  .value {
+    flex: 0 1 auto;
+    margin: 0;
+    max-width: 62%;
+    text-align: right;
+  }
+}
+
+/* The stamp sits on the document's bottom edge, clear of the text. */
+.stamp {
+  position: absolute;
+  right: var(--space-5);
+  bottom: -18px;
 }
 
 /* First-view sequence: only when JS has marked it pending. */

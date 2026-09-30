@@ -1,0 +1,39 @@
+/* Paper stamp: flat, outlined, one colour. */
+
+.stamp {
+  display: inline-flex;
+  align-items: center;
+  height: 28px;
+  padding: 0 10px;
+  border: 1.5px solid var(--teal-700);
+  border-radius: var(--radius-control);
+  background: var(--white);
+  color: var(--teal-700);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  transform: rotate(-4deg);
+  pointer-events: none;
+}
+
+/* Pressed in once, the first time its document is revealed. */
+:global([data-reveal='pending']) .stamp {
+  opacity: 0;
+}
+
+:global([data-reveal='in']) .stamp,
+.onMount {
+  animation: press 420ms cubic-bezier(0.3, 1.4, 0.5, 1) 900ms both;
+}
+
+.onMount {
+  animation-delay: 700ms;
+}
+
+@keyframes press {
+  from {
+    opacity: 0;
+    transform: rotate(-4deg) scale(1.35);
+  }
+}
