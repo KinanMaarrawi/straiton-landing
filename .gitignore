@@ -7,3 +7,6 @@ next-env.d.ts
 .env*
 .DS_Store
 npm-debug.log*
+
+# The assignment brief stays local: it's the company's candidate material, not ours to publish.
+docs/Straiton_Web_Designer_Assignment.pdf
