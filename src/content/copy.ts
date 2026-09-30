@@ -18,6 +18,14 @@ export const PROTOTYPE_NOTICE =
   'Design prototype. Figures and interface examples are illustrative, contact details are placeholders, and nothing you enter is sent anywhere.';
 
 export const NAV_CTA = 'Request an assessment';
+
+/** Place names beside each stage's waypoint on the route. Desktop only (COPY.md §4–7). */
+export const WAYPOINT_PLACES: Record<'01' | '02' | '03' | '04', string> = {
+  '01': 'Mina Rashid',
+  '02': 'Strait of Hormuz',
+  '03': 'Muscat',
+  '04': 'Arabian Sea',
+};
 export const PRIMARY_CTA = 'Request a payment assessment';
 
 export const HERO = {

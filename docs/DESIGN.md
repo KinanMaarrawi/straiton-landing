@@ -176,7 +176,7 @@ Mumbai is the illustrative endpoint for the drawing only: it's where the Dubai s
 
 ### Three parts
 1. **Departure map (hero).** A dotted map zoomed on the UAE coast and the Strait of Hormuz. Land is a grid of small dots (`--navy-900` at 30% opacity, 3px dots on an 8px grid); the sea is empty white. The route begins at Dubai Creek as a small filled teal point with a two-line Plex Sans label on a white chip: **You, in the UAE** / Payment starts. (Changed from "You, in Dubai" on 2026-09-29: the brief frames the product around UAE businesses, not one emirate, and it mirrors the endpoint, which is labelled by country too. The drawn point stays at Dubai Creek as illustrative geography.) The route leaves the map edge heading toward Hormuz and continues into the page. Caption, small and in `ink-500`: *"Until 1966, the rupee was legal tender on this coast."*
-2. **Open sea (the page body).** No land and no map, just the route line travelling through the lanes from section to section. The four stage sections each carry an unlabelled **waypoint** on the route: a teal ring with a check. The stage number lives only in the section eyebrow (`01 — Share`). (Place-name labels, Mina Rashid, Strait of Hormuz, Muscat and Arabian Sea, were removed on 2026-09-29 at the client's request: away from a map they read as noise.)
+2. **Open sea (the page body).** No land and no map, just the route line travelling through the lanes from section to section. The four stage sections each carry a **waypoint** on the route: a teal ring with a check. On **desktop**, a place on the Gulf–India passage sits beside it (Plex Sans 600, 14px): **Mina Rashid** (Share), **Strait of Hormuz** (Assess), **Muscat** (Complete), **Arabian Sea** (Track), appearing as the marker reaches it. On **mobile** there are no names: squeezed into the stage eyebrow they read as noise (removed 2026-09-29; desktop names restored 2026-09-30 after the client clarified the request was mobile-only). The stage number lives only in the section eyebrow (`01 — Share`).
 3. **Arrival map (final section).** A dotted map zoomed on India's west coast. The route comes in from the left and ends at Mumbai with the label **Your supplier, in India** / Receives INR. The assessment form sits beside it.
 
 ### The line
@@ -277,7 +277,7 @@ A `<button>` header with the full question text and a plus/minus glyph that rota
 - **Mobile header CTA** (replaced the sliding bottom bar on 2026-09-29, which felt intrusive): once the hero has left the viewport, a compact "Request an assessment" button (36px visual, 44px hit area) fades into the sticky header beside the menu button. It hides while `#assessment` is in view and while the menu is open, and below 360px, where the menu carries the same action.
 
 ### Stage header
-The eyebrow `02 — Assess` (Plex Sans, teal-700), the h2, and the lead. The number appears only here; the waypoint on the route is unlabelled.
+The eyebrow `02 — Assess` (Plex Sans, teal-700), the h2, and the lead. The number appears only here; on desktop the waypoint carries the place name, on mobile it is unlabelled.
 
 ### Assessment form (two steps)
 - **Mode switch** at the top: `Planning a payment` | `I have a bank quote` (segmented control, keyboard accessible).

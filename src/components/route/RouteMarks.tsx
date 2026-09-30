@@ -9,7 +9,7 @@ type Pt = [number, number];
  * passes, so state never relies on colour alone. Positioned with a
  * transform so it never triggers layout.
  */
-export function RouteWaypoint({ x, y, passed }: { x: number; y: number; passed: boolean }) {
+export function RouteWaypoint({ x, y, passed, label }: { x: number; y: number; passed: boolean; label?: string }) {
   return (
     <div className={s.wp} data-passed={passed || undefined} style={{ transform: `translate3d(${x}px, ${y}px, 0)` }}>
       <span className={s.ripple} />
@@ -18,6 +18,7 @@ export function RouteWaypoint({ x, y, passed }: { x: number; y: number; passed: 
           <path d="M4.5 8.2l2.5 2.5 4.5-5" pathLength={1} />
         </svg>
       </span>
+      {label && <span className={s.wpLabel}>{label}</span>}
     </div>
   );
 }

@@ -1,6 +1,7 @@
 'use client';
 
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { WAYPOINT_PLACES } from '@/content/copy';
 import { usePageState } from '@/components/state/PageState';
 import { desktopRoute, mobileRoute, sampleSegments, type Box, type RouteShape } from './geometry';
 import { RouteMarker, RouteWaypoint } from './RouteMarks';
@@ -537,7 +538,14 @@ export function Route() {
         <>
           {tiles && <Course route={route} tiles={tiles} />}
           {route.wps.map((w, i) => (
-            <RouteWaypoint key={w.n} x={w.x} y={w.y} passed={reduced || i < passed} />
+            <RouteWaypoint
+              key={w.n}
+              x={w.x}
+              y={w.y}
+              passed={reduced || i < passed}
+              // Desktop only: the lane beside the route has room for the name.
+              label={route.desktop ? WAYPOINT_PLACES[w.n as keyof typeof WAYPOINT_PLACES] : undefined}
+            />
           ))}
           <RouteMarker ref={markerRef} start={route.start} label={route.desktop ? label : undefined} arrived={arrived} />
         </>

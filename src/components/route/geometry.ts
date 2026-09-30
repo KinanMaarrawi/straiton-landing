@@ -102,8 +102,8 @@ export function desktopRoute(inp: DesktopInput): RouteShape {
   const L1 = cl + 4 * (col + gutter);
   const R0 = cl + 8 * col + 7 * gutter;
   const X = (x: number) => (x < 720 ? (x * L1) / 520 : R0 + ((x - 896) * (vw - R0)) / (1440 - 896));
-  // Keep waypoint marks clear of the viewport edge.
-  const XW = (x: number) => (x < 720 ? X(x) : Math.min(X(x), vw - 40));
+  // Waypoint place names sit to the right of the mark; keep them inside the viewport.
+  const XW = (x: number) => (x < 720 ? X(x) : Math.min(X(x), vw - 170));
 
   const place = (k: 'hero' | 'arr', b: Box): Pt[] => {
     const s = b.width / MAPS[k].W;

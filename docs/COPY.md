@@ -82,6 +82,7 @@ Design prototype. Figures and interface examples are illustrative, contact detai
 
 ## 4. Stage 01 — Share
 
+- Waypoint label (desktop only): Mina Rashid
 - Eyebrow: 01 — Share
 - **H2:** Tell us about the payment.
 - Lead: Start with the basics. No account, no onboarding, no commitment.
@@ -97,6 +98,7 @@ Design prototype. Figures and interface examples are illustrative, contact detai
 
 ## 5. Stage 02 — Assess
 
+- Waypoint label (desktop only): Strait of Hormuz
 - Eyebrow: 02 — Assess
 - **H2:** Know what your supplier receives before you fund.
 - Lead: You get an assessment of this specific payment: how it would be quoted, what it needs, and what could slow it down.
@@ -124,6 +126,7 @@ Design prototype. Figures and interface examples are illustrative, contact detai
 
 ## 6. Stage 03 — Complete
 
+- Waypoint label (desktop only): Muscat
 - Eyebrow: 03 — Complete
 - **H2:** Onboard once. Fund the approved payment.
 - Lead: When the assessment is agreed, you complete onboarding and fund the transaction in AED or USD. Your supplier receives INR.
@@ -153,6 +156,7 @@ Design prototype. Figures and interface examples are illustrative, contact detai
 
 ## 7. Stage 04 — Track
 
+- Waypoint label (desktop only): Arabian Sea
 - Eyebrow: 04 — Track
 - **H2:** Follow it all the way to confirmation.
 - Lead: Every payment has a status, from request to beneficiary confirmation, so "has it gone through?" always has an answer.

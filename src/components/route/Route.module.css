@@ -150,6 +150,22 @@
   stroke-linejoin: round;
 }
 
+/* Desktop place name: appears with its waypoint (hidden while upcoming, like the course). */
+.wpLabel {
+  position: absolute;
+  left: 16px;
+  top: -10px;
+  color: var(--navy-900);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.wp:not([data-passed]) .wpLabel {
+  transform: translateX(-4px);
+}
+
 /* ── Payment marker ────────────────────────────────────── */
 .marker {
   position: absolute;
