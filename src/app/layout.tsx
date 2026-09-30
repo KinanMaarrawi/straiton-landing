@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 import { newsreader, plexMono, plexSans } from './fonts';
 import '@/styles/globals.css';
 
-const TITLE = 'Straiton — Pay suppliers in India from the UAE';
+const TITLE = 'Straiton | Pay suppliers in India from the UAE';
 const DESCRIPTION =
   'UAE-to-India business payments, prepared before you fund: a transaction-specific quote, a document checklist and a dedicated India payments manager.';
 

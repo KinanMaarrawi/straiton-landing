@@ -16,11 +16,6 @@
   vertical-align: middle;
 }
 
-.sm {
-  height: 20px;
-  padding: 0 6px;
-  font-size: 12px;
-}
 
 /* Unconfirmed or pilot status */
 .pilot,
@@ -29,16 +24,3 @@
   color: var(--amber-800);
 }
 
-/* Example content: dotted border */
-.illustrative {
-  background: var(--surface-50);
-  color: var(--ink-700);
-  border: 1px dotted var(--ink-500);
-}
-
-/* Behaviour that does nothing real: solid border */
-.demo {
-  background: var(--surface-50);
-  color: var(--ink-700);
-  border: 1px solid var(--line-200);
-}

@@ -102,7 +102,7 @@
   }
 
   .header > * {
-    margin-left: max(40px, calc((100vw - 1200px) / 2));
+    margin-left: max(40px, calc((100vw - var(--container-max)) / 2));
   }
 
   .wordmark {

@@ -19,7 +19,7 @@ type RevealProps = {
  * under reduced motion, simply shows.
  */
 export function Reveal({ children, className, as: Tag = 'div', stagger, id }: RevealProps) {
-  const { ref, state } = useRevealOnce<HTMLElement>(0.12);
+  const { ref, state } = useRevealOnce<HTMLElement>();
   return (
     <Tag
       ref={ref as never}

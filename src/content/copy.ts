@@ -62,7 +62,7 @@ export const WHY = {
 };
 
 export const SHARE = {
-  eyebrow: '01 — Share',
+  eyebrow: '01 · Share',
   h2: 'Tell us about the payment.',
   lead: 'Start with the basics. No account, no onboarding, no commitment.',
   items: [
@@ -75,7 +75,7 @@ export const SHARE = {
 };
 
 export const ASSESS = {
-  eyebrow: '02 — Assess',
+  eyebrow: '02 · Assess',
   h2: 'Know what your supplier receives before you fund.',
   lead: 'You get an assessment of this specific payment: how it would be quoted, what it needs, and what could slow it down.',
   quoteFootnote: 'Same-day execution may be available where supported. Pricing and timing are specific to each transaction.',
@@ -92,7 +92,7 @@ export const ASSESS = {
 };
 
 export const COMPLETE = {
-  eyebrow: '03 — Complete',
+  eyebrow: '03 · Complete',
   h2: 'Onboard once. Fund the approved payment.',
   lead: 'When the assessment is agreed, you complete onboarding and fund the transaction in AED or USD. Your supplier receives INR.',
   specHeading: 'Corridor specification',
@@ -100,7 +100,7 @@ export const COMPLETE = {
 };
 
 export const TRACK = {
-  eyebrow: '04 — Track',
+  eyebrow: '04 · Track',
   h2: 'Follow it all the way to confirmation.',
   lead: 'Every payment has a status, from request to beneficiary confirmation, so "has it gone through?" always has an answer.',
   header: 'Supplier payment',
@@ -116,7 +116,6 @@ export const TRACK = {
 export const SUPPORT = {
   eyebrow: 'Your payments manager',
   monogram: 'IN',
-  role: 'India payments manager',
   h2: 'A person who knows this corridor.',
   lead: 'Speak directly with an India payments manager before onboarding, during the payment, and whenever something needs attention.',
   helpsWithLabel: 'Helps with',
@@ -149,7 +148,7 @@ export const FAQ = {
   h2: 'Straight answers.',
   items: [
     {
-      question: 'How fast can a UAE–India business payment be?',
+      question: 'How fast can a UAE to India business payment be?',
       answer:
         'Same-day execution may be available where supported. Actual timing depends on eligibility, payment details, documentation, cut-offs and compliance review. Your assessment tells you what to expect for your specific payment.',
     },

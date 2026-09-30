@@ -176,7 +176,7 @@ Mumbai is the illustrative endpoint for the drawing only: it's where the Dubai s
 
 ### Three parts
 1. **Departure map (hero).** A dotted map zoomed on the UAE coast and the Strait of Hormuz. Land is a grid of small dots (`--navy-900` at 30% opacity, 3px dots on an 8px grid); the sea is empty white. The route begins at Dubai Creek as a small filled teal point with a two-line Plex Sans label on a white chip: **You, in the UAE** / Payment starts. (Changed from "You, in Dubai" on 2026-09-29: the brief frames the product around UAE businesses, not one emirate, and it mirrors the endpoint, which is labelled by country too. The drawn point stays at Dubai Creek as illustrative geography.) The route leaves the map edge heading toward Hormuz and continues into the page. Caption, small and in `ink-500`: *"Until 1966, the rupee was legal tender on this coast."*
-2. **Open sea (the page body).** No land and no map, just the route line travelling through the lanes from section to section. The four stage sections each carry a **waypoint** on the route: a teal ring with a check. On **desktop**, a place on the Gulf–India passage sits beside it (Plex Sans 600, 14px): **Mina Rashid** (Share), **Strait of Hormuz** (Assess), **Muscat** (Complete), **Arabian Sea** (Track), appearing as the marker reaches it. On **mobile** there are no names: squeezed into the stage eyebrow they read as noise (removed 2026-09-29; desktop names restored 2026-09-30 after the client clarified the request was mobile-only). The stage number lives only in the section eyebrow (`01 — Share`).
+2. **Open sea (the page body).** No land and no map, just the route line travelling through the lanes from section to section. The four stage sections each carry a **waypoint** on the route: a teal ring with a check. On **desktop**, a place on the Gulf–India passage sits beside it (Plex Sans 600, 14px): **Mina Rashid** (Share), **Strait of Hormuz** (Assess), **Muscat** (Complete), **Arabian Sea** (Track), appearing as the marker reaches it. On **mobile** there are no names: squeezed into the stage eyebrow they read as noise (removed 2026-09-29; desktop names restored 2026-09-30 after the client clarified the request was mobile-only). The stage number lives only in the section eyebrow (`01 · Share`).
 3. **Arrival map (final section).** A dotted map zoomed on India's west coast. The route comes in from the left and ends at Mumbai with the label **Your supplier, in India** / Receives INR. The assessment form sits beside it.
 
 ### The line
@@ -228,7 +228,7 @@ Section IDs are the nav anchors. "Lane" means the side the route travels on desk
 - **02 Assess:** the centrepiece. Show a **quote document** styled like a remittance advice: a paper-white card, mono figures, hairline rows. Rows: *You send* (their hero amount, or "Your amount"), *FX rate* ("Transaction-specific quote"), *Fee* ("Shown where applicable"), *Supplier receives* (highlighted `teal-50` row, "INR amount shown before you fund"), *Expected timing* ("Confirmed for the approved payment"). Header label (plain muted text): `Illustrative · no live rates`. Beside it, **What we check upfront**: company information, invoice or contract context, beneficiary details, payment purpose, supporting documents where required, plus the review caveat.
 - **03 Complete:** onboarding and funding the approved transaction. Then the **corridor specification** as a spec table (label | value) set in **two side-by-side columns of seven rows** on desktop, so it takes half the height. "To be confirmed" values use the amber tag. On mobile it becomes a stacked definition list.
 - **04 Track:** a small, static, *illustrative* status component showing Request → Assessment → Funding → Confirmation as a horizontal stepper with one active step. This replaces the prototype's full dashboard section. Covered by the page-level prototype notice; no tag.
-- **Your payments manager:** a person-shaped section without a stock photo. Use a monogram tile (`IN` for the India desk) and "India payments manager", the list of things they help with as **one line** (Quotes · Onboarding · Documents · Payment setup · Status · Exceptions), and three contact actions (WhatsApp, Call, Email). These show placeholder details with a `Demo` tag and open a small "demo contact" notice rather than dialling anything. The notice sits **inline under the buttons** on a `navy-800` panel with a `Demo` tag and a 44×44 dismiss button. It uses `role="status"` (announced without moving focus), stays until dismissed, and never stacks.
+- **Your payments manager:** a person-shaped section without a stock photo: the list of things they help with as **one line** (Quotes · Onboarding · Documents · Payment setup · Status · Exceptions), an illustrative example conversation (labelled "Example"), and three contact actions (WhatsApp, Call, Email; channels only, no placeholder details). They open a small "demo contact" notice rather than dialling anything. The notice sits **inline under the buttons** on a `navy-800` panel with a 44×44 dismiss button. It uses `role="status"` (announced without moving focus), stays until dismissed, and never stacks.
 - **FAQ:** accordion, one open at a time is **not** enforced (independent items). Six questions, drawn from the prototype plus one on crypto; exact copy lives in COPY.md. Questions already answered elsewhere on the page (funding currencies, payment types, documents) are left out. No "related guides" block, since those would be dead links.
 - **Arrival:** the India map on the left with the route ending at Mumbai. On the right, the **assessment form** card (Section 10). When the form is submitted, the marker settles on the endpoint and the endpoint label changes to **Arrived**.
 - **Footer:** wordmark, a one-line descriptor, anchor links grouped by section and the regulatory placeholder block, verbatim in meaning. (The placeholder contact column was removed on 2026-09-29; "Your payments manager" is linked under Help.)
@@ -260,8 +260,7 @@ States: default · hover (fill darkens ~6%, no movement) · active (inset 1px) �
 ### Tags
 Small Plex Sans 500, 13px, sentence-case pills, 4px radius:
 - `India pilot` / `To be confirmed`: amber
-- `Illustrative`: `surface-50` fill, `ink-700` text, dotted border
-- `Demo`: `surface-50` fill, `ink-700` text, solid border
+- (`Illustrative` and `Demo` tags were retired on 2026-09-29 in favour of the single prototype notice, §3.)
 
 ### Cards and documents
 - **Quote document:** white, 10px radius, elevation, header row with title and tag, hairline-separated rows, label in Plex Sans `ink-500` and value in Plex Mono `navy-900`.
@@ -277,7 +276,7 @@ A `<button>` header with the full question text and a plus/minus glyph that rota
 - **Mobile header CTA** (replaced the sliding bottom bar on 2026-09-29, which felt intrusive): once the hero has left the viewport, a compact "Request an assessment" button (36px visual, 44px hit area) fades into the sticky header beside the menu button. It hides while `#assessment` is in view and while the menu is open, and below 360px, where the menu carries the same action.
 
 ### Stage header
-The eyebrow `02 — Assess` (Plex Sans, teal-700), the h2, and the lead. The number appears only here; on desktop the waypoint carries the place name, on mobile it is unlabelled.
+The eyebrow `02 · Assess` (Plex Sans, teal-700), the h2, and the lead. The number appears only here; on desktop the waypoint carries the place name, on mobile it is unlabelled.
 
 ### Assessment form (two steps)
 - **Mode switch** at the top: `Planning a payment` | `I have a bank quote` (segmented control, keyboard accessible).
@@ -289,7 +288,7 @@ The eyebrow `02 — Assess` (Plex Sans, teal-700), the h2, and the lead. The num
 - **Submitting:** the button enters the loading state for ~900ms (simulated). Fields go read-only (`surface-50` fill), Back is disabled, and the form gets `aria-busy="true"`.
 - **Mobile (card at 322px, 24/20 padding):** paired buttons stack with the primary on top; the drop zone becomes a single full-width **Choose file** button (no drag text); receipt rows stack the label above the value.
 - **After confirmation**, focus moves to the "Request received" heading.
-- **Confirmation state** replaces the form in place: a heading, a short document-style receipt of what they submitted (amount, currency, type, contact method) with a `Demo` tag and a clear "Nothing was sent. This is a design prototype" line, what happens next in the real product (a payments manager reviews it and replies with the quote structure and document checklist), and a "Start another request" reset.
+- **Confirmation state** replaces the form in place: a heading, a short document-style receipt of what they submitted (amount, currency, type, contact method), stamped "Received", with a clear "This is a design prototype: nothing was sent" line, what happens next in the real product (a payments manager reviews it and replies with the quote structure and document checklist), and a "Start another request" reset.
 - Back navigation from Step 2 preserves all entered values.
 
 ---

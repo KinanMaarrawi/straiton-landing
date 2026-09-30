@@ -117,7 +117,7 @@ export function ComponentSheet() {
         </p>
       </header>
 
-      <Section n="01 — Colour" title="Tokens" lead="Mostly white and navy ink. Teal means act or progress, nothing else. Amber marks what's unconfirmed.">
+      <Section n="01 · Colour" title="Tokens" lead="Mostly white and navy ink. Teal means act or progress, nothing else. Amber marks what's unconfirmed.">
         <div className={s.swatches}>
           {COLOURS.map(([name, hex, role]) => (
             <div key={name}>
@@ -140,7 +140,7 @@ export function ComponentSheet() {
         </div>
       </Section>
 
-      <Section n="02 — Type" title="Scale" lead="Newsreader for headlines only. Plex Sans for everything readable. Plex Mono for money only. Fluid between 390 and 1440.">
+      <Section n="02 · Type" title="Scale" lead="Newsreader for headlines only. Plex Sans for everything readable. Plex Mono for money only. Fluid between 390 and 1440.">
         <div className={s.typeRows}>
           {[
             ['display', <p key="d" className="t-display">Same sea.</p>, 'Newsreader 300 · 90 / 52 · lh 0.98 · −0.02em'],
@@ -150,7 +150,7 @@ export function ComponentSheet() {
             ['body', <p key="b" className="t-body">The details you hold don&apos;t match your supplier&apos;s bank records.</p>, 'Plex Sans 400 · 17 / 16 · lh 1.6 · max 62ch'],
             ['small', <p key="s" className="t-small">Final eligibility is subject to compliance review.</p>, 'Plex Sans 400 · 14'],
             ['label', <p key="la" className="t-label">How much are you sending?</p>, 'Plex Sans 500 · 14'],
-            ['eyebrow', <p key="e" className="t-eyebrow">02 — Assess</p>, 'Plex Sans 500 · 14 · teal-700'],
+            ['eyebrow', <p key="e" className="t-eyebrow">02 · Assess</p>, 'Plex Sans 500 · 14 · teal-700'],
             ['figure-lg', <p key="f" className="t-figure-lg">AED 250,000</p>, 'Plex Mono 400 · 32 / 24 · money only'],
             ['figure', <p key="fi" className="t-figure">250,000</p>, 'Plex Mono 400 · 16 / 15 · tabular'],
           ].map(([name, sample, spec]) => (
@@ -163,7 +163,7 @@ export function ComponentSheet() {
         </div>
       </Section>
 
-      <Section n="03 — Actions" title="Buttons" lead="One primary per view. Hover darkens about 6%, with no movement. Focus is always visible: tab through this row.">
+      <Section n="03 · Actions" title="Buttons" lead="One primary per view. Hover darkens about 6%, with no movement. Focus is always visible: tab through this row.">
         <div className={s.buttonGrid}>
           <span />
           <Caption>Default (hover, press, tab)</Caption>
@@ -211,7 +211,7 @@ export function ComponentSheet() {
         </div>
       </Section>
 
-      <Section n="04 — Input" title="Fields" lead="Label above, hint below, error below that. 48px tall, 16px text. Errors carry an icon and words, never just red.">
+      <Section n="04 · Input" title="Fields" lead="Label above, hint below, error below that. 48px tall, 16px text. Errors carry an icon and words, never just red.">
         <div className={s.fieldGrid}>
           <div>
             <Caption>Default · hover · focus (interact)</Caption>
@@ -352,7 +352,7 @@ export function ComponentSheet() {
       </Section>
 
       <div className={s.twoUp}>
-        <Section n="05 — Labels" title="Tags" lead="Plex Sans 500, 13px, sentence case, 4px radius. Tags mark product facts that are unconfirmed or in pilot, in words, never colour alone.">
+        <Section n="05 · Labels" title="Tags" lead="Plex Sans 500, 13px, sentence case, 4px radius. Tags mark product facts that are unconfirmed or in pilot, in words, never colour alone.">
           <div className={s.tagRows}>
             <p>
               <Tag variant="pilot" /> <Tag variant="tbc" /> <span className={s.caption}>Unconfirmed or pilot status</span>
@@ -363,7 +363,7 @@ export function ComponentSheet() {
             </p>
           </div>
         </Section>
-        <Section n="06 — Currency" title="Dirham sign" lead={'Inline SVG until fonts ship U+20C3. Sized in em, uses currentColor, role="img" aria-label="AED".'}>
+        <Section n="06 · Currency" title="Dirham sign" lead={'Inline SVG until fonts ship U+20C3. Sized in em, uses currentColor, role="img" aria-label="AED".'}>
           <div className={s.dirhams}>
             <figure>
               <DirhamSign size={96} strokeWidth={1.6} />
@@ -384,7 +384,7 @@ export function ComponentSheet() {
         </Section>
       </div>
 
-      <Section n="07 — Documents" title="Quote document and spec table">
+      <Section n="07 · Documents" title="Quote document and spec table">
         <div className={s.docs}>
           <div>
             <QuoteDocument amount="AED 250,000" />
@@ -406,7 +406,7 @@ export function ComponentSheet() {
       </Section>
 
       <div className={s.twoUp}>
-        <Section n="08 — Disclosure" title="Accordion" lead="Independent items. The glyph turns from + to − and the panel opens in 240ms (instant under reduced motion).">
+        <Section n="08 · Disclosure" title="Accordion" lead="Independent items. The glyph turns from + to − and the panel opens in 240ms (instant under reduced motion).">
           <Accordion
             defaultOpen={[1]}
             items={[
@@ -428,7 +428,7 @@ export function ComponentSheet() {
             ]}
           />
         </Section>
-        <Section n="09 — Route" title="Waypoints and line" lead="Only water already crossed is drawn. Waypoints stay hidden until the marker reaches them, then appear as a teal ring whose check draws in, with one ripple.">
+        <Section n="09 · Route" title="Waypoints and line" lead="Only water already crossed is drawn. Waypoints stay hidden until the marker reaches them, then appear as a teal ring whose check draws in, with one ripple.">
           <div className={s.routeDemo} aria-hidden="true">
             <span className={s.routeCaption} style={{ top: 12 }}>Sailed course</span>
             <svg className={s.routeLine} viewBox="0 0 350 8" preserveAspectRatio="none">
@@ -445,7 +445,7 @@ export function ComponentSheet() {
       </div>
 
       <div className={s.twoUp}>
-        <Section n="10 — Status" title="Stepper" lead="The Track stage's illustrative status. Horizontal in wide containers, vertical in narrow ones; it plays its progress once on first view.">
+        <Section n="10 · Status" title="Stepper" lead="The Track stage's illustrative status. Horizontal in wide containers, vertical in narrow ones; it plays its progress once on first view.">
           <div className={s.card}>
             <p className={s.cardHead}>
               {TRACK.header} · <span style={{ fontWeight: 400 }}>{TRACK.corridor}</span>
@@ -453,7 +453,7 @@ export function ComponentSheet() {
             <Stepper steps={TRACK.steps} />
           </div>
         </Section>
-        <Section n="11 — Conversation" title="Example chat" lead="An illustrative exchange with the India payments manager. Every reply restates a fact the page already makes; the first message uses the reader's hero amount.">
+        <Section n="11 · Conversation" title="Example chat" lead="An illustrative exchange with the India payments manager. Every reply restates a fact the page already makes; the first message uses the reader's hero amount.">
           <div className={s.navyCard} data-surface="dark">
             <ManagerChat />
           </div>
@@ -461,7 +461,7 @@ export function ComponentSheet() {
       </div>
 
       <div className={s.twoUp}>
-        <Section n="12 — Space" title="Spacing scale" lead="4px base. Section padding is 128 on desktop and 96 on mobile. Heading to lead is 24, lead to content is 48.">
+        <Section n="12 · Space" title="Spacing scale" lead="4px base. Section padding is 128 on desktop and 96 on mobile. Heading to lead is 24, lead to content is 48.">
           <div className={s.spaces}>
             {[4, 8, 12, 16, 24, 32, 48, 64, 96, 128, 160].map((n) => (
               <div key={n} className={s.spaceRow}>
@@ -476,7 +476,7 @@ export function ComponentSheet() {
             Radius: 4 tags · 6 fields and buttons · 10 cards · 999 pills.
           </p>
         </Section>
-        <Section n="13 — Feedback" title="Contact demo notice" lead='Appears inline under the contact buttons when any one of them is clicked. role="status", so it is announced without moving focus. Clicking again never stacks a second one.'>
+        <Section n="13 · Feedback" title="Contact demo notice" lead='Appears inline under the contact buttons when any one of them is clicked. role="status", so it is announced without moving focus. Clicking again never stacks a second one.'>
           <div className={s.navyCard} data-surface="dark">
             <div className={s.contactRow}>
               <Button tone="dark" onClick={() => setNotice(true)}>
@@ -498,7 +498,7 @@ export function ComponentSheet() {
         </Section>
       </div>
 
-      <Section n="14 — Notice" title="Prototype notice" lead="The page's single demo disclosure, above the nav. It replaces per-item Demo and Illustrative tags; contact, form and receipt messages still say nothing is sent when it matters.">
+      <Section n="14 · Notice" title="Prototype notice" lead="The page's single demo disclosure, above the nav. It replaces per-item Demo and Illustrative tags; contact, form and receipt messages still say nothing is sent when it matters.">
         <div className={s.barFrame}>
           <PrototypeBar />
         </div>

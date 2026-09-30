@@ -42,10 +42,6 @@
   --error: var(--red-700);
   --error-bg: var(--red-50);
 
-  /* Route (§8) */
-  --route-charted: rgba(11, 34, 49, 0.25);
-  --map-dot: rgba(11, 34, 49, 0.3);
-
   /* ── Typography (§5) ─────────────────────────────────────── */
   /* Families are set by next/font in app/layout.tsx; fallbacks here. */
   --font-serif: var(--font-newsreader), Georgia, 'Times New Roman', serif;
@@ -141,10 +137,7 @@
   --ease-in-out: cubic-bezier(0.6, 0, 0.2, 1);
 
   /* ── Layers ──────────────────────────────────────────────── */
-  --z-route: 1;
-  --z-content: 2;
   --z-nav: 20;
-  --z-sticky-cta: 30;
   --z-menu: 40;
   --z-skip: 50;
 }

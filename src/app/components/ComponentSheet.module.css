@@ -1,7 +1,7 @@
 /* Layout for the living component sheet only (not part of the landing page). */
 
 .page {
-  max-width: calc(1200px + 2 * var(--page-margin));
+  max-width: calc(var(--container-max) + 2 * var(--page-margin));
   margin: 0 auto;
   padding: var(--space-9) var(--page-margin) var(--space-10);
 }
@@ -268,16 +268,6 @@
   max-width: 322px;
 }
 
-/* Route */
-.routeSvg {
-  max-width: 520px;
-  overflow: visible;
-}
-
-.svgCaption {
-  font: 400 13px var(--font-sans);
-  fill: var(--ink-500);
-}
 
 /* Space */
 .spaces {

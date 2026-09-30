@@ -1,9 +1,9 @@
-# Straiton — UAE → India landing page
+# Straiton: UAE → India landing page
 
 **Live preview:** https://straiton-landing-nine.vercel.app
 **Source:** https://github.com/KinanMaarrawi/straiton-landing
 **Component sheet:** https://straiton-landing-nine.vercel.app/components
-**Time spent:** {{TIME — to confirm}}
+**Time spent:** {{TIME, to confirm}}
 
 A responsive landing page for Straiton's UAE → India B2B payments pilot. It explains the proposition and turns interest into a **payment assessment request**: a working two-step form with validation and a demo confirmation. Next.js (App Router) + TypeScript on Vercel.
 
@@ -43,6 +43,7 @@ The page is structured as the payment's voyage. It starts on a dotted map of the
 - **Responsive:** designed at 1440 and 390, with no horizontal scrolling from 320px up. Tested in Firefox and Chrome, and in Safari on an iPhone in portrait and landscape.
 - **Performance (Lighthouse, live site):** desktop 100, mobile 87; accessibility 100; best practices 100. The route is sampled once and animated without repainting the page, and holds 60fps while scrolling in Chrome.
 - **Without JavaScript,** every section and FAQ answer stays readable, links work, and the form explains that it needs JavaScript.
+- **Privacy:** no cookies, no analytics and no third-party requests (fonts are self-hosted). Nothing entered in the form, including an attached file, leaves the browser; checked by logging every request while completing it. So there is no cookie banner or privacy policy, and none is invented.
 
 ## System
 

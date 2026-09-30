@@ -49,13 +49,13 @@
   .inner,
   .left .inner,
   .right .inner {
-    --bleed: max(40px, calc((100cqw - 1200px) / 2));
-    width: min(1200px, calc(100% - 80px));
+    --bleed: max(40px, calc((100cqw - var(--container-max)) / 2));
+    width: min(var(--container-max), calc(100% - 80px));
     max-width: none;
     padding-inline: 0;
     display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));
-    column-gap: 24px;
+    column-gap: var(--grid-gutter);
   }
 
   /* Lane right → content on the left, and vice versa. */

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import s from './not-found.module.css';
 
 export const metadata: Metadata = {
-  title: 'Page not found — Straiton',
+  title: 'Page not found | Straiton',
   robots: { index: false, follow: false },
 };
 

@@ -8,7 +8,7 @@ import { useEffect, useRef, useState } from 'react';
  * enters view. Never repeats. Skipped entirely under reduced motion or
  * when the element is already on screen at load.
  */
-export function useRevealOnce<T extends Element>(_threshold = 0.2) {
+export function useRevealOnce<T extends Element>() {
   const ref = useRef<T>(null);
   const [state, setState] = useState<'static' | 'pending' | 'in'>('static');
 
